@@ -17,7 +17,9 @@
     "pinia": "^2.0.36",
     "pinia-plugin-persist": "^1.0.0",
     "vue": "^3.3.2",
-    "vue-router": "^4.2.0"
+    "vue-router": "^4.2.0",
+    "hippo-desktop": "workspace:*",
+    "hippo-module-core": "workspace:*"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
