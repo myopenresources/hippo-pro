@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "skipLibCheck": true,
+    "typeRoots": ["node_modules/@types", "@types"],
+    "ignoreDeprecations":"5.0",
+    "paths": {
+      "@/hippo-module-core*": ["./sub-modules/hippo-module-core"],
+      "@/hippo-desktop*": ["./sub-modules/hippo-desktop"],
+      "@/sub-modules": ["./sub-modules"],
+      "@/": ["./"]
+    },
+    "types": ["element-plus/global","pinia-plugin-persist"]
+  },
+  "include": [
+    "./env.d.ts",
+    "./sub-modules/hippo-module-core/*/*.ts",
+    "./sub-modules/hippo-module-core/**/*.ts",
+    "./sub-modules/hippo-module-core/**/*.tsx",
+    "./sub-modules/hippo-module-core/**/*.d.ts",
+    "./sub-modules/hippo-module-core/*/*.vue",
+    "./sub-modules/hippo-module-core/**/*.vue",
+    "./sub-modules/hippo-desktop/*/*.ts",
+    "./sub-modules/hippo-desktop/**/*.ts",
+    "./sub-modules/hippo-desktop/**/*.tsx",
+    "./sub-modules/hippo-desktop/**/*.d.ts",
+    "./sub-modules/hippo-desktop/*/*.vue",
+    "./sub-modules/hippo-desktop/**/*.vue"
+  ],
+  "references": []
+}
