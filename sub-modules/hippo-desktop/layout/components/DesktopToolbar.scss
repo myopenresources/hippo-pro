@@ -1,0 +1,123 @@
+.desktop-toolbar {
+    width: 100%;
+    height: var(--desktop-layout-toolbar-height);
+
+    &-inner {
+        backdrop-filter: blur(30px);
+        height: calc(100% - 0.5rem);
+        width: calc(100% - 1rem);
+        background-color: var(--desktop-layout-toolbar-bg);
+        display: flex;
+        align-items: center;
+        border-radius: var(--desktop-layout-toolbar-radius);
+        margin-top: 0.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        box-shadow: var(--desktop-layout-toolbar-shadow);
+
+        &-start-menu {
+            width: calc(var(--desktop-layout-toolbar-height) - 1.25rem);
+            height: calc(var(--desktop-layout-toolbar-height) - 1.25rem);
+            cursor: pointer;
+            background-color: var(--desktop-layout-toolbar-icon-bg);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            :deep(.svg-icon) {
+                transition: 0.35s;
+                font-size: 1.85rem;
+                font-weight: bold;
+
+                &:hover {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+
+        &-search-box {
+            margin-left: 0.5rem;
+            width: 220px;
+            :deep(.el-input__wrapper) {
+                border-radius: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
+
+                height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
+                border-color: var(--desktop-layout-toolbar-border-color);
+            }
+            --el-border-color:var(--desktop-layout-toolbar-border-color);
+            --el-input-hover-border-color:var(--el-color-primary);
+        }
+
+        &-center {
+            width: calc(100% - 34rem);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+
+            &-divider {
+                width: 0.05rem;
+                border-radius: 1rem;
+                height: calc(var(--desktop-layout-toolbar-height) - 2rem);
+                background-color: var(--desktop-layout-toolbar-divider-color);
+            }
+            &-tabs{
+                width: calc(100%  - 0.1rem);
+            }
+        }
+
+        &-right {
+            width: 16rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            :deep(.el-avatar--square) {
+                border-radius: 0.5rem;
+                width: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
+                height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
+                cursor: pointer;
+                margin-left: 1rem;
+            }
+
+            &-time{
+                display: flex;
+                flex-direction: column;
+                margin-left: 1rem;
+                .time{
+                    font-size: 0.85rem;
+                    font-weight: bold;
+                }
+                .date{
+                    font-size: 10px;
+                }
+            }
+
+            &-item {
+                width: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
+                height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
+                cursor: pointer;
+                background-color: var(--desktop-layout-toolbar-icon-bg);
+                border-radius: 0.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 0.5rem;
+                transition: 0.35s;
+
+                &:hover {
+                    background-color: var(--desktop-layout-toolbar-icon-hover-bg);
+                    color: var(--el-color-primary);
+                }
+
+                :deep(.svg-icon) {
+                    font-size: 1.65rem;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

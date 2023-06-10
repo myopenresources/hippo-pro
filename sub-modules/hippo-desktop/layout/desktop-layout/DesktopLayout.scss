@@ -1,0 +1,16 @@
+.desktop-layout {
+    width: 100vw;
+    height: 100vh;
+    background: url('../../assets/img/desktop-layout/bg.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    &-inner {
+        min-width: 960px;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(20px);
+        padding: var(--desktop-layout-margin);
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+}
