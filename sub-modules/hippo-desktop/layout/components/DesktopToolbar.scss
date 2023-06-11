@@ -133,7 +133,7 @@
                     font-weight: bold;
                 }
 
-                &-badge{
+                &-badge {
                     margin-top: 4px;
                 }
 
@@ -154,6 +154,8 @@
                 margin-bottom: 0.5rem;
                 color: var(--el-text-color-primary);
                 font-weight: bold;
+                display: flex;
+                justify-content: space-between;
             }
 
             &-search-box {
@@ -318,24 +320,26 @@
                 }
 
                 &-colors {
-                    margin-top: 1rem;
+                    margin-top: 1.5rem;
                     display: flex;
                     flex-flow: wrap;
 
-                    .popover-themes-colors-item{
+                    .popover-themes-colors-item {
                         width: 1.25rem;
                         height: 1.25rem;
                         border-radius: 2px;
                         position: relative;
                         cursor: pointer;
                         margin-right: 10px;
-                        &:last-of-type{
+                        transition: 0.35s;
+
+                        &:last-of-type {
                             margin-right: 0;
                         }
-                        
+
 
                         &:hover {
-                            opacity: 0.85;
+                            opacity: 0.65;
                         }
 
                         .is-check {
@@ -344,6 +348,23 @@
                             top: 10%;
                             color: var(--el-color-white);
                             font-weight: bold;
+                        }
+                    }
+                }
+
+                &-bg {
+                    width: 100%;
+                    height: 9rem;
+                    margin-top: 1rem;
+
+                    img {
+                        height: 8.1rem;
+                    }
+
+                    .upload-btn {
+                        color: var(--el-color-primary);
+                        &:hover{
+                            opacity: 0.65;
                         }
                     }
                 }
@@ -362,6 +383,23 @@
                     backdrop-filter: blur(10px);
                     background-color: var(--desktop-layout-toolbar-popover-bg);
                     border-color: var(--desktop-layout-toolbar-popover-border-color);
+                }
+            }
+        }
+
+        :deep(.el-dropdown__popper.el-popper){
+            background-color: var(--desktop-layout-toolbar-popover-bg);
+            border-color: var(--desktop-layout-toolbar-popover-border-color);
+            padding: 0;
+            margin-left: -3px;
+            .el-dropdown-menu{
+                background-color: var(--desktop-layout-toolbar-popover-bg); 
+                li{
+                    color: var(--el-text-color-primary);
+                    &:hover{
+                        color: var(--el-text-color-primary);
+                        background: var(--desktop-layout-toolbar-dropdown-item-hover-bg);
+                    }
                 }
             }
         }

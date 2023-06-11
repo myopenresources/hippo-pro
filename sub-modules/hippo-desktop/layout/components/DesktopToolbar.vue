@@ -39,7 +39,8 @@
                 <div class="desktop-toolbar-inner-right-item">
                     <DynamicIcon icon="FullScreen" />
                 </div>
-                <el-popover placement="top" :width="265" trigger="click" :teleported="false" :popper-style="'height:12rem'">
+                <el-popover placement="top" :width="265" trigger="click" :teleported="false"
+                    :popper-style="'height:22.5rem'">
                     <template #reference>
                         <div class="desktop-toolbar-inner-right-item">
                             <DynamicIcon icon="Setting" />
@@ -51,14 +52,14 @@
                             <div class="desktop-toolbar-inner-popover-themes-styles">
                                 <div class="popover-themes-styles-item">
                                     <img src="../../assets/img/desktop-layout/light-style.svg" />
-                                    <div class="popover-themes-styles-item-label">light</div>
+                                    <div class="popover-themes-styles-item-label">浅色</div>
                                     <div class="is-check">
                                         <DynamicIcon icon="Check" />
                                     </div>
                                 </div>
                                 <div class="popover-themes-styles-item">
                                     <img src="../../assets/img/desktop-layout/dark-style.svg" />
-                                    <div class="popover-themes-styles-item-label">dark</div>
+                                    <div class="popover-themes-styles-item-label">深色</div>
                                 </div>
                             </div>
                             <div class="desktop-toolbar-inner-popover-themes-colors">
@@ -70,6 +71,16 @@
                                         <DynamicIcon icon="Check" />
                                     </div>
                                 </div>
+                            </div>
+                            <div class="desktop-toolbar-inner-popover-themes-bg">
+                                <img src="../../assets/img/desktop-layout/bg.jpeg" />
+                                <el-upload class="avatar-uploader"
+                                    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+                                    :show-file-list="false" :on-success="handleAvatarSuccess"
+                                    :before-upload="beforeAvatarUpload">
+                                    <div class="upload-btn">更换背景图片</div>
+                                </el-upload>
+
                             </div>
                         </div>
                     </div>
@@ -84,7 +95,10 @@
                         </div>
                     </template>
                     <div class="desktop-toolbar-inner-popover">
-                        <div class="desktop-toolbar-inner-popover-header">消息</div>
+                        <div class="desktop-toolbar-inner-popover-header">
+                            消息
+                            <el-button type="primary" link>更多</el-button>
+                        </div>
                         <div class="desktop-toolbar-inner-popover-msgs">
                             <div class="desktop-toolbar-inner-popover-msgs-list">
                                 <div class="desktop-toolbar-inner-popover-msgs-list-item" v-for="(msg, index) in messages"
@@ -104,16 +118,39 @@
                     <div class="time">11:26:59</div>
                     <div class="date">2023-06-10</div>
                 </div>
-                <el-avatar shape="square" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+
+                <el-dropdown :teleported="false" @command="userDropdownCommand">
+                    <el-avatar shape="square" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+                    <template #dropdown>
+                        <el-dropdown-menu>
+                            <el-dropdown-item command="userCenter">
+                                <DynamicIcon icon="User" />
+                                个人信息
+                            </el-dropdown-item>
+                            <el-dropdown-item command="updatePwd">
+                                <DynamicIcon icon="Key" />
+                                修改密码
+                            </el-dropdown-item>
+                            <el-dropdown-item command="exitLogin">
+                                <DynamicIcon icon="SwitchButton" />
+                                退出登录
+                            </el-dropdown-item>
+                        </el-dropdown-menu>
+                    </template>
+                </el-dropdown>
+
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { DynamicIcon } from 'hippo-module-core';
+import { DynamicIcon, useElConfirmMessageBox, useElMessage, useElWarningMessage } from 'hippo-module-core';
 import { Search } from '@element-plus/icons-vue'
+import type { UploadProps } from 'element-plus'
 import { computed, ref } from 'vue';
+import { themes } from '../../consts'
+
 const keywork = ref('')
 const toolbarLeftRef = ref()
 const toolbarCenterRef = ref()
@@ -326,113 +363,6 @@ const messages = ref([
     }
 ])
 
-
-const themes = ref([
-    {
-        themeName: 'lightBlue',
-        color: '#409eff',
-        themeConfig: {
-            '--el-color-primary': '#409eff',
-            '--el-color-primary-light-3': '#79bbff',
-            '--el-color-primary-light-5': '#a0cfff',
-            '--el-color-primary-light-7': '#c6e2ff',
-            '--el-color-primary-light-8': '#d9ecff',
-            '--el-color-primary-light-9': '#ecf5ff',
-            '--el-color-primary-dark-2': '#337ecc'
-        }
-    },
-    {
-        themeName: 'red',
-        color: '#f5222d',
-        themeConfig: {
-            '--el-color-primary': '#f5222d',
-            '--el-color-primary-light-3': '#f4777d',
-            '--el-color-primary-light-5': '#f9a1a6',
-            '--el-color-primary-light-7': '#fcbcbf',
-            '--el-color-primary-light-8': '#fcced0',
-            '--el-color-primary-light-9': '#fce4e6',
-            '--el-color-primary-dark-2': '#c91e27'
-        }
-    },
-    {
-        themeName: 'orange',
-        color: '#fa541c',
-        themeConfig: {
-            '--el-color-primary': '#fa541c',
-            '--el-color-primary-light-3': '#fa7b50',
-            '--el-color-primary-light-5': '#f99675',
-            '--el-color-primary-light-7': '#f8af96',
-            '--el-color-primary-light-8': '#f7c5b4',
-            '--el-color-primary-light-9': '#f9d8cd',
-            '--el-color-primary-dark-2': '#d54a1'
-        }
-    },
-    {
-        themeName: 'yellow',
-        color: '#faad14',
-        themeConfig: {
-            '--el-color-primary': '#faad14',
-            '--el-color-primary-light-3': '#f9bc41',
-            '--el-color-primary-light-5': '#f8c766',
-            '--el-color-primary-light-7': '#f8d48b',
-            '--el-color-primary-light-8': '#f8e2b7',
-            '--el-color-primary-light-9': '#faefd9',
-            '--el-color-primary-dark-2': '#d39212'
-        }
-    },
-    {
-        themeName: 'cyan',
-        color: '#13c2c2',
-        themeConfig: {
-            '--el-color-primary': '#13c2c2',
-            '--el-color-primary-light-3': '#3cc3c3',
-            '--el-color-primary-light-5': '#5dc3c3',
-            '--el-color-primary-light-7': '#7bc9c9',
-            '--el-color-primary-light-8': '#98cbcb',
-            '--el-color-primary-light-9': '#c3f2f2',
-            '--el-color-primary-dark-2': '#139f9f'
-        }
-    },
-    {
-        themeName: 'green',
-        color: '#18a058',
-        themeConfig: {
-            '--el-color-primary': '#18a058',
-            '--el-color-primary-light-3': '#36b170',
-            '--el-color-primary-light-5': '#51c085',
-            '--el-color-primary-light-7': '#72ce9d',
-            '--el-color-primary-light-8': '#92d8b3',
-            '--el-color-primary-light-9': '#c0ead4',
-            '--el-color-primary-dark-2': '#118d4b'
-        }
-    },
-    {
-        themeName: 'blue',
-        color: '#2f54eb',
-        themeConfig: {
-            '--el-color-primary': '#2f54eb',
-            '--el-color-primary-light-3': '#4e6dec',
-            '--el-color-primary-light-5': '#7189ea',
-            '--el-color-primary-light-7': '#94a5e9',
-            '--el-color-primary-light-8': '#b2bdea',
-            '--el-color-primary-light-9': '#cdd6f9',
-            '--el-color-primary-dark-2': '#2e4dcb'
-        }
-    },
-    {
-        themeName: 'purple',
-        color: '#722ed1',
-        themeConfig: {
-            '--el-color-primary': '#722ed1',
-            '--el-color-primary-light-3': '#844cd1',
-            '--el-color-primary-light-5': '#9063d0',
-            '--el-color-primary-light-7': '#a07fce',
-            '--el-color-primary-light-8': '#ac94cd',
-            '--el-color-primary-light-9': '#dcc9f7',
-            '--el-color-primary-dark-2': '#5f28ad'
-        }
-    }
-])
 
 const menus = ref([
     {
@@ -754,6 +684,41 @@ const toolbarCenterStyle = computed(() => {
         width: `calc(100% - 33rem)`
     }
 })
+
+const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
+    if (rawFile.type !== 'image/jpeg' && rawFile.type !== 'image/png') {
+        useElWarningMessage("请选择jpeg/png格式的图片！")
+
+        return false
+    } else if (rawFile.size / 1024 / 1024 > 10) {
+        useElWarningMessage("图片不能超过10M！");
+        return false
+    }
+}
+
+const handleAvatarSuccess: UploadProps['onSuccess'] = (
+    response,
+    uploadFile
+) => {
+}
+
+const userDropdownCommand = (command: string) => {
+    const commands: any = {
+        exitLogin: () => {
+            useElConfirmMessageBox('您确认退出系统吗?', '确认', {
+                type: 'warning'
+            }).then(() => {
+
+            })
+        },
+        updatePwd: () => {
+        },
+        userCenter: () => {
+        }
+    }
+
+    commands[command]()
+}
 
 </script>
 
