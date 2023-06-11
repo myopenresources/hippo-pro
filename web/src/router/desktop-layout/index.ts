@@ -1,4 +1,4 @@
-import { DesktopLayout } from "hippo-desktop";
+import { DesktopLayout, homeRouter } from "hippo-desktop";
 
 export default [
   {
@@ -9,7 +9,7 @@ export default [
       title: ''
     },
     children: [
-      
+      ...homeRouter
     ]
   }
 ]

@@ -1,0 +1,55 @@
+.flop {
+  text-align: center;
+  ul {
+    display: inline-block;
+    height: var(--flop-height);
+    text-align: center;
+    list-style: none;
+    li {
+      float: left;
+      width: var(--flop-height);
+      height: var(--flop-height);
+      text-align: center;
+      margin: 6px 6px;
+      background: var(--flop-item-bg);
+      box-shadow: var(--flop-item-shadow);
+      border-radius: 4px;
+      background-size: 100% 100%;
+      .flop-data-boc {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        .flop-data-boc-num {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          span {
+            width: 100%;
+            height: 100%;
+            font-weight: bold;
+            line-height: var(--flop-height);
+            float: left;
+            text-align: center;
+            font-size: var(--flop-font-size);
+            color: var(--flop-font-color);
+          }
+        }
+      }
+     
+      .flop-unit {
+        line-height: var(--flop-height);
+        color: var(--flop-unit-font-color);
+        font-size: var(--flop-unit-font-size);
+        font-weight: bold;
+      }
+    }
+    .flop-unit-li{
+      width: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-left: 0px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 6px;
+  background-color: #636264be;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #636264be;
+}
+
+::-webkit-scrollbar-thumb:focus {
+  background: #636264be;
+}

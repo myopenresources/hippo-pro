@@ -29,6 +29,7 @@ export default defineConfig({
     svgIconsPlugin({
       iconDirs: [
         //path.resolve(process.cwd(), 'src/assets/icon/app')
+        path.resolve(process.cwd(), '../sub-modules/hippo-desktop/assets/icon/desktop-boolbar'),
       ]
     })
   ],
