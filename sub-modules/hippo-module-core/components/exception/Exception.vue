@@ -6,9 +6,9 @@
     <div class="app-content">
       <h2>{{ config[type].title }}</h2>
       <div class="app-desc">{{ config[type].desc }}</div>
-      <a-button type="primary" @click="handleToHome">
+      <el-button type="primary" @click="handleToHome">
         <app-dynamic-icon iconName="DoubleLeftOutlined" /> 返回首页
-      </a-button>
+      </el-button>
     </div>
   </div>
 </template>
