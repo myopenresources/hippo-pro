@@ -1,5 +1,11 @@
 import homeRouter from './home'
+import userRouter from './user'
+import roleRouter from './role'
+import notFoundRouter from './not-found'
 
 export {
-    homeRouter
+    homeRouter,
+    userRouter,
+    roleRouter,
+    notFoundRouter
 }

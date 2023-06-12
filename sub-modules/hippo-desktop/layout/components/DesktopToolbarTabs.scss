@@ -1,106 +1,106 @@
-
-
 .desktop-toolbar-tabs {
+  box-sizing: border-box;
   width: 100%;
-  height: var(--desktop-layout-toolbar-height);
+  height: calc(var(--desktop-layout-toolbar-height) - 1rem);
   display: flex;
   align-items: center;
-  background: var(--layout-page-tabs-bg);
-  box-shadow: var(--layout-page-tabs-shadow);
 
   &-item {
+    box-sizing: border-box;
     display: inline-block;
     position: relative;
-    height: calc(var(--desktop-layout-toolbar-height) - 10px);
-    line-height: calc(var(--desktop-layout-toolbar-height) - 14px);
-    border: var(--border-width-base) var(--border-style-base) var(--layout-page-tabs-item-bor-color);
-    color: var(--layout-page-tabs-color);
-    background: var(--layout-page-tabs-item-bg);
+    height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
+    line-height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
     padding: 0 8px;
-    font-size: 14px;
     margin-left: 5px;
-    margin-top: 5px;
-    border-radius: var(--layout-page-tabs-border-radius);
-    font-weight: 500;
+    margin-top: 0.35rem;
+    color: var(--el-text-color-primary);
+    background-color: var(--desktop-layout-toolbar-icon-bg);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.35s;
 
     &:first-of-type {
       margin-left: 0;
     }
 
-    :deep(.icon-file) {
-      font-size: 14px;
-      margin-right: 2px;
+    &:hover{
+      background-color: var(--desktop-layout-toolbar-icon-hover-bg);
+      color: var(--el-color-primary);
     }
 
-    :deep(.icon-close) {
-      font-size: 15px;
+    :deep(.el-icon) {
       margin-left: 8px;
       font-weight: 600;
+      position: relative;
+      top: 2px;
 
       &:hover {
-        color: var(--layout-page-tabs-close-color);
+        color: var(--el-color-danger);
       }
     }
   }
 
   &-wrapper {
-    height: var(--desktop-layout-toolbar-height);
-    width: calc(100% - 124px);
-    margin-left: 5px;
-    margin-right: 5px;
+    height: calc(var(--desktop-layout-toolbar-height) - 1rem);
+    width: calc(100% - 83px);
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 
     .router-link-exact-active {
-      background: var(--layout-page-tabs-active-bg);
-      color: var(--layout-page-tabs-active-color);
-      border-color: var(--layout-page-tabs-active-bor-color);
-      border-radius: var(--layout-page-tabs-border-radius);
+      background-color: var(--desktop-layout-toolbar-icon-hover-bg);
+      color: var(--el-color-primary);
     }
   }
 
-  &--btns {
-    height: calc(var(--desktop-layout-toolbar-height) - 10px);
-    line-height: calc(var(--desktop-layout-toolbar-height) - 12px);
+  &-btns {
+    height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
+    line-height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
     display: -webkit-flex;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: var(--border-width-base) var(--border-style-base) var(--layout-page-tabs-item-bor-color);
-    border-radius: var(--border-radius-base);
+    margin-top: 5px;
+    font-size: 1rem;
 
     .desktop-toolbar-tabs-move-to {
-      color: var(--layout-page-tabs-color);
-      background: var(--layout-page-tabs-item-bg);
+      color: var(--el-text-color-primary);
       cursor: pointer;
-      border-right: var(--border-width-base) var(--border-style-base)
-        var(--layout-page-tabs-item-bor-color);
-      padding-left: 3px;
-      padding-right: 3px;
+      border-radius: 0.5rem;
+      padding-left: 2px;
+      padding-right: 2px;
+      
 
       &:hover {
-        color: var(--layout-page-tabs-btn-hov-color);
+        color: var(--el-color-primary);
       }
     }
 
     .desktop-toolbar-tabs-more {
-      width: 60px;
-      position: relative;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      padding-left: 2px;
+      padding-right: 2px;
 
       .desktop-toolbar-tabs-more-btn {
-        width: 60px;
-        border: 0;
-        color: var(--layout-page-tabs-color);
-        background: var(--layout-page-tabs-item-bg);
-        font-size: 14px;
-        padding-left: 7px;
-        padding-right: 5px;
+        height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
+        line-height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
+        color: var(--el-text-color-primary);
         cursor: pointer;
+        border-radius: 0.5rem;
+        padding-left: 2px;
+        padding-right: 2px;
+        display: flex;
+        align-items: center;
 
         &:hover {
-          color: var(--layout-page-tabs-btn-hov-color);
+          color: var(--el-color-primary);
         }
 
-        :deep(.icon) {
-          font-size: 14px;
+        :deep(.el-icon) {
+          margin-top: -2px;
+          font-size: 1.1rem;
         }
       }
     }

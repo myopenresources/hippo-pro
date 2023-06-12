@@ -1,46 +1,37 @@
 <template>
   <div class="desktop-toolbar-tabs">
     <HorizontalScrollPane class="desktop-toolbar-tabs-wrapper" ref="scrollPaneRef">
-      <router-link
-        :ref="setTagViewsRef"
-        class="desktop-toolbar-tabs-item"
-        :to="tag"
-        v-for="tag in visitedViews"
-        :key="tag.path"
-      >
-        <DynamicIcon icon="Setting" />
+      <router-link :ref="setTagViewsRef" class="desktop-toolbar-tabs-item" :to="tag" v-for="tag in visitedViews"
+        :key="tag.path">
         <span>{{ tag.title }}</span>
         <span @click.prevent.stop="closeSelectedTag(tag)">
-          <DynamicIcon icon="Setting" />
+          <DynamicIcon icon="CircleClose" />
         </span>
       </router-link>
     </HorizontalScrollPane>
 
     <div class="desktop-toolbar-tabs-btns">
       <div class="desktop-toolbar-tabs-move-to" @click="moveToLeft">
-        <DynamicIcon icon="Setting" />
+        <DynamicIcon icon="ArrowLeft" />
       </div>
 
       <div class="desktop-toolbar-tabs-move-to" @click="moveToRight">
-        <DynamicIcon icon="Setting" />
+        <DynamicIcon icon="ArrowRight" />
       </div>
 
       <div class="desktop-toolbar-tabs-more">
-        <!--<a-dropdown :placement="'bottomLeft'" :trigger="['click']">
-          <template #overlay>
-            <a-menu>
-              <a-menu-item key="closeSelectedTag" @click="closeSelectedTag(selectedTag.value)">
-                关闭当前
-              </a-menu-item>
-              <a-menu-item key="closeOthersTags" @click="closeOthersTags"> 关闭其他 </a-menu-item>
-              <a-menu-item key="closeAllTags" @click="closeAllTags"> 关闭所有 </a-menu-item>
-            </a-menu>
-          </template>
+        <el-dropdown :teleported="false" @command="tabDropdownCommand">
           <div class="desktop-toolbar-tabs-more-btn">
-            更多
-            <DynamicIcon icon="Setting" />
+            <DynamicIcon icon="Menu" />
           </div>
-        </a-dropdown>-->
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item command="closeSelectedTag">关闭当前</el-dropdown-item>
+              <el-dropdown-item command="closeOthersTags">关闭其他</el-dropdown-item>
+              <el-dropdown-item command="closeAllTags">关闭所有</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </div>
     </div>
   </div>
@@ -171,17 +162,28 @@ const moveToRight = () => {
   scrollPaneRef.value.moveToRight()
 }
 
-/**
- * 初始化
- */
-;(() => {
-  addViewTag(route)
-  onBeforeRouteUpdate((to: RouteLocationNormalized) => {
-    nextTick(() => {
-      addViewTag(to)
+const tabDropdownCommand = (command: string) => {
+  const commands: any = {
+    closeSelectedTag: () => {
+      closeSelectedTag(selectedTag.value)
+    },
+    closeOthersTags: closeOthersTags,
+    closeAllTags: closeAllTags
+  }
+  commands[command]()
+}
+
+  /**
+   * 初始化
+   */
+  ; (() => {
+    addViewTag(route)
+    onBeforeRouteUpdate((to: RouteLocationNormalized) => {
+      nextTick(() => {
+        addViewTag(to)
+      })
     })
-  })
-})()
+  })()
 
 onMounted(() => {
   addViewTag(route)

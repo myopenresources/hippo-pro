@@ -25,7 +25,7 @@
         width: calc(var(--desktop-layout-toolbar-height) - 1.25rem);
         height: calc(var(--desktop-layout-toolbar-height) - 1.25rem);
         cursor: pointer;
-        background-color: var(--desktop-layout-toolbar-icon-bg);
+        background-color: var(--desktop-layout-toolbar-start-menu-bg);
         border-radius: 50%;
         display: flex;
         justify-content: center;
@@ -75,8 +75,6 @@
       &-tabs {
         width: calc(100% - 0.1rem);
         box-sizing: border-box;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
       }
     }
 
@@ -396,6 +394,13 @@
             color: var(--el-text-color-primary);
             background: var(--desktop-layout-toolbar-dropdown-item-hover-bg);
           }
+        }
+      }
+      .el-popper__arrow {
+        &::before {
+          backdrop-filter: blur(10px);
+          background-color: var(--desktop-layout-toolbar-popover-bg);
+          border-color: var(--desktop-layout-toolbar-popover-border-color);
         }
       }
     }
