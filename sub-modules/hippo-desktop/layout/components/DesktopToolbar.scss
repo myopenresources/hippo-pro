@@ -172,15 +172,15 @@
         margin-top: 1rem;
         display: flex;
         flex-flow: wrap;
+        align-content: flex-start;
         overflow-y: auto;
-        margin-left: -0.5rem;
-        margin-right: -0.25rem;
+        margin-left: -0.25rem;
+        margin-right: -0.75rem;
 
         &-item {
           width: 5rem;
           height: 4.5rem;
-          margin-left: 0.5rem;
-          margin-right: 0.5rem;
+          margin: 0.35rem;
           padding-left: 0.5rem;
           padding-right: 0.5rem;
           display: flex;
@@ -224,8 +224,8 @@
         display: flex;
         flex-flow: wrap;
         overflow-y: auto;
-        margin-right: -0.5rem;
-        padding-right: 0.25rem;
+        margin-right: -0.75rem;
+        padding-right: 0.5rem;
 
         &-list {
           box-sizing: border-box;

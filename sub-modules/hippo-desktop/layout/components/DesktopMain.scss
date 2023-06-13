@@ -1,31 +1,5 @@
 .desktop-main {
-    box-sizing: border-box;
-    height: calc(100% - var(--desktop-layout-toolbar-height));
-    width: 100%;
-    background-color: var(--desktop-layout-main-bg);
-    padding: var(--desktop-layout-main-padding);
-    padding-top: 0;
-    padding-right: calc(var(--desktop-layout-main-padding) - 0.5rem);
-    border-radius: var(--desktop-layout-main-radius);
-    box-shadow: var(--desktop-layout-main-shadow);
-    &-header{
-        box-sizing: border-box;
-        height: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 0.85rem;
-        opacity: 0.85;
-        border-bottom: 0.05rem solid var(--desktop-layout-main-header-border-color);
-    }
-
-    &-inner {
-        box-sizing: border-box;
-        width: 100%;
-        height: calc(100% - 3rem);
-        overflow: auto;
-        padding-right: 0.5rem;
-        margin-top: 1rem;
-    }
+  box-sizing: border-box;
+  height: calc(100% - var(--desktop-layout-toolbar-height));
+  width: 100%;
 }

@@ -4,16 +4,22 @@ import piniaPluginPersist from 'pinia-plugin-persist'
 import router from '@/router'
 import { createPinia } from 'pinia'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import { MainContent } from 'hippo-desktop'
+import { DynamicIcon } from 'hippo-module-core'
 
 const useConfig = {
   //第三方组件
   thirdPartyComponents: [],
   //自定义组件
   customComponents: [
-    /*{
-      name: 'PageLayout',
-      component: PageLayout
-    }*/
+    {
+      name: 'MainContent',
+      component: MainContent
+    },
+    {
+      name: 'DynamicIcon',
+      component: DynamicIcon
+    }
   ],
   //自定义指令
   customDirectives: [
@@ -23,8 +29,7 @@ const useConfig = {
     }*/
   ],
   // 路由守卫
-  routerGuards: () => {
-  }
+  routerGuards: () => {}
 }
 
 /**

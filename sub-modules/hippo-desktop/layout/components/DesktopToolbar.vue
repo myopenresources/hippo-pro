@@ -4,7 +4,7 @@
       <div class="desktop-toolbar-inner-left" ref="toolbarLeftRef">
         <el-popover
           placement="top"
-          :width="610"
+          :width="566"
           trigger="click"
           :teleported="false"
           ref="menuPopoverRef"
@@ -121,7 +121,7 @@
 
         <el-popover
           placement="top"
-          :width="335"
+          :width="334"
           trigger="click"
           :teleported="false"
           ref="msgPopoverRef"
@@ -439,6 +439,186 @@ const menus = ref([
     icon: 'SvgIconStartMenu',
     label: '角色管理',
     path: '/RoleList'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '用户信息',
+    path: '/UserInfo'
+  },
+  {
+    id: '',
+    icon: 'SvgIconStartMenu',
+    label: '404',
+    path: '/NotFound'
   },
   {
     id: '',
