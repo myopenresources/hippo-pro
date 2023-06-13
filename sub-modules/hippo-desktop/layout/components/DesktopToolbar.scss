@@ -178,38 +178,37 @@
 
         &-item {
           width: 5rem;
-          height: 5rem;
+          height: 4.5rem;
           margin-left: 0.5rem;
           margin-right: 0.5rem;
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          background-color: var(--desktop-layout-toolbar-popover-menu-bg);
+          border-radius: 0.5rem;
+          cursor: pointer;
+          &:hover {
+            background-color: var(--desktop-layout-toolbar-popover-menu-hover-bg);
+          }
 
           &-icon {
-            width: 3rem;
-            height: 3rem;
-            cursor: pointer;
-            background-color: var(--desktop-layout-toolbar-popover-menu-bg);
-            border-radius: 0.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
             transition: 0.35s;
-
-            &:hover {
-              background-color: var(--desktop-layout-toolbar-popover-menu-hover-bg);
-            }
+            margin-top: -0.1rem;
 
             :deep(.svg-icon) {
-              font-size: 2rem;
+              font-size: 2.8rem;
               font-weight: bold;
             }
           }
 
           &-label {
             text-align: center;
-            margin-top: 0.2rem;
             font-size: 0.75rem;
             color: var(--el-text-color-primary);
             width: 100%;
@@ -369,7 +368,7 @@
       margin-left: 2px;
       background-color: var(--desktop-layout-toolbar-popover-bg);
       border-color: var(--desktop-layout-toolbar-popover-border-color);
-      height: 80vh;
+      height: 65vh;
       padding: 0;
 
       .el-popper__arrow {

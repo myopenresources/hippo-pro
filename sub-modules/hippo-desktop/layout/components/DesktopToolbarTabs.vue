@@ -1,20 +1,29 @@
 <template>
   <div class="desktop-toolbar-tabs">
+    <div class="desktop-toolbar-tabs-btns">
+      <div class="desktop-toolbar-tabs-move-to" @click="moveToLeft">
+        <DynamicIcon icon="ArrowLeft" />
+      </div>
+    </div>
     <HorizontalScrollPane class="desktop-toolbar-tabs-wrapper" ref="scrollPaneRef">
-      <router-link :ref="setTagViewsRef" class="desktop-toolbar-tabs-item" :to="tag" v-for="tag in visitedViews"
-        :key="tag.path">
-        <span>{{ tag.title }}</span>
-        <span @click.prevent.stop="closeSelectedTag(tag)">
+      <router-link
+        :ref="setTabViewsRef"
+        class="desktop-toolbar-tabs-item"
+        :to="tab"
+        v-for="tab in visitedViews"
+        :key="tab.path"
+      >
+        <span>{{ tab.title }}</span>
+        <span
+          @click.prevent.stop="closeSelectedTab(tab)"
+          v-show="!(tab.path === homePath && visitedViews.length === 1)"
+        >
           <DynamicIcon icon="CircleClose" />
         </span>
       </router-link>
     </HorizontalScrollPane>
 
     <div class="desktop-toolbar-tabs-btns">
-      <div class="desktop-toolbar-tabs-move-to" @click="moveToLeft">
-        <DynamicIcon icon="ArrowLeft" />
-      </div>
-
       <div class="desktop-toolbar-tabs-move-to" @click="moveToRight">
         <DynamicIcon icon="ArrowRight" />
       </div>
@@ -26,9 +35,9 @@
           </div>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item command="closeSelectedTag">关闭当前</el-dropdown-item>
-              <el-dropdown-item command="closeOthersTags">关闭其他</el-dropdown-item>
-              <el-dropdown-item command="closeAllTags">关闭所有</el-dropdown-item>
+              <el-dropdown-item command="closeSelectedTab">关闭当前</el-dropdown-item>
+              <el-dropdown-item command="closeOthersTabs">关闭其他</el-dropdown-item>
+              <el-dropdown-item command="closeAllTabs">关闭所有</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -53,10 +62,11 @@ const useDesktopLayout = useDesktopLayoutStore()
 const route = useRoute()
 const router = useRouter()
 
-const selectedTag = reactive<any>({})
+const selectedTab = reactive<any>({})
 
-const tagViewsRef: any[] = []
+const tabViewsRef: any[] = []
 const scrollPaneRef = ref<any>(null)
+const homePath = Environments.getEvnProp('VITE_HOME_ROUTER')
 
 /**
  * 列表
@@ -65,36 +75,36 @@ const visitedViews: any = computed(() => {
   return useDesktopLayout.getVisitedViews
 })
 
-const setTagViewsRef = (el: any) => {
-  tagViewsRef.push(el)
+const setTabViewsRef = (el: any) => {
+  tabViewsRef.push(el)
 }
 
 /**
  * 是否激活
  */
 const isActive = (view: RouteLocationNormalizedLoaded | RouteLocationNormalized) => {
-  return view.path === selectedTag.value.path
+  return view.path === selectedTab.value.path
 }
 
 /**
  * 添加
  */
-const addViewTag = (currentRoute: RouteLocationNormalizedLoaded | RouteLocationNormalized) => {
+const addViewTab = (currentRoute: RouteLocationNormalizedLoaded | RouteLocationNormalized) => {
   if (currentRoute && currentRoute.name) {
-    selectedTag.value = currentRoute
+    selectedTab.value = currentRoute
     useDesktopLayout.addVisitedView(currentRoute)
-    moveToCurrentTag()
+    moveToCurrentTab()
   }
 }
 
 /**
  * 移动
  */
-const moveToCurrentTag = () => {
-  const tags = tagViewsRef
+const moveToCurrentTab = () => {
+  const tabs = tabViewsRef
   nextTick(() => {
-    for (const item of tags) {
-      if (item && item.to.path === selectedTag.value.path) {
+    for (const item of tabs) {
+      if (item && item.to.path === selectedTab.value.path) {
         scrollPaneRef.value.moveToTarget(item.$el)
         break
       }
@@ -105,18 +115,18 @@ const moveToCurrentTag = () => {
 /**
  * 关闭选择
  */
-const closeSelectedTag = (view: RouteLocationNormalizedLoaded | RouteLocationNormalized) => {
-  if (visitedViews.value.length == 1 && view.path === Environments.getEvnProp('VITE_HOME_ROUTER')) {
+const closeSelectedTab = (view: RouteLocationNormalizedLoaded | RouteLocationNormalized) => {
+  if (visitedViews.value.length == 1 && view.path === homePath) {
     return
   }
 
-  useDesktopLayout.delVisitedView().then((views: any) => {
+  useDesktopLayout.delVisitedView(view).then((views: any) => {
     if (isActive(view)) {
       const latestView = views.slice(-1)[0]
       if (latestView) {
         router.push(latestView)
       } else {
-        router.push(Environments.getEvnProp('VITE_HOME_ROUTER'))
+        router.push(homePath)
       }
     }
     scrollPaneRef.value.resize()
@@ -126,25 +136,25 @@ const closeSelectedTag = (view: RouteLocationNormalizedLoaded | RouteLocationNor
 /**
  * 关闭其它
  */
-const closeOthersTags = () => {
-  router.push(selectedTag.value)
-  useDesktopLayout.delOthersViews().then(() => {
-    moveToCurrentTag()
+const closeOthersTabs = () => {
+  router.push(selectedTab.value)
+  useDesktopLayout.delOthersViews(selectedTab.value).then(() => {
+    moveToCurrentTab()
   })
 }
 
 /**
  * 关闭所有
  */
-const closeAllTags = () => {
+const closeAllTabs = () => {
   // 如果当前路由是首页，直接关闭其它，保留首页
-  if (selectedTag.value.path === Environments.getEvnProp('VITE_HOME_ROUTER')) {
-    closeOthersTags()
+  if (selectedTab.value.path === homePath) {
+    closeOthersTabs()
   } else {
     //如查当前路由不是首页，直接关闭所有，并添加首页
     useDesktopLayout.delAllViews()
-    router.push(Environments.getEvnProp('VITE_HOME_ROUTER'))
-    moveToCurrentTag()
+    router.push(homePath)
+    moveToCurrentTab()
   }
 }
 
@@ -164,29 +174,29 @@ const moveToRight = () => {
 
 const tabDropdownCommand = (command: string) => {
   const commands: any = {
-    closeSelectedTag: () => {
-      closeSelectedTag(selectedTag.value)
+    closeSelectedTab: () => {
+      closeSelectedTab(selectedTab.value)
     },
-    closeOthersTags: closeOthersTags,
-    closeAllTags: closeAllTags
+    closeOthersTabs: closeOthersTabs,
+    closeAllTabs: closeAllTabs
   }
   commands[command]()
 }
 
-  /**
-   * 初始化
-   */
-  ; (() => {
-    addViewTag(route)
-    onBeforeRouteUpdate((to: RouteLocationNormalized) => {
-      nextTick(() => {
-        addViewTag(to)
-      })
+/**
+ * 初始化
+ */
+;(() => {
+  addViewTab(route)
+  onBeforeRouteUpdate((to: RouteLocationNormalized) => {
+    nextTick(() => {
+      addViewTab(to)
     })
-  })()
+  })
+})()
 
 onMounted(() => {
-  addViewTag(route)
+  addViewTab(route)
 })
 
 onUnmounted(() => {

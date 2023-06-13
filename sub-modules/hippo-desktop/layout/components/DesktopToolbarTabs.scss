@@ -4,6 +4,8 @@
   height: calc(var(--desktop-layout-toolbar-height) - 1rem);
   display: flex;
   align-items: center;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 
   &-item {
     box-sizing: border-box;
