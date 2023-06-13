@@ -2,17 +2,16 @@
   width: 100%;
   height: var(--desktop-layout-toolbar-height);
   position: relative;
-  z-index: 3;
+  z-index: 9;
 
   &-inner {
     backdrop-filter: blur(30px);
-    height: calc(100% - 0.5rem);
+    height: 100%;
     width: calc(100% - 1rem);
     background-color: var(--desktop-layout-toolbar-bg);
     display: flex;
     align-items: center;
     border-radius: var(--desktop-layout-toolbar-radius);
-    margin-top: 0.5rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     box-shadow: var(--desktop-layout-toolbar-shadow);
@@ -85,7 +84,7 @@
       justify-content: flex-end;
 
       :deep(.el-avatar--square) {
-        border-radius: 0.5rem;
+        border-radius: 0.3rem;
         width: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
         height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
         cursor: pointer;
@@ -113,7 +112,7 @@
         height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
         cursor: pointer;
         background-color: var(--desktop-layout-toolbar-icon-bg);
-        border-radius: 0.5rem;
+        border-radius: 0.3rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -159,7 +158,7 @@
         width: 100%;
 
         :deep(.el-input__wrapper) {
-          border-radius: 2rem;
+          border-radius: 0.3rem;
           height: 2rem;
         }
 
@@ -188,7 +187,7 @@
           justify-content: center;
           align-items: center;
           background-color: var(--desktop-layout-toolbar-popover-menu-bg);
-          border-radius: 0.5rem;
+          border-radius: 0.3rem;
           cursor: pointer;
           &:hover {
             background-color: var(--desktop-layout-toolbar-popover-menu-hover-bg);
@@ -237,7 +236,7 @@
             width: 100%;
             background-color: var(--desktop-layout-toolbar-popover-msg-bg);
             transition: 0.35s;
-            border-radius: 6px;
+            border-radius: 0.3rem;
             padding: 0.5rem;
             margin-top: 0.25rem;
             margin-bottom: 0.25rem;

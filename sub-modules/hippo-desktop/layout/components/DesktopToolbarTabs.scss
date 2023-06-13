@@ -18,9 +18,9 @@
     margin-top: 0.35rem;
     color: var(--el-text-color-primary);
     background-color: var(--desktop-layout-toolbar-icon-bg);
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
     transition: 0.35s;
 
     &:first-of-type {
@@ -69,7 +69,7 @@
     .desktop-toolbar-tabs-move-to {
       color: var(--el-text-color-primary);
       cursor: pointer;
-      border-radius: 0.5rem;
+      border-radius: 0.3rem;
       padding-left: 2px;
       padding-right: 2px;
       
@@ -81,7 +81,7 @@
 
     .desktop-toolbar-tabs-more {
       cursor: pointer;
-      border-radius: 0.5rem;
+      border-radius: 0.3rem;
       padding-left: 2px;
       padding-right: 2px;
 
@@ -90,7 +90,7 @@
         line-height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
         color: var(--el-text-color-primary);
         cursor: pointer;
-        border-radius: 0.5rem;
+        border-radius: 0.3rem;
         padding-left: 2px;
         padding-right: 2px;
         display: flex;

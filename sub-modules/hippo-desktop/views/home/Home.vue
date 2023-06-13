@@ -1,5 +1,5 @@
 <template>
-  <MainContent>
+  <MainContent :title="'首页'">
     <el-table :data="tableData" style="width: 100%">
       <el-table-column prop="date" label="Date" width="150" />
       <el-table-column label="Delivery Info">

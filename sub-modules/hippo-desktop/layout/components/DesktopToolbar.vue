@@ -2,13 +2,7 @@
   <div class="desktop-toolbar">
     <div class="desktop-toolbar-inner">
       <div class="desktop-toolbar-inner-left" ref="toolbarLeftRef">
-        <el-popover
-          placement="top"
-          :width="566"
-          trigger="click"
-          :teleported="false"
-          ref="menuPopoverRef"
-        >
+        <el-popover placement="top" :width="566" trigger="click" :teleported="false" ref="menuPopoverRef">
           <template #reference>
             <div class="desktop-toolbar-inner-left-start-menu">
               <DynamicIcon icon="SvgIconStartMenu" />
@@ -16,20 +10,11 @@
           </template>
           <div class="desktop-toolbar-inner-popover">
             <div class="desktop-toolbar-inner-popover-header">系统菜单</div>
-            <el-input
-              class="desktop-toolbar-inner-popover-search-box"
-              v-model="keywork"
-              :prefix-icon="Search"
-              clearable
-              placeholder="搜索"
-            />
+            <el-input class="desktop-toolbar-inner-popover-search-box" v-model="keywork" :prefix-icon="Search" clearable
+              placeholder="搜索" />
             <div class="desktop-toolbar-inner-popover-menus">
-              <div
-                class="desktop-toolbar-inner-popover-menus-item"
-                v-for="(menu, index) in menus"
-                :key="index"
-                @click="toPage(menu)"
-              >
+              <div class="desktop-toolbar-inner-popover-menus-item" v-for="(menu, index) in menus" :key="index"
+                @click="toPage(menu)">
                 <div class="desktop-toolbar-inner-popover-menus-item-icon">
                   <DynamicIcon :icon="menu.icon" />
                 </div>
@@ -41,13 +26,8 @@
           </div>
         </el-popover>
 
-        <el-input
-          class="desktop-toolbar-inner-left-search-box"
-          v-model="keywork"
-          :prefix-icon="Search"
-          clearable
-          placeholder="搜索"
-        />
+        <el-input class="desktop-toolbar-inner-left-search-box" v-model="keywork" :prefix-icon="Search" clearable
+          placeholder="搜索" />
       </div>
       <div class="desktop-toolbar-inner-center" ref="toolbarCenterRef" :style="toolbarCenterStyle">
         <div class="desktop-toolbar-inner-center-divider"></div>
@@ -60,14 +40,8 @@
         <div class="desktop-toolbar-inner-right-item">
           <DynamicIcon icon="FullScreen" />
         </div>
-        <el-popover
-          placement="top"
-          :width="265"
-          trigger="click"
-          :teleported="false"
-          ref="themePopoverRef"
-          :popper-style="'height:22.5rem'"
-        >
+        <el-popover placement="top" :width="265" trigger="click" :teleported="false" ref="themePopoverRef"
+          :popper-style="'height:22.5rem'">
           <template #reference>
             <div class="desktop-toolbar-inner-right-item">
               <DynamicIcon icon="Setting" />
@@ -77,41 +51,29 @@
             <div class="desktop-toolbar-inner-popover-header">主题设置</div>
             <div class="desktop-toolbar-inner-popover-themes">
               <div class="desktop-toolbar-inner-popover-themes-styles">
-                <div class="popover-themes-styles-item">
-                  <img src="../../assets/img/desktop-layout/light-style.svg" />
-                  <div class="popover-themes-styles-item-label">浅色</div>
-                  <div class="is-check">
+                <div class="popover-themes-styles-item" v-for="(style, index) in themeSettingConst.styles" :key="index"
+                  @click="setStyleTheme(style)">
+                  <img :src="style.img" />
+                  <div class="popover-themes-styles-item-label">{{ style.styleThemeLabel }}</div>
+                  <div class="is-check" v-show="style.styleThemeName === currentStyleTheme">
                     <DynamicIcon icon="Check" />
                   </div>
                 </div>
-                <div class="popover-themes-styles-item">
-                  <img src="../../assets/img/desktop-layout/dark-style.svg" />
-                  <div class="popover-themes-styles-item-label">深色</div>
-                </div>
               </div>
               <div class="desktop-toolbar-inner-popover-themes-colors">
-                <div
-                  class="popover-themes-colors-item"
-                  v-for="(theme, index) in themes"
-                  :key="index"
+                <div class="popover-themes-colors-item" v-for="(theme, index) in themeSettingConst.themes" :key="index"
                   :style="{
                     backgroundColor: theme.color
-                  }"
-                >
-                  <div class="is-check">
+                  }" @click="setTheme(theme)">
+                  <div class="is-check" v-show="currentTheme == theme.themeName"> 
                     <DynamicIcon icon="Check" />
                   </div>
                 </div>
               </div>
               <div class="desktop-toolbar-inner-popover-themes-bg">
-                <img src="../../assets/img/desktop-layout/bg.jpeg" />
-                <el-upload
-                  class="avatar-uploader"
-                  action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-                  :show-file-list="false"
-                  :on-success="handleAvatarSuccess"
-                  :before-upload="beforeAvatarUpload"
-                >
+                <img src="../../assets/img/desktop-layout/light-bg.jpg" />
+                <el-upload class="avatar-uploader" action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+                  :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
                   <div class="upload-btn">更换背景图片</div>
                 </el-upload>
               </div>
@@ -119,13 +81,7 @@
           </div>
         </el-popover>
 
-        <el-popover
-          placement="top"
-          :width="334"
-          trigger="click"
-          :teleported="false"
-          ref="msgPopoverRef"
-        >
+        <el-popover placement="top" :width="334" trigger="click" :teleported="false" ref="msgPopoverRef">
           <template #reference>
             <div class="desktop-toolbar-inner-right-item">
               <el-badge is-dot class="desktop-toolbar-inner-right-item-badge">
@@ -140,12 +96,8 @@
             </div>
             <div class="desktop-toolbar-inner-popover-msgs">
               <div class="desktop-toolbar-inner-popover-msgs-list">
-                <div
-                  class="desktop-toolbar-inner-popover-msgs-list-item"
-                  v-for="(msg, index) in messages"
-                  :index="index"
-                  @click="toMsg(msg)"
-                >
+                <div class="desktop-toolbar-inner-popover-msgs-list-item" v-for="(msg, index) in messages" :index="index"
+                  @click="toMsg(msg)">
                   <div class="popover-msg-header">{{ msg.title }}</div>
                   <div class="popover-msg-footer">
                     <div>{{ msg.msgType }}</div>
@@ -163,10 +115,7 @@
         </div>
 
         <el-dropdown :teleported="false" @command="userDropdownCommand">
-          <el-avatar
-            shape="square"
-            src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-          />
+          <el-avatar shape="square" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item command="userCenter">
@@ -194,14 +143,22 @@ import {
   DynamicIcon,
   useElConfirmMessageBox,
   useElMessage,
-  useElWarningMessage
+  useElWarningMessage,
+  useEventBusEmit
 } from 'hippo-module-core'
 import { Search } from '@element-plus/icons-vue'
 import type { UploadProps } from 'element-plus'
 import { computed, ref, unref } from 'vue'
-import { themes } from '../../consts'
+import { themeSettingConst, styleNameConst } from '../../consts'
 import DesktopToolbarTabs from './DesktopToolbarTabs.vue'
 import { useRouter } from 'vue-router'
+import { ThemeStoreUtil, ThemeUtil } from '../../utils'
+import { useDark, useToggle } from '@vueuse/core'
+
+const currentTheme = ref(ThemeStoreUtil.getTheme())
+const currentStyleTheme = ref(ThemeStoreUtil.getStyleTheme())
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 
 const router = useRouter()
 
@@ -657,17 +614,17 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
   }
 }
 
-const handleAvatarSuccess: UploadProps['onSuccess'] = (response, uploadFile) => {}
+const handleAvatarSuccess: UploadProps['onSuccess'] = (response, uploadFile) => { }
 
 const userDropdownCommand = (command: string) => {
   const commands: any = {
     exitLogin: () => {
       useElConfirmMessageBox('您确认退出系统吗?', '确认', {
         type: 'warning'
-      }).then(() => {})
+      }).then(() => { })
     },
-    updatePwd: () => {},
-    userCenter: () => {}
+    updatePwd: () => { },
+    userCenter: () => { }
   }
 
   commands[command]()
@@ -680,6 +637,23 @@ const toPage = (menu: any) => {
 
 const toMsg = (msg: any) => {
   msgPopoverRef.value.hide()
+}
+
+const setStyleTheme = (style: any) => {
+  if (style.styleThemeName === styleNameConst.dark) {
+    toggleDark(true)
+  } else {
+    toggleDark(false)
+  }
+  currentStyleTheme.value = style.styleThemeName
+  ThemeStoreUtil.setStyleTheme(style.styleThemeName)
+  useEventBusEmit('styleThemeChange', style)
+}
+
+const setTheme = (item: { themeName: string; color: string; themeConfig: any }) => {
+  currentTheme.value = item.themeName
+  ThemeStoreUtil.setTheme(item.themeName)
+  ThemeUtil.setCssVariable(item.themeConfig)
 }
 </script>
 

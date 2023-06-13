@@ -1,8 +1,8 @@
 <template>
     <div class="desktop-layout">
         <div class="desktop-layout-inner">
-            <DesktopMain />
             <DesktopToolbar />
+            <DesktopMain />
         </div>
     </div>
 </template>

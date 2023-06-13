@@ -1,2 +1,3 @@
 import MainContent from './main-content/MainContent.vue'
-export { MainContent }
+import DesktopConfigProvider from './config-provider/DesktopConfigProvider.vue'
+export { MainContent, DesktopConfigProvider }

@@ -6,18 +6,10 @@
       </div>
     </div>
     <HorizontalScrollPane class="desktop-toolbar-tabs-wrapper" ref="scrollPaneRef">
-      <router-link
-        :ref="setTabViewsRef"
-        class="desktop-toolbar-tabs-item"
-        :to="tab"
-        v-for="tab in visitedViews"
-        :key="tab.path"
-      >
+      <router-link :ref="setTabViewsRef" class="desktop-toolbar-tabs-item" :to="tab" v-for="tab in visitedViews"
+        :key="tab.path">
         <span>{{ tab.title }}</span>
-        <span
-          @click.prevent.stop="closeSelectedTab(tab)"
-          v-show="!(tab.path === homePath && visitedViews.length === 1)"
-        >
+        <span @click.prevent.stop="closeSelectedTab(tab)" v-show="!(tab.path === homePath && visitedViews.length === 1)">
           <DynamicIcon icon="CircleClose" />
         </span>
       </router-link>
@@ -47,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { DynamicIcon, Environments, HorizontalScrollPane } from 'hippo-module-core'
+import { DynamicIcon, Environments, HorizontalScrollPane, useEventBusOn, useEventBusRemove } from 'hippo-module-core'
 import { computed, nextTick, onMounted, onUnmounted, reactive, ref } from 'vue'
 import {
   useRoute,
@@ -183,17 +175,23 @@ const tabDropdownCommand = (command: string) => {
   commands[command]()
 }
 
-/**
- * 初始化
- */
-;(() => {
-  addViewTab(route)
-  onBeforeRouteUpdate((to: RouteLocationNormalized) => {
-    nextTick(() => {
-      addViewTab(to)
+  /**
+   * 初始化
+   */
+  ; (() => {
+    addViewTab(route)
+    onBeforeRouteUpdate((to: RouteLocationNormalized) => {
+      nextTick(() => {
+        addViewTab(to)
+      })
     })
-  })
-})()
+  })()
+
+const desktopToolbarCloseSelectedTab = () => {
+  closeSelectedTab(selectedTab.value)
+}
+
+useEventBusOn('desktopToolbarCloseSelectedTab', desktopToolbarCloseSelectedTab)
 
 onMounted(() => {
   addViewTab(route)
@@ -201,6 +199,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   useDesktopLayout.delAllViews()
+  useEventBusRemove('desktopToolbarCloseSelectedTab', desktopToolbarCloseSelectedTab)
 })
 </script>
 

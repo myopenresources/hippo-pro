@@ -1,5 +1,6 @@
-import {themes} from './desktop-layout-const'
+import { themeSettingConst, styleNameConst } from './desktop-layout-const'
 
 export {
-    themes
+    themeSettingConst,
+    styleNameConst
 }
