@@ -44,7 +44,7 @@
           :popper-style="'height:22.5rem'">
           <template #reference>
             <div class="desktop-toolbar-inner-right-item">
-              <DynamicIcon icon="Setting" />
+              <DynamicIcon icon="SvgIconTheme" />
             </div>
           </template>
           <div class="desktop-toolbar-inner-popover">
@@ -381,19 +381,19 @@ const messages = ref([
 const menus = ref([
   {
     id: '',
-    icon: 'SvgIconStartMenu',
+    icon: 'SvgIconHome',
     label: '首页',
     path: '/Home'
   },
   {
     id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户管理用户',
+    icon: 'SvgIconUser',
+    label: '用户管理',
     path: '/UserList'
   },
   {
     id: '',
-    icon: 'SvgIconStartMenu',
+    icon: 'SvgIconRole',
     label: '角色管理',
     path: '/RoleList'
   },
@@ -405,7 +405,7 @@ const menus = ref([
   },
   {
     id: '',
-    icon: 'SvgIconStartMenu',
+    icon: 'SvgIconMenu',
     label: '404',
     path: '/NotFound'
   },

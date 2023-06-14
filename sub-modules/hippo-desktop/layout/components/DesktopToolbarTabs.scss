@@ -100,9 +100,9 @@
           color: var(--el-color-primary);
         }
 
-        :deep(.el-icon) {
-          margin-top: -2px;
-          font-size: 1.1rem;
+        :deep(.svg-icon) {
+          margin-top: -3px;
+          font-size: 0.9rem;
         }
       }
     }

@@ -10,7 +10,6 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import path from 'path'
 
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -30,6 +29,8 @@ export default defineConfig({
       iconDirs: [
         //path.resolve(process.cwd(), 'src/assets/icon/app')
         path.resolve(process.cwd(), '../sub-modules/hippo-desktop/assets/icon/desktop-boolbar'),
+        path.resolve(process.cwd(), '../sub-modules/hippo-desktop/assets/icon/menu'),
+        path.resolve(process.cwd(), '../sub-modules/hippo-desktop/assets/icon/app')
       ]
     })
   ],

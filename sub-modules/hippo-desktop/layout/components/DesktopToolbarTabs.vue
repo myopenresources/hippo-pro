@@ -23,7 +23,7 @@
       <div class="desktop-toolbar-tabs-more">
         <el-dropdown :teleported="false" @command="tabDropdownCommand">
           <div class="desktop-toolbar-tabs-more-btn">
-            <DynamicIcon icon="Menu" />
+            <DynamicIcon icon="SvgIconMore" />
           </div>
           <template #dropdown>
             <el-dropdown-menu>
