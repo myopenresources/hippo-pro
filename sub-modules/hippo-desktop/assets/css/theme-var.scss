@@ -1,12 +1,11 @@
 html {
     --desktop-layout-bg:#c9eefa;
-    --desktop-layout-bg-img:url('../../assets/img/desktop-layout/light-bg.jpg');
     --desktop-layout-toolbar-height:60px;
     --desktop-layout-toolbar-bg:#eef6fd;
     --desktop-layout-toolbar-shadow:0 0 6px rgba(0, 0, 0, 0.2);
     --desktop-layout-toolbar-border-color:rgba(205, 226, 231, 0.93);
     --desktop-layout-toolbar-radius:0rem;
-    --desktop-layout-toolbar-start-menu-bg:rgba(255, 255, 255, 0.93);
+    --desktop-layout-toolbar-start-menu-bg:rgba(255, 255, 255, 1);
     --desktop-layout-toolbar-icon-bg:rgba(255, 255, 255, 0.726);
     --desktop-layout-toolbar-icon-hover-bg:rgba(179, 222, 237, 0.35);
     --desktop-layout-toolbar-divider-color:#cce5f0ab;
@@ -30,8 +29,7 @@ html {
 }
 
 html.dark{
-    --desktop-layout-bg:#262930;
-    --desktop-layout-bg-img:url('../../assets/img/desktop-layout/dark-bg.jpg');
+    --desktop-layout-bg:#233544ff;
     --desktop-layout-toolbar-bg:#010e1b;
     --desktop-layout-toolbar-shadow:0 0 6px rgba(0, 0, 0, 0.2);
     --desktop-layout-toolbar-border-color:#334250;

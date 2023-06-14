@@ -41,7 +41,7 @@
           <DynamicIcon icon="FullScreen" />
         </div>
         <el-popover placement="top" :width="265" trigger="click" :teleported="false" ref="themePopoverRef"
-          :popper-style="'height:22.5rem'">
+          :popper-style="'height:11rem'">
           <template #reference>
             <div class="desktop-toolbar-inner-right-item">
               <DynamicIcon icon="SvgIconTheme" />
@@ -65,17 +65,10 @@
                   :style="{
                     backgroundColor: theme.color
                   }" @click="setTheme(theme)">
-                  <div class="is-check" v-show="currentTheme == theme.themeName"> 
+                  <div class="is-check" v-show="currentTheme == theme.themeName">
                     <DynamicIcon icon="Check" />
                   </div>
                 </div>
-              </div>
-              <div class="desktop-toolbar-inner-popover-themes-bg">
-                <img src="../../assets/img/desktop-layout/light-bg.jpg" />
-                <el-upload class="avatar-uploader" action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-                  :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
-                  <div class="upload-btn">更换背景图片</div>
-                </el-upload>
               </div>
             </div>
           </div>
@@ -399,194 +392,39 @@ const menus = ref([
   },
   {
     id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
     icon: 'SvgIconMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
+    label: '菜单管理',
     path: '/UserInfo'
   },
   {
     id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
+    icon: 'SvgIconDataDic',
+    label: '数据字典管理',
     path: '/UserInfo'
   },
   {
     id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
+    icon: 'SvgIconNotice',
+    label: '消息管理',
+    path: '/NotFound'
+  },
+
+  {
+    id: '',
+    icon: 'SvgIconFlow',
+    label: '工作流管理',
     path: '/NotFound'
   },
   {
     id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
+    icon: 'SvgIconLog',
+    label: '日志管理',
     path: '/UserInfo'
   },
   {
     id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '用户信息',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconStartMenu',
-    label: '404',
+    icon: 'SvgIconAuth',
+    label: '权限管理',
     path: '/NotFound'
   }
 ])
