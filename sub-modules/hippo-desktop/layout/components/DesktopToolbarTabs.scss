@@ -17,7 +17,7 @@
     margin-left: 5px;
     margin-top: 0.35rem;
     color: var(--el-text-color-primary);
-    background-color: var(--desktop-layout-toolbar-icon-bg);
+    background-color: var(--desktop-layout-toolbar-tab-bg);
     border-radius: 0.3rem;
     text-decoration: none;
     font-size: 13px;
@@ -28,7 +28,7 @@
     }
 
     &:hover{
-      background-color: var(--desktop-layout-toolbar-icon-hover-bg);
+      background-color: var(--desktop-layout-toolbar-tab-hover-bg);
       color: var(--el-color-primary);
     }
 

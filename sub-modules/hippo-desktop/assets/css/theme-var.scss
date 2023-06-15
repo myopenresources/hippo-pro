@@ -1,16 +1,18 @@
 html {
-    --desktop-layout-bg:#c9eefa;
+    --desktop-layout-bg: linear-gradient(to right,#d3f0fa,#a1d4e6);
     --desktop-layout-toolbar-height:60px;
-    --desktop-layout-toolbar-bg:#eef6fd;
+    --desktop-layout-toolbar-bg:#eef6fdc5;
     --desktop-layout-toolbar-shadow:0 0 6px rgba(0, 0, 0, 0.2);
     --desktop-layout-toolbar-border-color:rgba(205, 226, 231, 0.93);
     --desktop-layout-toolbar-radius:0rem;
     --desktop-layout-toolbar-start-menu-bg:rgba(255, 255, 255, 1);
-    --desktop-layout-toolbar-icon-bg:rgba(255, 255, 255, 0.726);
-    --desktop-layout-toolbar-icon-hover-bg:rgba(179, 222, 237, 0.35);
+    --desktop-layout-toolbar-icon-bg:rgba(255, 255, 255, 0);
+    --desktop-layout-toolbar-icon-hover-bg:rgb(255, 255, 255);
+    --desktop-layout-toolbar-tab-bg:rgba(255, 255, 255, 0.5);
+    --desktop-layout-toolbar-tab-hover-bg:rgb(255, 255, 255);
     --desktop-layout-toolbar-divider-color:#cce5f0ab;
-    --desktop-layout-toolbar-popover-bg:#eef6fdce;
-    --desktop-layout-toolbar-popover-border-color:rgba(224, 231, 233, 0.93);
+    --desktop-layout-toolbar-popover-bg:#eef6fdc5;
+    --desktop-layout-toolbar-popover-border-color:rgba(255, 255, 255, 0.9);
     --desktop-layout-toolbar-popover-search-box-bor-color:rgba(205, 226, 231, 0.93);
     --desktop-layout-toolbar-popover-menu-bg:#ffffffe0;
     --desktop-layout-toolbar-popover-menu-hover-bg:rgba(179, 222, 237, 0.35);
@@ -29,13 +31,15 @@ html {
 }
 
 html.dark{
-    --desktop-layout-bg:#233544ff;
-    --desktop-layout-toolbar-bg:#010e1b;
+    --desktop-layout-bg: linear-gradient(to right,#233544ff,rgb(26, 51, 71));
+    --desktop-layout-toolbar-bg:#010e1bec;
     --desktop-layout-toolbar-shadow:0 0 6px rgba(0, 0, 0, 0.2);
     --desktop-layout-toolbar-border-color:#334250;
     --desktop-layout-toolbar-start-menu-bg:#283846d7;
-    --desktop-layout-toolbar-icon-bg:rgba(43, 42, 42, 0.726);
+    --desktop-layout-toolbar-icon-bg:rgba(43, 42, 42, 0);
     --desktop-layout-toolbar-icon-hover-bg:rgba(134, 141, 143, 0.35);
+    --desktop-layout-toolbar-tab-bg:rgba(43, 42, 42, 0.596);
+    --desktop-layout-toolbar-tab-hover-bg:rgba(134, 141, 143, 0.35);
     --desktop-layout-toolbar-divider-color:#334250;
     --desktop-layout-toolbar-popover-bg:#010e1bdc;
     --desktop-layout-toolbar-popover-border-color:#334250;

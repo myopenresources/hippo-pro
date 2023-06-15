@@ -2,7 +2,7 @@
   <div class="desktop-toolbar">
     <div class="desktop-toolbar-inner">
       <div class="desktop-toolbar-inner-left" ref="toolbarLeftRef">
-        <el-popover placement="top" :width="566" trigger="click" :teleported="false" ref="menuPopoverRef">
+        <el-popover placement="top" :width="566" trigger="click" :teleported="false" ref="menuPopoverRef" :popper-style="'margin-top:-4px;'">
           <template #reference>
             <div class="desktop-toolbar-inner-left-start-menu">
               <DynamicIcon icon="SvgIconStartMenu" />
@@ -74,7 +74,7 @@
           </div>
         </el-popover>
 
-        <el-popover placement="top" :width="334" trigger="click" :teleported="false" ref="msgPopoverRef">
+        <el-popover placement="top" :width="335" trigger="click" :teleported="false" ref="msgPopoverRef" :popper-style="'margin-left:-2px'">
           <template #reference>
             <div class="desktop-toolbar-inner-right-item">
               <el-badge is-dot class="desktop-toolbar-inner-right-item-badge">
@@ -103,8 +103,8 @@
         </el-popover>
 
         <div class="desktop-toolbar-inner-right-time">
-          <div class="time">11:26:59</div>
-          <div class="date">2023-06-10</div>
+          <div class="time">{{ sysTime.date }}</div>
+          <div class="date">{{ sysTime.time }}</div>
         </div>
 
         <el-dropdown :teleported="false" @command="userDropdownCommand">
@@ -147,6 +147,7 @@ import DesktopToolbarTabs from './DesktopToolbarTabs.vue'
 import { useRouter } from 'vue-router'
 import { ThemeStoreUtil, ThemeUtil } from '../../utils'
 import { useDark, useToggle } from '@vueuse/core'
+import { useDesktopToolbar } from '../../hooks'
 
 const currentTheme = ref(ThemeStoreUtil.getTheme())
 const currentStyleTheme = ref(ThemeStoreUtil.getStyleTheme())
@@ -154,6 +155,7 @@ const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
 const router = useRouter()
+const {sysTime} = useDesktopToolbar()
 
 const keywork = ref('')
 
@@ -163,6 +165,7 @@ const toolbarRightRef = ref()
 const menuPopoverRef = ref()
 const themePopoverRef = ref()
 const msgPopoverRef = ref()
+
 
 const messages = ref([
   {
