@@ -1,10 +1,10 @@
 import {
   DesktopLayout,
-  homeRouter,
   userRouter,
   roleRouter,
   notFoundRouter
 } from "hippo-desktop";
+import homeRouter from './home'
 
 export default [
   {
