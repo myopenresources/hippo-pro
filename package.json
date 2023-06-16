@@ -12,14 +12,16 @@
     "@element-plus/icons-vue": "^2.1.0",
     "@vueuse/core": "^10.1.2",
     "axios": "^1.4.0",
+    "echarts": "^5.4.2",
     "element-plus": "^2.3.6",
+    "hippo-desktop": "workspace:*",
+    "hippo-module-core": "workspace:*",
     "mitt": "^3.0.0",
     "pinia": "^2.0.36",
     "pinia-plugin-persist": "^1.0.0",
     "vue": "^3.3.2",
-    "vue-router": "^4.2.0",
-    "hippo-desktop": "workspace:*",
-    "hippo-module-core": "workspace:*"
+    "vue-echarts": "^6.6.0",
+    "vue-router": "^4.2.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
