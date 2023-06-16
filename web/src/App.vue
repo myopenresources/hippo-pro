@@ -13,6 +13,8 @@ import defaultAvatar from '@/assets/img/default-avatar.png'
 // @ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import { ref } from 'vue';
+import registerHttpInterceptor from './interceptors/http-interceptor';
+import router from './router';
 const locale = ref(zhCn)
 
 const sysConfig: SysConfig = {
@@ -25,6 +27,7 @@ const sysConfig: SysConfig = {
   defaultAvatar: defaultAvatar
 }
 
+registerHttpInterceptor(router)
 </script>
      
 
