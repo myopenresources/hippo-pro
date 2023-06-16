@@ -1,49 +1,55 @@
 <template>
-  <MainContent
-    :title="'首页'"
-    :headerVisible="false"
-    :mainContentStyle="{}"
-    :bodyStyle="{}"
-  >
+  <MainContent :title="'首页'" :headerVisible="false" :mainContentStyle="{}" :bodyStyle="{}">
     <div class="home">
       <el-row :gutter="20">
         <el-col :span="6">
-          <el-card shadow="always" class="home-card">
-            <div class="home-card-header">最新公告</div>
-            <div class="home-card-body">
-              <div class="home-card-body-item" v-for="(item, index) in noticeList" :key="index">
-                <div class="label">{{ item.label }}</div>
-                <div class="date">{{ item.date }}</div>
+          <div class="home-card">
+            <el-card shadow="always">
+              <div class="home-card-header">最新公告</div>
+              <div class="home-card-body">
+                <div class="home-card-body-item" v-for="(item, index) in noticeList" :key="index">
+                  <div class="label">{{ item.label }}</div>
+                  <div class="date">{{ item.date }}</div>
+                </div>
               </div>
-            </div>
-          </el-card>
-          <el-card shadow="always" class="home-card home-card-bottom">
-            <div class="home-card-header">待办信息</div>
-            <div class="home-card-body">
-              <div class="home-card-body-item" v-for="(item, index) in noticeList" :key="index">
-                <div class="label">{{ item.label }}</div>
-                <div class="date">{{ item.date }}</div>
+            </el-card>
+          </div>
+
+          <div class="home-card home-card-top">
+            <el-card shadow="always">
+              <div class="home-card-header">待办信息</div>
+              <div class="home-card-body">
+                <div class="home-card-body-item" v-for="(item, index) in noticeList" :key="index">
+                  <div class="label">{{ item.label }}</div>
+                  <div class="date">{{ item.date }}</div>
+                </div>
               </div>
-            </div>
-          </el-card>
-          <el-card shadow="always" class="home-card home-card-bottom">
-            <div class="home-card-header">风险舆情信息</div>
-            <div class="home-card-body">
-              <div class="home-card-body-item" v-for="(item, index) in noticeList" :key="index">
-                <div class="label">{{ item.label }}</div>
-                <div class="date">{{ item.date }}</div>
+            </el-card>
+          </div>
+          <div class="home-card home-card-top">
+            <el-card shadow="always">
+              <div class="home-card-header">风险舆情信息</div>
+              <div class="home-card-body">
+                <div class="home-card-body-item" v-for="(item, index) in noticeList" :key="index">
+                  <div class="label">{{ item.label }}</div>
+                  <div class="date">{{ item.date }}</div>
+                </div>
               </div>
-            </div>
-          </el-card>
+            </el-card>
+          </div>
         </el-col>
         <el-col :span="12">
-          <el-card shadow="always"> Always </el-card>
+          <div class="home-card">
+            <el-card shadow="always"> Always </el-card>
+          </div>
         </el-col>
         <el-col :span="6">
-          <el-card shadow="always" class="home-card">
-            <div class="home-card-header">我的客户</div>
-            <div class="home-card-body"></div>
-          </el-card>
+          <div class="home-card">
+            <el-card shadow="always">
+              <div class="home-card-header">我的客户</div>
+              <div class="home-card-body"></div>
+            </el-card>
+          </div>
         </el-col>
       </el-row>
     </div>
