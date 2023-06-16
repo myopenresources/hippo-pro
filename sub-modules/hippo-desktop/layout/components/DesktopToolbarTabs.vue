@@ -6,13 +6,15 @@
       </div>
     </div>
     <HorizontalScrollPane class="desktop-toolbar-tabs-wrapper" ref="scrollPaneRef">
-      <router-link :ref="setTabViewsRef" class="desktop-toolbar-tabs-item" :to="tab" v-for="tab in visitedViews"
-        :key="tab.path">
-        <span>{{ tab.title }}</span>
-        <span @click.prevent.stop="closeSelectedTab(tab)" v-show="!(tab.path === homePath && visitedViews.length === 1)">
-          <DynamicIcon icon="CircleClose" />
-        </span>
-      </router-link>
+      <template v-for="tab in visitedViews" :key="tab.path">
+        <router-link :ref="setTabViewsRef" class="desktop-toolbar-tabs-item" :to="tab" v-if="tab.path !== startMenuPath">
+          <span>{{ tab.title }}</span>
+          <span @click.prevent.stop="closeSelectedTab(tab)">
+            <DynamicIcon icon="CircleClose" />
+          </span>
+        </router-link>
+      </template>
+
     </HorizontalScrollPane>
 
     <div class="desktop-toolbar-tabs-btns">
@@ -58,7 +60,7 @@ const selectedTab = reactive<any>({})
 
 const tabViewsRef: any[] = []
 const scrollPaneRef = ref<any>(null)
-const homePath = Environments.getEvnProp('VITE_HOME_ROUTER')
+const startMenuPath = '/StartMenu'
 
 /**
  * 列表
@@ -108,7 +110,7 @@ const moveToCurrentTab = () => {
  * 关闭选择
  */
 const closeSelectedTab = (view: RouteLocationNormalizedLoaded | RouteLocationNormalized) => {
-  if (visitedViews.value.length == 1 && view.path === homePath) {
+  if (visitedViews.value.length == 1 && view.path === startMenuPath) {
     return
   }
 
@@ -118,7 +120,7 @@ const closeSelectedTab = (view: RouteLocationNormalizedLoaded | RouteLocationNor
       if (latestView) {
         router.push(latestView)
       } else {
-        router.push(homePath)
+        router.push(startMenuPath)
       }
     }
     scrollPaneRef.value.resize()
@@ -140,12 +142,12 @@ const closeOthersTabs = () => {
  */
 const closeAllTabs = () => {
   // 如果当前路由是首页，直接关闭其它，保留首页
-  if (selectedTab.value.path === homePath) {
+  if (selectedTab.value.path === startMenuPath) {
     closeOthersTabs()
   } else {
     //如查当前路由不是首页，直接关闭所有，并添加首页
     useDesktopLayout.delAllViews()
-    router.push(homePath)
+    router.push(startMenuPath)
     moveToCurrentTab()
   }
 }

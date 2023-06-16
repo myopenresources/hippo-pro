@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'root',
-      redirect: '/Home',
+      redirect: '/StartMenu',
       meta: {
         title: 'root'
       }

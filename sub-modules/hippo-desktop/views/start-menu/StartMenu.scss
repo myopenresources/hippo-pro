@@ -1,0 +1,89 @@
+.start-menu {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    text-align: center;
+
+    &-search-box {
+        margin-top: 1rem;
+        width: 400px;
+        border-radius: 2rem;
+        border:1px solid   var(--start-menu-search-box-bor-color);
+
+        :deep(.el-input__wrapper) {
+            border-radius: 0.3rem;
+            height: 2rem;
+            border-radius: 2rem;
+            box-shadow: var(--start-menu-box-shadow);
+        }
+
+        --el-border-color: transparent;
+        --el-input-hover-border-color: var(--el-color-primary);
+    }
+
+
+    &-menus {
+        box-sizing: border-box;
+        width: 100%;
+        height: calc(100% - 6rem);
+        margin-top: 1.5rem;
+        overflow-y: auto;
+        padding-left: 10%;
+        padding-right: 10%;
+
+        &-inner {
+            width: 100%;
+            height:max-content;
+            display: grid;
+            justify-content: space-between;
+            grid-template-columns: repeat(auto-fill, 10rem);
+            grid-gap: 0rem;
+            margin-top: 0rem;
+        }
+
+        &-item {
+            width: 5rem;
+            height: 5rem;
+            margin: 1.2rem 2rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--start-menu-bg);
+            box-shadow: var(--start-menu-box-shadow);
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: 0.35s;
+
+            &:hover {
+                background-color: var(--start-menu-hover-bg);
+            }
+
+            &-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: 0.35s;
+                margin-top: -0.1rem;
+
+                :deep(.svg-icon) {
+                    font-size: 3rem;
+                    font-weight: bold;
+                }
+            }
+
+            &-label {
+                margin-top: 0.25rem;
+                text-align: center;
+                font-size: 0.75rem;
+                color: var(--el-text-color-primary);
+                width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+}

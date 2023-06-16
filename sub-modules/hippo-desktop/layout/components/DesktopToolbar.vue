@@ -2,29 +2,9 @@
   <div class="desktop-toolbar">
     <div class="desktop-toolbar-inner">
       <div class="desktop-toolbar-inner-left" ref="toolbarLeftRef">
-        <el-popover placement="top" :width="566" trigger="click" :teleported="false" ref="menuPopoverRef" :popper-style="'margin-top:-4px;'">
-          <template #reference>
-            <div class="desktop-toolbar-inner-left-start-menu">
-              <DynamicIcon icon="SvgIconStartMenu" />
-            </div>
-          </template>
-          <div class="desktop-toolbar-inner-popover">
-            <div class="desktop-toolbar-inner-popover-header">系统菜单</div>
-            <el-input class="desktop-toolbar-inner-popover-search-box" v-model="keywork" :prefix-icon="Search" clearable
-              placeholder="搜索" />
-            <div class="desktop-toolbar-inner-popover-menus">
-              <div class="desktop-toolbar-inner-popover-menus-item" v-for="(menu, index) in menus" :key="index"
-                @click="toPage(menu)">
-                <div class="desktop-toolbar-inner-popover-menus-item-icon">
-                  <DynamicIcon :icon="menu.icon" />
-                </div>
-                <div class="desktop-toolbar-inner-popover-menus-item-label">
-                  {{ menu.label }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </el-popover>
+        <div class="desktop-toolbar-inner-left-start-menu" @click="toStartMenu()">
+          <DynamicIcon icon="SvgIconStartMenu" />
+        </div>
 
         <el-input class="desktop-toolbar-inner-left-search-box" v-model="keywork" :prefix-icon="Search" clearable
           placeholder="搜索" />
@@ -74,7 +54,8 @@
           </div>
         </el-popover>
 
-        <el-popover placement="top" :width="335" trigger="click" :teleported="false" ref="msgPopoverRef" :popper-style="'margin-left:-2px'">
+        <el-popover placement="top" :width="335" trigger="click" :teleported="false" ref="msgPopoverRef"
+          :popper-style="'margin-left:-2px'">
           <template #reference>
             <div class="desktop-toolbar-inner-right-item">
               <el-badge is-dot class="desktop-toolbar-inner-right-item-badge">
@@ -135,13 +116,10 @@
 import {
   DynamicIcon,
   useElConfirmMessageBox,
-  useElMessage,
-  useElWarningMessage,
   useEventBusEmit
 } from 'hippo-module-core'
 import { Search } from '@element-plus/icons-vue'
-import type { UploadProps } from 'element-plus'
-import { computed, ref, unref } from 'vue'
+import { computed, ref } from 'vue'
 import { themeSettingConst, styleNameConst } from '../../consts'
 import DesktopToolbarTabs from './DesktopToolbarTabs.vue'
 import { useRouter } from 'vue-router'
@@ -155,14 +133,13 @@ const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
 const router = useRouter()
-const {sysTime} = useDesktopToolbar()
+const { sysTime } = useDesktopToolbar()
 
 const keywork = ref('')
 
 const toolbarLeftRef = ref()
 const toolbarCenterRef = ref()
 const toolbarRightRef = ref()
-const menuPopoverRef = ref()
 const themePopoverRef = ref()
 const msgPopoverRef = ref()
 
@@ -374,63 +351,7 @@ const messages = ref([
   }
 ])
 
-const menus = ref([
-  {
-    id: '',
-    icon: 'SvgIconHome',
-    label: '首页',
-    path: '/Home'
-  },
-  {
-    id: '',
-    icon: 'SvgIconUser',
-    label: '用户管理',
-    path: '/UserList'
-  },
-  {
-    id: '',
-    icon: 'SvgIconRole',
-    label: '角色管理',
-    path: '/RoleList'
-  },
-  {
-    id: '',
-    icon: 'SvgIconMenu',
-    label: '菜单管理',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconDataDic',
-    label: '数据字典管理',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconNotice',
-    label: '消息管理',
-    path: '/NotFound'
-  },
 
-  {
-    id: '',
-    icon: 'SvgIconFlow',
-    label: '工作流管理',
-    path: '/NotFound'
-  },
-  {
-    id: '',
-    icon: 'SvgIconLog',
-    label: '日志管理',
-    path: '/UserInfo'
-  },
-  {
-    id: '',
-    icon: 'SvgIconAuth',
-    label: '权限管理',
-    path: '/NotFound'
-  }
-])
 
 const toolbarCenterStyle = computed(() => {
   if (toolbarLeftRef.value && toolbarRightRef.value) {
@@ -443,19 +364,6 @@ const toolbarCenterStyle = computed(() => {
     width: `calc(100% - 33rem)`
   }
 })
-
-const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
-  if (rawFile.type !== 'image/jpeg' && rawFile.type !== 'image/png') {
-    useElWarningMessage('请选择jpeg/png格式的图片！')
-
-    return false
-  } else if (rawFile.size / 1024 / 1024 > 10) {
-    useElWarningMessage('图片不能超过10M！')
-    return false
-  }
-}
-
-const handleAvatarSuccess: UploadProps['onSuccess'] = (response, uploadFile) => { }
 
 const userDropdownCommand = (command: string) => {
   const commands: any = {
@@ -471,9 +379,8 @@ const userDropdownCommand = (command: string) => {
   commands[command]()
 }
 
-const toPage = (menu: any) => {
-  menuPopoverRef.value.hide()
-  router.push(menu.path)
+const toStartMenu = () => {
+  router.push("/StartMenu")
 }
 
 const toMsg = (msg: any) => {

@@ -2,8 +2,10 @@ import {
   DesktopLayout,
   userRouter,
   roleRouter,
-  notFoundRouter
+  notFoundRouter,
+  startMenuRouter
 } from "hippo-desktop";
+
 import homeRouter from './home'
 
 export default [
@@ -18,7 +20,8 @@ export default [
       ...homeRouter,
       ...userRouter,
       ...roleRouter,
-      ...notFoundRouter
+      ...notFoundRouter,
+      ...startMenuRouter
     ]
   }
 ]
