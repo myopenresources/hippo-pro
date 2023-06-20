@@ -4,7 +4,7 @@ import piniaPluginPersist from 'pinia-plugin-persist'
 import router from '@/router'
 import { createPinia } from 'pinia'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import { MainContent } from 'hippo-desktop'
+import { MainContent, createDynamicRouterGuard } from 'hippo-desktop'
 import { DynamicIcon } from 'hippo-module-core'
 
 const useConfig = {
@@ -29,7 +29,9 @@ const useConfig = {
     }*/
   ],
   // 路由守卫
-  routerGuards: () => {}
+  routerGuards: () => {
+    createDynamicRouterGuard(router)
+  }
 }
 
 /**

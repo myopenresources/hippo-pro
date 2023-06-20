@@ -31,12 +31,14 @@
         align-items: center;
 
         :deep(.svg-icon) {
-          transition: 0.35s;
+          width: 1.5rem;
+          height: 1.5rem;
+          transition: 0.35s linear;
           font-size: 1.5rem;
-          font-weight: bold;
+          border-radius: 1.5rem;
 
           &:hover {
-            transform: rotate(90deg);
+            transform: rotate(360deg);
           }
         }
       }
@@ -125,7 +127,7 @@
         }
 
         :deep(.svg-icon) {
-          font-size: 1.65rem;
+          font-size: 1rem;
           font-weight: bold;
         }
 
@@ -164,58 +166,6 @@
 
         --el-border-color: var(--desktop-layout-toolbar-popover-search-box-bor-color);
         --el-input-hover-border-color: var(--el-color-primary);
-      }
-
-      &-menus {
-        height: calc(100% - 5.75rem);
-        margin-top: 1rem;
-        display: flex;
-        flex-flow: wrap;
-        align-content: flex-start;
-        overflow-y: auto;
-        margin-left: -0.25rem;
-        margin-right: -0.75rem;
-
-        &-item {
-          width: 5rem;
-          height: 4.5rem;
-          margin: 0.35rem;
-          padding-left: 0.5rem;
-          padding-right: 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          background-color: var(--desktop-layout-toolbar-popover-menu-bg);
-          border-radius: 0.3rem;
-          cursor: pointer;
-          &:hover {
-            background-color: var(--desktop-layout-toolbar-popover-menu-hover-bg);
-          }
-
-          &-icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 0.35s;
-            margin-top: -0.1rem;
-
-            :deep(.svg-icon) {
-              font-size: 2.5rem;
-              font-weight: bold;
-            }
-          }
-
-          &-label {
-            text-align: center;
-            font-size: 0.75rem;
-            color: var(--el-text-color-primary);
-            width: 100%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-        }
       }
 
       &-msgs {
@@ -367,16 +317,20 @@
       border-color: var(--desktop-layout-toolbar-popover-border-color);
       padding: 0;
       margin-left: -3px;
+
       .el-dropdown-menu {
         background-color: var(--desktop-layout-toolbar-popover-bg);
+
         li {
           color: var(--el-text-color-primary);
+
           &:hover {
             color: var(--el-text-color-primary);
             background: var(--desktop-layout-toolbar-dropdown-item-hover-bg);
           }
         }
       }
+
       .el-popper__arrow {
         &::before {
           backdrop-filter: blur(10px);

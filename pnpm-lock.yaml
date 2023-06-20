@@ -86,7 +86,10 @@ importers:
       vue-tsc: 1.6.5_typescript@5.0.4
 
   sub-modules/hippo-desktop:
-    specifiers: {}
+    specifiers:
+      screenfull: ^6.0.2
+    dependencies:
+      screenfull: 6.0.2
 
   sub-modules/hippo-module-core:
     specifiers: {}
@@ -4540,6 +4543,11 @@ packages:
       immutable: 4.3.0
       source-map-js: 1.0.2
     dev: true
+
+  /screenfull/6.0.2:
+    resolution: {integrity: sha512-AQdy8s4WhNvUZ6P8F6PB21tSPIYKniic+Ogx0AacBMjKP1GUHN2E9URxQHtCusiwxudnCKkdy4GrHXPPJSkCCw==}
+    engines: {node: ^14.13.1 || >=16.0.0}
+    dev: false
 
   /scule/1.0.0:
     resolution: {integrity: sha512-4AsO/FrViE/iDNEPaAQlb77tf0csuq27EsVpy6ett584EcRTp6pTDLoGWVxCD77y5iU5FauOvhsI4o1APwPoSQ==}

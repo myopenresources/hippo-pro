@@ -1,4 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import {
+  loginRouter
+} from "hippo-desktop";
 import desktopLayout from './desktop-layout'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,6 +14,7 @@ const router = createRouter({
         title: 'root'
       }
     },
+    ...loginRouter,
     ...desktopLayout
   ]
 })

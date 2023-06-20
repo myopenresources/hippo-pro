@@ -2,14 +2,14 @@
   width: 100vw;
   height: 100vh;
   background: var(--desktop-layout-bg);
-  //background: url('../../assets/img/desktop-layout/light-bg.jpg');
+  background: url('../../assets/img/desktop-layout/bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   &-inner {
     min-width: 960px;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(100px);
+    backdrop-filter: blur(10px);
     box-sizing: border-box;
     overflow: hidden;
   }

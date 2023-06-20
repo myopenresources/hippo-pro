@@ -177,17 +177,17 @@ const tabDropdownCommand = (command: string) => {
   commands[command]()
 }
 
-  /**
-   * 初始化
-   */
-  ; (() => {
-    addViewTab(route)
-    onBeforeRouteUpdate((to: RouteLocationNormalized) => {
-      nextTick(() => {
-        addViewTab(to)
-      })
+/**
+ * 初始化
+ */
+(() => {
+  addViewTab(route)
+  onBeforeRouteUpdate((to: RouteLocationNormalized) => {
+    nextTick(() => {
+      addViewTab(to)
     })
-  })()
+  })
+})()
 
 const desktopToolbarCloseSelectedTab = () => {
   closeSelectedTab(selectedTab.value)

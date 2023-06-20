@@ -17,9 +17,9 @@ export default [
       title: ''
     },
     children: [
-      ...homeRouter,
-      ...userRouter,
-      ...roleRouter,
+      //...homeRouter,
+      //...userRouter,
+      //...roleRouter,
       ...notFoundRouter,
       ...startMenuRouter
     ]

@@ -17,8 +17,8 @@
         <div class="desktop-toolbar-inner-center-divider"></div>
       </div>
       <div class="desktop-toolbar-inner-right" ref="toolbarRightRef">
-        <div class="desktop-toolbar-inner-right-item">
-          <DynamicIcon icon="FullScreen" />
+        <div class="desktop-toolbar-inner-right-item" @click="fullscreenToggle">
+          <DynamicIcon :icon="fullscreenState ? 'SvgIconFullScreenExit' : 'FullScreen'" />
         </div>
         <el-popover placement="top" :width="265" trigger="click" :teleported="false" ref="themePopoverRef"
           :popper-style="'height:11rem'">
@@ -116,16 +116,18 @@
 import {
   DynamicIcon,
   useElConfirmMessageBox,
+  useElWarningMessage,
   useEventBusEmit
 } from 'hippo-module-core'
 import { Search } from '@element-plus/icons-vue'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { themeSettingConst, styleNameConst } from '../../consts'
 import DesktopToolbarTabs from './DesktopToolbarTabs.vue'
 import { useRouter } from 'vue-router'
 import { ThemeStoreUtil, ThemeUtil } from '../../utils'
 import { useDark, useToggle } from '@vueuse/core'
 import { useDesktopToolbar } from '../../hooks'
+import screenfull from 'screenfull'
 
 const currentTheme = ref(ThemeStoreUtil.getTheme())
 const currentStyleTheme = ref(ThemeStoreUtil.getStyleTheme())
@@ -136,6 +138,7 @@ const router = useRouter()
 const { sysTime } = useDesktopToolbar()
 
 const keywork = ref('')
+const fullscreenState = ref(false)
 
 const toolbarLeftRef = ref()
 const toolbarCenterRef = ref()
@@ -403,6 +406,30 @@ const setTheme = (item: { themeName: string; color: string; themeConfig: any }) 
   ThemeStoreUtil.setTheme(item.themeName)
   ThemeUtil.setCssVariable(item.themeConfig)
 }
+
+const fullscreenToggle = () => {
+  if (!screenfull.isEnabled) {
+    useElWarningMessage('您的浏览器不支持全屏！')
+    return false
+  }
+
+  screenfull.toggle().then(() => {
+    fullscreenState.value = !fullscreenState.value
+  })
+}
+
+const init = () => {
+  if (screenfull.isEnabled) {
+    screenfull.on('change', () => {
+      fullscreenState.value = screenfull['isFullscreen']
+    })
+  }
+}
+
+
+onMounted(() => {
+  init()
+})
 </script>
 
 <style scoped lang="scss">
