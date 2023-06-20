@@ -1,7 +1,5 @@
 import {
   DesktopLayout,
-  userRouter,
-  roleRouter,
   notFoundRouter,
   startMenuRouter
 } from "hippo-desktop";
@@ -17,9 +15,6 @@ export default [
       title: ''
     },
     children: [
-      //...homeRouter,
-      //...userRouter,
-      //...roleRouter,
       ...notFoundRouter,
       ...startMenuRouter
     ]

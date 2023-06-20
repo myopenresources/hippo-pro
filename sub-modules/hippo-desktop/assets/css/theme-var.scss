@@ -10,6 +10,7 @@ html {
     --desktop-layout-toolbar-icon-hover-bg:rgb(255, 255, 255);
     --desktop-layout-toolbar-tab-bg:rgba(255, 255, 255, 0.5);
     --desktop-layout-toolbar-tab-hover-bg:rgb(255, 255, 255);
+    --desktop-layout-toolbar-tab-icon-bg:#cde9fc;
     --desktop-layout-toolbar-divider-color:#cce5f0ab;
     --desktop-layout-toolbar-popover-bg:#eef6fdc5;
     --desktop-layout-toolbar-popover-border-color:rgba(255, 255, 255, 0.9);
@@ -44,6 +45,7 @@ html.dark{
     --desktop-layout-toolbar-icon-hover-bg:rgba(134, 141, 143, 0.35);
     --desktop-layout-toolbar-tab-bg:rgba(43, 42, 42, 0.596);
     --desktop-layout-toolbar-tab-hover-bg:rgba(134, 141, 143, 0.35);
+    --desktop-layout-toolbar-tab-icon-bg:#ffffff52;
     --desktop-layout-toolbar-divider-color:#334250;
     --desktop-layout-toolbar-popover-bg:#010e1bdc;
     --desktop-layout-toolbar-popover-border-color:#334250;

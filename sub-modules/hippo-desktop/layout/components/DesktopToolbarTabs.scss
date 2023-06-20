@@ -22,6 +22,17 @@
     text-decoration: none;
     font-size: 13px;
     transition: 0.35s;
+    .icon{
+      padding-left: 2px;
+      padding-right: 2px;
+      background-color:  var(--desktop-layout-toolbar-tab-icon-bg);
+      margin-right: 4px;
+      border-radius: 5px;
+      :deep(.el-icon) {
+        margin-left: 0px;
+        font-weight: normal;
+      }
+    }
 
     &:first-of-type {
       margin-left: 0;

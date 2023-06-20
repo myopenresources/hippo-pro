@@ -25,7 +25,7 @@ const login = () => {
                 component: "user/UserList.vue",
                 meta: {
                     title: '用户管理',
-                    icon: 'Edit'
+                    icon: 'SvgIconUser'
                 }
             },
             {
@@ -35,7 +35,7 @@ const login = () => {
                 component: "user/UserInfo.vue",
                 meta: {
                     title: '用户信息',
-                    icon: 'Edit'
+                    icon: 'SvgIconUser'
                 }
             },
             {
@@ -44,13 +44,27 @@ const login = () => {
                 name: 'RoleList',
                 component: 'role/RoleList.vue',
                 meta: {
-                    title: '角色管理'
+                    title: '角色管理',
+                    icon: 'SvgIconRole'
+                }
+            },
+            {
+                isLayout: false,
+                path: '/Home',
+                name: 'Home',
+                component: 'home/Home.vue',
+                meta: {
+                    title: '首页',
+                    icon: 'SvgIconHome'
                 }
             }
         ]
     }])
 
-    router.push('/')
+
+    //createDynamicRouterGuard(router)
+
+    router.push('/StartMenu')
 }
 </script>
 

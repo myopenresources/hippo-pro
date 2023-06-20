@@ -8,6 +8,7 @@
     <HorizontalScrollPane class="desktop-toolbar-tabs-wrapper" ref="scrollPaneRef">
       <template v-for="tab in visitedViews" :key="tab.path">
         <router-link :ref="setTabViewsRef" class="desktop-toolbar-tabs-item" :to="tab" v-if="tab.path !== startMenuPath">
+          <span class="icon"><DynamicIcon :icon="tab.icon"/></span>
           <span>{{ tab.title }}</span>
           <span @click.prevent.stop="closeSelectedTab(tab)">
             <DynamicIcon icon="CircleClose" />
