@@ -1,17 +1,10 @@
-import type { Router } from 'vue-router'
+import type { NavigationGuardNext, Router } from 'vue-router'
 import { UserStoreUtil } from 'hippo-desktop/utils'
 import { dynamicRouterList, whlteList } from '@/config/app-config'
 
 let isLoadDynamicRouter = false
 const modules: any = {}
 let moduleKeys: string[] = []
-
-const initModule = () => {
-  dynamicRouterList.forEach((menule) => {
-    Object.assign(modules, menule)
-  })
-  moduleKeys = Object.keys(modules)
-}
 
 const isWhlteList = (path: string) => {
   return whlteList.find((item) => {
@@ -57,21 +50,35 @@ const addRoute = (router: Router, routers: any[]) => {
   }
 }
 
-export function createDynamicRouterGuard(router: Router) {
-  initModule()
+const initModule = (router: Router,next:NavigationGuardNext) => {
+  dynamicRouterList.forEach((menule) => {
+    Object.assign(modules, menule)
+  })
+  moduleKeys = Object.keys(modules)
+
+  initRouter(router,next)
+}
+
+const initRouter = (router: Router,next:NavigationGuardNext) => {
   const routers = UserStoreUtil.getRouters()
+  if (routers && routers.length) {
+    addRoute(router, routers)
+    isLoadDynamicRouter = true
+  }else{
+    next('/notFound')
+  }
+}
+
+export function createDynamicRouterGuard(router: Router) {
   router.beforeEach((to, from, next) => {
     if (isWhlteList(to.path) || isLoadDynamicRouter) {
       next()
     } else {
-      if (routers && routers.length) {
-        addRoute(router, routers)
-        isLoadDynamicRouter = true
-        next({ ...to, replace: true })
-      } else {
-        //跳到 404，但要判断是里面的404还是layout的404
-        next('/notFound')
-      }
+      initModule(router,next)
+      next({
+        path: to.path,
+        replace: true
+      })
     }
   })
 }

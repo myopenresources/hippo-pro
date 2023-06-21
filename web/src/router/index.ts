@@ -1,8 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import {
-  loginRouter
-} from "hippo-desktop";
+import { createDynamicRouterGuard } from '../guards/dynamic-router-guard'
+
+import { loginRouter } from 'hippo-desktop'
 import desktopLayout from './desktop-layout'
+
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
