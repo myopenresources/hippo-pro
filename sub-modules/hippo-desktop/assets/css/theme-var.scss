@@ -11,7 +11,7 @@ html {
     --desktop-layout-toolbar-tab-bg:rgba(255, 255, 255, 0.5);
     --desktop-layout-toolbar-tab-hover-bg:rgb(255, 255, 255);
     --desktop-layout-toolbar-tab-icon-bg:#cde9fc;
-    --desktop-layout-toolbar-divider-color:#cce5f0ab;
+    --desktop-layout-toolbar-divider-color:#fcfeffab;
     --desktop-layout-toolbar-popover-bg:#eef6fdc5;
     --desktop-layout-toolbar-popover-border-color:rgba(255, 255, 255, 0.9);
     --desktop-layout-toolbar-popover-search-box-bor-color:rgba(205, 226, 231, 0.93);
@@ -32,6 +32,7 @@ html {
     --start-menu-bg:#ffffffe0;
     --start-menu-hover-bg:rgba(231, 247, 254, 0.87);
     --start-menu-box-shadow:0 1px 10px rgba(0, 0, 0, 0.08);
+    --start-menu-category-color:#f5fbfdfa;
     
 }
 
@@ -62,4 +63,5 @@ html.dark{
     --start-menu-bg:#7f94a866;
     --start-menu-hover-bg:#7f94a8b4;
     --start-menu-box-shadow:0 1px 10px rgba(0, 0, 0, 0.08);
+    --start-menu-category-color:#f5fbfdfa;
 }

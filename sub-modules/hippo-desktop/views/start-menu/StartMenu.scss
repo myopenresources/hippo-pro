@@ -30,6 +30,13 @@
         overflow-y: auto;
         padding-left: 10%;
         padding-right: 10%;
+        &-category{
+            text-align: left;
+            margin-left: 2rem;
+            font-size: 1rem;
+            color: var(--start-menu-category-color);
+            font-weight: bold;
+        }
 
         &-inner {
             width: 100%;

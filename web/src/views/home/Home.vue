@@ -6,7 +6,7 @@
           <div class="home-left-card-header">近7天数据</div>
           <div class="home-left-card-body">
             <div class="label">4522,958单</div>
-            <v-chart :option="chartOptions1" class="chart" :autoresize="true"/>
+            <v-chart :option="chartOptions1" class="chart" :autoresize="true" />
           </div>
         </div>
 
@@ -14,7 +14,7 @@
           <div class="home-left-card-header">近1月数据</div>
           <div class="home-left-card-body">
             <div class="label">5522,358单</div>
-            <v-chart :option="chartOptions2" class="chart" :autoresize="true"/>
+            <v-chart :option="chartOptions2" class="chart" :autoresize="true" />
           </div>
         </div>
 
@@ -22,16 +22,22 @@
           <div class="home-left-card-header">近1年数据</div>
           <div class="home-left-card-body">
             <div class="label">15522,358单</div>
-            <v-chart :option="chartOptions3" class="chart" :autoresize="true"/>
+            <v-chart :option="chartOptions3" class="chart" :autoresize="true" />
           </div>
         </div>
       </div>
 
       <div class="home-center">
         <div class="home-center-card">
-          <div class="home-center-card-header">近1年轨迹分析数据</div>
+          <div class="home-center-card-header">近1年风险分析数据</div>
           <div class="home-center-card-body">
-            <v-chart :option="chartOptions6" class="chart" :autoresize="true"/>
+            <v-chart :option="chartOptions6" class="chart" :autoresize="true" />
+          </div>
+        </div>
+        <div class="home-center-card home-left-card-margin-top">
+          <div class="home-center-card-header">近1年分布数据</div>
+          <div class="home-center-card-body">
+            <v-chart :option="chartOptions7" class="chart" :autoresize="true" />
           </div>
         </div>
       </div>
@@ -40,14 +46,14 @@
         <div class="home-right-card">
           <div class="home-right-card-header">近1年走势数据</div>
           <div class="home-right-card-body">
-            <v-chart :option="chartOptions4" class="chart" :autoresize="true"/>
+            <v-chart :option="chartOptions4" class="chart" :autoresize="true" />
           </div>
         </div>
 
         <div class="home-right-card home-left-card-margin-top">
           <div class="home-right-card-header">近1年对比数据</div>
           <div class="home-right-card-body">
-            <v-chart :option="chartOptions5" class="chart" :autoresize="true"/>
+            <v-chart :option="chartOptions5" class="chart" :autoresize="true" />
           </div>
         </div>
       </div>
@@ -97,7 +103,6 @@ use([
   EffectScatterChart,
   ScatterChart
 ])
-
 
 const chartOptions1 = ref({
   grid: {
@@ -525,7 +530,7 @@ const chartOptions4 = ref({
       symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
       lineStyle: {
         width: 2,
-          color: '#25c58b' // 线条颜色
+        color: '#25c58b' // 线条颜色
       },
       itemStyle: {
         normal: {
@@ -555,7 +560,7 @@ const chartOptions4 = ref({
       symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
       lineStyle: {
         width: 2,
-          color: '#1f6fdc' // 线条颜色
+        color: '#1f6fdc' // 线条颜色
       },
       itemStyle: {
         normal: {
@@ -605,7 +610,7 @@ const chartOptions5 = ref({
     containLabel: true
   },
   legend: {
-    show:false
+    show: false
   },
   xAxis: {
     type: 'category',
@@ -741,11 +746,541 @@ const chartOptions5 = ref({
   ]
 })
 
-const chartOptions6 = ref({})
+const data = [
+  { name: '高级风险', value: 76 },
+  { name: '中级风险', value: 12 },
+  { name: '低级风险', value: 10 }
+]
+const dataHigh = data[0].value
+const dataMiddle = data[1].value
+const dataLow = data[2].value
+let total = 0
+for (let i = 0; i < data.length; i++) {
+  total += data[i].value
+}
 
-onMounted(()=>{
-  
+var perHigh = ((dataHigh / total) * 100).toFixed(0) + '%'
+var perMiddle = ((dataMiddle / total) * 100).toFixed(0) + '%'
+var perLow = ((dataLow / total) * 100).toFixed(0) + '%'
+
+const chartOptions6 = ref({
+  graphic: [
+    {
+      type: 'text',
+      top: '10%',
+      left: '10%',
+      style: {
+        text: perHigh,
+        font: '30px "microsoft yahei"',
+        textAlign: 'center',
+        fill: '#4d71df'
+      }
+    },
+    {
+      type: 'text',
+      top: '10%',
+      left: '45%',
+      style: {
+        text: perMiddle,
+        font: '30px "microsoft yahei"',
+        textAlign: 'center',
+        fill: '#35c68d'
+      }
+    },
+    {
+      type: 'text',
+      top: '10%',
+      left: '80%',
+      style: {
+        text: perLow,
+        font: '30px "microsoft yahei"',
+        textAlign: 'center',
+        fill: '#4cb9cd'
+      }
+    }
+  ],
+  tooltip: {
+    show: true
+  },
+  series: [
+    {
+      name: '高级风险',
+      type: 'pie',
+      center: ['15%', '60%'],
+      radius: ['40%', '55%'],
+      startAngle: 180, //起始角度
+      label: {
+        show: false
+      },
+      labelLine: {
+        show: false
+      },
+      hoverAnimation: false,
+      emphasis: false,
+      data: [
+        {
+          value: dataHigh,
+          name: '',
+          itemStyle: {
+            normal: {
+              color: '#4e73de'
+            }
+          }
+        },
+        {
+          name: '',
+          itemStyle: {
+            emphasis: {
+              color: '#e6e9f0'
+            },
+            normal: {
+              color: '#e6e9f0'
+            }
+          },
+          value: total - dataHigh // 总数减去当前项数(灰色占比)
+        }
+      ]
+    },
+    {
+      name: '中级风险',
+      type: 'pie',
+      center: ['50%', '60%'],
+      radius: ['40%', '55%'],
+      startAngle: 180, //起始角度
+      label: {
+        show: false
+      },
+      labelLine: {
+        show: false
+      },
+      hoverAnimation: false,
+      data: [
+        {
+          value: dataMiddle,
+          name: '',
+          itemStyle: {
+            normal: {
+              color: '#35c68d'
+            }
+          }
+        },
+        {
+          name: '',
+          itemStyle: {
+            emphasis: {
+              color: '#e6e9f0'
+            },
+            normal: {
+              color: '#e6e9f0'
+            }
+          },
+          value: total - dataMiddle // 总数减去当前项数(灰色占比)
+        }
+      ]
+    },
+    {
+      name: '低级风险',
+      type: 'pie',
+      center: ['85%', '60%'],
+      radius: ['40%', '55%'],
+      startAngle: 180, //起始角度
+      label: {
+        show: false
+      },
+      labelLine: {
+        show: false
+      },
+      hoverAnimation: false,
+      data: [
+        {
+          value: dataLow,
+          name: '',
+          itemStyle: {
+            normal: {
+              color: '#f11000'
+            }
+          }
+        },
+        {
+          name: '',
+          itemStyle: {
+            emphasis: {
+              color: '#e6e9f0'
+            },
+            normal: {
+              color: '#e6e9f0'
+            }
+          },
+          value: total - dataLow // 总数减去当前项数(灰色占比)
+        }
+      ]
+    }
+  ]
 })
+
+let marksData = [
+  {
+    name: '长江电力有限公司',
+    value: [65, 50],
+    // 需要特殊处理数据，看坐标点属于哪个markArea区域获取对应color色值
+    // 同时如果要处理tooltip的边框颜色，就需要单独设置tooltip
+    color: '#FFCCCC',
+    itemStyle: {
+      color: '#FFCCCC',
+      borderColor: '#FFCCCC',
+      opacity: 1,
+      borderWidth: 1.5
+    },
+    tooltip: {
+      borderColor: '#FFCCCC',
+      borderWidth: 2,
+      formatter: '{b0}<br/>{c0}<br/>'
+    }
+  },
+  {
+    name: '水泥有限公司',
+    value: [60, 42],
+    color: '#FFCCCC',
+    itemStyle: {
+      color: '#FFCCCC',
+      opacity: 1,
+      borderColor: '#FFCCCC',
+      borderWidth: 1.5
+    },
+    tooltip: {
+      borderColor: '#FFCCCC',
+      borderWidth: 2,
+      formatter: '{b0}<br/>{c0}<br/>'
+    }
+  },
+  {
+    name: '开心麻花有限公司',
+    value: [34, 51],
+    color: 'rgba(191, 120, 58, 1)',
+    itemStyle: {
+      color: 'rgba(191, 120, 58, .5)',
+      borderColor: 'rgba(191, 120, 58, .5)',
+      borderWidth: 1.5
+    },
+    tooltip: {
+      borderColor: 'rgba(191, 120, 58, 1)',
+      borderWidth: 2,
+      formatter: '{b0}<br/>{c0}<br/>'
+    }
+  },
+  {
+    name: '欢乐喜剧人剧场',
+    value: [25, 64],
+    color: 'rgba(191, 120, 58, .1)',
+    itemStyle: {
+      color: 'rgba(191, 120, 58, .5)',
+      borderColor: 'rgba(191, 120, 58, .5)',
+      borderWidth: 1.5
+    },
+    tooltip: {
+      borderColor: 'rgba(191, 120, 58, .1)',
+      borderWidth: 2,
+      formatter: '{b0}<br/>{c0}<br/>'
+    }
+  },
+  {
+    name: '水力水电股份公司',
+    value: [42, 20],
+    color: 'rgba(191, 120, 58, .1)',
+    itemStyle: {
+      color: 'rgba(191, 120, 58, .5)',
+      borderColor: 'rgba(191, 120, 58, .5)',
+      borderWidth: 1.5
+    },
+    tooltip: {
+      borderColor: 'rgba(191, 120, 58, .1)',
+      borderWidth: 2,
+      formatter: '{b0}<br/>{c0}<br/>'
+    }
+  },
+  {
+    name: '测试企业',
+    value: [65, 15],
+    color: 'rgba(191, 120, 58, .1)',
+    itemStyle: {
+      color: 'rgba(191, 120, 58, .5)',
+      borderColor: 'rgba(191, 120, 58, .5)',
+      borderWidth: 1.5
+    },
+    tooltip: {
+      borderColor: 'rgba(191, 120, 58, .1)',
+      borderWidth: 2,
+      formatter: '{b0}<br/>{c0}<br/>'
+    }
+  },
+  {
+    name: '文化企业',
+    value: [68, 34],
+    color: 'rgba(191, 120, 58, .1)',
+    itemStyle: {
+      color: 'rgba(191, 120, 58, .5)',
+      borderColor: 'rgba(191, 120, 58, .5)',
+      borderWidth: 1.5
+    },
+    tooltip: {
+      borderColor: 'rgba(191, 120, 58, .1)',
+      borderWidth: 2,
+      formatter: '{b0}<br/>{c0}<br/>'
+    }
+  },
+  {
+    name: '美术企业',
+    value: [25, 65],
+    color: 'rgba(191, 120, 58, .1)',
+    itemStyle: {
+      color: 'rgba(191, 120, 58, .5)',
+      borderColor: 'rgba(191, 120, 58, .5)',
+      borderWidth: 1.5
+    },
+    tooltip: {
+      borderColor: 'rgba(191, 120, 58, .1)',
+      borderWidth: 2,
+      formatter: '{b0}<br/>{c0}<br/>'
+    }
+  },
+  {
+    name: '化工企业',
+    value: [45, 56],
+    color: 'rgba(191, 120, 58, .1)',
+    itemStyle: {
+      color: 'rgba(191, 120, 58, .5)',
+      borderColor: 'rgba(191, 120, 58, .5)',
+      borderWidth: 1.5
+    },
+    tooltip: {
+      borderColor: 'rgba(191, 120, 58, .1)',
+      borderWidth: 2,
+      formatter: '{b0}<br/>{c0}<br/>'
+    }
+  },
+  {
+    name: '零食副业公司',
+    value: [35, 47],
+    itemStyle: {
+      color: 'rgba(191, 120, 58, .5)',
+      borderColor: 'rgba(191, 120, 58, .5)',
+      borderWidth: 1.5
+    },
+    color: 'rgba(191, 120, 58, .1)',
+    tooltip: {
+      borderColor: 'rgba(191, 120, 58, .1)',
+      borderWidth: 2,
+      formatter: '{b0}<br/>{c0}<br/>'
+    }
+  },
+  {
+    name: '零食副业公司1',
+    value: [25, 27],
+    itemStyle: {
+      color: 'rgba(56, 180, 139, .5)',
+      borderColor: 'rgba(56, 180, 139, .5)',
+      borderWidth: 1.5
+    },
+    color: 'rgba(56, 180, 139, .1)',
+    tooltip: {
+      borderColor: 'rgba(56, 180, 139, .1)',
+      borderWidth: 2,
+      formatter: '{b0}<br/>{c0}<br/>'
+    }
+  }
+]
+// 中心线
+const centerLine = [
+  {
+    name: '最大最小平均线',
+    xAxis: 40
+  },
+  {
+    name: '区域平均线',
+    yAxis: 40
+  }
+]
+// 中心点
+const centerMark = [
+  {
+    value: '中心点',
+    coord: [40, 40]
+  }
+]
+
+const chartOptions7 = ref({
+  tooltip: {
+    trigger: 'item',
+    confine: true,
+    backgroundColor: '#fff',
+
+    textStyle: {
+      color: '#000',
+      fontSize: 12
+    }
+  },
+  grid: {
+    left: '20px',
+    right: '65px',
+    bottom: '4%',
+    top: '30px',
+    containLabel: true
+  },
+  xAxis: {
+    name: '碳排放量',
+    scale: true,
+    axisLine: {
+      symbol: 'none',
+      lineStyle: {
+        color: 'rgba(100,100,100,0.35)',
+        width: 3
+      }
+    },
+    axisLabel: {
+      color: 'rgba(100,100,100,0.35)',
+    },
+    splitLine: {
+      show: true,
+      lineStyle: { color: 'rgba(100,100,100,0.35)' }
+    }
+  },
+  yAxis: {
+    name: '排放强度',
+    scale: true,
+    axisLine: {
+      symbol: 'none',
+      lineStyle: {
+        color: 'rgba(100,100,100,0.35)',
+        width: 3
+      }
+    },
+    axisLabel: {
+      color: 'rgba(100,100,100,0.35)',
+    },
+    splitLine: {
+      show: true,
+      lineStyle: { color: 'rgba(100,100,100,0.35)' }
+    }
+  },
+  series: [
+    {
+      type: 'scatter',
+      data: marksData,
+      label: {
+        show: false,
+        position: 'bottom',
+        formatter: '{b}'
+      },
+      // itemStyle: {
+      //     color: '#fff',
+      //     borderColor: '#409eff',
+      //     borderWidth: 1.5,
+      // },
+      // 各象限区域
+      markArea: {
+        silent: true,
+        label: {
+          distance: 16,
+          color: '#606266',
+          fontSize: 14
+        },
+        data: [
+          [
+            {
+              name: '高排低效',
+              xAxis: 50, // x 轴开始位置
+              yAxis: 70, // y 轴结束位置(直接取最大值)
+              itemStyle: {
+                color: '#FFCCCC',
+                opacity: 0.3
+              },
+              label: {
+                position: 'insideTopRight'
+              }
+            },
+            {
+              yAxis: 40 // y轴开始位置
+            }
+          ],
+          [
+            {
+              name: '低排低效',
+              yAxis: 70, // y 轴结束位置(直接取最大值)
+              itemStyle: {
+                color: 'rgba(191, 120, 58, .1)'
+              },
+              label: {
+                position: 'insideTopLeft'
+              }
+            },
+            {
+              xAxis: 50, // x 轴结束位置
+              yAxis: 40 // y轴开始位置
+            }
+          ],
+          [
+            {
+              name: '低排高效',
+              yAxis: 40, // y 轴结束位置
+              itemStyle: {
+                color: 'rgba(56, 180, 139, .1)'
+              },
+              label: {
+                position: 'insideBottomLeft'
+              }
+            },
+            {
+              xAxis: 30, // x 轴结束位置
+              yAxis: 10 // y轴开始位置
+            }
+          ],
+          // 第四象限
+          [
+            {
+              name: '高排高效',
+              xAxis: 30, // x 轴开始位置
+              yAxis: 40, // y 轴结束位置
+              itemStyle: {
+                color: 'rgba(191, 120, 58, .1)'
+              },
+              label: {
+                position: 'insideBottomRight'
+              }
+            },
+            {
+              yAxis: 10 // y轴开始位置
+            }
+          ]
+        ]
+      },
+      // 中心点交集象限轴
+      markLine: {
+        silent: true, // 是否不响应鼠标事件
+        precision: 2, // 精度
+        symbol: 'none',
+        lineStyle: {
+          type: 'solid',
+          width: 3,
+          color: '#409eff'
+        },
+        label: {
+          color: '#fff',
+          backgroundColor: '#409eff',
+          lineHeight: 24,
+          borderRadius: 8,
+          fontSize: 16,
+          fontWeight: 500,
+          padding: [0, 12],
+          position: 'end',
+          formatter: '{b}'
+        },
+        data: centerLine
+      }
+    }
+  ]
+})
+
+onMounted(() => {})
 </script>
 
 <style scoped lang="scss">
