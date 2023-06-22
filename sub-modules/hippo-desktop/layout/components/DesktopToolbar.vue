@@ -89,7 +89,7 @@
         </div>
 
         <el-dropdown :teleported="false" @command="userDropdownCommand">
-          <el-avatar shape="square" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+          <el-avatar shape="square" :src="userAvatar" />
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item command="userCenter">
@@ -124,7 +124,7 @@ import { computed, onMounted, ref } from 'vue'
 import { themeSettingConst, styleNameConst } from '../../consts'
 import DesktopToolbarTabs from './DesktopToolbarTabs.vue'
 import { useRouter } from 'vue-router'
-import { ThemeStoreUtil, ThemeUtil } from '../../utils'
+import { ThemeStoreUtil, ThemeUtil, UserStoreUtil } from '../../utils'
 import { useDark, useToggle } from '@vueuse/core'
 import { useDesktopToolbar } from '../../hooks'
 import screenfull from 'screenfull'
@@ -145,6 +145,8 @@ const toolbarCenterRef = ref()
 const toolbarRightRef = ref()
 const themePopoverRef = ref()
 const msgPopoverRef = ref()
+
+const userAvatar = UserStoreUtil.getUserInfo().avatar
 
 
 const messages = ref([
@@ -373,7 +375,10 @@ const userDropdownCommand = (command: string) => {
     exitLogin: () => {
       useElConfirmMessageBox('您确认退出系统吗?', '确认', {
         type: 'warning'
-      }).then(() => { })
+      }).then(() => {
+        UserStoreUtil.removeAll()
+        router.replace('/Login')
+      })
     },
     updatePwd: () => { },
     userCenter: () => { }

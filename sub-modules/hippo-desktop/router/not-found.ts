@@ -4,7 +4,8 @@ export default [
         name: 'NotFound',
         component: () => import('../views/not-found/NotFound.vue'),
         meta: {
-            title: '404'
+            title: '404',
+            auth:false
         }
     }
 ]

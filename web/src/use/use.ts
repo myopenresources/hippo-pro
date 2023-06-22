@@ -7,6 +7,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { MainContent } from 'hippo-desktop'
 import { DynamicIcon } from 'hippo-module-core'
 import {createDynamicRouterGuard} from '../guards/dynamic-router-guard'
+import { authGuard } from '@/guards/auth-guard'
 
 const useConfig = {
   //第三方组件
@@ -31,7 +32,8 @@ const useConfig = {
   ],
   // 路由守卫
   routerGuards: () => {
-    createDynamicRouterGuard(router)
+    createDynamicRouterGuard(router);
+    authGuard(router)
   }
 }
 

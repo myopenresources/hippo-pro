@@ -4,7 +4,8 @@ export default [
         name: 'Login',
         component: () => import('../views/login/Login.vue'),
         meta: {
-            title: '登录'
+            title: '登录',
+            auth:false
         }
     }
 ]

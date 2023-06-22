@@ -23,7 +23,7 @@ export const useDesktopLayoutStore = defineStore('desktopLayout', {
       const newView: any = {
         ...view,
         title: view.meta.title || 'no-name',
-        icon:view.meta.icon || 'Document',
+        icon:view.meta.icon || 'SvgIconPage',
       }
 
       this.visitedViews.push(newView)

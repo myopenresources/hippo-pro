@@ -24,7 +24,7 @@
                     <mask id="mask-2" fill="white">
                         <use xlink:href="#path-1"></use>
                     </mask>
-                    <use id="路径-307" fill="#F3F7FF" xlink:href="#path-1"></use>
+                    <use id="路径-307" fill="rgba(243,247,255,0.15)" xlink:href="#path-1"></use>
                     <rect id="矩形" fill="#D0DEFE" mask="url(#mask-2)" x="0" y="362" width="791" height="112"></rect>
                     <rect id="矩形" fill="#C4D6FF" mask="url(#mask-2)" transform="translate(395.500000, 353.500000) scale(1, -1) translate(-395.500000, -353.500000) " x="0" y="345" width="791" height="17"></rect>
                 </g>

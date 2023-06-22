@@ -1,12 +1,17 @@
-export default class UserStoreUtil {
-    private static routes  = '_sys_routes'
-    private static token = '_sys_token'
+import type { MenuInfo, RouterInfo, UserInfo } from "../types"
 
-    public static setRouters(routers: any[]) {
-        sessionStorage.setItem(UserStoreUtil.routes , JSON.stringify(routers))
+export default class UserStoreUtil {
+    private static routes = '_sys_routes'
+    private static menus = '_sys_menus'
+    private static commonMenu = '_sys_common_menus'
+    private static token = '_sys_token'
+    private static userInfo = '_sys_user_info'
+
+    public static setRouters(routers: RouterInfo[]) {
+        sessionStorage.setItem(UserStoreUtil.routes, JSON.stringify(routers))
     }
 
-    public static getRouters(): any[] {
+    public static getRouters(): RouterInfo[] {
         const routersStr = sessionStorage.getItem(UserStoreUtil.routes)
         if (routersStr) {
             return JSON.parse(routersStr)
@@ -15,11 +20,68 @@ export default class UserStoreUtil {
     }
 
     public static removeRouters() {
-        sessionStorage.removeItem(UserStoreUtil.routes )
+        sessionStorage.removeItem(UserStoreUtil.routes)
     }
 
+    public static setMenus(menus: MenuInfo[]) {
+        sessionStorage.setItem(UserStoreUtil.menus, JSON.stringify(menus))
+    }
+
+    public static getMenus(): MenuInfo[] {
+        const menusStr = sessionStorage.getItem(UserStoreUtil.menus)
+        if (menusStr) {
+            return JSON.parse(menusStr)
+        }
+        return []
+    }
+
+    public static removeMenus() {
+        sessionStorage.removeItem(UserStoreUtil.menus)
+    }
+
+    public static setCommonMenu(commonMenu: MenuInfo[]) {
+        sessionStorage.setItem(UserStoreUtil.commonMenu, JSON.stringify(commonMenu))
+    }
+
+    public static getCommonMenu(): MenuInfo[] {
+        const commonMenuStr = sessionStorage.getItem(UserStoreUtil.commonMenu)
+        if (commonMenuStr) {
+            return JSON.parse(commonMenuStr)
+        }
+        return []
+    }
+
+    public static removeCommonMenu() {
+        sessionStorage.removeItem(UserStoreUtil.commonMenu)
+    }
+
+    public static setUserInfo(userInfo: UserInfo) {
+        sessionStorage.setItem(UserStoreUtil.userInfo, JSON.stringify(userInfo))
+    }
+
+    public static getUserInfo(): UserInfo {
+        const userInfoStr = sessionStorage.getItem(UserStoreUtil.userInfo)
+        if (userInfoStr) {
+            return JSON.parse(userInfoStr)
+        }
+        return {
+            id: "",
+            userName: "",
+            realName: "",
+            avatar: "",
+            sex: "",
+            tel: "",
+            email: ""
+        }
+    }
+
+    public static removeUserInfo() {
+        sessionStorage.removeItem(UserStoreUtil.userInfo)
+    }
+
+
     public static setToken(token: string) {
-        sessionStorage.setItem(UserStoreUtil.token,token)
+        sessionStorage.setItem(UserStoreUtil.token, token)
     }
 
     public static getToken(): string {
@@ -28,5 +90,14 @@ export default class UserStoreUtil {
 
     public static removeToken() {
         sessionStorage.removeItem(UserStoreUtil.token)
+    }
+
+
+    public static removeAll() {
+        UserStoreUtil.removeToken()
+        UserStoreUtil.removeRouters()
+        UserStoreUtil.removeMenus()
+        UserStoreUtil.removeCommonMenu()
+        UserStoreUtil.removeUserInfo()
     }
 }

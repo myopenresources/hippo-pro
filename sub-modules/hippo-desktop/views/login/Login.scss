@@ -1,0 +1,120 @@
+.app-login-container {
+  background: var(--login-bg);
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    width: 96%;
+    height: 96%;
+    background-image: url('../../assets//img/login/login-bg.svg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+  }
+
+  .app-login-inner-container {
+    width: 630px;
+    height: 330px;
+    top: 50%;
+    left: 50%;
+    margin-left: -325px;
+    margin-top: -220px;
+    position: absolute;
+
+    .app-login-box-card {
+      height: 100%;
+      width: 100%;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: var(--el-box-shadow-lighter);
+      background: var(--el-bg-color-page);
+
+      .app-login-flex {
+        display: flex;
+
+        .app-login-img {
+          background-image: url('../../assets//img/login/login-img.svg');
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          width: 240px;
+          height: 240px;
+          margin-top: 38px;
+          margin-right: 35px;
+          margin-left: 15px;
+        }
+
+        .app-login-form-box {
+          width: 225px;
+          margin-top: 25px;
+
+          .app-login-title {
+            color: var(--el-text-color-primary);
+            margin-bottom: 30px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 20px;
+          }
+
+          .app-login-form {
+            width: 325px;
+            margin-top: -5px;
+
+            .validate-code {
+              display: flex;
+
+              :deep(.el-input) {
+                width: 120px;
+              }
+
+              &-img {
+                width: 125px;
+                height: var(--el-component-size);
+                line-height: var(--el-component-size);
+                margin-left: 10px;
+                box-shadow: 0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;
+                border-radius: var(--el-input-border-radius,var(--el-border-radius-base));
+                padding: 1px;
+                cursor: pointer;
+              }
+            }
+
+            :deep(.el-form-item) {
+              margin-bottom: 22px;
+            }
+
+            :deep(.el-button) {
+              width: 100%;
+            }
+
+          }
+        }
+      }
+
+      .app-login-copyright {
+        font-size: 13px;
+        text-align: center;
+        margin-top: 15px;
+        color: var(--el-text-color-secondary);
+      }
+    }
+
+    .app-login-desc {
+      width: 90%;
+      text-align: center;
+      font-size: 13px;
+      margin-top: 8px;
+      color: var(--el-border-color-lighter);
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

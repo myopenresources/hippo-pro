@@ -22,37 +22,51 @@
     text-decoration: none;
     font-size: 13px;
     transition: 0.35s;
-    .icon{
-      padding-left: 2px;
-      padding-right: 2px;
-      background-color:  var(--desktop-layout-toolbar-tab-icon-bg);
-      margin-right: 4px;
-      border-radius: 5px;
+
+    &-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        height: 20px;
+        width: 20px;
+        background-color: var(--desktop-layout-toolbar-tab-icon-bg);
+        margin-right: 4px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+
+        :deep(.el-icon) {
+          margin-left: 0px;
+          font-weight: normal;
+        }
+      }
+
+
       :deep(.el-icon) {
-        margin-left: 0px;
-        font-weight: normal;
+        margin-left: 8px;
+        font-weight: 600;
+        position: relative;
+        top: 2px;
+
+        &:hover {
+          color: var(--el-color-danger);
+        }
       }
     }
+
 
     &:first-of-type {
       margin-left: 0;
     }
 
-    &:hover{
+    &:hover {
       background-color: var(--desktop-layout-toolbar-tab-hover-bg);
       color: var(--el-color-primary);
     }
 
-    :deep(.el-icon) {
-      margin-left: 8px;
-      font-weight: 600;
-      position: relative;
-      top: 2px;
-
-      &:hover {
-        color: var(--el-color-danger);
-      }
-    }
   }
 
   &-wrapper {
@@ -74,7 +88,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 5px;
+    margin-top: 4px;
     font-size: 1rem;
 
     .desktop-toolbar-tabs-move-to {
@@ -83,7 +97,7 @@
       border-radius: 0.3rem;
       padding-left: 2px;
       padding-right: 2px;
-      
+
 
       &:hover {
         color: var(--el-color-primary);
