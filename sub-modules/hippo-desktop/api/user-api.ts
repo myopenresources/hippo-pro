@@ -21,7 +21,7 @@ export default class UserApi {
                         avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
                         sex: "1",
                         tel: "18985458699",
-                        email: ""
+                        email: "18985458699@qq.com"
                     },
                     routers: [{
                         path: '/',
@@ -97,62 +97,62 @@ export default class UserApi {
                     }],
                     commonMenus: [
                         {
-                            id: '',
+                            id: 'Home',
                             icon: 'SvgIconHome',
                             label: '首页',
                             path: '/Home'
                         },
                         {
-                            id: '',
+                            id: 'UserList',
                             icon: 'SvgIconUser',
                             label: '用户管理',
                             path: '/UserList'
                         },
                         {
-                            id: '',
+                            id: 'RoleList',
                             icon: 'SvgIconRole',
                             label: '角色管理',
                             path: '/RoleList'
                         },
                         {
-                            id: '',
+                            id: 'MenuList',
                             icon: 'SvgIconMenu',
                             label: '菜单管理',
                             path: '/MenuList'
                         },
                         {
-                            id: '',
+                            id: 'UserInfo',
                             icon: 'SvgIconDataDic',
                             label: '数据字典管理',
                             path: '/UserInfo'
                         },
                         {
-                            id: '',
+                            id: 'NotFound',
                             icon: 'SvgIconNotice',
                             label: '消息管理',
                             path: '/NotFound'
                         },
 
                         {
-                            id: '',
+                            id: 'workFlow',
                             icon: 'SvgIconFlow',
                             label: '工作流管理',
                             path: '/NotFound'
                         },
                         {
-                            id: '',
+                            id: 'logList',
                             icon: 'SvgIconLog',
                             label: '日志管理',
                             path: '/UserInfo'
                         },
                         {
-                            id: '',
+                            id: 'ahtuList',
                             icon: 'SvgIconAuth',
                             label: '权限管理',
                             path: '/NotFound'
                         },
                         {
-                            id: '',
+                            id: 'demo',
                             icon: 'SvgIconAuth',
                             label: 'demo',
                             path: '/Demo'
@@ -160,470 +160,62 @@ export default class UserApi {
                     ],
                     menus: [
                         {
-                            id: '',
+                            id: 'Home',
                             icon: 'SvgIconHome',
                             label: '首页',
                             path: '/Home'
                         },
                         {
-                            id: '',
+                            id: 'UserList',
                             icon: 'SvgIconUser',
                             label: '用户管理',
                             path: '/UserList'
                         },
                         {
-                            id: '',
+                            id: 'RoleList',
                             icon: 'SvgIconRole',
                             label: '角色管理',
                             path: '/RoleList'
                         },
                         {
-                            id: '',
+                            id: 'MenuList',
                             icon: 'SvgIconMenu',
                             label: '菜单管理',
-                            path: '/UserInfo'
+                            path: '/MenuList'
                         },
                         {
-                            id: '',
+                            id: 'UserInfo',
                             icon: 'SvgIconDataDic',
                             label: '数据字典管理',
                             path: '/UserInfo'
                         },
                         {
-                            id: '',
+                            id: 'NotFound',
                             icon: 'SvgIconNotice',
                             label: '消息管理',
                             path: '/NotFound'
                         },
 
                         {
-                            id: '',
+                            id: 'workFlow',
                             icon: 'SvgIconFlow',
                             label: '工作流管理',
                             path: '/NotFound'
                         },
                         {
-                            id: '',
+                            id: 'logList',
                             icon: 'SvgIconLog',
                             label: '日志管理',
                             path: '/UserInfo'
                         },
                         {
-                            id: '',
+                            id: 'ahtuList',
                             icon: 'SvgIconAuth',
                             label: '权限管理',
                             path: '/NotFound'
                         },
                         {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconLog',
-                            label: '日志管理',
-                            path: '/UserInfo'
-                        },
-                        {
-                            id: '',
-                            icon: 'SvgIconAuth',
-                            label: '权限管理2',
-                            path: '/NotFound'
-                        },
-                        {
-                            id: '',
+                            id: 'demo',
                             icon: 'SvgIconAuth',
                             label: 'demo',
                             path: '/Demo'

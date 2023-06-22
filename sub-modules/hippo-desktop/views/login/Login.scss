@@ -22,7 +22,7 @@
   }
 
   .app-login-inner-container {
-    width: 630px;
+    width: 620px;
     height: 330px;
     top: 50%;
     left: 50%;
@@ -65,21 +65,21 @@
           }
 
           .app-login-form {
-            width: 325px;
+            width: 315px;
             margin-top: -5px;
 
             .validate-code {
               display: flex;
 
               :deep(.el-input) {
-                width: 120px;
+                width: 115px;
               }
 
               &-img {
-                width: 125px;
+                width: 115px;
                 height: var(--el-component-size);
                 line-height: var(--el-component-size);
-                margin-left: 10px;
+                margin-left: 13px;
                 box-shadow: 0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;
                 border-radius: var(--el-input-border-radius,var(--el-border-radius-base));
                 padding: 1px;

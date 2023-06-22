@@ -17,3 +17,8 @@ html.dark {
   --el-border-color-lighter: #2c2c2ccc;
   --el-border-color-extra-light: #2b2b2cce;
 }
+
+
+.el-dialog__body{
+  padding:var(--el-dialog-padding-primary) var(--el-dialog-padding-primary);
+}

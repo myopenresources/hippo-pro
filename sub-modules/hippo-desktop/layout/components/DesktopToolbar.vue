@@ -109,6 +109,7 @@
         </el-dropdown>
       </div>
     </div>
+    <UpdatePwdDialog ref="updatePwdDialogRef"/>
   </div>
 </template>
 
@@ -128,6 +129,7 @@ import { ThemeStoreUtil, ThemeUtil, UserStoreUtil } from '../../utils'
 import { useDark, useToggle } from '@vueuse/core'
 import { useDesktopToolbar } from '../../hooks'
 import screenfull from 'screenfull'
+import UpdatePwdDialog from './UpdatePwdDialog.vue'
 
 const currentTheme = ref(ThemeStoreUtil.getTheme())
 const currentStyleTheme = ref(ThemeStoreUtil.getStyleTheme())
@@ -145,6 +147,7 @@ const toolbarCenterRef = ref()
 const toolbarRightRef = ref()
 const themePopoverRef = ref()
 const msgPopoverRef = ref()
+const updatePwdDialogRef = ref()
 
 const userAvatar = UserStoreUtil.getUserInfo().avatar
 
@@ -380,8 +383,12 @@ const userDropdownCommand = (command: string) => {
         router.replace('/Login')
       })
     },
-    updatePwd: () => { },
-    userCenter: () => { }
+    updatePwd: () => { 
+      updatePwdDialogRef.value.showDialog()
+    },
+    userCenter: () => { 
+      router.push('/UserInfo')
+    }
   }
 
   commands[command]()

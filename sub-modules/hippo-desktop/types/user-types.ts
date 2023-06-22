@@ -8,7 +8,7 @@ interface UserInfo {
     avatar: string,
     sex: string,
     tel: string,
-    email?: string
+    email: string
 }
 
 interface UserLogin {
