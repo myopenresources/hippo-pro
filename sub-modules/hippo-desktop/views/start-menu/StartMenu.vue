@@ -1,7 +1,8 @@
 <template>
   <MainContent :title="'开始菜单'" :headerVisible="false" :mainContentStyle="{}" :bodyStyle="{}">
     <div class="start-menu">
-      <el-input class="start-menu-search-box" v-model="keywork" :prefix-icon="Search" clearable placeholder="搜索" />
+      <el-input class="start-menu-search-box" v-model="keywork" :prefix-icon="Search" clearable placeholder="搜索"
+        @input="search" />
       <div class="start-menu-config" @click="openStartMenuConfigDialog">
         <DynamicIcon :icon="'Setting'" />
       </div>
@@ -17,8 +18,8 @@
             </div>
           </div>
         </div>
-        <div class="start-menu-menus-category" style="margin-top: 1.5rem">所有功能</div>
-        <div class="start-menu-menus-inner">
+        <div class="start-menu-menus-category" style="margin-top: 1.5rem" v-if="menus && menus.length">所有功能</div>
+        <div class="start-menu-menus-inner" v-if="menus && menus.length">
           <div class="start-menu-menus-item" v-for="(menu, index) in menus" :key="index" @click="toPage(menu)">
             <div class="start-menu-menus-item-icon">
               <DynamicIcon :icon="menu.icon" />
@@ -40,6 +41,8 @@ import { Search } from '@element-plus/icons-vue'
 import { useRouter } from 'vue-router'
 import { UserStoreUtil } from '../../utils';
 import StartMenuConfigDialog from './StartMenuConfigDialog.vue'
+import type { MenuInfo } from '../../types';
+import { useDebounceFn } from '@vueuse/core';
 const router = useRouter()
 
 const keywork = ref('')
@@ -48,7 +51,7 @@ const startMenuConfigDialogRef = ref()
 
 const commonMenus = ref(UserStoreUtil.getCommonMenu())
 
-const menus = UserStoreUtil.getMenus()
+const menus = ref(UserStoreUtil.getMenus())
 
 const toPage = (menu: any) => {
   router.push(menu.path)
@@ -60,6 +63,24 @@ const openStartMenuConfigDialog = () => {
 
 const startMenuConfigDialogConfirm = () => {
   commonMenus.value = UserStoreUtil.getCommonMenu()
+}
+
+const search = (val: string) => {
+  const fn =  useDebounceFn(() => {
+    if ('' !== val) {
+      const tempData: any = UserStoreUtil.getCommonMenu();
+      commonMenus.value = tempData.filter((item: MenuInfo) => {
+        return item.label.toLowerCase().includes(val.toLowerCase())
+      })
+      menus.value = tempData.filter((item: MenuInfo) => {
+        return item.label.toLowerCase().includes(val.toLowerCase())
+      })
+    } else {
+      commonMenus.value = UserStoreUtil.getCommonMenu();
+      menus.value = UserStoreUtil.getCommonMenu();
+    }
+  }, 333)
+  fn()
 }
 </script>
 

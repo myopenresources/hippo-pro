@@ -6,8 +6,12 @@
           <DynamicIcon icon="SvgIconStartMenu" />
         </div>
 
-        <el-input class="desktop-toolbar-inner-left-search-box" v-model="keywork" :prefix-icon="Search" clearable
-          placeholder="搜索" />
+        <el-select class="desktop-toolbar-inner-left-search-box" :teleported="false" v-model="keywork" filterable remote clearable
+          reserve-keyword placeholder="搜索" :remote-method="search" :loading="searchLoading">
+          <el-option v-for="item in searchList" :key="item.id" :label="item.label" :value="item.id"
+            @click="selectSearchItem(item)" />
+        </el-select>
+
       </div>
       <div class="desktop-toolbar-inner-center" ref="toolbarCenterRef" :style="toolbarCenterStyle">
         <div class="desktop-toolbar-inner-center-divider"></div>
@@ -109,7 +113,7 @@
         </el-dropdown>
       </div>
     </div>
-    <UpdatePwdDialog ref="updatePwdDialogRef"/>
+    <UpdatePwdDialog ref="updatePwdDialogRef" />
   </div>
 </template>
 
@@ -130,6 +134,7 @@ import { useDark, useToggle } from '@vueuse/core'
 import { useDesktopToolbar } from '../../hooks'
 import screenfull from 'screenfull'
 import UpdatePwdDialog from './UpdatePwdDialog.vue'
+import type { MenuInfo } from '../../types'
 
 const currentTheme = ref(ThemeStoreUtil.getTheme())
 const currentStyleTheme = ref(ThemeStoreUtil.getStyleTheme())
@@ -140,6 +145,9 @@ const router = useRouter()
 const { sysTime } = useDesktopToolbar()
 
 const keywork = ref('')
+const searchLoading = ref(false)
+const searchList = ref<MenuInfo[]>([])
+
 const fullscreenState = ref(false)
 
 const toolbarLeftRef = ref()
@@ -151,6 +159,7 @@ const updatePwdDialogRef = ref()
 
 const userAvatar = UserStoreUtil.getUserInfo().avatar
 
+const menus = UserStoreUtil.getMenus()
 
 const messages = ref([
   {
@@ -383,10 +392,10 @@ const userDropdownCommand = (command: string) => {
         router.replace('/Login')
       })
     },
-    updatePwd: () => { 
+    updatePwd: () => {
       updatePwdDialogRef.value.showDialog()
     },
-    userCenter: () => { 
+    userCenter: () => {
       router.push('/UserInfo')
     }
   }
@@ -435,6 +444,28 @@ const init = () => {
     screenfull.on('change', () => {
       fullscreenState.value = screenfull['isFullscreen']
     })
+  }
+}
+
+const search = (query: string) => {
+  if (query) {
+    searchLoading.value = true
+    const st = setTimeout(() => {
+      searchLoading.value = false
+      clearTimeout(st)
+      searchList.value = menus.filter((item) => {
+        return item.label.toLowerCase().includes(query.toLowerCase())
+      })
+    }, 10)
+  } else {
+    searchList.value = []
+  }
+}
+
+const selectSearchItem = (menuInfo: MenuInfo) => {
+  if (menuInfo.path && menuInfo.path.length) {
+    keywork.value = ''
+    router.push(menuInfo.path)
   }
 }
 

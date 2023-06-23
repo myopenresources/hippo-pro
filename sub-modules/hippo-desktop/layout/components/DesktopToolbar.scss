@@ -312,7 +312,9 @@
       }
     }
 
-    :deep(.el-dropdown__popper.el-popper) {
+
+
+    :deep(.el-popper) {
       background-color: var(--desktop-layout-toolbar-popover-bg);
       border-color: var(--desktop-layout-toolbar-popover-border-color);
       padding: 0;
@@ -338,6 +340,16 @@
           border-color: var(--desktop-layout-toolbar-popover-border-color);
         }
       }
+
+      .el-select-dropdown {
+        background-color: var(--desktop-layout-toolbar-popover-bg);
+
+        .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
+          color: var(--el-text-color-primary);
+          background: var(--desktop-layout-toolbar-dropdown-item-hover-bg);
+        }
+      }
+
     }
   }
 }
