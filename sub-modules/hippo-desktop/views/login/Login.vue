@@ -1,14 +1,13 @@
 <template>
-    <div class="app-login-container">
-        <div class="app-login-inner-container">
-            <div class="app-login-box-card">
-                <div class="app-login-flex">
-                    <div class="app-login-img">
+    <div class="login-container">
+        <div class="login-inner-container">
+            <div class="login-box-card">
+                <div class="login-flex">
+                    <div class="login-img">
                     </div>
-                    <div class="app-login-form-box">
-                        <h3 class="app-login-title">{{ sysTitle }}登录</h3>
-                        <el-form ref="loginFormRef" class="app-login-form" :model="loginForm" :rules="rules"
-                            label-width="70px">
+                    <div class="login-form-box">
+                        <h3 class="login-title">{{ sysTitle }}登录</h3>
+                        <el-form ref="loginFormRef" class="login-form" :model="loginForm" :rules="rules" label-width="70px">
                             <el-form-item label="用户名" prop="userNmae">
                                 <el-input v-model="loginForm.userNmae" type="text" autocomplete="off" />
                             </el-form-item>
@@ -30,11 +29,11 @@
 
                     </div>
                 </div>
-                <div class="app-login-copyright">
+                <div class="login-copyright">
                     <div class="app-text-center"> Copyright {{ copyrightDate }} cjh. All Rights Reserved. </div>
                 </div>
             </div>
-            <div class="app-login-desc">
+            <div class="login-desc">
                 系统仅支持Edge、Google Chrome、Mozilla
                 Firefox、Safari以及其它主流的浏览器，如您的浏览器无法使用本系统，请更换其它浏览器！
             </div>
@@ -47,7 +46,7 @@ import { useRouter } from 'vue-router';
 import { UserStoreUtil } from '../../utils';
 import { UserApi } from '../../api';
 import type { RequestResultData, UserLogin } from '../../types';
-import { DynamicIcon, Environments, useElSuccessMessage, useElWarningMessage } from 'hippo-module-core';
+import { Environments, useElSuccessMessage, useElWarningMessage } from 'hippo-module-core';
 import type { FormInstance, FormRules } from 'element-plus'
 import { onMounted, reactive, ref } from 'vue';
 

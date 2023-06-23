@@ -1,4 +1,4 @@
-.app-login-container {
+.login-container {
   background: var(--login-bg);
   padding: 0;
   margin: 0;
@@ -21,7 +21,7 @@
     z-index: 0;
   }
 
-  .app-login-inner-container {
+  .login-inner-container {
     width: 620px;
     height: 330px;
     top: 50%;
@@ -30,7 +30,7 @@
     margin-top: -220px;
     position: absolute;
 
-    .app-login-box-card {
+    .login-box-card {
       height: 100%;
       width: 100%;
       padding: 15px;
@@ -38,10 +38,10 @@
       box-shadow: var(--el-box-shadow-lighter);
       background: var(--el-bg-color-page);
 
-      .app-login-flex {
+      .login-flex {
         display: flex;
 
-        .app-login-img {
+        .login-img {
           background-image: url('../../assets//img/login/login-img.svg');
           background-repeat: no-repeat;
           background-size: 100% 100%;
@@ -52,11 +52,11 @@
           margin-left: 15px;
         }
 
-        .app-login-form-box {
+        .login-form-box {
           width: 225px;
           margin-top: 25px;
 
-          .app-login-title {
+          .login-title {
             color: var(--el-text-color-primary);
             margin-bottom: 30px;
             text-align: left;
@@ -64,7 +64,7 @@
             font-size: 20px;
           }
 
-          .app-login-form {
+          .login-form {
             width: 315px;
             margin-top: -5px;
 
@@ -99,7 +99,7 @@
         }
       }
 
-      .app-login-copyright {
+      .login-copyright {
         font-size: 13px;
         text-align: center;
         margin-top: 15px;
@@ -107,7 +107,7 @@
       }
     }
 
-    .app-login-desc {
+    .login-desc {
       width: 90%;
       text-align: center;
       font-size: 13px;

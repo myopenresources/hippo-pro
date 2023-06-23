@@ -19,5 +19,11 @@ interface UserLogin {
     userInfo: UserInfo
 }
 
+ interface  UserUpdatePwd{
+    oldPwd: string,
+    newPwd: string,
+    confirmPwd: string
+ }
 
-export type { UserLogin, UserInfo }
+
+export type { UserLogin, UserInfo,UserUpdatePwd }

@@ -300,7 +300,7 @@
       margin-left: 2px;
       background-color: var(--desktop-layout-toolbar-popover-bg);
       border-color: var(--desktop-layout-toolbar-popover-border-color);
-      height: 65vh;
+      max-height: 65vh;
       padding: 0;
 
       .el-popper__arrow {

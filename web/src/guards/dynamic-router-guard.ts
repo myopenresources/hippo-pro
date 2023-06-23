@@ -1,5 +1,5 @@
 import type { NavigationGuardNext, Router } from 'vue-router'
-import { UserStoreUtil } from 'hippo-desktop/utils'
+import { UserStoreUtil } from 'hippo-desktop'
 import { dynamicRouterList, whlteList } from '@/config/app-config'
 
 let isLoadDynamicRouter = false

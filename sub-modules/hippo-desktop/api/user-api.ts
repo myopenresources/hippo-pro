@@ -1,4 +1,4 @@
-import type { RequestResultData, UserLogin } from "../types"
+import type { RequestResultData, UserInfo, UserLogin, UserUpdatePwd } from "../types"
 
 export default class UserApi {
 
@@ -91,6 +91,26 @@ export default class UserApi {
                                     title: '菜单管理',
                                     icon: 'SvgIconMenu'
                                 }
+                            },
+                            {
+                                isLayout: false,
+                                path: '/MsgList',
+                                name: 'MsgList',
+                                component: 'msg/MsgList.vue',
+                                meta: {
+                                    title: '消息管理',
+                                    icon: 'SvgIconNotice'
+                                }
+                            },
+                            {
+                                isLayout: false,
+                                path: '/MsgInfo/:id',
+                                name: 'MsgInfo',
+                                component: 'msg/MsgInfo.vue',
+                                meta: {
+                                    title: '消息信息',
+                                    icon: 'SvgIconNotice'
+                                }
                             }
                         ]
 
@@ -130,7 +150,7 @@ export default class UserApi {
                             id: 'NotFound',
                             icon: 'SvgIconNotice',
                             label: '消息管理',
-                            path: '/NotFound'
+                            path: '/MsgList'
                         },
 
                         {
@@ -224,6 +244,28 @@ export default class UserApi {
                 }
             }
             resolve(data)
+        })
+    }
+
+    static updateCurrentUserPwd(params: UserUpdatePwd) {
+        return new Promise<RequestResultData<Object>>((resolve) => {
+            resolve({
+                status: 200,
+                success: true,
+                msg: '',
+                data: {}
+            })
+        })
+    }
+
+    static updateCurrentUserInfo(params: UserInfo) {
+        return new Promise<RequestResultData<Object>>((resolve) => {
+            resolve({
+                status: 200,
+                success: true,
+                msg: '',
+                data: {}
+            })
         })
     }
 }

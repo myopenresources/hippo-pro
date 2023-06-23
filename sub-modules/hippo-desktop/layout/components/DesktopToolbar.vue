@@ -6,8 +6,8 @@
           <DynamicIcon icon="SvgIconStartMenu" />
         </div>
 
-        <el-select class="desktop-toolbar-inner-left-search-box" :teleported="false" v-model="keywork" filterable remote clearable
-          reserve-keyword placeholder="搜索" :remote-method="search" :loading="searchLoading">
+        <el-select class="desktop-toolbar-inner-left-search-box" :teleported="false" v-model="keywork" filterable remote
+          clearable reserve-keyword placeholder="搜索" :remote-method="search" :loading="searchLoading">
           <el-option v-for="item in searchList" :key="item.id" :label="item.label" :value="item.id"
             @click="selectSearchItem(item)" />
         </el-select>
@@ -62,7 +62,7 @@
           :popper-style="'margin-left:-2px'">
           <template #reference>
             <div class="desktop-toolbar-inner-right-item">
-              <el-badge is-dot class="desktop-toolbar-inner-right-item-badge">
+              <el-badge :is-dot="messages.length > 0" class="desktop-toolbar-inner-right-item-badge">
                 <DynamicIcon icon="Bell" />
               </el-badge>
             </div>
@@ -70,16 +70,16 @@
           <div class="desktop-toolbar-inner-popover">
             <div class="desktop-toolbar-inner-popover-header">
               消息
-              <el-button type="primary" link>更多</el-button>
+              <el-button type="primary" link @click="toMsgList">更多</el-button>
             </div>
             <div class="desktop-toolbar-inner-popover-msgs">
               <div class="desktop-toolbar-inner-popover-msgs-list">
                 <div class="desktop-toolbar-inner-popover-msgs-list-item" v-for="(msg, index) in messages" :index="index"
                   @click="toMsg(msg)">
-                  <div class="popover-msg-header">{{ msg.title }}</div>
+                  <div class="popover-msg-header">{{ msg.msgTitle }}</div>
                   <div class="popover-msg-footer">
                     <div>{{ msg.msgType }}</div>
-                    <div>{{ msg.dateTime }}</div>
+                    <div>{{ msg.createDate }}</div>
                   </div>
                 </div>
               </div>
@@ -134,7 +134,8 @@ import { useDark, useToggle } from '@vueuse/core'
 import { useDesktopToolbar } from '../../hooks'
 import screenfull from 'screenfull'
 import UpdatePwdDialog from './UpdatePwdDialog.vue'
-import type { MenuInfo } from '../../types'
+import { type RequestResultData, type MenuInfo, type MsgInfo } from '../../types'
+import { MsgApi } from '../../api'
 
 const currentTheme = ref(ThemeStoreUtil.getTheme())
 const currentStyleTheme = ref(ThemeStoreUtil.getStyleTheme())
@@ -161,212 +162,7 @@ const userAvatar = UserStoreUtil.getUserInfo().avatar
 
 const menus = UserStoreUtil.getMenus()
 
-const messages = ref([
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  },
-  {
-    id: '',
-    title: '你有一条关于端午放假的通知消息，请收到后及时处理！',
-    msgType: '系统消息',
-    dateTime: '2023-06-11 15:22:35'
-  }
-])
+const messages = ref<MsgInfo[]>([])
 
 
 
@@ -409,6 +205,11 @@ const toStartMenu = () => {
 
 const toMsg = (msg: any) => {
   msgPopoverRef.value.hide()
+  router.push('/MsgInfo/id='+msg.id)
+}
+
+const toMsgList = ()=>{
+  router.push("/MsgList")
 }
 
 const setStyleTheme = (style: any) => {
@@ -469,9 +270,20 @@ const selectSearchItem = (menuInfo: MenuInfo) => {
   }
 }
 
+const getMsgList = () => {
+  MsgApi.getUserMsgList().then((res: RequestResultData<MsgInfo[]>) => {
+    if (res.success) {
+      messages.value = res.data
+    } else {
+      messages.value = []
+    }
+  })
+}
+
 
 onMounted(() => {
   init()
+  getMsgList()
 })
 </script>
 
