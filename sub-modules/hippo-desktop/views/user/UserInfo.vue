@@ -59,7 +59,7 @@ import { reactive, ref } from 'vue'
 import { UserStoreUtil } from '../../utils';
 import { ValidateUtil, useElSuccessMessage } from 'hippo-module-core';
 import { UserApi } from '../../api';
-import type { RequestResultData } from '../../types';
+import type { RequestResultData } from "hippo-module-core";
 
 const formRef = ref<FormInstance>()
 

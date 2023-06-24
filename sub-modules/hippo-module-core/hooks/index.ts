@@ -24,7 +24,27 @@ import {
     useElWarningNotification
 } from './use-el-notification'
 
+import { useTable } from './use-table'
+import { usePagination } from './use-pagination'
+import {
+    useBatchDel,
+    useQueryData,
+    useDelRequestByIds,
+    useAddOpen,
+    useAdd,
+    useViewOpen,
+    useViewRequestById,
+} from './use-crud'
 export {
+    useTable,
+    usePagination,
+    useBatchDel,
+    useQueryData,
+    useDelRequestByIds,
+    useAddOpen,
+    useAdd,
+    useViewOpen,
+    useViewRequestById,
     useVisible,
     useEventBus,
     useEventBusEmit,

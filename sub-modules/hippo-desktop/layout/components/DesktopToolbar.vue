@@ -134,7 +134,8 @@ import { useDark, useToggle } from '@vueuse/core'
 import { useDesktopToolbar } from '../../hooks'
 import screenfull from 'screenfull'
 import UpdatePwdDialog from './UpdatePwdDialog.vue'
-import { type RequestResultData, type MenuInfo, type MsgInfo } from '../../types'
+import { type MenuInfo, type MsgInfo } from '../../types'
+import type { RequestResultData } from "hippo-module-core";
 import { MsgApi } from '../../api'
 
 const currentTheme = ref(ThemeStoreUtil.getTheme())

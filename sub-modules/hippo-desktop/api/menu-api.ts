@@ -1,4 +1,5 @@
-import type { MenuInfo, RequestResultData } from "../types";
+import type { RequestResultData } from "hippo-module-core";
+import type { MenuInfo } from "../types";
 
 export default class MenuApi {
 

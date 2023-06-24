@@ -45,7 +45,8 @@
 import { useRouter } from 'vue-router';
 import { UserStoreUtil } from '../../utils';
 import { UserApi } from '../../api';
-import type { RequestResultData, UserLogin } from '../../types';
+import type { UserLogin } from '../../types';
+import type { RequestResultData } from "hippo-module-core";
 import { Environments, useElSuccessMessage, useElWarningMessage } from 'hippo-module-core';
 import type { FormInstance, FormRules } from 'element-plus'
 import { onMounted, reactive, ref } from 'vue';

@@ -60,7 +60,8 @@
 import { reactive, ref } from 'vue'
 import { UserStoreUtil } from '../../utils';
 import { DynamicIcon } from 'hippo-module-core/components';
-import type { MenuInfo, RequestResultData } from '../../types';
+import type { MenuInfo } from '../../types';
+import type { RequestResultData } from "hippo-module-core";
 import { MenuApi } from '../../api';
 
 

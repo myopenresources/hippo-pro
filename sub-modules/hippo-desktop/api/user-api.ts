@@ -1,4 +1,5 @@
-import type { RequestResultData, UserInfo, UserLogin, UserUpdatePwd } from "../types"
+import type {  UserInfo, UserLogin, UserUpdatePwd } from "../types"
+import type { RequestResultData } from "hippo-module-core";
 
 export default class UserApi {
 

@@ -1,0 +1,59 @@
+.desktop-container {
+    height: 100%;
+    box-sizing: border-box;
+    padding: var(--desktop-container-padding);
+
+    .desktop-query-form {
+        width: 100%;
+        box-sizing: border-box;
+
+        .el-form-item__content {
+            width: var(--desktop-input-width);
+
+            .el-select {
+                width: 100%;
+            }
+        }
+
+        .desktop-query-form-btns {
+            width: var(--desktop-input-width);
+        }
+    }
+
+    .desktop-toolbar {
+        width: 100%;
+        height: var(--desktop-toolbar-height);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-left {
+            width: 50%;
+        }
+
+        &-right {
+            width: 50%;
+        }
+    }
+
+    .desktop-data-table {
+        width: 100%;
+        height: auto;
+
+        .el-table {
+            height: 100%;
+        }
+    }
+
+    .desktop-data-pagination {
+        height: var(--desktop-data-pagination-height);
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .el-pagination__rightwrapper {
+            position: absolute;
+            right: 0;
+        }
+    }
+}
