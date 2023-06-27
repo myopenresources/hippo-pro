@@ -1,9 +1,34 @@
-.home{
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    .vue-grid-item{
-        border-radius: 6px;
-        background-color: var(--home-grid-item-bg);
+.home {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  &-config {
+    position: absolute;
+    z-index: 3;
+    right: 0rem;
+    top: 0rem;
+    font-size: 0.85rem;
+    color: var(--el-text-color-primary);
+    cursor: pointer;
+    transition: 0.35s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--home-config-bg);
+    box-shadow: var(--home-config-shadow);
+    border-radius: 100%;
+    padding: 0.2rem;
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+      background-color: var(--home-config-hover-bg);
     }
+  }
+  .vue-grid-item {
+    border-radius: 6px;
+    background-color: var(--home-grid-item-bg);
+  }
 }

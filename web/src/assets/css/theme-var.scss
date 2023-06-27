@@ -1,7 +1,14 @@
 html {
   --home-grid-item-bg: #ffffff54;
+  --home-config-bg:#ffffffe0;
+  --home-config-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
+  --home-config-hover-bg: rgba(231, 247, 254, 0.87);
+    
 }
 
 html.dark {
   --home-grid-item-bg: #ffffff54;
+  --home-config-bg:#8ca5bbc7;
+  --home-config-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
+  --home-config-hover-bg: #7f94a8d6;
 }

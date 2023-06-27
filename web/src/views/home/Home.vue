@@ -1,6 +1,20 @@
 <template>
   <MainContent :title="'首页'" :headerVisible="false" :mainContentStyle="{}" :bodyStyle="{}">
     <div class="home">
+      <el-popover placement="right" :width="400" trigger="click" :teleported="false">
+        <template #reference>
+          <div class="home-config">
+            <DynamicIcon icon="Setting" />
+          </div>
+        </template>
+        <div>
+          编辑桌面：<el-switch v-model="isEidt" inline-prompt active-text="是" inactive-text="否" />
+          <div>
+            
+          </div>
+        </div>
+      </el-popover>
+
       <grid-layout v-model:layout="layout" :col-num="12" :row-height="30" style="width: 100%">
         <template #default="{ gridItemProps }">
           <grid-item
@@ -12,6 +26,8 @@
             :w="item.w"
             :h="item.h"
             :i="item.i"
+            :is-draggable="isEidt"
+            :is-resizable="isEidt"
             @resize="resize"
             @move="move"
             @moved="moved"
@@ -28,6 +44,9 @@
 import { ref } from 'vue'
 import { GridLayout, GridItem } from 'vue3-drr-grid-layout'
 import 'vue3-drr-grid-layout/dist/style.css'
+
+const isEidt = ref(false)
+
 //https://www.itxst.com/vue3-drr-grid-layout/tutorial.html
 const layout = ref([
   { x: 0, y: 0, w: 2, h: 2, i: 0 },
