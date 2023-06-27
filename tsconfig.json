@@ -18,6 +18,7 @@
       "@/hippo-module-core*": ["./sub-modules/hippo-module-core"],
       "@/hippo-desktop*": ["./sub-modules/hippo-desktop"],
       "@/sub-modules": ["./sub-modules"],
+      "@/hippo-demo": ["./hippo-demo"],
       "@/": ["./"]
     },
     "types": ["element-plus/global","pinia-plugin-persist"]
@@ -35,7 +36,13 @@
     "./sub-modules/hippo-desktop/**/*.tsx",
     "./sub-modules/hippo-desktop/**/*.d.ts",
     "./sub-modules/hippo-desktop/*/*.vue",
-    "./sub-modules/hippo-desktop/**/*.vue"
+    "./sub-modules/hippo-desktop/**/*.vue",
+    "./sub-modules/hippo-demo/*/*.ts",
+    "./sub-modules/hippo-demo/**/*.ts",
+    "./sub-modules/hippo-demo/**/*.tsx",
+    "./sub-modules/hippo-demo/**/*.d.ts",
+    "./sub-modules/hippo-demo/*/*.vue",
+    "./sub-modules/hippo-demo/**/*.vue"
   ],
   "references": []
 }

@@ -29,7 +29,7 @@
             </div>
 
             <div class="desktop-data-table" :style="{
-                height: tableHeight
+                minHeight: tableHeight
             }">
                 <el-table :data="tableData" :border="true" :stripe="true" v-loading="loading"
                     @selection-change="tableHandleSelectionChange">

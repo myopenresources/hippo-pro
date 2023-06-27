@@ -1,0 +1,48 @@
+.topo {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .svg-graph {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+    .output {
+      .nodes {
+        .node {
+          .label {
+            div {
+              &:last-of-type {
+                text-align: center;
+              }
+            }
+            foreignObject {
+              pointer-events: none;
+              width: 360px;
+              height: 220px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+
+    .edgeLabel foreignObject {
+      width: 60px;
+      height: 60px;
+      background-color: transparent;
+    }
+
+    .node circle,
+    .node ellipse,
+    .node rect {
+      fill: transparent;
+    }
+
+    .nodes .node rect {
+      width: 50px;
+    }
+  }
+}

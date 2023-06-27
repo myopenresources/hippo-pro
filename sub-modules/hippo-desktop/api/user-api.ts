@@ -77,9 +77,19 @@ export default class UserApi {
                                 isLayout: false,
                                 path: '/Demo',
                                 name: 'Demo',
-                                component: 'demo/Demo.vue',
+                                component: 'echart-demo/Demo.vue',
                                 meta: {
                                     title: 'demo',
+                                    icon: 'SvgIconHome'
+                                }
+                            },
+                            {
+                                isLayout: false,
+                                path: '/TopoDemo',
+                                name: 'TopoDemo',
+                                component: 'topo-demo/TopoDemo.vue',
+                                meta: {
+                                    title: 'TopoDemo',
                                     icon: 'SvgIconHome'
                                 }
                             },
@@ -177,6 +187,12 @@ export default class UserApi {
                             icon: 'SvgIconAuth',
                             label: 'demo',
                             path: '/Demo'
+                        },
+                        {
+                            id: 'topoDemo',
+                            icon: 'SvgIconAuth',
+                            label: 'topoDemo',
+                            path: '/TopoDemo'
                         }
                     ],
                     menus: [
@@ -240,6 +256,12 @@ export default class UserApi {
                             icon: 'SvgIconAuth',
                             label: 'demo',
                             path: '/Demo'
+                        },
+                        {
+                            id: 'topoDemo',
+                            icon: 'SvgIconAuth',
+                            label: 'topoDemo',
+                            path: '/TopoDemo'
                         }
                     ]
                 }
