@@ -9,8 +9,20 @@
         </template>
         <div>
           编辑桌面：<el-switch v-model="isEidt" inline-prompt active-text="是" inactive-text="否" />
-          <div>
-            
+          <div class="home-config-list">
+            <div class="home-config-list-item" v-for="(item, index) in modules" :key="index">
+              <div class="home-config-list-item-flex">
+                <div class="home-config-list-item-icon">
+                  <DynamicIcon :icon="item.icon" />
+                </div>
+                <div class="home-config-list-item-label">{{ item.label }}</div>
+              </div>
+              <div class="home-config-list-item-btns" v-if="isEidt">
+                <el-button link type="primary" @click="add(item, index)">
+                  <DynamicIcon :icon="'Plus'" />
+                </el-button>
+              </div>
+            </div>
           </div>
         </div>
       </el-popover>
@@ -41,11 +53,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { UserStoreUtil } from 'hippo-desktop'
+import { ref, type Component } from 'vue'
 import { GridLayout, GridItem } from 'vue3-drr-grid-layout'
 import 'vue3-drr-grid-layout/dist/style.css'
 
 const isEidt = ref(false)
+
+const modules = ref([{ id: 'Home', icon: 'SvgIconHome', label: '首页', component: undefined }])
 
 //https://www.itxst.com/vue3-drr-grid-layout/tutorial.html
 const layout = ref([
@@ -67,6 +82,13 @@ const move = (i: number, newX: number, newY: number) => {
 //单元格移动后的事件
 const moved = (i: number, newX: number, newY: number) => {
   message.value = '移动中 i=' + i + ', X=' + newX + ', Y=' + newY
+}
+
+const add = (
+  module: { id: string; icon: string; label: string; component: Component | undefined},
+  index: number
+) => {
+  layout.value.push({ x: 0, y: 2, w: 12, h: 5, i: 4 })
 }
 </script>
 
