@@ -1,37 +1,26 @@
 <template>
-  <v-scale-screen
-    :width="scaleScreenOptions.width"
-    :height="scaleScreenOptions.height"
-    :delay="scaleScreenOptions.delay"
-    :boxStyle="scaleScreenOptions.boxStyle"
-    style="position: relative; z-index: 1"
-  >
+  <div class="topo-box" ref="topoBoxRef">
     <svg class="topo" id="topo-graph-2023-6-27-17-32-59">
       <defs></defs>
       <g></g>
     </svg>
-  </v-scale-screen>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { onUnmounted, ref, onMounted } from 'vue'
-import VScaleScreen from 'v-scale-screen'
 import dagreD3 from 'dagre-d3'
 import * as d3 from 'd3'
 import topoData from './data'
+import { useWindowResize,type  Dimensions  } from 'hippo-module-core'
 
 const graph = ref<any>(null)
+const graphSvg = ref<any>(null)
+const graphZoom= ref<any>(null)
 const tooltip = ref<any>(null)
 const topoAnimationInterval = ref()
+const topoBoxRef = ref()
 
-const scaleScreenOptions = {
-  width: 850,
-  height: 410,
-  delay: 100,
-  boxStyle: {
-    backgroundColor: 'transparent'
-  }
-}
 
 const drawNode = () => {
   topoData.nodes.forEach((item: any) => {
@@ -43,7 +32,7 @@ const drawNode = () => {
         <div style="position: relative;">
             <img src="${item.image}" style="width:100px;height:100px;pointer-events: all;"/>
         </div>
-        <div style="font-size:1.2rem;color:#f5faff;text-align:center;">
+        <div style="font-size:1rem;color:#f5faff;text-align:center;">
           ${item.name}
         </div>
       `,
@@ -105,7 +94,7 @@ const drawLineAnimationPath = (svg: any) => {
       path2.id = 'path2' + index
       path2.style['stroke'] = '#75b1df'
       path2.style['stroke-width'] =
-        parseFloat(path2.style['stroke-width']) - path2.style['stroke-width'] / 4
+        parseFloat(path2.style['stroke-width']) - path2.style['stroke-width'] / 2
       path2.style['opacity'] = 0.85
       path2.style['cursor'] = 'pointer'
 
@@ -118,7 +107,7 @@ const drawLineAnimationPath = (svg: any) => {
       path.setAttribute('class', 'animationPath')
       path.setAttribute('data-speed', speed)
       path.style['stroke-dasharray'] = '5,15'
-      path.style['stroke'] = '#2f80be'
+      path.style['stroke'] = '#187edd'
       path.style['stroke-miterlimit'] = 10
       path.style['stroke-width'] =
         parseFloat(path.style['stroke-width']) - path.style['stroke-width'] / 2.5
@@ -178,50 +167,58 @@ const createTooltip = () => {
   tooltip.value = d3
     .select('body')
     .append('div')
-    .style('opacity', 0.8)
-    .style('position', 'absolute')
+    .style('opacity', 0)
+    .style('position', 'fixed')
     .style('font-size', '12px')
     .style('text-align', 'center')
     .style('background-color', 'rgba(117,117,223,0.8)')
     .style('border-radius', '3px')
-    .style('box-shadow', 'rgb(3, 21, 100) 0px 0px 2px')
-    .style('padding', '10px')
-    .style('z-index', '9999')
+    .style('box-shadow', '0px 0px 2px rgba(3, 21, 100,0.2) ')
+    .style('padding', '8px')
+    .style('z-index', '99999')
     .style('cursor', 'pointer')
     .style('display', 'none')
 }
 
 const tipHidden = () => {
-  tooltip.value.transition().duration(400).style('opacity', 0).style('display', 'none')
+  tooltip.value.transition().duration(300).style('opacity', 0).style('display', 'none')
 }
 
 const tipVisible = (event: any, obj: any) => {
-  tooltip.value.transition().duration(400).style('opacity', 1).style('display', 'block')
+  tooltip.value.transition().duration(300).style('opacity', 1).style('display', 'block')
   tooltip.value
     .html(
       `<div>
                ${obj.label}
         </div>`
     )
-    .style('left', event.pageX + 10 + 'px')
-    .style('top', event.pageY + 10 + 'px')
+    .style('left', event.pageX + 2 + 'px')
+    .style('top', event.pageY + 2 + 'px')
+}
+
+const getTopoBoxDimensions = () => {
+  const boxWidth = topoBoxRef.value.clientWidth
+  const boxHeight = topoBoxRef.value.clientHeight
+  return {
+    boxWidth,
+    boxHeight
+  }
 }
 
 const calcOptimalSize = () => {
-  const boxWidth = scaleScreenOptions.width
-  const boxHeight = scaleScreenOptions.height
+  const { boxWidth, boxHeight } = getTopoBoxDimensions()
   const graphWidth = graph.value.graph().width
   const graphHeight = graph.value.graph().height
 
-  let scale: any = 0.2
+  let scale: any = 0.5
   while (true) {
     const newWidth = graphWidth * scale
     const newHeight = graphHeight * scale
 
     if (newWidth < boxWidth || newHeight < boxHeight) {
-      scale += 0.3
+      scale += 0.7
     } else {
-      scale -= 0.3
+      scale -= 0.7
       break
     }
   }
@@ -230,8 +227,7 @@ const calcOptimalSize = () => {
 }
 
 const zoomToFit = (svg: any, zoom: any) => {
-  const boxWidth = scaleScreenOptions.width
-  const boxHeight = scaleScreenOptions.height
+  const { boxWidth, boxHeight } = getTopoBoxDimensions()
   const graphWidth = graph.value.graph().width
   const graphHeight = graph.value.graph().height
 
@@ -269,22 +265,29 @@ const initGraphRender = () => {
     drawNode()
     drawLine()
 
-    const svg = d3.select('#topo-graph-2023-6-27-17-32-59')
-    const inner = svg.select('g')
+    graphSvg.value = d3.select('#topo-graph-2023-6-27-17-32-59')
+    const inner = graphSvg.value.select('g')
 
-    const zoom = d3.zoom().on('zoom', (e: any) => {
+    graphZoom.value = d3.zoom().on('zoom', (e: any) => {
       inner.attr('transform', e.transform)
     })
 
-    svg.call(zoom)
+    graphSvg.value.call(graphZoom.value)
     const render = new dagreD3.render()
     render(inner, graph.value)
 
-    drawLineAnimationPath(svg)
-    zoomToFit(svg, zoom)
-    initEvent(svg)
+    drawLineAnimationPath(graphSvg.value)
+    zoomToFit(graphSvg.value, graphZoom.value)
+    initEvent(graphSvg.value)
   }
 }
+
+useWindowResize({
+    initExe: false,
+    handle: (dimensions:Dimensions) => {
+      zoomToFit(graphSvg.value, graphZoom.value)
+    }
+  })
 
 onMounted(() => {
   initGraph()
