@@ -18,7 +18,7 @@
                 <div class="home-config-list-item-label">{{ item.label }}</div>
               </div>
               <div class="home-config-list-item-btns" v-if="isEidt">
-                <el-button link type="primary" @click="add(item, index)">
+                <el-button link type="primary" @click="addItem(item, index)">
                   <DynamicIcon :icon="'Plus'" />
                 </el-button>
               </div>
@@ -27,12 +27,14 @@
         </div>
       </el-popover>
 
-      <grid-layout v-model:layout="layout" :col-num="12" :row-height="30" style="width: 100%">
+      <grid-layout v-model:layout="layout" :col-num="12" :row-height="30">
         <template #default="{ gridItemProps }">
           <grid-item
-            v-for="item in layout"
+            v-for="(item, index) in layout"
             :key="item.i"
             v-bind="gridItemProps"
+            :min-w="1"
+            :max-w="12"
             :x="item.x"
             :y="item.y"
             :w="item.w"
@@ -44,9 +46,14 @@
             @move="move"
             @moved="moved"
           >
-            <template v-if="item.module && item.module && item.module.component">
-              <Component :is="item.module.component" />
-            </template>
+            <div class="home-card">
+              <div class="home-card-close" v-show="isEidt" @click="removeItem(item, index)">
+                <DynamicIcon icon="CircleClose" />
+              </div>
+              <template v-if="item.module && item.module && item.module.component">
+                <Component :is="item.module.component" />
+              </template>
+            </div>
           </grid-item>
         </template>
       </grid-layout>
@@ -55,26 +62,10 @@
 </template>
 
 <script setup lang="ts">
-interface HomeModule {
-  id: string
-  icon: string
-  label: string
-  component: Component | undefined
-}
-
-interface HomeLayoutType {
-  x: number
-  y: number
-  w: number
-  h: number
-  i: number
-  module: HomeModule
-}
-
-import { UserStoreUtil } from 'hippo-desktop'
 import { ref, type Component } from 'vue'
 import { GridLayout, GridItem } from 'vue3-drr-grid-layout'
 import 'vue3-drr-grid-layout/dist/style.css'
+import type { HomeModule, HomeLayout } from '../../types/home-types'
 
 const isEidt = ref(false)
 
@@ -84,11 +75,57 @@ const modules = ref<HomeModule[]>([
 ])
 
 //https://www.itxst.com/vue3-drr-grid-layout/tutorial.html
-const layout = ref<HomeLayoutType[]>([
-  { x: 0, y: 0, w: 3, h: 10, i: 0, module: { id: '', icon: '', label: '', component: undefined } },
-  { x: 3, y: 0, w: 3, h: 10, i: 1, module: { id: '', icon: '', label: '', component: undefined } },
-  { x: 6, y: 0, w: 3, h: 10, i: 2, module: { id: '', icon: '', label: '', component: undefined } },
-  { x: 9, y: 0, w: 3, h: 10, i: 3, module: { id: '', icon: '', label: '', component: undefined } },
+const layout = ref<HomeLayout[]>([
+  { x: 0, y: 0, w: 5, h: 6, i: 0, module: { id: '', icon: '', label: '', component: undefined } },
+  { x: 2, y: 6, w: 3, h: 12, i: 3, module: { id: '', icon: '', label: '', component: undefined } },
+  {
+    x: 0,
+    y: 12,
+    w: 2,
+    h: 6,
+    i: 4,
+    module: { id: 'module1', icon: 'SvgIconHome', label: '模块1', component: undefined }
+  },
+  {
+    x: 0,
+    y: 6,
+    w: 2,
+    h: 6,
+    i: 5,
+    module: { id: 'module2', icon: 'SvgIconHome', label: '模块2', component: undefined }
+  },
+  {
+    x: 5,
+    y: 0,
+    w: 3,
+    h: 6,
+    i: 6,
+    module: { id: 'module1', icon: 'SvgIconHome', label: '模块1', component: undefined }
+  },
+  {
+    x: 5,
+    y: 6,
+    w: 3,
+    h: 12,
+    i: 7,
+    module: { id: 'module1', icon: 'SvgIconHome', label: '模块1', component: undefined }
+  },
+  {
+    x: 8,
+    y: 0,
+    w: 4,
+    h: 9,
+    i: 8,
+    module: { id: 'module1', icon: 'SvgIconHome', label: '模块1', component: undefined }
+  },
+  {
+    x: 8,
+    y: 9,
+    w: 4,
+    h: 9,
+    i: 9,
+    module: { id: 'module1', icon: 'SvgIconHome', label: '模块1', component: undefined }
+  }
 ])
 
 //缩放事件
@@ -97,13 +134,30 @@ const resize = (i: number, newH: number, newW: number, newHPx: number, newWPx: n
 const move = (i: number, newX: number, newY: number) => {}
 //单元格移动后的事件
 const moved = (i: number, newX: number, newY: number) => {
-  console.info(JSON.stringify(layout.value))
 }
 
 //添加组件
-const add = (module: HomeModule, index: number) => {
-  const maxItem = layout.value[layout.value.length - 1]
+const addItem = (module: HomeModule, index: number) => {
+  let maxItem = null
+  if (layout.value.length == 0) {
+    maxItem = {
+      x: 0,
+      y: 0,
+      w: 0,
+      h: 10,
+      i: 0,
+      module: { id: '', icon: '', label: '', component: undefined }
+    }
+  } else {
+    maxItem = layout.value[layout.value.length - 1]
+  }
+
   layout.value.push({ x: 0, y: maxItem.y + 1, w: 12, h: 10, i: maxItem.i + 1, module })
+}
+
+//移除组件
+const removeItem = (module: HomeLayout, index: number) => {
+  layout.value.splice(index, 1)
 }
 </script>
 
