@@ -1,11 +1,12 @@
-import { onMounted, onUnmounted } from 'vue'
+import { onActivated, onDeactivated, onMounted, onUnmounted } from 'vue'
 import type { WindowResizeParams } from '../types/window-resize-types'
 import type { Dimensions } from '../types/dimensions-types'
 
 export function useWindowResize(
   params: WindowResizeParams = {
     initExe: false,
-    handle: (dimensions:Dimensions) => {}
+    useMounted: false,
+    handle: (dimensions: Dimensions) => {}
   }
 ) {
   const onResize = () => {
@@ -17,13 +18,23 @@ export function useWindowResize(
     params.handle && params.handle(dimensions)
   }
 
-  onMounted(() => {
-    window.addEventListener('resize', onResize)
+  if (params.useMounted) {
+    onMounted(() => {
+      window.addEventListener('resize', onResize)
+      params.initExe && onResize()
+    })
 
-    params.initExe && onResize()
-  })
+    onUnmounted(() => {
+      window.removeEventListener('resize', onResize)
+    })
+  } else {
+    onActivated(() => {
+      window.addEventListener('resize', onResize)
+      params.initExe && onResize()
+    })
 
-  onUnmounted(() => {
-    window.removeEventListener('resize', onResize)
-  })
+    onDeactivated(() => {
+      window.removeEventListener('resize', onResize)
+    })
+  }
 }

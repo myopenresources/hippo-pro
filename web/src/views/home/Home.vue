@@ -44,7 +44,9 @@
             @move="move"
             @moved="moved"
           >
-            {{ item.i }}
+            <template v-if="item.module && item.module && item.module.component">
+              <Component :is="item.module.component" />
+            </template>
           </grid-item>
         </template>
       </grid-layout>
@@ -53,6 +55,22 @@
 </template>
 
 <script setup lang="ts">
+interface HomeModule {
+  id: string
+  icon: string
+  label: string
+  component: Component | undefined
+}
+
+interface HomeLayoutType {
+  x: number
+  y: number
+  w: number
+  h: number
+  i: number
+  module: HomeModule
+}
+
 import { UserStoreUtil } from 'hippo-desktop'
 import { ref, type Component } from 'vue'
 import { GridLayout, GridItem } from 'vue3-drr-grid-layout'
@@ -60,35 +78,32 @@ import 'vue3-drr-grid-layout/dist/style.css'
 
 const isEidt = ref(false)
 
-const modules = ref([{ id: 'Home', icon: 'SvgIconHome', label: '首页', component: undefined }])
-
-//https://www.itxst.com/vue3-drr-grid-layout/tutorial.html
-const layout = ref([
-  { x: 0, y: 0, w: 2, h: 2, i: 0 },
-  { x: 2, y: 0, w: 2, h: 2, i: 1 },
-  { x: 4, y: 0, w: 2, h: 2, i: 2 },
-  { x: 0, y: 1, w: 6, h: 2, i: 3 }
+const modules = ref<HomeModule[]>([
+  { id: 'module1', icon: 'SvgIconHome', label: '模块1', component: undefined },
+  { id: 'module2', icon: 'SvgIconHome', label: '模块2', component: undefined }
 ])
 
-const message = ref('')
+//https://www.itxst.com/vue3-drr-grid-layout/tutorial.html
+const layout = ref<HomeLayoutType[]>([
+  { x: 0, y: 0, w: 3, h: 10, i: 0, module: { id: '', icon: '', label: '', component: undefined } },
+  { x: 3, y: 0, w: 3, h: 10, i: 1, module: { id: '', icon: '', label: '', component: undefined } },
+  { x: 6, y: 0, w: 3, h: 10, i: 2, module: { id: '', icon: '', label: '', component: undefined } },
+  { x: 9, y: 0, w: 3, h: 10, i: 3, module: { id: '', icon: '', label: '', component: undefined } },
+])
+
 //缩放事件
-const resize = (i: number, newH: number, newW: number, newHPx: number, newWPx: number) => {
-  message.value = '缩放中 i=' + i + ', X=' + newHPx + ', Y=' + newWPx
-}
+const resize = (i: number, newH: number, newW: number, newHPx: number, newWPx: number) => {}
 //单元格移动中的事件
-const move = (i: number, newX: number, newY: number) => {
-  message.value = '移动中 i=' + i + ', X=' + newX + ', Y=' + newY
-}
+const move = (i: number, newX: number, newY: number) => {}
 //单元格移动后的事件
 const moved = (i: number, newX: number, newY: number) => {
-  message.value = '移动中 i=' + i + ', X=' + newX + ', Y=' + newY
+  console.info(JSON.stringify(layout.value))
 }
 
-const add = (
-  module: { id: string; icon: string; label: string; component: Component | undefined},
-  index: number
-) => {
-  layout.value.push({ x: 0, y: 2, w: 12, h: 5, i: 4 })
+//添加组件
+const add = (module: HomeModule, index: number) => {
+  const maxItem = layout.value[layout.value.length - 1]
+  layout.value.push({ x: 0, y: maxItem.y + 1, w: 12, h: 10, i: maxItem.i + 1, module })
 }
 </script>
 

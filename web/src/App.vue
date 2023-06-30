@@ -1,10 +1,9 @@
-
 <template>
-   <el-config-provider :locale="locale">
-      <DesktopConfigProvider :sysConfig="sysConfig">
-         <RouterView />
-      </DesktopConfigProvider>
-   </el-config-provider>
+  <el-config-provider :locale="locale">
+    <DesktopConfigProvider :sysConfig="sysConfig">
+      <RouterView />
+    </DesktopConfigProvider>
+  </el-config-provider>
 </template>
 
 <script setup lang="ts">
@@ -12,15 +11,16 @@ import { DesktopConfigProvider, type SysConfig } from 'hippo-desktop'
 import defaultAvatar from '@/assets/img/default-avatar.png'
 // @ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
-import { ref } from 'vue';
-import registerHttpInterceptor from './interceptors/http-interceptor';
-import router from './router';
+import { ref } from 'vue'
+import registerHttpInterceptor from './interceptors/http-interceptor'
+import router from './router'
+import { LogUtil } from 'hippo-module-core'
 const locale = ref(zhCn)
 
 const sysConfig: SysConfig = {
   defaultStyleTheme: 'light',
   defaultTheme: 'lightBlue',
-  logo: "",
+  logo: '',
   title: '桌面',
   loginPath: '/Login',
   homePath: '/Home',
@@ -28,7 +28,11 @@ const sysConfig: SysConfig = {
 }
 
 registerHttpInterceptor(router)
+
+LogUtil.info({
+  moduleName: 'app',
+  msg: '欢迎使用Hippo pro，下载：https://gitee.com/jani/hippo-pro'
+})
 </script>
-     
 
 <style scoped lang="scss"></style>

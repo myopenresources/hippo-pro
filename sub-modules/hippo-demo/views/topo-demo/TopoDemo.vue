@@ -12,15 +12,14 @@ import { onUnmounted, ref, onMounted } from 'vue'
 import dagreD3 from 'dagre-d3'
 import * as d3 from 'd3'
 import topoData from './data'
-import { useWindowResize,type  Dimensions  } from 'hippo-module-core'
+import { useWindowResize, type Dimensions } from 'hippo-module-core'
 
 const graph = ref<any>(null)
 const graphSvg = ref<any>(null)
-const graphZoom= ref<any>(null)
+const graphZoom = ref<any>(null)
 const tooltip = ref<any>(null)
 const topoAnimationInterval = ref()
 const topoBoxRef = ref()
-
 
 const drawNode = () => {
   topoData.nodes.forEach((item: any) => {
@@ -283,11 +282,11 @@ const initGraphRender = () => {
 }
 
 useWindowResize({
-    initExe: false,
-    handle: (dimensions:Dimensions) => {
-      zoomToFit(graphSvg.value, graphZoom.value)
-    }
-  })
+  initExe: false,
+  handle: (dimensions: Dimensions) => {
+    zoomToFit(graphSvg.value, graphZoom.value)
+  }
+})
 
 onMounted(() => {
   initGraph()
