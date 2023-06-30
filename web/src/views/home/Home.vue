@@ -51,7 +51,7 @@
                 <DynamicIcon icon="CircleClose" />
               </div>
               <template v-if="item.module && item.module && item.module.component">
-                <Component :is="item.module.component" />
+                <Component :is="item.module.component" :data="item.module.data" />
               </template>
             </div>
           </grid-item>
@@ -62,29 +62,84 @@
 </template>
 
 <script setup lang="ts">
-import { ref, type Component } from 'vue'
+import { ref, shallowRef } from 'vue'
 import { GridLayout, GridItem } from 'vue3-drr-grid-layout'
 import 'vue3-drr-grid-layout/dist/style.css'
 import type { HomeModule, HomeLayout } from '../../types/home-types'
+import TextContent from './components/TextContent.vue'
 
 const isEidt = ref(false)
 
-const modules = ref<HomeModule[]>([
-  { id: 'module1', icon: 'SvgIconHome', label: '模块1', component: undefined },
-  { id: 'module2', icon: 'SvgIconHome', label: '模块2', component: undefined }
+const modules = shallowRef<HomeModule[]>([
+  {
+    id: 'module1',
+    icon: 'SvgIconHome',
+    label: '模块1',
+    component: TextContent,
+    data: {
+      text: '模块1'
+    }
+  },
+  {
+    id: 'module2',
+    icon: 'SvgIconHome',
+    label: '模块2',
+    component: TextContent,
+    data: {
+      text: '模块1'
+    }
+  }
 ])
 
 //https://www.itxst.com/vue3-drr-grid-layout/tutorial.html
 const layout = ref<HomeLayout[]>([
-  { x: 0, y: 0, w: 5, h: 6, i: 0, module: { id: '', icon: '', label: '', component: undefined } },
-  { x: 2, y: 6, w: 3, h: 12, i: 3, module: { id: '', icon: '', label: '', component: undefined } },
+  {
+    x: 0,
+    y: 0,
+    w: 5,
+    h: 6,
+    i: 0,
+    module: {
+      id: '',
+      icon: '',
+      label: '',
+      component: TextContent,
+      data: {
+        text: '模块1'
+      }
+    }
+  },
+  {
+    x: 2,
+    y: 6,
+    w: 3,
+    h: 12,
+    i: 3,
+    module: {
+      id: '',
+      icon: '',
+      label: '',
+      component: TextContent,
+      data: {
+        text: '模块1'
+      }
+    }
+  },
   {
     x: 0,
     y: 12,
     w: 2,
     h: 6,
     i: 4,
-    module: { id: 'module1', icon: 'SvgIconHome', label: '模块1', component: undefined }
+    module: {
+      id: 'module1',
+      icon: 'SvgIconHome',
+      label: '模块1',
+      component: TextContent,
+      data: {
+        text: '模块1'
+      }
+    }
   },
   {
     x: 0,
@@ -92,7 +147,15 @@ const layout = ref<HomeLayout[]>([
     w: 2,
     h: 6,
     i: 5,
-    module: { id: 'module2', icon: 'SvgIconHome', label: '模块2', component: undefined }
+    module: {
+      id: 'module2',
+      icon: 'SvgIconHome',
+      label: '模块2',
+      component: undefined,
+      data: {
+        text: '模块1'
+      }
+    }
   },
   {
     x: 5,
@@ -100,7 +163,15 @@ const layout = ref<HomeLayout[]>([
     w: 3,
     h: 6,
     i: 6,
-    module: { id: 'module1', icon: 'SvgIconHome', label: '模块1', component: undefined }
+    module: {
+      id: 'module1',
+      icon: 'SvgIconHome',
+      label: '模块1',
+      component: undefined,
+      data: {
+        text: '模块1'
+      }
+    }
   },
   {
     x: 5,
@@ -108,7 +179,15 @@ const layout = ref<HomeLayout[]>([
     w: 3,
     h: 12,
     i: 7,
-    module: { id: 'module1', icon: 'SvgIconHome', label: '模块1', component: undefined }
+    module: {
+      id: 'module1',
+      icon: 'SvgIconHome',
+      label: '模块1',
+      component: undefined,
+      data: {
+        text: '模块1'
+      }
+    }
   },
   {
     x: 8,
@@ -116,7 +195,15 @@ const layout = ref<HomeLayout[]>([
     w: 4,
     h: 9,
     i: 8,
-    module: { id: 'module1', icon: 'SvgIconHome', label: '模块1', component: undefined }
+    module: {
+      id: 'module1',
+      icon: 'SvgIconHome',
+      label: '模块1',
+      component: undefined,
+      data: {
+        text: '模块1'
+      }
+    }
   },
   {
     x: 8,
@@ -124,7 +211,15 @@ const layout = ref<HomeLayout[]>([
     w: 4,
     h: 9,
     i: 9,
-    module: { id: 'module1', icon: 'SvgIconHome', label: '模块1', component: undefined }
+    module: {
+      id: 'module1',
+      icon: 'SvgIconHome',
+      label: '模块1',
+      component: undefined,
+      data: {
+        text: '模块1'
+      }
+    }
   }
 ])
 
@@ -133,8 +228,7 @@ const resize = (i: number, newH: number, newW: number, newHPx: number, newWPx: n
 //单元格移动中的事件
 const move = (i: number, newX: number, newY: number) => {}
 //单元格移动后的事件
-const moved = (i: number, newX: number, newY: number) => {
-}
+const moved = (i: number, newX: number, newY: number) => {}
 
 //添加组件
 const addItem = (module: HomeModule, index: number) => {

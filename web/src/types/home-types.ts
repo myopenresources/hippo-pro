@@ -5,6 +5,7 @@ interface HomeModule {
   icon: string
   label: string
   component: Component | undefined
+  data: any
 }
 
 interface HomeLayout {
