@@ -4,7 +4,6 @@ import type { RequestPaginationResultData, RequestParams, RequestResultData } fr
 export default class MsgApi {
 
     static deleteMsgByIds(ids: string[]) {
-        console.info(ids)
         return new Promise<RequestResultData<Object>>((resolve) => {
             resolve({
                 status: 200,
@@ -16,7 +15,6 @@ export default class MsgApi {
     }
 
     static getMsgListByParams(params: RequestParams) {
-        console.info(params)
         return new Promise<RequestPaginationResultData<MsgInfo[]>>((resolve) => {
             resolve({
                 status: 200,

@@ -6,12 +6,26 @@
           <DynamicIcon icon="SvgIconStartMenu" />
         </div>
 
-        <el-select class="desktop-toolbar-inner-left-search-box" :teleported="false" v-model="keywork" filterable remote
-          clearable reserve-keyword placeholder="搜索" :remote-method="search" :loading="searchLoading">
-          <el-option v-for="item in searchList" :key="item.id" :label="item.label" :value="item.id"
-            @click="selectSearchItem(item)" />
+        <el-select
+          class="desktop-toolbar-inner-left-search-box"
+          :teleported="false"
+          v-model="keywork"
+          filterable
+          remote
+          clearable
+          reserve-keyword
+          placeholder="搜索"
+          :remote-method="search"
+          :loading="searchLoading"
+        >
+          <el-option
+            v-for="item in searchList"
+            :key="item.id"
+            :label="item.label"
+            :value="item.id"
+            @click="selectSearchItem(item)"
+          />
         </el-select>
-
       </div>
       <div class="desktop-toolbar-inner-center" ref="toolbarCenterRef" :style="toolbarCenterStyle">
         <div class="desktop-toolbar-inner-center-divider"></div>
@@ -24,8 +38,14 @@
         <div class="desktop-toolbar-inner-right-item" @click="fullscreenToggle">
           <DynamicIcon :icon="fullscreenState ? 'SvgIconFullScreenExit' : 'FullScreen'" />
         </div>
-        <el-popover placement="top" :width="265" trigger="click" :teleported="false" ref="themePopoverRef"
-          :popper-style="'height:11rem'">
+        <el-popover
+          placement="top"
+          :width="265"
+          trigger="click"
+          :teleported="false"
+          ref="themePopoverRef"
+          :popper-style="'height:22.5rem'"
+        >
           <template #reference>
             <div class="desktop-toolbar-inner-right-item">
               <DynamicIcon icon="SvgIconTheme" />
@@ -35,8 +55,12 @@
             <div class="desktop-toolbar-inner-popover-header">主题设置</div>
             <div class="desktop-toolbar-inner-popover-themes">
               <div class="desktop-toolbar-inner-popover-themes-styles">
-                <div class="popover-themes-styles-item" v-for="(style, index) in themeSettingConst.styles" :key="index"
-                  @click="setStyleTheme(style)">
+                <div
+                  class="popover-themes-styles-item"
+                  v-for="(style, index) in themeSettingConst.styles"
+                  :key="index"
+                  @click="setStyleTheme(style)"
+                >
                   <img :src="style.img" />
                   <div class="popover-themes-styles-item-label">{{ style.styleThemeLabel }}</div>
                   <div class="is-check" v-show="style.styleThemeName === currentStyleTheme">
@@ -45,24 +69,44 @@
                 </div>
               </div>
               <div class="desktop-toolbar-inner-popover-themes-colors">
-                <div class="popover-themes-colors-item" v-for="(theme, index) in themeSettingConst.themes" :key="index"
+                <div
+                  class="popover-themes-colors-item"
+                  v-for="(theme, index) in themeSettingConst.themes"
+                  :key="index"
                   :style="{
                     backgroundColor: theme.color
-                  }" @click="setTheme(theme)">
+                  }"
+                  @click="setTheme(theme)"
+                >
                   <div class="is-check" v-show="currentTheme == theme.themeName">
                     <DynamicIcon icon="Check" />
                   </div>
                 </div>
               </div>
+              <div class="desktop-toolbar-inner-popover-themes-bg">
+                <img :src="themeBg" />
+                <el-upload action="" :http-request="bgUploadHttpRequest" :show-file-list="false">
+                  <div class="upload-btn">更换背景图片</div>
+                </el-upload>
+              </div>
             </div>
           </div>
         </el-popover>
 
-        <el-popover placement="top" :width="335" trigger="click" :teleported="false" ref="msgPopoverRef"
-          :popper-style="'margin-left:-2px'">
+        <el-popover
+          placement="top"
+          :width="335"
+          trigger="click"
+          :teleported="false"
+          ref="msgPopoverRef"
+          :popper-style="'margin-left:-2px'"
+        >
           <template #reference>
             <div class="desktop-toolbar-inner-right-item">
-              <el-badge :is-dot="messages.length > 0" class="desktop-toolbar-inner-right-item-badge">
+              <el-badge
+                :is-dot="messages.length > 0"
+                class="desktop-toolbar-inner-right-item-badge"
+              >
                 <DynamicIcon icon="Bell" />
               </el-badge>
             </div>
@@ -74,8 +118,12 @@
             </div>
             <div class="desktop-toolbar-inner-popover-msgs">
               <div class="desktop-toolbar-inner-popover-msgs-list">
-                <div class="desktop-toolbar-inner-popover-msgs-list-item" v-for="(msg, index) in messages" :index="index"
-                  @click="toMsg(msg)">
+                <div
+                  class="desktop-toolbar-inner-popover-msgs-list-item"
+                  v-for="(msg, index) in messages"
+                  :index="index"
+                  @click="toMsg(msg)"
+                >
                   <div class="popover-msg-header">{{ msg.msgTitle }}</div>
                   <div class="popover-msg-footer">
                     <div>{{ msg.msgType }}</div>
@@ -121,10 +169,10 @@
 import {
   DynamicIcon,
   useElConfirmMessageBox,
+  useElSuccessMessage,
   useElWarningMessage,
   useEventBusEmit
 } from 'hippo-module-core'
-import { Search } from '@element-plus/icons-vue'
 import { computed, onMounted, ref } from 'vue'
 import { themeSettingConst, styleNameConst } from '../../consts'
 import DesktopToolbarTabs from './DesktopToolbarTabs.vue'
@@ -134,9 +182,13 @@ import { useDark, useToggle } from '@vueuse/core'
 import { useDesktopToolbar } from '../../hooks'
 import screenfull from 'screenfull'
 import UpdatePwdDialog from './UpdatePwdDialog.vue'
-import { type MenuInfo, type MsgInfo } from '../../types'
-import type { RequestResultData } from "hippo-module-core";
-import { MsgApi } from '../../api'
+import { type MenuInfo, type MsgInfo, type UserDesktopBg } from '../../types'
+import type { RequestResultData } from 'hippo-module-core'
+import { MsgApi, UserApi } from '../../api'
+import type { UploadProps, UploadRequestOptions } from 'element-plus'
+import bgPreviewImg from '../../assets/img/desktop-layout/bg-preview.jpg'
+
+const emit = defineEmits(['updateDesktopBg'])
 
 const currentTheme = ref(ThemeStoreUtil.getTheme())
 const currentStyleTheme = ref(ThemeStoreUtil.getStyleTheme())
@@ -163,9 +215,9 @@ const userAvatar = UserStoreUtil.getUserInfo().avatar
 
 const menus = UserStoreUtil.getMenus()
 
+const themeBg = ref(bgPreviewImg)
+
 const messages = ref<MsgInfo[]>([])
-
-
 
 const toolbarCenterStyle = computed(() => {
   if (toolbarLeftRef.value && toolbarRightRef.value) {
@@ -201,16 +253,16 @@ const userDropdownCommand = (command: string) => {
 }
 
 const toStartMenu = () => {
-  router.push("/StartMenu")
+  router.push('/StartMenu')
 }
 
 const toMsg = (msg: any) => {
   msgPopoverRef.value.hide()
-  router.push('/MsgInfo/id='+msg.id)
+  router.push('/MsgInfo/id=' + msg.id)
 }
 
-const toMsgList = ()=>{
-  router.push("/MsgList")
+const toMsgList = () => {
+  router.push('/MsgList')
 }
 
 const setStyleTheme = (style: any) => {
@@ -249,6 +301,14 @@ const init = () => {
   }
 }
 
+const getUserDesktopBgPreview = () => {
+  UserApi.getUserDesktopBgPreview().then((res: RequestResultData<UserDesktopBg>) => {
+    if (res.success) {
+      themeBg.value = res.data.bgUrl
+    }
+  })
+}
+
 const search = (query: string) => {
   if (query) {
     searchLoading.value = true
@@ -281,9 +341,27 @@ const getMsgList = () => {
   })
 }
 
+const bgUploadHttpRequest = (options: UploadRequestOptions) => {
+  if (options.file.type !== 'image/jpeg' && options.file.type !== 'image/png') {
+    useElWarningMessage('请选择jpeg/png格式的图片！')
+    return false
+  } else if (options.file.size / 1024 / 1024 > 10) {
+    useElWarningMessage('图片不能超过10M！')
+    return false
+  }
+
+  UserApi.userDesktopBgUpload(options).then((res: RequestResultData<UserDesktopBg>) => {
+    if (res.success) {
+      emit('updateDesktopBg', res.data.bgUrl)
+      getUserDesktopBgPreview()
+      useElSuccessMessage(res.msg)
+    }
+  })
+}
 
 onMounted(() => {
   init()
+  getUserDesktopBgPreview()
   getMsgList()
 })
 </script>

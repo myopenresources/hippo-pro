@@ -28,8 +28,8 @@
 import type { FormInstance } from 'element-plus'
 import { reactive, ref } from 'vue'
 import { UserApi } from '../../api';
-import type { RequestResultData } from '../../types';
 import { useElSuccessMessage } from 'hippo-module-core/hooks';
+import type { RequestResultData } from 'hippo-module-core/types';
 
 const updatePwdVisible = ref(false)
 
