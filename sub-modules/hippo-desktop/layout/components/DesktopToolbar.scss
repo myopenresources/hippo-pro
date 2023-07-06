@@ -296,17 +296,61 @@
         }
         &-bg {
           width: 100%;
-          height: 9rem;
+          height: 10rem;
           margin-top: 0.5rem;
-
           img {
-            height: 8.1rem;
+            height: 8.9rem;
           }
 
           .upload-btn {
             color: var(--el-color-primary);
             &:hover {
               opacity: 0.65;
+            }
+          }
+        }
+        &-blur {
+          margin-top: 1rem;
+          width: 100%;
+          :deep(.el-input-number) {
+            margin-top: 0.5rem;
+            width: 100%;
+            .el-input__wrapper {
+              background-color: transparent;
+            }
+          }
+
+          .progress-box {
+            display: flex;
+            align-items: center;
+            height:15px;
+            margin-top: 0.5rem;
+            &-btn {
+              width: 15px;
+              height:15px;
+              font-size: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: var(--el-border);
+              border-radius: 2px;
+              cursor: pointer;
+              transition: 0.35s;
+              &:hover{
+                color: var(--el-color-primary);
+                border-color: var(--el-color-primary);
+              }
+            }
+            &-bar {
+              width: calc(100% - 51px);
+              margin-left: 5px;
+              margin-right: 5px;
+              :deep(.el-progress-bar) {
+                .el-progress-bar__innerText {
+                  font-size: 10px;
+                  color: var(--el-text-color-primary);
+                }
+              }
             }
           }
         }
@@ -328,8 +372,6 @@
         }
       }
     }
-
-
 
     :deep(.el-popper) {
       background-color: var(--desktop-layout-toolbar-popover-bg);
@@ -361,12 +403,12 @@
       .el-select-dropdown {
         background-color: var(--desktop-layout-toolbar-popover-bg);
 
-        .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
+        .el-select-dropdown__item.hover,
+        .el-select-dropdown__item:hover {
           color: var(--el-text-color-primary);
           background: var(--desktop-layout-toolbar-dropdown-item-hover-bg);
         }
       }
-
     }
   }
 }

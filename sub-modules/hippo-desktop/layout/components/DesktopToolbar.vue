@@ -44,7 +44,7 @@
           trigger="click"
           :teleported="false"
           ref="themePopoverRef"
-          :popper-style="'height:22.5rem'"
+          :popper-style="'height:26rem'"
         >
           <template #reference>
             <div class="desktop-toolbar-inner-right-item">
@@ -88,6 +88,20 @@
                 <el-upload action="" :http-request="bgUploadHttpRequest" :show-file-list="false">
                   <div class="upload-btn">更换背景图片</div>
                 </el-upload>
+              </div>
+              <div class="desktop-toolbar-inner-popover-themes-blur">
+                <div>背景毛玻璃</div>
+                <div class="progress-box">
+                  <div class="progress-box-btn" @click="themeBgBlurMinus">
+                    <DynamicIcon icon="Minus" />
+                  </div>
+                  <div class="progress-box-bar">
+                    <el-progress :percentage="themeBgBlur * 2" :stroke-width="16" :text-inside="true" />
+                  </div>
+                  <div class="progress-box-btn" @click="themeBgBlurAdd">
+                    <DynamicIcon icon="Plus" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -188,7 +202,7 @@ import { MsgApi, UserApi } from '../../api'
 import type { UploadProps, UploadRequestOptions } from 'element-plus'
 import bgPreviewImg from '../../assets/img/desktop-layout/bg-preview.jpg'
 
-const emit = defineEmits(['updateDesktopBg'])
+const emit = defineEmits(['updateDesktopBg', 'updateDesktopBlur'])
 
 const currentTheme = ref(ThemeStoreUtil.getTheme())
 const currentStyleTheme = ref(ThemeStoreUtil.getStyleTheme())
@@ -216,6 +230,8 @@ const userAvatar = UserStoreUtil.getUserInfo().avatar
 const menus = UserStoreUtil.getMenus()
 
 const themeBg = ref(bgPreviewImg)
+
+const themeBgBlur = ref(ThemeStoreUtil.getThemeBgBlur())
 
 const messages = ref<MsgInfo[]>([])
 
@@ -357,6 +373,24 @@ const bgUploadHttpRequest = (options: UploadRequestOptions) => {
       useElSuccessMessage(res.msg)
     }
   })
+}
+
+const themeBgBlurAdd = () => {
+  if (themeBgBlur.value == 50) {
+    return
+  }
+  themeBgBlur.value += 1
+  ThemeStoreUtil.setThemeBgBlur(themeBgBlur.value.toString())
+  emit('updateDesktopBlur', themeBgBlur.value)
+}
+
+const themeBgBlurMinus = () => {
+  if (themeBgBlur.value == 0) {
+    return
+  }
+  themeBgBlur.value -= 1
+  ThemeStoreUtil.setThemeBgBlur(themeBgBlur.value.toString())
+  emit('updateDesktopBlur', themeBgBlur.value)
 }
 
 onMounted(() => {

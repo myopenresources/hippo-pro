@@ -1,7 +1,10 @@
 <template>
   <div class="desktop-layout" :style="desktopLayoutStyle">
-    <div class="desktop-layout-inner">
-      <DesktopToolbar @update-desktop-bg="updateDesktopBg" />
+    <div class="desktop-layout-inner" :style="desktopLayoutInnerStyle">
+      <DesktopToolbar
+        @update-desktop-bg="updateDesktopBg"
+        @update-desktop-blur="updateDesktopBlur"
+      />
       <DesktopMain />
     </div>
   </div>
@@ -15,13 +18,22 @@ import { UserApi } from '../../api'
 import type { RequestResultData } from 'hippo-module-core/types'
 import type { UserDesktopBg } from '../../types'
 import bgImg from '../../assets/img/desktop-layout/bg.jpg'
+import { ThemeStoreUtil } from '../../utils'
 
 const desktopLayoutStyle = ref({
   backgroundImage: `url(${bgImg})`
 })
 
+const desktopLayoutInnerStyle = ref({
+  backdropFilter: `blur(${ThemeStoreUtil.getThemeBgBlur()}px)`
+})
+
 const updateDesktopBg = (bgUrl: string) => {
   desktopLayoutStyle.value.backgroundImage = `url(${bgUrl})`
+}
+
+const updateDesktopBlur = (bgBlur: number) => {
+  desktopLayoutInnerStyle.value.backdropFilter = `blur(${bgBlur}px)`
 }
 
 onMounted(() => {
