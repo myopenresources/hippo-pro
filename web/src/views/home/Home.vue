@@ -29,23 +29,9 @@
 
       <grid-layout v-model:layout="layout" :col-num="12" :row-height="30">
         <template #default="{ gridItemProps }">
-          <grid-item
-            v-for="(item, index) in layout"
-            :key="item.i"
-            v-bind="gridItemProps"
-            :min-w="1"
-            :max-w="12"
-            :x="item.x"
-            :y="item.y"
-            :w="item.w"
-            :h="item.h"
-            :i="item.i"
-            :is-draggable="isEidt"
-            :is-resizable="isEidt"
-            @resize="resize"
-            @move="move"
-            @moved="moved"
-          >
+          <grid-item v-for="(item, index) in layout" :key="item.i" v-bind="gridItemProps" :min-w="1" :max-w="12"
+            :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :is-draggable="isEidt" :is-resizable="isEidt"
+            @resize="resize" @move="move" @moved="moved">
             <div class="home-card">
               <div class="home-card-close" v-show="isEidt" @click="removeItem(item, index)">
                 <DynamicIcon icon="CircleClose" />
@@ -62,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, shallowRef } from 'vue'
+import { ref, shallowRef, markRaw } from 'vue'
 import { GridLayout, GridItem } from 'vue3-drr-grid-layout'
 import 'vue3-drr-grid-layout/dist/style.css'
 import type { HomeModule, HomeLayout } from '../../types/home-types'
@@ -75,7 +61,7 @@ const modules = shallowRef<HomeModule[]>([
     id: 'module1',
     icon: 'SvgIconHome',
     label: '模块1',
-    component: TextContent,
+    component: markRaw(TextContent),
     data: {
       text: '模块1'
     }
@@ -84,7 +70,7 @@ const modules = shallowRef<HomeModule[]>([
     id: 'module2',
     icon: 'SvgIconHome',
     label: '模块2',
-    component: TextContent,
+    component: markRaw(TextContent),
     data: {
       text: '模块1'
     }
@@ -100,10 +86,10 @@ const layout = ref<HomeLayout[]>([
     h: 6,
     i: 0,
     module: {
-      id: '',
-      icon: '',
-      label: '',
-      component: TextContent,
+      id: '1',
+      icon: 'SvgIconHome',
+      label: '模块1',
+      component: markRaw(TextContent),
       data: {
         text: '模块1'
       }
@@ -116,12 +102,12 @@ const layout = ref<HomeLayout[]>([
     h: 12,
     i: 3,
     module: {
-      id: '',
-      icon: '',
-      label: '',
-      component: TextContent,
+      id: '2',
+      icon: 'SvgIconHome',
+      label: '模块2',
+      component: markRaw(TextContent),
       data: {
-        text: '模块1'
+        text: '模块2'
       }
     }
   },
@@ -132,12 +118,12 @@ const layout = ref<HomeLayout[]>([
     h: 6,
     i: 4,
     module: {
-      id: 'module1',
+      id: '3',
       icon: 'SvgIconHome',
-      label: '模块1',
-      component: TextContent,
+      label: '模块3',
+      component: markRaw(TextContent),
       data: {
-        text: '模块1'
+        text: '模块3'
       }
     }
   },
@@ -148,12 +134,12 @@ const layout = ref<HomeLayout[]>([
     h: 6,
     i: 5,
     module: {
-      id: 'module2',
+      id: '4',
       icon: 'SvgIconHome',
-      label: '模块2',
-      component: undefined,
+      label: '模块4',
+      component: markRaw(TextContent),
       data: {
-        text: '模块1'
+        text: '模块4'
       }
     }
   },
@@ -164,12 +150,12 @@ const layout = ref<HomeLayout[]>([
     h: 6,
     i: 6,
     module: {
-      id: 'module1',
+      id: '5',
       icon: 'SvgIconHome',
-      label: '模块1',
-      component: undefined,
+      label: '模块5',
+      component: markRaw(TextContent),
       data: {
-        text: '模块1'
+        text: '模块5'
       }
     }
   },
@@ -180,12 +166,12 @@ const layout = ref<HomeLayout[]>([
     h: 12,
     i: 7,
     module: {
-      id: 'module1',
+      id: '6',
       icon: 'SvgIconHome',
-      label: '模块1',
-      component: undefined,
+      label: '模块6',
+      component: markRaw(TextContent),
       data: {
-        text: '模块1'
+        text: '模块6'
       }
     }
   },
@@ -196,12 +182,12 @@ const layout = ref<HomeLayout[]>([
     h: 9,
     i: 8,
     module: {
-      id: 'module1',
+      id: '7',
       icon: 'SvgIconHome',
-      label: '模块1',
-      component: undefined,
+      label: '模块7',
+      component: markRaw(TextContent),
       data: {
-        text: '模块1'
+        text: '模块7'
       }
     }
   },
@@ -212,23 +198,23 @@ const layout = ref<HomeLayout[]>([
     h: 9,
     i: 9,
     module: {
-      id: 'module1',
+      id: '8',
       icon: 'SvgIconHome',
-      label: '模块1',
-      component: undefined,
+      label: '模块8',
+      component: markRaw(TextContent),
       data: {
-        text: '模块1'
+        text: '模块8'
       }
     }
   }
 ])
 
 //缩放事件
-const resize = (i: number, newH: number, newW: number, newHPx: number, newWPx: number) => {}
+const resize = (i: number, newH: number, newW: number, newHPx: number, newWPx: number) => { }
 //单元格移动中的事件
-const move = (i: number, newX: number, newY: number) => {}
+const move = (i: number, newX: number, newY: number) => { }
 //单元格移动后的事件
-const moved = (i: number, newX: number, newY: number) => {}
+const moved = (i: number, newX: number, newY: number) => { }
 
 //添加组件
 const addItem = (module: HomeModule, index: number) => {
