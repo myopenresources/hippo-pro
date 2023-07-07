@@ -3,7 +3,12 @@
 
 ## 页面
 <img src="./snapshot/1.png"/><br/>
-<img src="./snapshot/2.png"/>
+<img src="./snapshot/2.png"/><br/>
+<img src="./snapshot/3.png"/><br/>
+<img src="./snapshot/4.png"/><br/>
+<img src="./snapshot/5.png"/><br/>
+<img src="./snapshot/6.png"/><br/>
+<img src="./snapshot/7.png"/><br/>
 
 ## 初始化
 
