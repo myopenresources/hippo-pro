@@ -38,75 +38,9 @@
         <div class="desktop-toolbar-inner-right-item" @click="fullscreenToggle">
           <DynamicIcon :icon="fullscreenState ? 'SvgIconFullScreenExit' : 'FullScreen'" />
         </div>
-        <el-popover
-          placement="top"
-          :width="265"
-          trigger="click"
-          :teleported="false"
-          ref="themePopoverRef"
-          :popper-style="'height:26rem'"
-        >
-          <template #reference>
-            <div class="desktop-toolbar-inner-right-item">
-              <DynamicIcon icon="SvgIconTheme" />
-            </div>
-          </template>
-          <div class="desktop-toolbar-inner-popover">
-            <div class="desktop-toolbar-inner-popover-header">主题设置</div>
-            <div class="desktop-toolbar-inner-popover-themes">
-              <div class="desktop-toolbar-inner-popover-themes-styles">
-                <div
-                  class="popover-themes-styles-item"
-                  v-for="(style, index) in themeSettingConst.styles"
-                  :key="index"
-                  @click="setStyleTheme(style)"
-                >
-                  <img :src="style.img" />
-                  <div class="popover-themes-styles-item-label">{{ style.styleThemeLabel }}</div>
-                  <div class="is-check" v-show="style.styleThemeName === currentStyleTheme">
-                    <DynamicIcon icon="Check" />
-                  </div>
-                </div>
-              </div>
-              <div class="desktop-toolbar-inner-popover-themes-colors">
-                <div
-                  class="popover-themes-colors-item"
-                  v-for="(theme, index) in themeSettingConst.themes"
-                  :key="index"
-                  :style="{
-                    backgroundColor: theme.color
-                  }"
-                  @click="setTheme(theme)"
-                >
-                  <div class="is-check" v-show="currentTheme == theme.themeName">
-                    <DynamicIcon icon="Check" />
-                  </div>
-                </div>
-              </div>
-              <div class="desktop-toolbar-inner-popover-themes-bg">
-                <img :src="themeBg" />
-                <el-upload action="" :http-request="bgUploadHttpRequest" :show-file-list="false">
-                  <div class="upload-btn">更换背景图片</div>
-                </el-upload>
-              </div>
-              <div class="desktop-toolbar-inner-popover-themes-blur">
-                <div>背景毛玻璃</div>
-                <div class="progress-box">
-                  <div class="progress-box-btn" @click="themeBgBlurMinus">
-                    <DynamicIcon icon="Minus" />
-                  </div>
-                  <div class="progress-box-bar">
-                    <el-progress :percentage="themeBgBlur * 2" :stroke-width="16" :text-inside="true" />
-                  </div>
-                  <div class="progress-box-btn" @click="themeBgBlurAdd">
-                    <DynamicIcon icon="Plus" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </el-popover>
-
+        <div class="desktop-toolbar-inner-right-item" @click="themeSetting">
+          <DynamicIcon icon="SvgIconTheme" />
+        </div>
         <el-popover
           placement="top"
           :width="335"
@@ -176,38 +110,23 @@
       </div>
     </div>
     <UpdatePwdDialog ref="updatePwdDialogRef" />
+    <ThemeDialog ref="themeDialogRef" />
   </div>
 </template>
 
 <script setup lang="ts">
-import {
-  DynamicIcon,
-  useElConfirmMessageBox,
-  useElSuccessMessage,
-  useElWarningMessage,
-  useEventBusEmit
-} from 'hippo-module-core'
+import { DynamicIcon, useElConfirmMessageBox, useElWarningMessage } from 'hippo-module-core'
 import { computed, onMounted, ref } from 'vue'
-import { themeSettingConst, styleNameConst } from '../../consts'
 import DesktopToolbarTabs from './DesktopToolbarTabs.vue'
 import { useRouter } from 'vue-router'
-import { ThemeStoreUtil, ThemeUtil, UserStoreUtil } from '../../utils'
-import { useDark, useToggle } from '@vueuse/core'
+import { UserStoreUtil } from '../../utils'
 import { useDesktopToolbar } from '../../hooks'
 import screenfull from 'screenfull'
 import UpdatePwdDialog from './UpdatePwdDialog.vue'
+import ThemeDialog from './ThemeDialog.vue'
 import { type MenuInfo, type MsgInfo, type UserDesktopBg } from '../../types'
 import type { RequestResultData } from 'hippo-module-core'
-import { MsgApi, UserApi } from '../../api'
-import type { UploadProps, UploadRequestOptions } from 'element-plus'
-import bgPreviewImg from '../../assets/img/desktop-layout/bg-preview.jpg'
-
-const emit = defineEmits(['updateDesktopBg', 'updateDesktopBlur'])
-
-const currentTheme = ref(ThemeStoreUtil.getTheme())
-const currentStyleTheme = ref(ThemeStoreUtil.getStyleTheme())
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
+import { MsgApi } from '../../api'
 
 const router = useRouter()
 const { sysTime } = useDesktopToolbar()
@@ -221,17 +140,13 @@ const fullscreenState = ref(false)
 const toolbarLeftRef = ref()
 const toolbarCenterRef = ref()
 const toolbarRightRef = ref()
-const themePopoverRef = ref()
 const msgPopoverRef = ref()
 const updatePwdDialogRef = ref()
+const themeDialogRef = ref()
 
 const userAvatar = UserStoreUtil.getUserInfo().avatar
 
 const menus = UserStoreUtil.getMenus()
-
-const themeBg = ref(bgPreviewImg)
-
-const themeBgBlur = ref(ThemeStoreUtil.getThemeBgBlur())
 
 const messages = ref<MsgInfo[]>([])
 
@@ -246,6 +161,10 @@ const toolbarCenterStyle = computed(() => {
     width: `calc(100% - 33rem)`
   }
 })
+
+const themeSetting = () => {
+  themeDialogRef.value.showDialog()
+}
 
 const userDropdownCommand = (command: string) => {
   const commands: any = {
@@ -281,23 +200,6 @@ const toMsgList = () => {
   router.push('/MsgList')
 }
 
-const setStyleTheme = (style: any) => {
-  if (style.styleThemeName === styleNameConst.dark) {
-    toggleDark(true)
-  } else {
-    toggleDark(false)
-  }
-  currentStyleTheme.value = style.styleThemeName
-  ThemeStoreUtil.setStyleTheme(style.styleThemeName)
-  useEventBusEmit('styleThemeChange', style)
-}
-
-const setTheme = (item: { themeName: string; color: string; themeConfig: any }) => {
-  currentTheme.value = item.themeName
-  ThemeStoreUtil.setTheme(item.themeName)
-  ThemeUtil.setCssVariable(item.themeConfig)
-}
-
 const fullscreenToggle = () => {
   if (!screenfull.isEnabled) {
     useElWarningMessage('您的浏览器不支持全屏！')
@@ -315,14 +217,6 @@ const init = () => {
       fullscreenState.value = screenfull['isFullscreen']
     })
   }
-}
-
-const getUserDesktopBgPreview = () => {
-  UserApi.getUserDesktopBgPreview().then((res: RequestResultData<UserDesktopBg>) => {
-    if (res.success) {
-      themeBg.value = res.data.bgUrl
-    }
-  })
 }
 
 const search = (query: string) => {
@@ -357,45 +251,8 @@ const getMsgList = () => {
   })
 }
 
-const bgUploadHttpRequest = (options: UploadRequestOptions) => {
-  if (options.file.type !== 'image/jpeg' && options.file.type !== 'image/png') {
-    useElWarningMessage('请选择jpeg/png格式的图片！')
-    return false
-  } else if (options.file.size / 1024 / 1024 > 10) {
-    useElWarningMessage('图片不能超过10M！')
-    return false
-  }
-
-  UserApi.userDesktopBgUpload(options).then((res: RequestResultData<UserDesktopBg>) => {
-    if (res.success) {
-      emit('updateDesktopBg', res.data.bgUrl)
-      getUserDesktopBgPreview()
-      useElSuccessMessage(res.msg)
-    }
-  })
-}
-
-const themeBgBlurAdd = () => {
-  if (themeBgBlur.value == 50) {
-    return
-  }
-  themeBgBlur.value += 1
-  ThemeStoreUtil.setThemeBgBlur(themeBgBlur.value.toString())
-  emit('updateDesktopBlur', themeBgBlur.value)
-}
-
-const themeBgBlurMinus = () => {
-  if (themeBgBlur.value == 0) {
-    return
-  }
-  themeBgBlur.value -= 1
-  ThemeStoreUtil.setThemeBgBlur(themeBgBlur.value.toString())
-  emit('updateDesktopBlur', themeBgBlur.value)
-}
-
 onMounted(() => {
   init()
-  getUserDesktopBgPreview()
   getMsgList()
 })
 </script>

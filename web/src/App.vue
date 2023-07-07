@@ -19,7 +19,7 @@ const locale = ref(zhCn)
 
 const sysConfig: SysConfig = {
   defaultStyleTheme: 'light',
-  defaultTheme: 'lightBlue',
+  defaultTheme: '#409eff',
   logo: '',
   title: '桌面',
   loginPath: '/Login',

@@ -1,3 +1,4 @@
+import { ElementUiThemeUtil } from 'hippo-module-core'
 import { styleNameConst, themeSettingConst } from '../consts/desktop-layout-const'
 import ThemeStoreUtil from './theme-store-util'
 
@@ -8,9 +9,7 @@ export default class ThemeUtil {
       styleThemeName = defaultStyleTheme
       ThemeStoreUtil.setStyleTheme(styleThemeName)
     }
-    const data = themeSettingConst.styles.find(
-      (item) => item.styleThemeName === styleThemeName
-    )
+    const data = themeSettingConst.styles.find((item) => item.styleThemeName === styleThemeName)
     if (data) {
       return data
     } else {
@@ -32,24 +31,17 @@ export default class ThemeUtil {
     })
   }
 
-
   static getThemeConfig(defaultTheme: string) {
     let theme = ThemeStoreUtil.getTheme()
     if ('' === theme) {
       theme = defaultTheme
       ThemeStoreUtil.setTheme(theme)
     }
-    const data = themeSettingConst.themes.find((item) => item.themeName === theme)
-    if (data) {
-      return data
-    } else {
-      return themeSettingConst.themes[0]
-    }
+    return ElementUiThemeUtil.generate(theme, 'primary')
   }
 
   static initTheme(defaultTheme: string, defaultStyleTheme: string, toggleDark: Function) {
-    const data = ThemeUtil.getThemeConfig(defaultTheme)
-    ThemeUtil.setCssVariable(data.themeConfig)
+    ThemeUtil.setCssVariable(ThemeUtil.getThemeConfig(defaultTheme))
 
     const styleTheme = ThemeUtil.getStyleThemeName(defaultStyleTheme)
     if (styleTheme === styleNameConst.light) {
@@ -57,6 +49,5 @@ export default class ThemeUtil {
     } else {
       toggleDark(true)
     }
-
   }
 }
