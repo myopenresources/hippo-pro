@@ -2,8 +2,6 @@
   <el-dialog
     v-model="visible"
     :width="'420px'"
-    :modal="false"
-    :lock-scroll="false"
     :title="'主题设置'"
     :draggable="true"
   >
@@ -44,6 +42,12 @@
         </div>
         <div class="theme-dialog-bg">
           <img :src="themeBg" />
+          <div
+            class="theme-dialog-bg-blur"
+            :style="{
+              backdropFilter: `blur(${themeBgBlur}px)`
+            }"
+          ></div>
           <el-upload action="" :http-request="bgUploadHttpRequest" :show-file-list="false">
             <div class="upload-btn">更换背景图片</div>
           </el-upload>
