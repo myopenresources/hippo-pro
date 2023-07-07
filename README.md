@@ -2,13 +2,14 @@
 欢迎使用河码桌面，河码桌面是一个基于vue3+vite+element pro + pnpm 创建的monorepo项目，项目采用的是类操作系统的web界面，操作起来简单又方便，符合用户习惯，又没有操作系统的复杂！
 
 ## 页面
-<img src="./snapshot/1.png"/><br/>
-<img src="./snapshot/2.png"/><br/>
-<img src="./snapshot/3.png"/><br/>
-<img src="./snapshot/4.png"/><br/>
-<img src="./snapshot/5.png"/><br/>
-<img src="./snapshot/6.png"/><br/>
-<img src="./snapshot/7.png"/><br/>
+<img src="./project-snapshot/1.png"/><br/>
+<img src="./project-snapshot/2.png"/><br/>
+<img src="./project-snapshot/3.png"/><br/>
+<img src="./project-snapshot/4.png"/><br/>
+<img src="./project-snapshot/5.png"/><br/>
+<img src="./project-snapshot/6.png"/><br/>
+<img src="./project-snapshot/7.png"/><br/>
+<img src="./project-snapshot/8.png"/><br/>
 
 ## 初始化
 
