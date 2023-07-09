@@ -1,5 +1,5 @@
 <template>
-    <MainContent :title="'demo'" :headerVisible="false" :mainContentStyle="{}" :bodyStyle="{}">
+    <MainContent  :headerVisible="false" :mainContentStyle="{}" :bodyStyle="{}">
         <div class="demo">
             <div class="demo-left">
                 <div class="demo-left-card">

@@ -23,7 +23,7 @@ export const useBatchDel = (opt: {
   }
 }
 
-export const useDelRequestByIds = <T>(opt: {
+export const useDelByIds = <T>(opt: {
   method: Promise<RequestResultData<T>>
   beforeCb: Function
   afterCb?: Function
@@ -88,6 +88,46 @@ export const useQueryData = (opt: {
   }
 }
 
+
+
+export const useAdd = <T>(opt: {
+  method: Promise<RequestResultData<T>>
+  beforeCb?: Function
+  afterCb?: Function,
+}) => {
+  opt.beforeCb && opt.beforeCb()
+
+  opt.method.then((res: RequestResultData<T>) => {
+    if (!res.success) {
+      opt.afterCb && opt.afterCb(null)
+    } else {
+      opt.afterCb && opt.afterCb(res.data)
+    }
+  },
+    () => {
+      opt.afterCb && opt.afterCb(null)
+    })
+}
+
+export const useViewById = <T>(opt: {
+  method: Promise<RequestResultData<T>>
+  beforeCb: Function
+  afterCb?: Function,
+}) => {
+  opt.beforeCb && opt.beforeCb()
+  
+  opt.method.then((res: RequestResultData<T>) => {
+    if (!res.success) {
+      opt.afterCb && opt.afterCb(null)
+    } else {
+      opt.afterCb && opt.afterCb(res.data)
+    }
+  },
+    () => {
+      opt.afterCb && opt.afterCb(null)
+    })
+}
+
 export const useAddOpen = () => {
   const addVisible = ref(false)
   const currentAddRowId = ref<string>('')
@@ -123,43 +163,4 @@ export const useViewOpen = () => {
     viewVisible,
     view
   }
-}
-
-export const useAdd = <T>(opt: {
-  method: Promise<RequestResultData<T>>
-  beforeCb?: Function
-  afterCb?: Function,
-}) => {
-  opt.beforeCb && opt.beforeCb()
-
-  opt.method.then((res: RequestResultData<T>) => {
-    if (!res.success) {
-      opt.afterCb && opt.afterCb(null)
-    } else {
-      opt.afterCb && opt.afterCb(res.data)
-    }
-  },
-    () => {
-      opt.afterCb && opt.afterCb(null)
-    })
-}
-
-
-export const useViewRequestById = <T>(opt: {
-  method: Promise<RequestResultData<T>>
-  beforeCb: Function
-  afterCb?: Function,
-}) => {
-  opt.beforeCb && opt.beforeCb()
-  
-  opt.method.then((res: RequestResultData<T>) => {
-    if (!res.success) {
-      opt.afterCb && opt.afterCb(null)
-    } else {
-      opt.afterCb && opt.afterCb(res.data)
-    }
-  },
-    () => {
-      opt.afterCb && opt.afterCb(null)
-    })
 }

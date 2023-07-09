@@ -56,4 +56,19 @@
             right: 0;
         }
     }
+    
+    .desktop-row,.desktop-sub-row{
+        display: flex;
+        align-items: center;
+        height: var(--desktop-row-height);
+        &-label{
+            color: var(--el-text-color-regular);
+        }
+        &-cotent{
+            
+        }
+    }
+    .desktop-sub-row{
+        width: 50%;
+    }
 }

@@ -3,7 +3,7 @@
     <div class="main-content-header" v-if="headerVisible">
       <slot name="headerLeft">
         <div class="main-content-header-title">
-          {{ title }}
+          {{ title && title.length > 0 ? title : route.meta && route.meta.title ? route.meta.title : '' }}
         </div>
       </slot>
       <slot name="headerCenter">
@@ -14,7 +14,8 @@
         <slot name="headerRight">
         </slot>
 
-        <div class="main-content-header-right-btn main-content-header-right-btn-close" v-if="closeVisible && !(route.path ===homePath && visitedViews.length==1)" @click="close">
+        <div class="main-content-header-right-btn main-content-header-right-btn-close"
+          v-if="closeVisible && !(route.path === homePath && visitedViews.length == 1)" @click="close">
           <DynamicIcon icon="Close" />
         </div>
       </div>
@@ -47,7 +48,7 @@ const visitedViews: any = computed(() => {
   return useDesktopLayout.getVisitedViews
 })
 
-const close = ()=>{
+const close = () => {
   useEventBusEmit('desktopToolbarCloseSelectedTab')
 }
 

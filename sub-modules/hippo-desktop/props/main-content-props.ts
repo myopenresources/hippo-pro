@@ -3,7 +3,7 @@ import type { PropType, CSSProperties } from 'vue'
 export const MainContentProps = {
   title: {
     type: String,
-    default: '-'
+    default: ''
   },
   closeVisible: {
     type: Boolean,

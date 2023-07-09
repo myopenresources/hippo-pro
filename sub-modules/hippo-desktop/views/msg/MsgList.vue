@@ -1,8 +1,6 @@
 <template>
-    <MainContent :title="'消息管理'">
+    <MainContent>
         <div class="desktop-container">
-            <div ref="headerRef">
-            </div>
             <el-form :inline="true" :model="queryForm" class="desktop-query-form" :label-width="'80px'"
                 label-position="left">
                 <el-form-item label="标题" :label-width="'40px'">
@@ -41,7 +39,7 @@
                     <el-table-column fixed="right" label="操作" width="250">
                         <template #default="scope">
                             <el-button link type="primary" size="small" @click="edit(scope.row.id)">修改</el-button>
-                            <el-button link type="primary" size="small" @click="view(scope.row.id)">查看</el-button>
+                            <el-button link type="primary" size="small" @click="toMsg(scope.row.id)">查看</el-button>
                             <el-button link type="primary" size="small" @click="del([scope.row.id])">删除</el-button>
                         </template>
                     </el-table-column>
@@ -56,11 +54,14 @@
 </template>
 
 <script setup lang="ts">
-import { useAddOpen, useBatchDel, useDelRequestByIds, useElConfirmMessageBox, useElSuccessMessage, useQueryData, useViewOpen } from 'hippo-module-core/hooks';
+import { useAddOpen, useBatchDel, useDelByIds, useElConfirmMessageBox, useElSuccessMessage, useQueryData, useViewOpen } from 'hippo-module-core/hooks';
 import { onMounted, reactive, ref } from 'vue';
 import { MsgApi } from '../../api';
 import type { MsgInfo } from '../../types';
 import { useElWarningMessage, type RequestPaginationData, type RequestResultData } from 'hippo-module-core';
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
 
 const queryForm = reactive({
     msgTitle: '',
@@ -85,7 +86,7 @@ const batchDel = () => {
 }
 
 const del = (ids: string[]) => {
-    useDelRequestByIds<Object>({
+    useDelByIds<Object>({
         method: MsgApi.deleteMsgByIds(ids),
         beforeCb: () => {
             loading.value = true
@@ -117,6 +118,10 @@ const resetQueryData = () => {
     queryForm.msgTitle = ''
     queryForm.msgType = ''
     queryData()
+}
+
+const toMsg = (id:string) => {
+  router.push('/MsgInfo/' + id)
 }
 
 const {

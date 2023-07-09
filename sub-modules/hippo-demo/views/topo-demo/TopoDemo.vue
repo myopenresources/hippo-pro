@@ -18,7 +18,6 @@ const graph = ref<any>(null)
 const graphSvg = ref<any>(null)
 const graphZoom = ref<any>(null)
 const tooltip = ref<any>(null)
-const topoAnimationInterval = ref()
 const topoBoxRef = ref()
 
 const drawNode = () => {
@@ -59,9 +58,9 @@ const drawLine = () => {
       lableoffset: 0,
       label: '',
       lineInterpolate: 'basis',
-      class: `speed${item.speed}`,
+      class: ``,
       style: `stroke: ${color}; fill: none;
-      stroke-width:${item.weight ? item.weight : 10};quarters: 0`,
+      stroke-width:10;quarters: 0`,
       arrowheadStyle: `fill: none;stroke: none;stroke-width:0.1`,
       arrowhead: 'undirected',
       id: item.source + '-' + item.target,
@@ -75,70 +74,6 @@ const drawLine = () => {
   })
 }
 
-const drawLineAnimationPath = (svg: any) => {
-  const edgePaths = svg.select('.edgePaths')
-
-  edgePaths
-    .selectAll('.edgePath')
-    .nodes()
-    .forEach((node: any, index: number) => {
-      const nodeCls = node.getAttribute('class')
-      let speed = 3
-      if (nodeCls) {
-        const clsList = nodeCls.split(' ')
-        speed = parseFloat(clsList[1].replace('speed', ''))
-      }
-
-      const path2 = node.children[0].cloneNode(true)
-      path2.id = 'path2' + index
-      path2.style['stroke'] = '#75b1df'
-      path2.style['stroke-width'] =
-        parseFloat(path2.style['stroke-width']) - path2.style['stroke-width'] / 2
-      path2.style['opacity'] = 0.85
-      path2.style['cursor'] = 'pointer'
-
-      path2.setAttribute('rx', 120)
-      path2.setAttribute('ry', 120)
-      node.appendChild(path2)
-
-      const path = node.children[0].cloneNode(true)
-      path.id = 'path' + index
-      path.setAttribute('class', 'animationPath')
-      path.setAttribute('data-speed', speed)
-      path.style['stroke-dasharray'] = '5,15'
-      path.style['stroke'] = '#187edd'
-      path.style['stroke-miterlimit'] = 10
-      path.style['stroke-width'] =
-        parseFloat(path.style['stroke-width']) - path.style['stroke-width'] / 2.5
-      path.style['stroke-linecap'] = 'round'
-      path.style['cursor'] = 'pointer'
-
-      path.setAttribute('rx', 120)
-      path.setAttribute('ry', 120)
-
-      node.appendChild(path)
-    })
-
-  var tmr = 0
-
-  const funAnimation = () => {
-    tmr++
-    edgePaths
-      .selectAll('.animationPath')
-      .nodes()
-      .forEach((item: any) => {
-        if (tmr >= 888) {
-          tmr = 1
-        }
-        const speed = parseFloat(item.getAttribute('data-speed'))
-        let offset = tmr * speed
-
-        item.style['stroke-dashoffset'] = -offset
-      })
-  }
-
-  topoAnimationInterval.value = setInterval(funAnimation, 80)
-}
 
 const initEvent = (svg: any) => {
   svg.selectAll('g.edgeLabels').on('click', (e: any) => {
@@ -174,7 +109,7 @@ const createTooltip = () => {
     .style('border-radius', '3px')
     .style('box-shadow', '0px 0px 2px rgba(3, 21, 100,0.2) ')
     .style('padding', '8px')
-    .style('z-index', '99999')
+    .style('z-index', '998')
     .style('cursor', 'pointer')
     .style('display', 'none')
 }
@@ -275,7 +210,6 @@ const initGraphRender = () => {
     const render = new dagreD3.render()
     render(inner, graph.value)
 
-    drawLineAnimationPath(graphSvg.value)
     zoomToFit(graphSvg.value, graphZoom.value)
     initEvent(graphSvg.value)
   }
@@ -294,9 +228,6 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  if (topoAnimationInterval.value) {
-    clearInterval(topoAnimationInterval.value)
-  }
 })
 </script>
 

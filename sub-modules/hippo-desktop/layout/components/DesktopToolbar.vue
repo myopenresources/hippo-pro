@@ -191,9 +191,9 @@ const toStartMenu = () => {
   router.push('/StartMenu')
 }
 
-const toMsg = (msg: any) => {
+const toMsg = (msg: MsgInfo) => {
   msgPopoverRef.value.hide()
-  router.push('/MsgInfo/id=' + msg.id)
+  router.push('/MsgInfo/' + msg.id)
 }
 
 const toMsgList = () => {

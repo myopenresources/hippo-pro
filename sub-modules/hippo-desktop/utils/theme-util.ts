@@ -21,6 +21,7 @@ export default class ThemeUtil {
     let styleThemeName = ThemeStoreUtil.getStyleTheme()
     if ('' === styleThemeName) {
       styleThemeName = defaultStyleTheme
+      ThemeStoreUtil.setStyleTheme(styleThemeName)
     }
     return styleThemeName
   }

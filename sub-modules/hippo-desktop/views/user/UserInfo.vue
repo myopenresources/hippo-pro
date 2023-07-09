@@ -1,5 +1,5 @@
 <template>
-  <MainContent :title="'个人信息'">
+  <MainContent>
     <div class="user-info-body">
       <el-form ref="formRef" :model="ruleForm" label-width="100px">
         <el-form-item label="头像" prop="avatar" :rules="[{ required: true, message: '头像不能为空！' }]">

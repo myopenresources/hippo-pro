@@ -1,5 +1,5 @@
 <template>
-  <MainContent :title="'首页'" :headerVisible="false" :mainContentStyle="{}" :bodyStyle="{}">
+  <MainContent :headerVisible="false" :mainContentStyle="{}" :bodyStyle="{}">
     <div class="home">
       <el-popover placement="right" :width="400" trigger="click" :teleported="false">
         <template #reference>

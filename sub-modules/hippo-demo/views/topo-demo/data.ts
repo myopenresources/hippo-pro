@@ -82,93 +82,63 @@ let topoData = {
   lines: [
     {
       source: '1',
-      target: '2',
-      speed: 10,
-      weight: 15
+      target: '2'
     },
     {
       source: '2',
-      target: '3',
-      speed: 9,
-      weight: 6
+      target: '3'
     },
     {
       source: '3',
-      target: '4',
-      speed: 15,
-      weight: 12
+      target: '4'
     },
     {
       source: '3',
-      target: '5',
-      speed: 10,
-      weight: 13
+      target: '5'
     },
     {
       source: '4',
       target: '41',
-      speed: 9,
-      weight: 12
     },
     {
       source: '4',
       target: '42',
-      speed: 9,
-      weight: 9
     },
     {
       source: '41',
       target: '411',
-      speed: 12,
-      weight: 8
     },
     {
       source: '5',
       target: '51',
-      speed: 12,
-      weight: 12
     },
     {
       source: '5',
       target: '52',
-      speed: 12,
-      weight: 15
     },
     {
       source: '51',
       target: '511',
-      speed: 10,
-      weight: 10
     },
     {
       source: '51',
       target: '52',
-      speed: 10,
-      weight: 12
     },
     {
       source: '51',
       target: '512',
-      speed: 10,
-      weight: 12
     },
     {
       source: '52',
       target: '512',
-      speed: 10,
-      weight: 12
     },
     {
       source: '412',
       target: '4111',
-      speed: 10,
-      weight: 12
     },
     {
       source: '2',
-      target: '412',
-      speed: 10,
-      weight: 12
+      target: '412'
     }
   ]
 }

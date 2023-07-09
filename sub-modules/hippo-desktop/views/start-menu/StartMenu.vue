@@ -1,5 +1,5 @@
 <template>
-  <MainContent :title="'开始菜单'" :headerVisible="false" :mainContentStyle="{}" :bodyStyle="{}">
+  <MainContent :headerVisible="false" :mainContentStyle="{}" :bodyStyle="{}">
     <div class="start-menu">
       <el-input class="start-menu-search-box" v-model="keywork" :prefix-icon="Search" clearable placeholder="搜索"
         @input="search" />

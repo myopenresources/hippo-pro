@@ -29,11 +29,11 @@ import { usePagination } from './use-pagination'
 import {
   useBatchDel,
   useQueryData,
-  useDelRequestByIds,
+  useDelByIds,
   useAddOpen,
   useAdd,
   useViewOpen,
-  useViewRequestById
+  useViewById
 } from './use-crud'
 import { useWindowResize } from './use-window-resize'
 export {
@@ -41,11 +41,11 @@ export {
   usePagination,
   useBatchDel,
   useQueryData,
-  useDelRequestByIds,
+  useDelByIds,
   useAddOpen,
   useAdd,
   useViewOpen,
-  useViewRequestById,
+  useViewById,
   useVisible,
   useEventBus,
   useEventBusEmit,
