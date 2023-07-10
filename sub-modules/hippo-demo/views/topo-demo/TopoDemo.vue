@@ -74,7 +74,6 @@ const drawLine = () => {
   })
 }
 
-
 const initEvent = (svg: any) => {
   svg.selectAll('g.edgeLabels').on('click', (e: any) => {
     console.info('label-click', e)
@@ -144,15 +143,15 @@ const calcOptimalSize = () => {
   const graphWidth = graph.value.graph().width
   const graphHeight = graph.value.graph().height
 
-  let scale: any = 0.5
+  let scale: number = 0.5
   while (true) {
     const newWidth = graphWidth * scale
     const newHeight = graphHeight * scale
 
-    if (newWidth < boxWidth || newHeight < boxHeight) {
-      scale += 0.7
+    if (newWidth < boxWidth - 66 && newHeight < boxHeight - 66) {
+      scale += 0.2
     } else {
-      scale -= 0.7
+      scale -= 0.2
       break
     }
   }
@@ -227,8 +226,7 @@ onMounted(() => {
   createTooltip()
 })
 
-onUnmounted(() => {
-})
+onUnmounted(() => {})
 </script>
 
 <style scoped lang="scss">
