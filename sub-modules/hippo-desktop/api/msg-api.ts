@@ -14,6 +14,17 @@ export default class MsgApi {
         })
     }
 
+    static saveMsgInfo(params: MsgInfo) {
+        return new Promise<RequestResultData<Object>>((resolve) => {
+          resolve({
+            status: 200,
+            success: true,
+            msg: '',
+            data: {}
+          })
+        })
+      }
+
     static getMsgListByParams(params: RequestParams) {
         return new Promise<RequestPaginationResultData<MsgInfo[]>>((resolve) => {
             resolve({

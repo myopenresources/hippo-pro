@@ -74,8 +74,8 @@
                 >
                   <div class="popover-msg-header">{{ msg.msgTitle }}</div>
                   <div class="popover-msg-footer">
-                    <div>{{ msg.msgType }}</div>
-                    <div>{{ msg.createDate }}</div>
+                    <div>{{ msg?.msgType }}</div>
+                    <div>{{ msg?.createDate }}</div>
                   </div>
                 </div>
               </div>
