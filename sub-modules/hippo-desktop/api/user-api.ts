@@ -205,6 +205,16 @@ export default class UserApi {
                     title: '消息信息',
                     icon: 'SvgIconNotice'
                   }
+                },
+                {
+                  isLayout: false,
+                  path: '/LogList',
+                  name: 'LogList',
+                  component: 'log/LogList.vue',
+                  meta: {
+                    title: '日志管理',
+                    icon: 'SvgIconLog'
+                  }
                 }
               ]
             }
@@ -257,7 +267,7 @@ export default class UserApi {
               id: 'logList',
               icon: 'SvgIconLog',
               label: '日志管理',
-              path: '/UserInfo'
+              path: '/LogList'
             },
             {
               id: 'ahtuList',
@@ -326,7 +336,7 @@ export default class UserApi {
               id: 'logList',
               icon: 'SvgIconLog',
               label: '日志管理',
-              path: '/UserInfo'
+              path: '/LogList'
             },
             {
               id: 'ahtuList',

@@ -1,4 +1,4 @@
-import { AxiosUtil, doneProgress,progressConfigure } from 'hippo-module-core'
+import { AxiosUtil, doneProgress,progressConfigure, startProgress } from 'hippo-module-core'
 import type { Router } from 'vue-router'
 
 progressConfigure({
@@ -9,9 +9,11 @@ const registerHttpInterceptor = (router: Router) => {
   //HTTPrequest拦截
   AxiosUtil.interceptors.request.use(
     (config: any) => {
+      startProgress()
       return config
     },
     (error) => {
+      doneProgress()
       return Promise.reject(error)
     }
   )

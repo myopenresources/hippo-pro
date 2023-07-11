@@ -22,3 +22,7 @@ html.dark {
 .el-dialog__body{
   padding:var(--el-dialog-padding-primary) var(--el-dialog-padding-primary);
 }
+
+.el-overlay{
+  backdrop-filter:  blur(2px);
+}

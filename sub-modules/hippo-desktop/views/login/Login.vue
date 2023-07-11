@@ -53,9 +53,11 @@ import { Environments, useElSuccessMessage, useElWarningMessage } from 'hippo-mo
 import type { FormInstance, FormRules } from 'element-plus'
 import { onMounted, reactive, ref } from 'vue'
 
+
 const router = useRouter()
 
 const sysTitle = Environments.getEvnProp('VITE_SYS_TITLE') || '河马桌面'
+const homePath = Environments.getEvnProp('VITE_HOME_ROUTER')
 
 const copyrightDate = new Date().getFullYear()
 
@@ -87,7 +89,7 @@ const login = (formEl: FormInstance | undefined) => {
           UserStoreUtil.setCommonMenu(res.data.commonMenus)
           UserStoreUtil.setUserInfo(res.data.userInfo)
           useElSuccessMessage('登录成功！')
-          router.push('/StartMenu')
+          router.push(homePath)
         } else {
           useElWarningMessage(res.msg)
         }
@@ -105,7 +107,7 @@ const reloadValidateCode = () => {
 onMounted(() => {
   const token = UserStoreUtil.getToken()
   if (token) {
-    router.push('/StartMenu')
+    router.push(homePath)
   }
 })
 </script>

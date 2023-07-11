@@ -1,0 +1,84 @@
+.log-list {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  &-category {
+    width: 300px;
+    height: 100%;
+    box-sizing: border-box;
+    border-right: 1px solid var(--main-content-header-border-color);
+
+    &-search {
+      height: 40px;
+      padding-left: var(--main-content-padding);
+      padding-right: var(--main-content-padding);
+      margin-top: var(--main-content-padding);
+    }
+    &-list {
+      width: 100%;
+      height: calc(100% - 40px - var(--main-content-padding));
+      padding-left: var(--main-content-padding);
+      padding-right: calc(var(--main-content-padding) / 2);
+      padding-bottom: var(--main-content-padding);
+      box-sizing: border-box;
+      overflow-y: scroll;
+      &-item {
+        height: 35px;
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        border-radius: 4px;
+        border: 1px solid var(--main-content-header-border-color);
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        cursor: pointer;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        &:hover{
+            background-color: var(--item-hover-bg);
+        }
+        &-active{
+            background-color: var(--item-hover-bg);
+        }
+        .title {
+          width: 100%;
+          margin-left: 4px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+  &-main {
+    width: calc(100% - 300px);
+    height: 100%;
+    box-sizing: border-box;
+    padding: var(--main-content-padding);
+    overflow-y: auto;
+    &-card{
+        --el-card-padding:12px;
+        margin-bottom: 10px;
+        transform: scale(0.998);
+        &:hover{
+           transform: scale(1.01);
+        }
+        &:last-child{
+            margin-bottom: 0;
+        }
+        &-header{
+            display: flex;
+            justify-content: space-between;
+        }
+        &-body{
+            width: 100%;
+            overflow-y: auto;
+            text-align: left;
+        }
+    }
+  }
+}

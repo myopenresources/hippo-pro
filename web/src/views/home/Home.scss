@@ -21,10 +21,10 @@
     }
   }
   &-config {
-    position: absolute;
+    position: fixed;
     z-index: 3;
-    right: 0rem;
-    top: 0rem;
+    right: 2px;
+    top:calc(var(--desktop-layout-toolbar-height) + 3px);
     font-size: 0.85rem;
     color: var(--el-text-color-primary);
     cursor: pointer;
@@ -36,8 +36,8 @@
     background-color: var(--home-config-bg);
     box-shadow: var(--home-config-shadow);
     border-radius: 100%;
-    padding: 0.2rem;
-    opacity: 0.8;
+    padding: 0.135rem;
+    opacity: 0.65;
 
     &:hover {
       opacity: 1;
