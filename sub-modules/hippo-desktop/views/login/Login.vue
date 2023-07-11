@@ -1,38 +1,46 @@
 <template>
   <div class="login-container">
     <div class="login-inner-container">
-      <div class="login-box-card">
-        <div class="login-flex">
-          <div class="login-img"></div>
-          <div class="login-form-box">
-            <h3 class="login-title">{{ sysTitle }}登录</h3>
-            <el-form
-              ref="loginFormRef"
-              class="login-form"
-              :model="loginForm"
-              :rules="rules"
-              label-width="70px"
-            >
-              <el-form-item label="用户名" prop="userNmae">
-                <el-input v-model="loginForm.userNmae" type="text" autocomplete="off" />
-              </el-form-item>
-              <el-form-item label="密码" prop="password">
-                <el-input v-model="loginForm.password" type="password" autocomplete="off" />
-              </el-form-item>
-              <el-form-item label="验证码" prop="validateCode">
-                <div class="validate-code">
-                  <el-input v-model="loginForm.validateCode" type="text" autocomplete="off" />
-                  <img :src="validateCode" @click="reloadValidateCode" class="validate-code-img" />
-                </div>
-              </el-form-item>
-              <el-form-item>
-                <el-button type="primary" @click="login(loginFormRef)"> 登录 </el-button>
-              </el-form-item>
-            </el-form>
+      <div class="login-box-card-box">
+        <div class="login-box-card">
+          <div class="login-flex">
+            <div class="login-img"></div>
+            <div class="login-form-box">
+              <h3 class="login-title">{{ sysTitle }}登录</h3>
+              <el-form
+                ref="loginFormRef"
+                class="login-form"
+                :model="loginForm"
+                :rules="rules"
+                label-width="70px"
+              >
+                <el-form-item label="用户名" prop="userNmae">
+                  <el-input v-model="loginForm.userNmae" type="text" autocomplete="off" />
+                </el-form-item>
+                <el-form-item label="密码" prop="password">
+                  <el-input v-model="loginForm.password" type="password" autocomplete="off" />
+                </el-form-item>
+                <el-form-item label="验证码" prop="validateCode">
+                  <div class="validate-code">
+                    <el-input v-model="loginForm.validateCode" type="text" autocomplete="off" />
+                    <img
+                      :src="validateCode"
+                      @click="reloadValidateCode"
+                      class="validate-code-img"
+                    />
+                  </div>
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="primary" @click="login(loginFormRef)"> 登录 </el-button>
+                </el-form-item>
+              </el-form>
+            </div>
           </div>
-        </div>
-        <div class="login-copyright">
-          <div class="app-text-center">Copyright {{ copyrightDate }} cjh. All Rights Reserved.</div>
+          <div class="login-copyright">
+            <div class="app-text-center">
+              Copyright {{ copyrightDate }} cjh. All Rights Reserved.
+            </div>
+          </div>
         </div>
       </div>
       <div class="login-desc">
@@ -52,7 +60,6 @@ import type { RequestResultData } from 'hippo-module-core'
 import { Environments, useElSuccessMessage, useElWarningMessage } from 'hippo-module-core'
 import type { FormInstance, FormRules } from 'element-plus'
 import { onMounted, reactive, ref } from 'vue'
-
 
 const router = useRouter()
 
