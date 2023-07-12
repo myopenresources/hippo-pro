@@ -7,107 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>河码桌面</title>
   <style>
-    @-moz-keyframes appInitSpinning {
-      0% {
-        transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-      }
-
-      50% {
-        transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        -moz-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-      }
-
-      100% {
-        transform: rotate(720deg);
-        -webkit-transform: rotate(720deg);
-        -moz-transform: rotate(720deg);
-        -o-transform: rotate(720deg);
-        -ms-transform: rotate(720deg);
-      }
+    :root {
+      --init-spinning-height: 60px;
+      --init-spinning-delay: 0;
     }
 
-    @-o-keyframes appInitSpinning {
+    @keyframes spinning {
       0% {
-        transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
+        background-image: linear-gradient(to top, #fa709a 0%, #fee140 100%);
+        height: 20%;
+        border-radius: calc(var(--init-spinning-height) * 0.2 * 0.5);
       }
 
       50% {
-        transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        -moz-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
+        background-image: linear-gradient(to top, #e986cd 0%, #e9d975 100%);
+        height: 100%;
+        border-radius: calc(var(--init-spinning-height) * 1 * 0.5);
       }
 
       100% {
-        transform: rotate(720deg);
-        -webkit-transform: rotate(720deg);
-        -moz-transform: rotate(720deg);
-        -o-transform: rotate(720deg);
-        -ms-transform: rotate(720deg);
-      }
-    }
-
-    @-webkit-keyframes appInitSpinning {
-      0% {
-        transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-      }
-
-      50% {
-        transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        -moz-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-      }
-
-      100% {
-        transform: rotate(720deg);
-        -webkit-transform: rotate(720deg);
-        -moz-transform: rotate(720deg);
-        -o-transform: rotate(720deg);
-        -ms-transform: rotate(720deg);
-      }
-    }
-
-    @keyframes appInitSpinning {
-      0% {
-        transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-      }
-
-      50% {
-        transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        -moz-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-      }
-
-      100% {
-        transform: rotate(720deg);
-        -webkit-transform: rotate(720deg);
-        -moz-transform: rotate(720deg);
-        -o-transform: rotate(720deg);
-        -ms-transform: rotate(720deg);
+        background-image: linear-gradient(to top, #8dece8 0%, #f7b0c7 100%);
+        height: 20%;
+        border-radius: calc(var(--init-spinning-height) * 0.2 * 0.5);
       }
     }
 
@@ -131,26 +52,32 @@
       left: 50%;
       margin-left: -80px;
       margin-top: -90px;
-      background: linear-gradient(88deg, #2ceed4 0, #06bfcc 50%);
       display: -webkit-flex;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 50%;
-      box-shadow: 0 1px 5px 0 rgba(25, 50, 79, .07), 0 5px 10px 0 rgba(25, 50, 79, .1);
     }
 
+
     .app-init-spinning {
+      display: flex;
+      align-items: center;
       position: relative;
-      width: 90px;
-      height: 90px;
-      background: url('./spinning.png');
-      background-size: 100% 100%;
-      z-index: 9999999;
-      -moz-animation: appInitSpinning 10s linear .5s infinite;
-      -o-animation: appInitSpinning 10s linear .5s infinite;
-      -webkit-animation: appInitSpinning 10s linear .5s infinite;
-      animation: appInitSpinning 6s linear .5s infinite;
+      height: var(--init-spinning-height);
+    }
+
+    .app-init-spinning span {
+      background: linear-gradient(to top, #21c697 0%, #e7fed7 100%);
+      width: 6px;
+      height: 20%;
+      border-radius: calc(var(--init-spinning-height) * 0.2 * 0.5);
+      margin-right: 8px;
+      animation: spinning 2.5s infinite linear;
+      animation-delay: calc(0.2s * var(--init-spinning-delay));
+    }
+
+    .app-init-spinning span:last-child {
+      margin-right: 0px;
     }
   </style>
 </head>
@@ -158,7 +85,19 @@
 <body>
   <div class="app-init-spinning-container" id="appInitSpinningId">
     <div class="app-init-spinning-bg">
-      <div class="app-init-spinning"></div>
+      <div class="app-init-spinning">
+        <span style="--init-spinning-delay: 5"></span>
+        <span style="--init-spinning-delay: 4"></span>
+        <span style="--init-spinning-delay: 3"></span>
+        <span style="--init-spinning-delay: 2"></span>
+        <span style="--init-spinning-delay: 1"></span>
+        <span style="--init-spinning-delay: 0"></span>
+        <span style="--init-spinning-delay: 1"></span>
+        <span style="--init-spinning-delay: 2"></span>
+        <span style="--init-spinning-delay: 3"></span>
+        <span style="--init-spinning-delay: 4"></span>
+        <span style="--init-spinning-delay: 5"></span>
+      </div>
     </div>
   </div>
   <script type="text/javascript">
@@ -170,7 +109,7 @@
           const timer = setTimeout(() => {
             initSpinningObj.style.display = 'none';
             clearTimeout(timer);
-          }, 10);
+          }, 88);
         }
       }
     }());

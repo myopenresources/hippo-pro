@@ -224,6 +224,16 @@ export default class UserApi {
                     title: 'BabylonSphereDemo',
                     icon: 'SvgIconLog'
                   }
+                },
+                {
+                  isLayout: false,
+                  path: '/LoadingDemo',
+                  name: 'LoadingDemo',
+                  component: 'loading-demo/LoadingDemo.vue',
+                  meta: {
+                    title: 'LoadingDemo',
+                    icon: 'SvgIconLog'
+                  }
                 }
               ]
             }
@@ -376,6 +386,12 @@ export default class UserApi {
               icon: 'SvgIconLog',
               label: 'babylonSphereDemo',
               path: '/BabylonSphereDemo'
+            },
+            {
+              id: 'loadingDemo',
+              icon: 'SvgIconLog',
+              label: 'loadingDemo',
+              path: '/LoadingDemo'
             }
           ]
         }
