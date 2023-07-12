@@ -89,10 +89,26 @@ importers:
 
   sub-modules/hippo-demo:
     specifiers:
+      '@babylonjs/core': ^6.11.2
+      '@babylonjs/gui': ^6.11.2
+      '@babylonjs/loaders': ^6.11.2
+      '@babylonjs/materials': ^6.11.2
+      '@babylonjs/post-processes': ^6.11.2
+      '@babylonjs/procedural-textures': ^6.11.2
+      '@babylonjs/serializers': ^6.11.2
+      '@babylonjs/viewer': ^6.11.2
       d3: ^7.8.4
       dagre-d3: ^0.6.4
       v-scale-screen: ^2.2.0
     dependencies:
+      '@babylonjs/core': 6.11.2
+      '@babylonjs/gui': 6.11.2_@babylonjs+core@6.11.2
+      '@babylonjs/loaders': 6.11.2_@babylonjs+core@6.11.2
+      '@babylonjs/materials': 6.11.2_@babylonjs+core@6.11.2
+      '@babylonjs/post-processes': 6.11.2_@babylonjs+core@6.11.2
+      '@babylonjs/procedural-textures': 6.11.2_@babylonjs+core@6.11.2
+      '@babylonjs/serializers': 6.11.2_@babylonjs+core@6.11.2
+      '@babylonjs/viewer': 6.11.2
       d3: 7.8.5
       dagre-d3: 0.6.4
       v-scale-screen: 2.2.0
@@ -449,6 +465,83 @@ packages:
       '@babel/helper-string-parser': 7.22.5
       '@babel/helper-validator-identifier': 7.22.5
       to-fast-properties: 2.0.0
+
+  /@babylonjs/core/6.11.2:
+    resolution: {integrity: sha512-lzPrUR2eT51AjDzTZPAEIc+4nnranR74UiaoTx4nEdIcIsH6qsoBmVgngvBBpwgtWw+8oBTo9zwWGa+I4daiNw==}
+    dev: false
+
+  /@babylonjs/gui/6.11.2_@babylonjs+core@6.11.2:
+    resolution: {integrity: sha512-A+5qfONZ6SLz/Q5d9PzjAVxI4ZJBDTssVKmppY94bZ2n3KLui27Ln9m4KJxy75FOyVJALQaGO8wuIthMvkI+3g==}
+    peerDependencies:
+      '@babylonjs/core': ^6.0.0
+    dependencies:
+      '@babylonjs/core': 6.11.2
+    dev: false
+
+  /@babylonjs/loaders/6.11.2_@babylonjs+core@6.11.2:
+    resolution: {integrity: sha512-aOHFoutz2UQ8V8eS+14hNYTGL1fZIT5fL42bt3Yl7S9m8byxrll3CZ2ZcfFRvexG0jFL63FCCIS4mFTzWpxC7Q==}
+    peerDependencies:
+      '@babylonjs/core': ^6.0.0
+      babylonjs-gltf2interface: ^6.0.0
+    dependencies:
+      '@babylonjs/core': 6.11.2
+    dev: false
+
+  /@babylonjs/loaders/6.11.2_r76ldbq7d75bpenzoncc2shzle:
+    resolution: {integrity: sha512-aOHFoutz2UQ8V8eS+14hNYTGL1fZIT5fL42bt3Yl7S9m8byxrll3CZ2ZcfFRvexG0jFL63FCCIS4mFTzWpxC7Q==}
+    peerDependencies:
+      '@babylonjs/core': ^6.0.0
+      babylonjs-gltf2interface: ^6.0.0
+    dependencies:
+      '@babylonjs/core': 6.11.2
+      babylonjs-gltf2interface: 6.11.2
+    dev: false
+
+  /@babylonjs/materials/6.11.2_@babylonjs+core@6.11.2:
+    resolution: {integrity: sha512-wQ4JaDDY5YyfCPDzK8pUDZcmHdoVNs9r8q4HRX0rnuujW5PciU/7QaTW9UGuGwFetYzDXBXVe6eZNdpiBez1lA==}
+    peerDependencies:
+      '@babylonjs/core': ^6.0.0
+    dependencies:
+      '@babylonjs/core': 6.11.2
+    dev: false
+
+  /@babylonjs/post-processes/6.11.2_@babylonjs+core@6.11.2:
+    resolution: {integrity: sha512-/4OyZDBjXdRN7uv0C9PvWP9j3ySuf5N2ftoCd3tEDltHs0WhBnffhANbQnqI5pzR0rHvxJNRNF0X04oQ7EHalA==}
+    peerDependencies:
+      '@babylonjs/core': ^6.0.0
+    dependencies:
+      '@babylonjs/core': 6.11.2
+    dev: false
+
+  /@babylonjs/procedural-textures/6.11.2_@babylonjs+core@6.11.2:
+    resolution: {integrity: sha512-XwWjbfHgMBOIvMjv9AcIudhOT+xFtYJetMSYR1VrHTzGBIL7M+KrB1UTiNUChAlUjlQKvvorvUqN1BkLAgJTqw==}
+    peerDependencies:
+      '@babylonjs/core': ^6.0.0
+    dependencies:
+      '@babylonjs/core': 6.11.2
+    dev: false
+
+  /@babylonjs/serializers/6.11.2_@babylonjs+core@6.11.2:
+    resolution: {integrity: sha512-0+AzEsK72yoCPU+KcF/x80S93Zk+0CQx+IBxtxDUVj5LTsP9uOcug7VRtutN1mOppUPzNegPczHjDdSHGUyMhQ==}
+    peerDependencies:
+      '@babylonjs/core': ^6.0.0
+      babylonjs-gltf2interface: ^6.0.0
+    dependencies:
+      '@babylonjs/core': 6.11.2
+    dev: false
+
+  /@babylonjs/viewer/6.11.2:
+    resolution: {integrity: sha512-EqB7Kg5MxN4ZST+VjzO3I4IwFoUl7BCRm8j9GjaGiRDXwL6EwA4duLdn1m02OGN/QGctAWdn4y8wZdgzexFX+A==}
+    dependencies:
+      '@babylonjs/core': 6.11.2
+      '@babylonjs/loaders': 6.11.2_r76ldbq7d75bpenzoncc2shzle
+      babylonjs-gltf2interface: 6.11.2
+      babylonjs-viewer-assets: 6.11.2
+      deepmerge: 4.2.2
+      handlebars: 4.7.7
+      pepjs: 0.5.3
+      tslib: 2.6.0
+    dev: false
 
   /@csstools/cascade-layer-name-parser/1.0.2_g5wmdbqtzzaodrrmvxcit5gfji:
     resolution: {integrity: sha512-xm7Mgwej/wBfLoK0K5LfntmPJzoULayl1XZY9JYgQgT29JiqNw++sLnx95u5y9zCihblzkyaRYJrsRMhIBzRdg==}
@@ -2026,6 +2119,14 @@ packages:
       - debug
     dev: false
 
+  /babylonjs-gltf2interface/6.11.2:
+    resolution: {integrity: sha512-iiaIcKUvIhV/dHg4YjMJ9F4PvZj5j1tljW8cIxITzxCKZQqx0roeU5QQWQCsh3kgiOXHzBdXJuHgpGcA4qOiDQ==}
+    dev: false
+
+  /babylonjs-viewer-assets/6.11.2:
+    resolution: {integrity: sha512-rKQ4rfdtHKzV1XeTvUboCYhtVYXBGlfGOGgCLCKFmkrlrM2fHT0ZKeEoPegS9gu8l7hdG70S/2YyYzc7RNsKDQ==}
+    dev: false
+
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
@@ -2903,6 +3004,11 @@ packages:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
     dev: true
 
+  /deepmerge/4.2.2:
+    resolution: {integrity: sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /define-properties/1.2.0:
     resolution: {integrity: sha512-xvqAVKGfT1+UAvPwKTVw/njhdQ8ZhXK4lI0bCIuCMrp2up9nPnaDftrLtmpTazqd1o+UY4zgzU+avtMbDP+ldA==}
     engines: {node: '>= 0.4'}
@@ -3660,6 +3766,19 @@ packages:
       lodash: 4.17.21
     dev: false
 
+  /handlebars/4.7.7:
+    resolution: {integrity: sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==}
+    engines: {node: '>=0.4.7'}
+    hasBin: true
+    dependencies:
+      minimist: 1.2.8
+      neo-async: 2.6.2
+      source-map: 0.6.1
+      wordwrap: 1.0.0
+    optionalDependencies:
+      uglify-js: 3.17.4
+    dev: false
+
   /has-ansi/2.0.0:
     resolution: {integrity: sha512-C8vBJ8DwUCx19vhm7urhTuUsr4/IyP6l4VzNQDv+ryHQObW3TTTp9yB68WpYgRe2bbaGuZ/se74IqFeVnMnLZg==}
     engines: {node: '>=0.10.0'}
@@ -4377,7 +4496,6 @@ packages:
 
   /minimist/1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
-    dev: true
 
   /mitt/3.0.0:
     resolution: {integrity: sha512-7dX2/10ITVyqh4aOSVI9gdape+t9l2/8QxHrFmUXu4EEUpdlxl6RudZUPZoc+zuY2hk1j7XxVroIVIan/pD/SQ==}
@@ -4452,7 +4570,6 @@ packages:
 
   /neo-async/2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
-    dev: true
 
   /nice-try/1.0.5:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
@@ -4657,6 +4774,10 @@ packages:
   /pathe/1.1.1:
     resolution: {integrity: sha512-d+RQGp0MAYTIaDBIMmOfMwz3E+LOZnxx1HZd5R18mmCZY0QBlK0LDZfPc8FW8Ed2DlvsuE6PRjroDY+wg4+j/Q==}
     dev: true
+
+  /pepjs/0.5.3:
+    resolution: {integrity: sha512-5yHVB9OHqKd9fr/OIsn8ss0NgThQ9buaqrEuwr9Or5YjPp6h+WTDKWZI+xZLaBGZCtODTnFtlSHNmhFsq67THg==}
+    dev: false
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
@@ -5455,7 +5576,6 @@ packages:
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /spdx-correct/3.2.0:
     resolution: {integrity: sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA==}
@@ -5711,6 +5831,10 @@ packages:
     resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
     dev: false
 
+  /tslib/2.6.0:
+    resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
+    dev: false
+
   /tsutils/3.21.0_typescript@5.0.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
     engines: {node: '>= 6'}
@@ -5749,6 +5873,14 @@ packages:
   /ufo/1.1.2:
     resolution: {integrity: sha512-TrY6DsjTQQgyS3E3dBaOXf0TpPD8u9FVrVYmKVegJuFw51n/YB9XPt+U6ydzFG5ZIN7+DIjPbNmXoBj9esYhgQ==}
     dev: true
+
+  /uglify-js/3.17.4:
+    resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
+    engines: {node: '>=0.8.0'}
+    hasBin: true
+    requiresBuild: true
+    dev: false
+    optional: true
 
   /unbox-primitive/1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
@@ -6225,6 +6357,10 @@ packages:
     resolution: {integrity: sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /wordwrap/1.0.0:
+    resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
+    dev: false
 
   /wrappy/1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
