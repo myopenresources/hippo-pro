@@ -1,121 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="icon" href="/favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>河码桌面</title>
-  <style>
-    :root {
-      --init-spinning-height: 60px;
-      --init-spinning-delay: 0;
-    }
-
-    @keyframes spinning {
-      0% {
-        background-image: linear-gradient(to top, #fa709a 0%, #fee140 100%);
-        height: 20%;
-        border-radius: calc(var(--init-spinning-height) * 0.2 * 0.5);
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>河码桌面</title>
+    <style>
+      .init-spinning {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 6.25em;
+        height: 6.25em;
+        animation: spinningRotate 2.4s linear infinite;
+        z-index: 999999;
+      }
+      .init-spinning .white {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        animation: spinningFlash 2.4s linear infinite;
+        opacity: 0;
+      }
+      .init-spinning .dot {
+        position: absolute;
+        margin: auto;
+        width: 2.4em;
+        height: 2.4em;
+        border-radius: 100%;
+        transition: all 1s ease;
+      }
+      .init-spinning .dot:nth-child(2) {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        background: #ff4444;
+        animation: spinningDotsY 2.4s linear infinite;
+      }
+      .init-spinning .dot:nth-child(3) {
+        left: 0;
+        right: 0;
+        top: 0;
+        background: #ffbb33;
+        animation: spinningDotsX 2.4s linear infinite;
+      }
+      .init-spinning .dot:nth-child(4) {
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: #99cc00;
+        animation: spinningDotsY 2.4s linear infinite;
+      }
+      .init-spinning .dot:nth-child(5) {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #33b5e5;
+        animation: spinningDotsX 2.4s linear infinite;
       }
 
-      50% {
-        background-image: linear-gradient(to top, #e986cd 0%, #e9d975 100%);
-        height: 100%;
-        border-radius: calc(var(--init-spinning-height) * 1 * 0.5);
-      }
-
-      100% {
-        background-image: linear-gradient(to top, #8dece8 0%, #f7b0c7 100%);
-        height: 20%;
-        border-radius: calc(var(--init-spinning-height) * 0.2 * 0.5);
-      }
-    }
-
-    .app-init-spinning-container {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: #fff;
-      width: 100vw;
-      height: 100vh;
-      z-index: 9999998;
-    }
-
-    .app-init-spinning-bg {
-      position: absolute;
-      width: 160px;
-      height: 160px;
-      top: 50%;
-      left: 50%;
-      margin-left: -80px;
-      margin-top: -90px;
-      display: -webkit-flex;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-
-    .app-init-spinning {
-      display: flex;
-      align-items: center;
-      position: relative;
-      height: var(--init-spinning-height);
-    }
-
-    .app-init-spinning span {
-      background: linear-gradient(to top, #21c697 0%, #e7fed7 100%);
-      width: 6px;
-      height: 20%;
-      border-radius: calc(var(--init-spinning-height) * 0.2 * 0.5);
-      margin-right: 8px;
-      animation: spinning 2.5s infinite linear;
-      animation-delay: calc(0.2s * var(--init-spinning-delay));
-    }
-
-    .app-init-spinning span:last-child {
-      margin-right: 0px;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="app-init-spinning-container" id="appInitSpinningId">
-    <div class="app-init-spinning-bg">
-      <div class="app-init-spinning">
-        <span style="--init-spinning-delay: 5"></span>
-        <span style="--init-spinning-delay: 4"></span>
-        <span style="--init-spinning-delay: 3"></span>
-        <span style="--init-spinning-delay: 2"></span>
-        <span style="--init-spinning-delay: 1"></span>
-        <span style="--init-spinning-delay: 0"></span>
-        <span style="--init-spinning-delay: 1"></span>
-        <span style="--init-spinning-delay: 2"></span>
-        <span style="--init-spinning-delay: 3"></span>
-        <span style="--init-spinning-delay: 4"></span>
-        <span style="--init-spinning-delay: 5"></span>
-      </div>
-    </div>
-  </div>
-  <script type="text/javascript">
-    (function initialize() {
-      let initSpinningObj = document.getElementById("appInitSpinningId");
-      initSpinningObj.style.display = 'block';
-      document.onreadystatechange = function () {
-        if (document.readyState == "complete") {
-          const timer = setTimeout(() => {
-            initSpinningObj.style.display = 'none';
-            clearTimeout(timer);
-          }, 88);
+      @keyframes spinningRotate {
+        0% {
+          transform: rotate(0);
+        }
+        10% {
+          width: 6.25em;
+          height: 6.25em;
+        }
+        66% {
+          width: 2.4em;
+          height: 2.4em;
+        }
+        100% {
+          transform: rotate(360deg);
+          width: 6.25em;
+          height: 6.25em;
         }
       }
-    }());
-  </script>
-  <div id="app"></div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
 
+      @keyframes spinningDotsY {
+        66% {
+          opacity: 0.1;
+          width: 2.4em;
+        }
+        77% {
+          opacity: 1;
+          width: 0;
+        }
+      }
+      @keyframes spinningDotsX {
+        66% {
+          opacity: 0.1;
+          height: 2.4em;
+        }
+        77% {
+          opacity: 1;
+          height: 0;
+        }
+      }
+
+      @keyframes spinningFlash {
+        33% {
+          opacity: 0;
+          border-radius: 0%;
+        }
+        55% {
+          opacity: 0.6;
+          border-radius: 100%;
+        }
+        66% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="init-spinning" id="initSpinningId">
+      <div class="dot white"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <script type="text/javascript">
+      ;(function initialize() {
+        let initSpinningObj = document.getElementById('initSpinningId')
+        initSpinningObj.style.display = 'block'
+        document.onreadystatechange = function () {
+          if (document.readyState == 'complete') {
+            const timer = setTimeout(() => {
+              initSpinningObj.style.display = 'none'
+              clearTimeout(timer)
+            }, 88)
+          }
+        }
+      })()
+    </script>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

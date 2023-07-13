@@ -52,7 +52,9 @@ export default defineConfig({
       output: {
         manualChunks: {
           'element-plus': ['element-plus'],
-          '@vueuse/core': ['@vueuse/core']
+          '@vueuse/core': ['@vueuse/core'],
+          'vue-echarts': ['vue-echarts'],
+          'echarts': ['echarts']
         }
       }
     }
