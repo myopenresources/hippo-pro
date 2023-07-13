@@ -157,12 +157,12 @@ export default class UserApi {
                 },
                 {
                   isLayout: false,
-                  path: '/Demo',
-                  name: 'Demo',
+                  path: '/EchartDemo',
+                  name: 'EchartDemo',
                   component: 'echart-demo/Demo.vue',
                   meta: {
                     title: 'demo',
-                    icon: 'SvgIconHome'
+                    icon: 'SvgIconDemo'
                   }
                 },
                 {
@@ -171,8 +171,8 @@ export default class UserApi {
                   name: 'TopoDemo',
                   component: 'topo-demo/TopoDemo.vue',
                   meta: {
-                    title: 'TopoDemo',
-                    icon: 'SvgIconHome'
+                    title: '拓扑图',
+                    icon: 'SvgIconDemo'
                   }
                 },
                 {
@@ -222,7 +222,7 @@ export default class UserApi {
                   component: 'babylon-demo/BabylonSphereDemo.vue',
                   meta: {
                     title: 'BabylonSphereDemo',
-                    icon: 'SvgIconLog'
+                    icon: 'SvgIconDemo'
                   }
                 },
                 {
@@ -232,7 +232,17 @@ export default class UserApi {
                   component: 'loading-demo/LoadingDemo.vue',
                   meta: {
                     title: 'LoadingDemo',
-                    icon: 'SvgIconLog'
+                    icon: 'SvgIconDemo'
+                  }
+                },
+                {
+                  isLayout: false,
+                  path: '/PreviewDemo',
+                  name: 'PreviewDemo',
+                  component: 'preview-demo/PreviewDemo.vue',
+                  meta: {
+                    title: '预览',
+                    icon: 'SvgIconDemo'
                   }
                 }
               ]
@@ -246,41 +256,10 @@ export default class UserApi {
               path: '/Home'
             },
             {
-              id: 'UserList',
-              icon: 'SvgIconUser',
-              label: '用户管理',
-              path: '/UserList'
-            },
-            {
-              id: 'RoleList',
-              icon: 'SvgIconRole',
-              label: '角色管理',
-              path: '/RoleList'
-            },
-            {
-              id: 'MenuList',
-              icon: 'SvgIconMenu',
-              label: '菜单管理',
-              path: '/MenuList'
-            },
-            {
-              id: 'UserInfo',
-              icon: 'SvgIconDataDic',
-              label: '数据字典管理',
-              path: '/UserInfo'
-            },
-            {
               id: 'NotFound',
               icon: 'SvgIconNotice',
               label: '消息管理',
               path: '/MsgList'
-            },
-
-            {
-              id: 'workFlow',
-              icon: 'SvgIconFlow',
-              label: '工作流管理',
-              path: '/NotFound'
             },
             {
               id: 'logList',
@@ -289,28 +268,34 @@ export default class UserApi {
               path: '/LogList'
             },
             {
-              id: 'ahtuList',
-              icon: 'SvgIconAuth',
-              label: '权限管理',
-              path: '/NotFound'
-            },
-            {
-              id: 'demo',
-              icon: 'SvgIconAuth',
-              label: 'demo',
-              path: '/Demo'
+              id: 'echartDemo',
+              icon: 'SvgIconDemo',
+              label: 'echartDemo',
+              path: '/EchartDemo'
             },
             {
               id: 'topoDemo',
-              icon: 'SvgIconAuth',
-              label: 'topoDemo',
+              icon: 'SvgIconDemo',
+              label: '拓扑图',
               path: '/TopoDemo'
             },
             {
               id: 'babylonSphereDemo',
-              icon: 'SvgIconLog',
+              icon: 'SvgIconDemo',
               label: 'babylonSphereDemo',
               path: '/BabylonSphereDemo'
+            },
+            {
+              id: 'loadingDemo',
+              icon: 'SvgIconDemo',
+              label: '加载动画',
+              path: '/LoadingDemo'
+            },
+            {
+              id: 'previewDemo',
+              icon: 'SvgIconDemo',
+              label: '预览',
+              path: '/PreviewDemo'
             }
           ],
           menus: [
@@ -370,15 +355,15 @@ export default class UserApi {
               path: '/NotFound'
             },
             {
-              id: 'demo',
-              icon: 'SvgIconAuth',
-              label: 'demo',
-              path: '/Demo'
+              id: 'echartDemo',
+              icon: 'SvgIconDemo',
+              label: 'echartDemo',
+              path: '/EchartDemo'
             },
             {
               id: 'topoDemo',
-              icon: 'SvgIconAuth',
-              label: 'topoDemo',
+              icon: 'SvgIconDemo',
+              label: '拓扑图',
               path: '/TopoDemo'
             },
             {
@@ -389,9 +374,15 @@ export default class UserApi {
             },
             {
               id: 'loadingDemo',
-              icon: 'SvgIconLog',
-              label: 'loadingDemo',
+              icon: 'SvgIconDemo',
+              label: '加载动画',
               path: '/LoadingDemo'
+            },
+            {
+              id: 'previewDemo',
+              icon: 'SvgIconDemo',
+              label: '预览',
+              path: '/PreviewDemo'
             }
           ]
         }

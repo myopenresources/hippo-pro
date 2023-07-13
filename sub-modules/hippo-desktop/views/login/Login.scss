@@ -39,7 +39,7 @@
       padding: 5px;
       background: var(--login-border-bg);
       border-radius: 15px;
-      box-shadow: var(--el-box-shadow-lighter);
+      box-shadow: var(--login-box-shadow);
       &::after {
         content: '';
         position: absolute;
@@ -56,8 +56,9 @@
         position: absolute;
         z-index: 2;
         padding: 15px;
-        background: var(--el-bg-color-page);
+        background: var(--login-inner-bg);
         border-radius: 15px;
+        box-shadow: var(--login-inset-box-shadow);
         .login-flex {
           display: flex;
 
@@ -77,7 +78,7 @@
             margin-top: 25px;
 
             .login-title {
-              color: var(--el-text-color-primary);
+              color: var(--login-title-color);
               margin-bottom: 30px;
               text-align: left;
               font-weight: 500;
@@ -100,7 +101,7 @@
                   height: var(--el-component-size);
                   line-height: var(--el-component-size);
                   margin-left: 13px;
-                  box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
+                  box-shadow: 0 0 0 1px var(--login-input-border-color) inset;
                   border-radius: var(--el-input-border-radius, var(--el-border-radius-base));
                   padding: 1px;
                   cursor: pointer;
@@ -114,6 +115,24 @@
               :deep(.el-button) {
                 width: 100%;
               }
+
+              :deep(.el-form-item__label){
+                color: var(--login-text-color);
+              }
+
+              :deep(.el-input){
+                --el-input-text-color:  var(--login-text-color);
+                --el-input-hover-border: var(--login-input-hover-border-color);
+                --el-input-border-color: var(--login-input-border-color);
+                --el-input-bg-color: var(--login-input-bg);
+                --el-input-icon-color: var(--login-input-icon-color);
+                --el-input-placeholder-color: var(--login-input-placeholder);
+                --el-input-hover-border-color:var(--login-input-hover-border-color);
+                --el-input-clear-hover-color: var(--login-input-clear-hover-color);
+              }
+              :deep(.el-input__inner){
+                color: var(--login-text-color);
+              }
             }
           }
         }
@@ -122,7 +141,7 @@
           font-size: 13px;
           text-align: center;
           margin-top: 15px;
-          color: var(--el-text-color-secondary);
+          color: var(--login-copyright-color);
         }
       }
     }
@@ -132,7 +151,7 @@
       text-align: center;
       font-size: 13px;
       margin-top: 8px;
-      color: var(--el-border-color-lighter);
+      color: var(--login-desc-color);
       margin-left: auto;
       margin-right: auto;
     }

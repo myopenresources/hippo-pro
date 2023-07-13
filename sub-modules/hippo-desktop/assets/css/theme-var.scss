@@ -3,6 +3,7 @@ html {
     --desktop-layout-toolbar-height: 60px;
     --desktop-layout-toolbar-bg: #eef6fddb;
     --desktop-layout-toolbar-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+    --desktop-layout-toolbar-inner-shadow:0px 0px 3px #fff inset;
     --desktop-layout-toolbar-border-color: rgba(199, 197, 197, 0.879);
     --desktop-layout-toolbar-radius: 0rem;
     --desktop-layout-toolbar-start-menu-bg: rgba(255, 255, 255, 1);
@@ -35,8 +36,21 @@ html {
     --start-menu-category-color: #f5fbfdfa;
 
     --login-bg: linear-gradient(88deg, #18bbff 0, #06bfcc 50%);
+    --login-box-shadow:0px 0px 15px rgba(0, 0, 0, 0.2);
     --login-border-bg: #86d0f325;
+    --login-inset-box-shadow:0px 0px 6px #cbfffe inset;
+    --login-inner-bg:linear-gradient(180deg, #c9f9fd, #f5eeee, #fadce4);
     --login-rotate-border-bg: linear-gradient(88deg, #91e9f1, #367cff, #f9f9fdad);
+    --login-text-color:#606266;
+    --login-input-border-color:rgba(230, 233, 240, 0.78)
+    --login-input-hover-border-color:#c0c4cc;
+    --login-input-bg:#fff;
+    --login-input-icon-color:#a8abb2;
+    --login-input-placeholder:#a8abb2;
+    --login-input-clear-hover-color:#909399;
+    --login-copyright-color:#909399;
+    --login-desc-color:#ebeef5;
+    --login-title-color:#303133;
 
 
     --desktop-input-width: 230px;
@@ -52,6 +66,7 @@ html.dark {
     --desktop-layout-bg: linear-gradient(to right, #233544ff, rgb(26, 51, 71));
     --desktop-layout-toolbar-bg: #010e1be8;
     --desktop-layout-toolbar-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    --desktop-layout-toolbar-inner-shadow:0px 0px 3px #131616 inset;
     --desktop-layout-toolbar-border-color: #334250;
     --desktop-layout-toolbar-start-menu-bg: #283846d7;
     --desktop-layout-toolbar-icon-bg: rgba(43, 42, 42, 0);
@@ -78,8 +93,22 @@ html.dark {
     --start-menu-category-color: #f5fbfdfa;
 
     --login-bg: linear-gradient(88deg, #18bbff 0, #06bfcc 50%);
+    --login-box-shadow:0px 0px 15px rgba(0, 0, 0, 0.2);
     --login-border-bg: #86d0f325;
+    --login-inset-box-shadow:0px 0px 6px #cbfffe inset;
+    --login-inner-bg:linear-gradient(180deg, #c9f9fd, #f5eeee, #fadce4);
     --login-rotate-border-bg: linear-gradient(88deg, #91e9f1, #367cff, #f9f9fdad);
+    --login-text-color:#606266;
+    --login-input-border-color:rgba(230, 233, 240, 0.78)
+    --login-input-hover-border-color:#c0c4cc;
+    --login-input-bg:#fff;
+    --login-input-icon-color:#a8abb2;
+    --login-input-placeholder:#a8abb2;
+    --login-input-clear-hover-color:#909399;
+    --login-copyright-color:#909399;
+    --login-desc-color:#ebeef5;
+    --login-title-color:#303133;
+
 
     --item-hover-bg:#18222c;
 }

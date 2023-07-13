@@ -3,9 +3,8 @@
   height: var(--desktop-layout-toolbar-height);
   position: relative;
   z-index: 9;
-
+  box-shadow: var(--desktop-layout-toolbar-shadow);
   &-inner {
-    backdrop-filter: blur(50px);
     height: 100%;
     width: calc(100% - 1rem);
     background-color: var(--desktop-layout-toolbar-bg);
@@ -14,8 +13,8 @@
     border-radius: var(--desktop-layout-toolbar-radius);
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    box-shadow: var(--desktop-layout-toolbar-shadow);
-
+    box-shadow: var(--desktop-layout-toolbar-inner-shadow);
+  
     &-left {
       display: flex;
       align-items: center;
