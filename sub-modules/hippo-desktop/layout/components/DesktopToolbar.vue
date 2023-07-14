@@ -197,6 +197,7 @@ const toMsg = (msg: MsgInfo) => {
 }
 
 const toMsgList = () => {
+  msgPopoverRef.value.hide()
   router.push('/MsgList')
 }
 

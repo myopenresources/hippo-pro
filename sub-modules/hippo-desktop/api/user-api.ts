@@ -1,6 +1,10 @@
 import type { UploadRequestOptions } from 'element-plus'
 import type { UserDesktopBg, UserInfo, UserLogin, UserUpdatePwd } from '../types'
-import type { RequestResultData } from 'hippo-module-core'
+import type {
+  RequestPaginationResultData,
+  RequestParams,
+  RequestResultData
+} from 'hippo-module-core'
 import bgImg from '../assets/img/desktop-layout/bg.jpg'
 import bgPreviewImg from '../assets/img/desktop-layout/bg-preview.jpg'
 
@@ -217,6 +221,26 @@ export default class UserApi {
                 },
                 {
                   isLayout: false,
+                  path: '/DataDicList',
+                  name: 'DataDicList',
+                  component: 'data-dic/DataDicList.vue',
+                  meta: {
+                    title: '数据字典管理',
+                    icon: 'SvgIconDataDic'
+                  }
+                },
+                {
+                  isLayout: false,
+                  path: '/AuthList',
+                  name: 'AuthList',
+                  component: 'auth/AuthList.vue',
+                  meta: {
+                    title: '权限管理',
+                    icon: 'SvgIconAuth'
+                  }
+                },
+                {
+                  isLayout: false,
                   path: '/BabylonSphereDemo',
                   name: 'BabylonSphereDemo',
                   component: 'babylon-demo/BabylonSphereDemo.vue',
@@ -266,6 +290,12 @@ export default class UserApi {
               icon: 'SvgIconLog',
               label: '日志管理',
               path: '/LogList'
+            },
+            {
+              id: 'UserList',
+              icon: 'SvgIconUser',
+              label: '用户管理',
+              path: '/UserList'
             },
             {
               id: 'echartDemo',
@@ -327,13 +357,13 @@ export default class UserApi {
               id: 'UserInfo',
               icon: 'SvgIconDataDic',
               label: '数据字典管理',
-              path: '/UserInfo'
+              path: '/DataDicList'
             },
             {
               id: 'NotFound',
               icon: 'SvgIconNotice',
               label: '消息管理',
-              path: '/NotFound'
+              path: '/MsgList'
             },
 
             {
@@ -349,10 +379,10 @@ export default class UserApi {
               path: '/LogList'
             },
             {
-              id: 'ahtuList',
+              id: 'authList',
               icon: 'SvgIconAuth',
               label: '权限管理',
-              path: '/NotFound'
+              path: '/AuthList'
             },
             {
               id: 'echartDemo',
@@ -413,6 +443,43 @@ export default class UserApi {
    * @returns
    */
   static updateCurrentUserInfo(params: UserInfo) {
+    return new Promise<RequestResultData<Object>>((resolve) => {
+      resolve({
+        status: 200,
+        success: true,
+        msg: '',
+        data: {}
+      })
+    })
+  }
+
+  static getUserListByParams(params: RequestParams) {
+    return new Promise<RequestPaginationResultData<UserInfo[]>>((resolve) => {
+      resolve({
+        status: 200,
+        success: true,
+        msg: '',
+        data: {
+          total: 100,
+          list: [
+            {
+              id: 'dasfsdfasd232434',
+              userName: 'admin',
+              realName: '伊丽莎白.买买提',
+              avatar: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
+              sex: '1',
+              tel: '18985458699',
+              email: '18985458699@qq.com',
+              createUser: 'admin',
+              createDate: '2023-07-11 15:35:45'
+            }
+          ]
+        }
+      })
+    })
+  }
+
+  static deleteUserByIds(ids: string[]) {
     return new Promise<RequestResultData<Object>>((resolve) => {
       resolve({
         status: 200,

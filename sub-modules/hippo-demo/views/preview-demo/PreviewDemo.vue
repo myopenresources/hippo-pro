@@ -133,6 +133,8 @@
     }
     .card-body {
       color: var(--el-text-color-regular);
+      overflow-y: auto;
+      overflow-x: hidden;
       .label {
         margin-right: 450px;
       }

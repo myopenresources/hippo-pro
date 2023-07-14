@@ -5,4 +5,6 @@
 <script setup lang="ts">
 </script>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped>
+@import './AuthList.scss'
+</style>

@@ -1,5 +1,4 @@
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import path from 'path'
 
 export function svgIconsPlugin(opt: any = {}) {
   const option = {

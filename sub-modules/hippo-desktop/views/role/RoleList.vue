@@ -1,5 +1,5 @@
 <template>
-    RoleList
+    <MainContent></MainContent>
 </template>
 
 <script setup lang="ts">
