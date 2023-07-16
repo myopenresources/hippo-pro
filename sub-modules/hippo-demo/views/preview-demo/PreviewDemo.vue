@@ -144,7 +144,7 @@
         right: 10px;
       }
       .inner-card {
-        background-color: rgb(240, 248, 255);
+        background-color: var(--el-color-info-light-8);
         padding: 15px;
         margin-top: 15px;
         border-radius: 6px;
