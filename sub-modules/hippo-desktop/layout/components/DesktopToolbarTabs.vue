@@ -4,9 +4,6 @@
       <div
         class="desktop-toolbar-tabs-move-to"
         @click="moveToLeft"
-        :class="{
-          'desktop-toolbar-tabs-move-to-disabled': !leftArrowEnabled
-        }"
       >
         <DynamicIcon icon="ArrowLeft" />
       </div>
@@ -14,8 +11,6 @@
     <HorizontalScrollPane
       class="desktop-toolbar-tabs-wrapper"
       ref="scrollPaneRef"
-      @left-arrow-enabled-change="leftArrowEnabledChange"
-      @right-arrow-enabled-change="rightArrowEnabledChange"
     >
       <template v-for="tab in visitedViews" :key="tab.path">
         <router-link
@@ -41,9 +36,6 @@
       <div
         class="desktop-toolbar-tabs-move-to"
         @click="moveToRight"
-        :class="{
-          'desktop-toolbar-tabs-move-to-disabled': !rightArrowEnabled
-        }"
       >
         <DynamicIcon icon="ArrowRight" />
       </div>
@@ -89,8 +81,6 @@ const route = useRoute()
 const router = useRouter()
 
 const selectedTab = reactive<any>({})
-const leftArrowEnabled = ref(true)
-const rightArrowEnabled = ref(true)
 
 const tabViewsRef: any[] = []
 const scrollPaneRef = ref<any>(null)
@@ -192,33 +182,17 @@ const closeAllTabs = () => {
  * 左移
  */
 const moveToLeft = () => {
-  if (leftArrowEnabled.value) {
-    scrollPaneRef.value.moveToLeft()
-  }
+  scrollPaneRef.value.moveToLeft()
 }
 
 /**
  * 右移
  */
 const moveToRight = () => {
-  if (rightArrowEnabled.value) {
-    scrollPaneRef.value.moveToRight()
-  }
+  scrollPaneRef.value.moveToRight()
 }
 
-/**
- * 左侧箭头可用/禁用
- */
-const leftArrowEnabledChange = (enabled: boolean) => {
-  leftArrowEnabled.value = enabled
-}
 
-/**
- * 右侧箭头可用/禁用
- */
-const rightArrowEnabledChange = (enabled: boolean) => {
-  rightArrowEnabled.value = enabled
-}
 
 /**
  * 下拉
