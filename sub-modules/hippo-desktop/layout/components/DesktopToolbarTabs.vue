@@ -1,13 +1,29 @@
 <template>
   <div class="desktop-toolbar-tabs">
     <div class="desktop-toolbar-tabs-btns">
-      <div class="desktop-toolbar-tabs-move-to" @click="moveToLeft">
+      <div
+        class="desktop-toolbar-tabs-move-to"
+        @click="moveToLeft"
+        :class="{
+          'desktop-toolbar-tabs-move-to-disabled': !leftArrowEnabled
+        }"
+      >
         <DynamicIcon icon="ArrowLeft" />
       </div>
     </div>
-    <HorizontalScrollPane class="desktop-toolbar-tabs-wrapper" ref="scrollPaneRef">
+    <HorizontalScrollPane
+      class="desktop-toolbar-tabs-wrapper"
+      ref="scrollPaneRef"
+      @left-arrow-enabled-change="leftArrowEnabledChange"
+      @right-arrow-enabled-change="rightArrowEnabledChange"
+    >
       <template v-for="tab in visitedViews" :key="tab.path">
-        <router-link :ref="setTabViewsRef" class="desktop-toolbar-tabs-item" :to="tab" v-if="tab.path !== startMenuPath">
+        <router-link
+          :ref="setTabViewsRef"
+          class="desktop-toolbar-tabs-item"
+          :to="tab"
+          v-if="tab.path !== startMenuPath"
+        >
           <div class="desktop-toolbar-tabs-item-inner">
             <div class="icon">
               <DynamicIcon :icon="tab.icon" />
@@ -19,11 +35,16 @@
           </div>
         </router-link>
       </template>
-
     </HorizontalScrollPane>
 
     <div class="desktop-toolbar-tabs-btns">
-      <div class="desktop-toolbar-tabs-move-to" @click="moveToRight">
+      <div
+        class="desktop-toolbar-tabs-move-to"
+        @click="moveToRight"
+        :class="{
+          'desktop-toolbar-tabs-move-to-disabled': !rightArrowEnabled
+        }"
+      >
         <DynamicIcon icon="ArrowRight" />
       </div>
 
@@ -46,7 +67,13 @@
 </template>
 
 <script setup lang="ts">
-import { DynamicIcon, Environments, HorizontalScrollPane, useEventBusOn, useEventBusRemove } from 'hippo-module-core'
+import {
+  DynamicIcon,
+  Environments,
+  HorizontalScrollPane,
+  useEventBusOn,
+  useEventBusRemove
+} from 'hippo-module-core'
 import { computed, nextTick, onMounted, onUnmounted, reactive, ref } from 'vue'
 import {
   useRoute,
@@ -62,6 +89,8 @@ const route = useRoute()
 const router = useRouter()
 
 const selectedTab = reactive<any>({})
+const leftArrowEnabled = ref(true)
+const rightArrowEnabled = ref(true)
 
 const tabViewsRef: any[] = []
 const scrollPaneRef = ref<any>(null)
@@ -101,12 +130,14 @@ const addViewTab = (currentRoute: RouteLocationNormalizedLoaded | RouteLocationN
  */
 const moveToCurrentTab = () => {
   const tabs = tabViewsRef
+  let index = 0
   nextTick(() => {
     for (const item of tabs) {
       if (item && item.to.path === selectedTab.value.path) {
         scrollPaneRef.value.moveToTarget(item.$el)
         break
       }
+      index++
     }
   })
 }
@@ -161,16 +192,38 @@ const closeAllTabs = () => {
  * 左移
  */
 const moveToLeft = () => {
-  scrollPaneRef.value.moveToLeft()
+  if (leftArrowEnabled.value) {
+    scrollPaneRef.value.moveToLeft()
+  }
 }
 
 /**
  * 右移
  */
 const moveToRight = () => {
-  scrollPaneRef.value.moveToRight()
+  if (rightArrowEnabled.value) {
+    scrollPaneRef.value.moveToRight()
+  }
 }
 
+/**
+ * 左侧箭头可用/禁用
+ */
+const leftArrowEnabledChange = (enabled: boolean) => {
+  leftArrowEnabled.value = enabled
+}
+
+/**
+ * 右侧箭头可用/禁用
+ */
+const rightArrowEnabledChange = (enabled: boolean) => {
+  rightArrowEnabled.value = enabled
+}
+
+/**
+ * 下拉
+ * @param command
+ */
 const tabDropdownCommand = (command: string) => {
   const commands: any = {
     closeSelectedTab: () => {
@@ -185,7 +238,7 @@ const tabDropdownCommand = (command: string) => {
 /**
  * 初始化
  */
-(() => {
+;(() => {
   addViewTab(route)
   onBeforeRouteUpdate((to: RouteLocationNormalized) => {
     nextTick(() => {

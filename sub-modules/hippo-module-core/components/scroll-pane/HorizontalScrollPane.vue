@@ -17,18 +17,44 @@ import { HorizontalScrollPaneProps } from '../../props'
 export default defineComponent({
   name: 'HorizontalScrollPane',
   props: HorizontalScrollPaneProps,
-  setup(props) {
+  emits: ['rightArrowEnabledChange', 'leftArrowEnabledChange'],
+  setup(props, { emit }) {
     const left = ref(0)
     const scrollContainer = ref<any>(null)
     const scrollWrapper = ref<any>(null)
     const moveTargetRef = ref(null)
 
+    const checkArrowEnabled = () => {
+      if (!props.useCheckArrowEvent) {
+        return
+      }
+
+      if (left.value >= 0) {
+        console.info('right 不可用')
+        emit('rightArrowEnabledChange', false)
+      } else {
+        console.info('right 可用')
+        emit('rightArrowEnabledChange', true)
+      }
+
+      const containerRight = scrollContainer.value.getBoundingClientRect().right
+      const wrapperRight = scrollWrapper.value.getBoundingClientRect().right
+
+      console.info(Number.parseInt(containerRight), Number.parseInt(wrapperRight))
+
+      if (Number.parseInt(containerRight) === Number.parseInt(wrapperRight) || Number.parseInt(containerRight)-1 === Number.parseInt(wrapperRight)) {
+        console.info('left 不可用')
+        emit('leftArrowEnabledChange', false)
+      } else {
+        console.info('left 可用')
+        emit('leftArrowEnabledChange', true)
+      }
+    }
+
     const handleScroll = (e: any) => {
       const eventDelta = e.wheelDelta || -e.deltaY * 3
-      const container = scrollContainer
-      const containerWidth = container.value.offsetWidth
-      const wrapper = scrollWrapper
-      const wrapperWidth = wrapper.value.offsetWidth
+      const containerWidth = scrollContainer.value.offsetWidth
+      const wrapperWidth = scrollWrapper.value.offsetWidth
 
       if (eventDelta > 0) {
         left.value = Math.min(0, left.value + eventDelta)
@@ -46,25 +72,33 @@ export default defineComponent({
           left.value = 0
         }
       }
+
+      checkArrowEnabled()
     }
 
     const moveToTarget = (target: any) => {
       moveTargetRef.value = target
 
-      const container = scrollContainer
-      const containerWidth = container.value.offsetWidth
+      const containerWidth = scrollContainer.value.offsetWidth
+      console.info(target.getBoundingClientRect())
       const targetLeft = target.offsetLeft
       const targetWidth = target.offsetWidth
 
+      console.info(targetLeft,left.value)
+
       if (targetLeft <= -left.value) {
         left.value = -targetLeft + props.padding
+        console.info('fsdfsdf111111111111111')
       } else if (
         targetLeft + props.padding > -left.value &&
         targetLeft + targetWidth < -left.value + containerWidth - props.padding
       ) {
+        console.info('fsdfsdf3333333333333')
       } else {
         left.value = -(targetLeft - (containerWidth - targetWidth) + props.padding)
+        console.info('fsdfsdf2222222222222222222222')
       }
+      checkArrowEnabled()
     }
 
     const moveToRight = () => {
@@ -74,6 +108,7 @@ export default defineComponent({
       }
 
       left.value += props.step
+      checkArrowEnabled()
 
       if (left.value >= 0) {
         left.value = 0
@@ -82,10 +117,8 @@ export default defineComponent({
     }
 
     const moveToLeft = (includePadding = true) => {
-      const container = scrollContainer
-      const containerWidth = container.value.offsetWidth
-      const wrapper = scrollWrapper
-      const wrapperWidth = wrapper.value.offsetWidth
+      const containerWidth = scrollContainer.value.offsetWidth
+      const wrapperWidth = scrollWrapper.value.offsetWidth
 
       let targetLeft = 0
       if (includePadding) {
@@ -96,6 +129,7 @@ export default defineComponent({
 
       if (targetLeft > 0) {
         left.value = 0
+        checkArrowEnabled()
         return
       }
 
@@ -105,17 +139,17 @@ export default defineComponent({
         left.value = targetLeft
       }
 
+      checkArrowEnabled()
       if (targetLeft > 0) {
         left.value = 0
+        checkArrowEnabled()
         return
       }
     }
 
     const resize = () => {
-      const container = scrollContainer
-      const containerWidth = container.value.offsetWidth
-      const wrapper = scrollWrapper
-      const wrapperWidth = wrapper.value.offsetWidth
+      const containerWidth = scrollContainer.value.offsetWidth
+      const wrapperWidth = scrollWrapper.value.offsetWidth
 
       if (left.value <= 0 || containerWidth - wrapperWidth >= 0) {
         moveToLeft(false)

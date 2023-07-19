@@ -10,5 +10,9 @@ export const HorizontalScrollPaneProps = {
   duration: {
     type: String,
     default: '0.5s'
+  },
+  useCheckArrowEvent: {
+    type: Boolean,
+    default: true
   }
 }

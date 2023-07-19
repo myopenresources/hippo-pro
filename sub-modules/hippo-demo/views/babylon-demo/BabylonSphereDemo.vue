@@ -35,7 +35,33 @@ const createScene = () => {
 
   // 添加一个球体到场景中
   BABYLON.MeshBuilder.CreateSphere('sphere', { diameter: 2 }, scene)
+  BABYLON.MeshBuilder.CreateBox(
+    'mybox',
+    {
+      height: 5,
+      width: 2,
+      depth: 0.5,
+      updatable: true,
+      faceColors: [
+        new BABYLON.Color4(0.5, 0.1, 0.8, 1),
+        new BABYLON.Color4(0.1, 0.1, 0.8, 1),
+        new BABYLON.Color4(0.1, 0.2, 0.8, 1),
+        new BABYLON.Color4(0.1, 0.1, 0.4, 1),
+        new BABYLON.Color4(0.7, 0.3, 0.8, 1),
+        new BABYLON.Color4(0.8, 0.13, 0.8, 1)
+      ]
+    },
+    scene
+  )
+  BABYLON.MeshBuilder.CreateGround('myGround', { width: 6, height: 4, subdivisions: 4 }, scene)
 
+  var myPoints = [
+    new BABYLON.Vector3(0, 0, 0),
+    new BABYLON.Vector3(0, 1, 1),
+    new BABYLON.Vector3(0, 1, 0)
+  ]
+  BABYLON.MeshBuilder.CreateLines('lines', { points: myPoints }, scene)
+  
   return scene
 }
 
