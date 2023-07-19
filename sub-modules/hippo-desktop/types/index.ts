@@ -3,6 +3,7 @@ import type { RouterInfo } from './router-types'
 import type { MenuInfo } from './menu-types'
 import type { UserLogin, UserInfo,UserUpdatePwd, UserDesktopBg } from './user-types'
 import type { MsgInfo } from "./msg-types";
+import type {RoleInfo} from './role-types'
 
 export type {
     SysConfig,
@@ -14,4 +15,5 @@ export type {
     UserInfo,
     UserDesktopBg,
     MsgInfo,
+    RoleInfo
 }

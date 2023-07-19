@@ -268,6 +268,16 @@ export default class UserApi {
                     title: '预览',
                     icon: 'SvgIconDemo'
                   }
+                },
+                {
+                  isLayout: false,
+                  path: '/AwesomeQrDemo',
+                  name: 'AwesomeQrDemo',
+                  component: 'awesome-qr-demo/AwesomeQrDemo.vue',
+                  meta: {
+                    title: 'awesome-qr',
+                    icon: 'SvgIconDemo'
+                  }
                 }
               ]
             }
@@ -298,6 +308,12 @@ export default class UserApi {
               path: '/UserList'
             },
             {
+              id: 'RoleList',
+              icon: 'SvgIconRole',
+              label: '角色管理',
+              path: '/RoleList'
+            },
+            {
               id: 'echartDemo',
               icon: 'SvgIconDemo',
               label: 'echartDemo',
@@ -326,6 +342,12 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: '预览',
               path: '/PreviewDemo'
+            },
+            {
+              id: 'awesomeQrDemo',
+              icon: 'SvgIconDemo',
+              label: 'awesome-qr',
+              path: '/AwesomeQrDemo'
             }
           ],
           menus: [
@@ -413,6 +435,12 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: '预览',
               path: '/PreviewDemo'
+            },
+            {
+              id: 'awesomeQrDemo',
+              icon: 'SvgIconDemo',
+              label: 'awesome-qr',
+              path: '/AwesomeQrDemo'
             }
           ]
         }
