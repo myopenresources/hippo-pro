@@ -30,11 +30,15 @@ const createScene = () => {
   camera.attachControl(canvas, true)
 
   // 添加一组灯光到场景
-  new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(1, 1, 0), scene)
-  new BABYLON.PointLight('light2', new BABYLON.Vector3(0, 1, -1), scene)
+  new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 0, 0), scene)
+  new BABYLON.PointLight('light2', new BABYLON.Vector3(0, 0, 0), scene)
 
   // 添加一个球体到场景中
-  BABYLON.MeshBuilder.CreateSphere('sphere', { diameter: 2 }, scene)
+  const sphere = BABYLON.MeshBuilder.CreateSphere('sphere', { diameter: 2 }, scene)
+  sphere.position = new BABYLON.Vector3(2,0,2)
+  sphere.scaling= new BABYLON.Vector3(1.5,1.5,2)
+
+
   BABYLON.MeshBuilder.CreateBox(
     'mybox',
     {
@@ -55,11 +59,13 @@ const createScene = () => {
   )
   BABYLON.MeshBuilder.CreateGround('myGround', { width: 6, height: 4, subdivisions: 4 }, scene)
 
-  var myPoints = [
+
+  const myPoints = [
     new BABYLON.Vector3(0, 0, 0),
     new BABYLON.Vector3(0, 1, 1),
     new BABYLON.Vector3(0, 1, 0)
   ]
+
   BABYLON.MeshBuilder.CreateLines('lines', { points: myPoints }, scene)
   
   return scene

@@ -241,6 +241,26 @@ export default class UserApi {
                 },
                 {
                   isLayout: false,
+                  path: '/WorkFlowList',
+                  name: 'WorkFlowList',
+                  component: 'work-flow/WorkFlowList.vue',
+                  meta: {
+                    title: '流程管理',
+                    icon: 'SvgIconFlow'
+                  }
+                },
+                {
+                  isLayout: false,
+                  path: '/CreateWorkFlow',
+                  name: 'CreateWorkFlow',
+                  component: 'work-flow/CreateWorkFlow.vue',
+                  meta: {
+                    title: '流程创建',
+                    icon: 'SvgIconFlow'
+                  }
+                },
+                {
+                  isLayout: false,
                   path: '/BabylonSphereDemo',
                   name: 'BabylonSphereDemo',
                   component: 'babylon-demo/BabylonSphereDemo.vue',
@@ -314,6 +334,12 @@ export default class UserApi {
               path: '/RoleList'
             },
             {
+              id: 'WorkFlowList',
+              icon: 'SvgIconFlow',
+              label: '流程管理',
+              path: '/WorkFlowList'
+            },
+            {
               id: 'echartDemo',
               icon: 'SvgIconDemo',
               label: 'echartDemo',
@@ -382,17 +408,16 @@ export default class UserApi {
               path: '/DataDicList'
             },
             {
-              id: 'NotFound',
+              id: 'MsgList',
               icon: 'SvgIconNotice',
               label: '消息管理',
               path: '/MsgList'
             },
-
             {
-              id: 'workFlow',
+              id: 'WorkFlowList',
               icon: 'SvgIconFlow',
-              label: '工作流管理',
-              path: '/NotFound'
+              label: '流程管理',
+              path: '/WorkFlowList'
             },
             {
               id: 'logList',

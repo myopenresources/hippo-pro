@@ -3,6 +3,7 @@ import type { SvgProp } from './svg-icon-types'
 import type { RequestResult, RequestResultData,RequestParams,RequestPaginationData,RequestPaginationResultData } from "./request-types";
 import type { WindowResizeParams } from './window-resize-types';
 import type { LogParam,LogLevel } from './log-param-types';
+import type { BaseInfo } from './base-types';
 export type {
     Dimensions,
     SvgProp,
@@ -13,5 +14,6 @@ export type {
     RequestPaginationResultData,
     WindowResizeParams,
     LogParam,
-    LogLevel
+    LogLevel,
+    BaseInfo
 }

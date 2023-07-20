@@ -1,0 +1,16 @@
+{
+  "name": "hippo-bpmn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cjh",
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "@logicflow/core": "^1.2.10",
+    "@logicflow/extension": "^1.2.10"
+  }
+}

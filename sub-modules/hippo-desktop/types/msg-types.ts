@@ -1,13 +1,10 @@
+import type { BaseInfo } from "hippo-module-core/types";
 
-interface MsgInfo {
-    id: string;
+interface MsgInfo extends BaseInfo {
     msgTitle: string;
     msgType?: string,
     msgTypeId: string,
     msgContent: string;
-    createUserId?: string;
-    createUser?: string;
-    createDate?: string;
 }
 
 
