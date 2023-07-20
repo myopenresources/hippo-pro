@@ -20,6 +20,8 @@ import {
   SelectionSelect
 } from '@logicflow/extension'
 import '@logicflow/core/dist/style/index.css'
+import '@logicflow/extension/es/style/index.css'
+
 import WorkFlowPattern from './components/WorkFlowPattern.vue'
 import WorkFlowIo from './components/WorkFlowIo.vue'
 

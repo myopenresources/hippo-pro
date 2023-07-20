@@ -5,7 +5,7 @@ export const WorkFlowPatternProps = {
   logicFlow: {
     type: Object as PropType<LogicFlow>,
     default: () => {
-      return undefined
+      return null
     }
   }
 }

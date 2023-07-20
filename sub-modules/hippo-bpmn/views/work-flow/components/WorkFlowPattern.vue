@@ -28,8 +28,9 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
 import { WorkFlowPatternProps } from '../../../props'
+import type LogicFlow from '@logicflow/core';
 
 const props = defineProps(WorkFlowPatternProps)
 
@@ -95,8 +96,17 @@ const init = () => {
   }
 }
 
+watch(
+  (): LogicFlow => props.logicFlow,
+  (newVal: LogicFlow): void => {
+    if (newVal) {
+      init()
+    }
+  }
+)
+
 onMounted(() => {
-  init()
+
 })
 </script>
 
