@@ -6,6 +6,17 @@ import type {
 import type { WorkFlowInfo } from '../types/work-flow-types'
 
 export default class WorkFlowApi {
+  static saveWorkFlowInfo(params: WorkFlowInfo) {
+    return new Promise<RequestResultData<Object>>((resolve) => {
+      resolve({
+        status: 200,
+        success: true,
+        msg: '',
+        data: {}
+      })
+    })
+  }
+
   static getWorkFlowListByParams(params: RequestParams) {
     return new Promise<RequestPaginationResultData<WorkFlowInfo[]>>((resolve) => {
       resolve({

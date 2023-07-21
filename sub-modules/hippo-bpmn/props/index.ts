@@ -1,3 +1,3 @@
-import { WorkFlowPatternProps } from './work-flow-props'
+import { WorkFlowPatternProps,WorkFlowIoProps } from './work-flow-props'
 
-export { WorkFlowPatternProps }
+export { WorkFlowPatternProps,WorkFlowIoProps }

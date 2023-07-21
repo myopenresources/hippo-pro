@@ -263,7 +263,7 @@ export default class UserApi {
                   isLayout: false,
                   path: '/EditWorkFlow/:id',
                   name: 'EditWorkFlow',
-                  component: 'work-flow/AddWorkFlow.vue',
+                  component: 'work-flow/EditWorkFlow.vue',
                   meta: {
                     title: '编辑创建',
                     icon: 'SvgIconFlow'
