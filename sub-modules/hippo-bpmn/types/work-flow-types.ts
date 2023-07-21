@@ -5,6 +5,7 @@ interface WorkFlowInfo extends BaseInfo {
   moduleId:string;
   moduleName:string;
   desc: string;
+  workFlowContent:string;
 }
 
 export type { WorkFlowInfo }

@@ -79,7 +79,7 @@ import {
 } from 'hippo-module-core/hooks'
 import type { RequestPaginationData, RequestResultData } from 'hippo-module-core/types'
 import { onMounted, reactive, ref } from 'vue'
-import { WorkFlowInfo } from '../../types/work-flow-types'
+import type { WorkFlowInfo } from '../../types/work-flow-types'
 import WorkFlowApi from '../../api/work-flow-api'
 import { useRouter } from 'vue-router'
 
@@ -94,10 +94,12 @@ const tableSelection = ref<string[]>([])
 const tableData = ref<any[]>([])
 
 const add = () => {
-  router.push('/CreateWorkFlow')
+  router.push('/AddWorkFlow')
 }
 
-const edit = (id: string) => {}
+const edit = (id: string) => {
+  router.push('/EditWorkFlow/'+id)
+}
 
 const view = (id: string) => {}
 

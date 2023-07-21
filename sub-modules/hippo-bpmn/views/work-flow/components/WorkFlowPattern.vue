@@ -1,38 +1,44 @@
 <template>
   <div class="work-flow-pattern">
-    <div class="work-flow-pattern-item">
+    <div class="work-flow-pattern-item" :class="{
+      'work-flow-pattern-item-selected':isStopMoveGraph
+    }">
       <div class="work-flow-pattern-selection" @mousedown="openSelection"></div>
       <div class="work-flow-pattern-label">选区</div>
     </div>
     <div class="work-flow-pattern-item">
       <div class="work-flow-pattern-start" @mousedown="addStartNode"></div>
-      <div>开始</div>
+      <div class="work-flow-pattern-label">开始</div>
     </div>
     <div class="work-flow-pattern-item">
       <div class="work-flow-pattern-user" @mousedown="addUserTask"></div>
-      <div>用户任务</div>
+      <div class="work-flow-pattern-label">用户任务</div>
     </div>
     <div class="work-flow-pattern-item">
-      <div class="work-flow-pattern-user" @mousedown="addServiceTask"></div>
-      <div>系统任务</div>
+      <div class="work-flow-pattern-sys" @mousedown="addServiceTask"></div>
+      <div class="work-flow-pattern-label">系统任务</div>
     </div>
     <div class="work-flow-pattern-item">
       <div class="work-flow-pattern-condition" @mousedown="addGateWay"></div>
-      <div>条件判断</div>
+      <div class="work-flow-pattern-label">条件判断</div>
     </div>
     <div class="work-flow-pattern-item">
       <div class="work-flow-pattern-end" @mousedown="addEndNode"></div>
-      <div>结束</div>
+      <div class="work-flow-pattern-label">结束</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { WorkFlowPatternProps } from '../../../props'
-import type LogicFlow from '@logicflow/core';
+import type LogicFlow from '@logicflow/core'
 
 const props = defineProps(WorkFlowPatternProps)
+
+const isStopMoveGraph = computed(() => {
+  return  props.logicFlow && props.logicFlow.getEditConfig() && props.logicFlow.getEditConfig().stopMoveGraph?props.logicFlow.getEditConfig().stopMoveGraph:false
+})
 
 const addStartNode = () => {
   if (props.logicFlow) {
@@ -105,9 +111,7 @@ watch(
   }
 )
 
-onMounted(() => {
-
-})
+onMounted(() => {})
 </script>
 
 <style scoped lang="scss" src="./WorkFlowPattern.scss" />

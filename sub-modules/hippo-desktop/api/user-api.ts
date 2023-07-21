@@ -251,11 +251,21 @@ export default class UserApi {
                 },
                 {
                   isLayout: false,
-                  path: '/CreateWorkFlow',
-                  name: 'CreateWorkFlow',
-                  component: 'work-flow/CreateWorkFlow.vue',
+                  path: '/AddWorkFlow',
+                  name: 'AddWorkFlow',
+                  component: 'work-flow/AddWorkFlow.vue',
                   meta: {
-                    title: '流程创建',
+                    title: '新增流程',
+                    icon: 'SvgIconFlow'
+                  }
+                },
+                {
+                  isLayout: false,
+                  path: '/EditWorkFlow/:id',
+                  name: 'EditWorkFlow',
+                  component: 'work-flow/AddWorkFlow.vue',
+                  meta: {
+                    title: '编辑创建',
                     icon: 'SvgIconFlow'
                   }
                 },

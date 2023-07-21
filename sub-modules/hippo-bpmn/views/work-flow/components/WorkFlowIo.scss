@@ -1,6 +1,6 @@
 .work-flow-io {
   position: absolute;
-  left: 5px;
+  left: 12px;
   bottom: 5px;
   z-index: 2;
   background: var(--el-bg-color);
@@ -10,6 +10,9 @@
   span {
     margin: 0 10px;
     cursor: pointer;
+    &:hover{
+      opacity: 0.6;
+    }
   }
   .upload-xml {
     position: relative;
