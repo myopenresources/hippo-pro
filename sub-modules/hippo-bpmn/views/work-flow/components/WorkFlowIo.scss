@@ -1,34 +1,46 @@
 .work-flow-io {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  z-index: 2;
-  background: var(--el-bg-color);
-  box-shadow:  var(--el-box-shadow-lighter);
-  padding: 10px;
   display: flex;
-  span {
-    margin: 0 12px;
-    cursor: pointer;
-    &:hover{
-      opacity: 0.6;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  border-bottom: var(--el-border);
+  padding: var(--main-content-padding);
+  box-sizing: border-box;
+  .title {
+    font-weight: bold;
+  }
+  .tools {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    div {
+      margin-top: 4px;
+      margin-left: 12px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.6;
+      }
+      img{
+        width: 16px;
+        height: 16px;
+      }
     }
-  }
-  .upload-xml {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    cursor: pointer;
-  }
-  .upload {
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    cursor: pointer;
-  }
-  .upload::-webkit-file-upload-button {
-    cursor: pointer;
+    .upload-xml {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .upload {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .upload::-webkit-file-upload-button {
+      cursor: pointer;
+    }
   }
 }
