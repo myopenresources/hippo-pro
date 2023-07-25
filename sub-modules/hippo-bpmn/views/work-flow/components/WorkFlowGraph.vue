@@ -111,6 +111,14 @@ const init = (info: WorkFlowInfo) => {
   } else {
     logicFlow.value.render()
   }
+  
+  initEvent(logicFlow.value)
+}
+
+const initEvent = (lf: LogicFlow) => {
+  lf.on('node:click', ({ data }) => {
+    console.log(data)
+  })
 }
 
 const save = () => {

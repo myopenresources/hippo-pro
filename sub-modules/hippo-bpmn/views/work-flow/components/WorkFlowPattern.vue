@@ -1,8 +1,11 @@
 <template>
   <div class="work-flow-pattern">
-    <div class="work-flow-pattern-item" :class="{
-      'work-flow-pattern-item-selected':isStopMoveGraph
-    }">
+    <div
+      class="work-flow-pattern-item"
+      :class="{
+        'work-flow-pattern-item-selected': isStopMoveGraph
+      }"
+    >
       <div class="work-flow-pattern-selection" @mousedown="openSelection"></div>
       <div class="work-flow-pattern-label">选区</div>
     </div>
@@ -37,15 +40,23 @@ import type LogicFlow from '@logicflow/core'
 const props = defineProps(WorkFlowPatternProps)
 
 const isStopMoveGraph = computed(() => {
-  return  props.logicFlow && props.logicFlow.getEditConfig() && props.logicFlow.getEditConfig().stopMoveGraph?props.logicFlow.getEditConfig().stopMoveGraph:false
+  return props.logicFlow &&
+    props.logicFlow.getEditConfig() &&
+    props.logicFlow.getEditConfig().stopMoveGraph
+    ? props.logicFlow.getEditConfig().stopMoveGraph
+    : false
 })
 
 const addStartNode = () => {
   if (props.logicFlow) {
-    props.logicFlow.dnd.startDrag({
-      type: 'bpmn:startEvent',
-      text: '开始'
-    })
+    if (props.logicFlow.graphModel && props.logicFlow.graphModel.nodes) {
+      const find = props.logicFlow.graphModel.nodes.find((item) => item.type === 'bpmn:startEvent')
+      !find &&
+        props.logicFlow.dnd.startDrag({
+          type: 'bpmn:startEvent',
+          text: '开始'
+        })
+    }
   }
 }
 
@@ -75,10 +86,14 @@ const addGateWay = () => {
 
 const addEndNode = () => {
   if (props.logicFlow) {
-    props.logicFlow.dnd.startDrag({
-      type: 'bpmn:endEvent',
-      text: '结束'
-    })
+    if (props.logicFlow.graphModel && props.logicFlow.graphModel.nodes) {
+      const find = props.logicFlow.graphModel.nodes.find((item) => item.type === 'bpmn:endEvent')
+      !find &&
+        props.logicFlow.dnd.startDrag({
+          type: 'bpmn:endEvent',
+          text: '结束'
+        })
+    }
   }
 }
 
