@@ -133,9 +133,8 @@ const offEvent = (lf: LogicFlow) => {
 }
 
 const saveSuccess = (data: any) => {
-  if (workFlowConfigRef.value) {
-    console.info(data)
-    //workFlowConfigRef.value
+  if (logicFlow.value) {
+    logicFlow.value.graphModel.updateText(data.id, data.text)
   }
 }
 

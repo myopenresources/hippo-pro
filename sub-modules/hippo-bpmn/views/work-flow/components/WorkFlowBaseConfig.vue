@@ -7,15 +7,12 @@
         autocomplete="off"
         maxlength="128"
         placeholder="请输入..."
+        :disabled="true"
       />
     </el-form-item>
-    <el-form-item
-      label="名称"
-      prop="text.value"
-      :rules="[{ required: true, message: '名称不能为空！' }]"
-    >
+    <el-form-item label="名称" prop="text" :rules="[{ required: false, message: '名称不能为空！' }]">
       <el-input
-        v-model="ruleForm.text.value"
+        v-model="ruleForm.text"
         type="textarea"
         autocomplete="off"
         rows="5"
@@ -38,19 +35,13 @@ const formRef = ref<FormInstance>()
 
 const ruleForm = ref({
   id: '',
-  text: {
-    value: ''
-  }
+  text: ''
 })
 
 const init = (data: any) => {
   ruleForm.value = {
-    ...data,
-    text: data.text
-      ? data.text
-      : {
-          value: ''
-        }
+    id: data.id,
+    text: data.text ? data.text.value : ''
   }
 }
 
