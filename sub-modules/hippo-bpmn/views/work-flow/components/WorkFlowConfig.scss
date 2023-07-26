@@ -8,6 +8,7 @@
   background-color: var(--el-bg-color);
   border-left: var(--el-border);
   border-bottom-right-radius: var(--main-content-radius);
+  box-sizing: border-box;
   &-header {
     width: 100%;
     height: 40px;
@@ -33,6 +34,8 @@
     height: calc(100% - 82px);
     width: 100%;
     overflow-y: auto;
+    box-sizing: border-box;
+    padding: 10px;
   }
   &-footer {
     width: 100%;

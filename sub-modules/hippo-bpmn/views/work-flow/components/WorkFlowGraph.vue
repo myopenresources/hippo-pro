@@ -6,7 +6,7 @@
         <WorkFlowPattern :logic-flow="logicFlow" />
       </div>
       <div class="create-work-flow-form">
-        <WorkFlowConfig />
+        <WorkFlowConfig ref="workFlowConfigRef" @save-success="saveSuccess" />
         <WorkFlowIo :logic-flow="logicFlow" />
         <el-form ref="formRef" :model="ruleForm" label-width="60px">
           <el-form-item
@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onUnmounted, ref } from 'vue'
 import LogicFlow from '@logicflow/core'
 import {
   BpmnElement,
@@ -75,6 +75,7 @@ LogicFlow.use(SelectionSelect)
 
 const logicFlow = ref<LogicFlow>()
 const graphRef = ref()
+const workFlowConfigRef = ref()
 
 const formRef = ref<FormInstance>()
 
@@ -117,10 +118,25 @@ const init = (info: WorkFlowInfo) => {
   initEvent(logicFlow.value)
 }
 
+const nodeClick = ({ data }: any) => {
+  if (workFlowConfigRef.value) {
+    workFlowConfigRef.value.open(data)
+  }
+}
+
 const initEvent = (lf: LogicFlow) => {
-  lf.on('node:click', ({ data }) => {
-    console.log(data)
-  })
+  lf.on('node:click', nodeClick)
+}
+
+const offEvent = (lf: LogicFlow) => {
+  lf.off('node:click', nodeClick)
+}
+
+const saveSuccess = (data: any) => {
+  if (workFlowConfigRef.value) {
+    console.info(data)
+    //workFlowConfigRef.value
+  }
 }
 
 const save = () => {
@@ -138,6 +154,12 @@ const save = () => {
 
 defineExpose({
   init
+})
+
+onUnmounted(() => {
+  if (logicFlow.value) {
+    offEvent(logicFlow.value)
+  }
 })
 </script>
 
