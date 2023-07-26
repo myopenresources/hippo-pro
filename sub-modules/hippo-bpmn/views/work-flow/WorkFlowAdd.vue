@@ -12,4 +12,4 @@ onMounted(() => {
 })
 </script>
 
-<style scoped lang="scss" src="./AddWorkFlow.scss" />
+<style scoped lang="scss" src="./WorkFlowAdd.scss" />

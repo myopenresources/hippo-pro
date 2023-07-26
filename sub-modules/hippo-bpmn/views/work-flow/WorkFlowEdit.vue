@@ -33,4 +33,4 @@ onMounted(() => {
 })
 </script>
 
-<style scoped lang="scss" src="./EditWorkFlow.scss" />
+<style scoped lang="scss" src="./WorkFlowEdit.scss" />

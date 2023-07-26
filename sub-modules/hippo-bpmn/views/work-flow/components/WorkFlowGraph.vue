@@ -1,37 +1,25 @@
 <template>
   <MainContent :bodyStyle="{}">
-    <div class="create-work-flow">
-      <div class="create-work-flow-box">
-        <div class="create-work-flow-graph" ref="graphRef"></div>
+    <div class="work-flow">
+      <div class="work-flow-box">
+        <div class="work-flow-graph" ref="graphRef"></div>
         <WorkFlowPattern :logic-flow="logicFlow" />
       </div>
-      <div class="create-work-flow-form">
+      <div class="work-flow-form">
         <WorkFlowConfig ref="workFlowConfigRef" @save-success="saveSuccess" />
         <WorkFlowIo :logic-flow="logicFlow" />
         <el-form ref="formRef" :model="ruleForm" label-width="60px">
-          <el-form-item
-            label="名称"
-            prop="name"
-            :rules="[{ required: true, message: '名称不能为空！' }]"
-          >
+          <el-form-item label="名称" prop="name" :rules="[{ required: true, message: '名称不能为空！' }]">
             <el-input v-model="ruleForm.name" type="text" autocomplete="off" maxlength="128" />
           </el-form-item>
-          <el-form-item
-            label="模块"
-            prop="moduleId"
-            :rules="[{ required: true, message: '模块不能为空！' }]"
-          >
+          <el-form-item label="模块" prop="moduleId" :rules="[{ required: true, message: '模块不能为空！' }]">
             <el-select v-model="ruleForm.moduleId" placeholder="请选择" style="width: 100%">
               <el-option :key="'module1'" :label="'模块1'" :value="'module1'" />
               <el-option :key="'module2'" :label="'模块2'" :value="'module2'" />
               <el-option :key="'module3'" :label="'模块3'" :value="'module3'" />
             </el-select>
           </el-form-item>
-          <el-form-item
-            label="描述"
-            prop="desc"
-            :rules="[{ required: false, message: '描述不能为空！' }]"
-          >
+          <el-form-item label="描述" prop="desc" :rules="[{ required: false, message: '描述不能为空！' }]">
             <el-input v-model="ruleForm.desc" type="textarea" rows="12" maxlength="512" />
           </el-form-item>
           <el-form-item>
@@ -70,7 +58,7 @@ LogicFlow.use(BpmnElement)
 LogicFlow.use(BpmnXmlAdapter)
 LogicFlow.use(Snapshot)
 LogicFlow.use(Control)
-//LogicFlow.use(Menu)
+LogicFlow.use(Menu)
 LogicFlow.use(SelectionSelect)
 
 const logicFlow = ref<LogicFlow>()
@@ -97,7 +85,7 @@ const init = (info: WorkFlowInfo) => {
   logicFlow.value = new LogicFlow({
     container: container as HTMLElement,
     stopScrollGraph: true,
-    stopZoomGraph: true,
+    stopZoomGraph: false,
     metaKeyMultipleSelected: true,
     grid: {
       size: 10,

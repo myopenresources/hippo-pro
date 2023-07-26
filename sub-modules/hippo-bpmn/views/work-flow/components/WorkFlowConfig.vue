@@ -9,7 +9,6 @@
     <div class="work-flow-config-body">
       <component :is="component[dataInfo.type]" ref="workFlowConfigRef" @save-success="saveSuccess" />
     </div>
-    <div class="work-flow-config-footer"></div>
   </div>
 </template>
 
@@ -40,7 +39,6 @@ const close = () => {
 }
 const open = (data: any) => {
   dataInfo.value = data
-  console.log(data)
   visible.value = true
 
   nextTick(() => {

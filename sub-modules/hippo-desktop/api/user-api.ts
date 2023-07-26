@@ -251,9 +251,9 @@ export default class UserApi {
                 },
                 {
                   isLayout: false,
-                  path: '/AddWorkFlow',
-                  name: 'AddWorkFlow',
-                  component: 'work-flow/AddWorkFlow.vue',
+                  path: '/WorkFlowAdd',
+                  name: 'WorkFlowAdd',
+                  component: 'work-flow/WorkFlowAdd.vue',
                   meta: {
                     title: '新增流程',
                     icon: 'SvgIconFlow'
@@ -261,11 +261,11 @@ export default class UserApi {
                 },
                 {
                   isLayout: false,
-                  path: '/EditWorkFlow/:id',
-                  name: 'EditWorkFlow',
-                  component: 'work-flow/EditWorkFlow.vue',
+                  path: '/WorkFlowEdit/:id',
+                  name: 'WorkFlowEdit',
+                  component: 'work-flow/WorkFlowEdit.vue',
                   meta: {
-                    title: '编辑创建',
+                    title: '编辑流程',
                     icon: 'SvgIconFlow'
                   }
                 },

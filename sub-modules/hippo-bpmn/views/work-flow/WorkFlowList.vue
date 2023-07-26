@@ -47,7 +47,7 @@
                 >修改</el-button
               >
               <el-button link type="primary" size="small" @click="view(scope.row.id)"
-                >查看</el-button
+                >查看流程图</el-button
               >
               <el-button link type="primary" size="small" @click="del([scope.row.id])"
                 >删除</el-button
@@ -66,6 +66,7 @@
         />
       </div>
     </div>
+    <WorkFlowView :id="currentViewRowId" v-model:visible="viewVisible" />
   </MainContent>
 </template>
 
@@ -75,13 +76,15 @@ import {
   useDelByIds,
   useElSuccessMessage,
   useElWarningMessage,
-  useQueryData
+  useQueryData,
+useViewOpen
 } from 'hippo-module-core/hooks'
 import type { RequestPaginationData, RequestResultData } from 'hippo-module-core/types'
 import { onMounted, reactive, ref } from 'vue'
 import type { WorkFlowInfo } from '../../types/work-flow-types'
 import WorkFlowApi from '../../api/work-flow-api'
 import { useRouter } from 'vue-router'
+import WorkFlowView from './WorkFlowView.vue'
 
 const router = useRouter()
 
@@ -94,14 +97,14 @@ const tableSelection = ref<string[]>([])
 const tableData = ref<any[]>([])
 
 const add = () => {
-  router.push('/AddWorkFlow')
+  router.push('/WorkFlowAdd')
 }
 
 const edit = (id: string) => {
-  router.push('/EditWorkFlow/'+id)
+  router.push('/WorkFlowEdit/'+id)
 }
 
-const view = (id: string) => {}
+const { currentViewRowId, viewVisible, view } = useViewOpen()
 
 const batchDel = () => {
   useBatchDel({
