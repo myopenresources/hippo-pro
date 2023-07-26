@@ -6,6 +6,7 @@
         <WorkFlowPattern :logic-flow="logicFlow" />
       </div>
       <div class="create-work-flow-form">
+        <WorkFlowConfig />
         <WorkFlowIo :logic-flow="logicFlow" />
         <el-form ref="formRef" :model="ruleForm" label-width="60px">
           <el-form-item
@@ -63,12 +64,13 @@ import { WorkFlowApi } from '../../../api'
 import type { RequestResultData } from 'hippo-module-core/types'
 import { useElSuccessMessage } from 'hippo-module-core/hooks'
 import type { FormInstance } from 'element-plus'
+import WorkFlowConfig from './WorkFlowConfig.vue'
 
 LogicFlow.use(BpmnElement)
 LogicFlow.use(BpmnXmlAdapter)
 LogicFlow.use(Snapshot)
 LogicFlow.use(Control)
-LogicFlow.use(Menu)
+//LogicFlow.use(Menu)
 LogicFlow.use(SelectionSelect)
 
 const logicFlow = ref<LogicFlow>()
@@ -111,7 +113,7 @@ const init = (info: WorkFlowInfo) => {
   } else {
     logicFlow.value.render()
   }
-  
+
   initEvent(logicFlow.value)
 }
 

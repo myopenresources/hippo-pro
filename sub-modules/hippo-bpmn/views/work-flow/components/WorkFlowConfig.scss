@@ -1,0 +1,46 @@
+.work-flow-config {
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  background-color: var(--el-bg-color);
+  border-left: var(--el-border);
+  border-bottom-right-radius: var(--main-content-radius);
+  &-header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--el-border);
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+    .title {
+      font-weight: bold;
+    }
+    .close {
+      cursor: pointer;
+      padding-top: 5px;
+      &:hover {
+        color: var(--el-color-danger);
+      }
+    }
+  }
+  &-body {
+    height: calc(100% - 82px);
+    width: 100%;
+    overflow-y: auto;
+  }
+  &-footer {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: var(--el-border);
+    border-bottom-right-radius: var(--main-content-radius);
+  }
+}

@@ -1,32 +1,33 @@
 <template>
   <div class="work-flow-pattern">
     <div
-      class="work-flow-pattern-item"
+      class="work-flow-pattern-item work-flow-pattern-item-default"
       :class="{
         'work-flow-pattern-item-selected': isStopMoveGraph
       }"
+      @mousedown="openSelection"
     >
-      <div class="work-flow-pattern-selection" @mousedown="openSelection"></div>
+      <div class="work-flow-pattern-selection" ></div>
       <div class="work-flow-pattern-label">选区</div>
     </div>
-    <div class="work-flow-pattern-item">
-      <div class="work-flow-pattern-start" @mousedown="addStartNode"></div>
+    <div class="work-flow-pattern-item" @mousedown="addStartNode">
+      <div class="work-flow-pattern-start" ></div>
       <div class="work-flow-pattern-label">开始</div>
     </div>
-    <div class="work-flow-pattern-item">
-      <div class="work-flow-pattern-user" @mousedown="addUserTask"></div>
+    <div class="work-flow-pattern-item" @mousedown="addUserTask">
+      <div class="work-flow-pattern-user" ></div>
       <div class="work-flow-pattern-label">用户任务</div>
     </div>
-    <div class="work-flow-pattern-item">
-      <div class="work-flow-pattern-sys" @mousedown="addServiceTask"></div>
+    <div class="work-flow-pattern-item" @mousedown="addServiceTask">
+      <div class="work-flow-pattern-sys" ></div>
       <div class="work-flow-pattern-label">系统任务</div>
     </div>
-    <div class="work-flow-pattern-item">
-      <div class="work-flow-pattern-condition" @mousedown="addGateWay"></div>
+    <div class="work-flow-pattern-item" @mousedown="addGateWay">
+      <div class="work-flow-pattern-condition" ></div>
       <div class="work-flow-pattern-label">条件判断</div>
     </div>
-    <div class="work-flow-pattern-item">
-      <div class="work-flow-pattern-end" @mousedown="addEndNode"></div>
+    <div class="work-flow-pattern-item" @mousedown="addEndNode">
+      <div class="work-flow-pattern-end" ></div>
       <div class="work-flow-pattern-label">结束</div>
     </div>
   </div>
