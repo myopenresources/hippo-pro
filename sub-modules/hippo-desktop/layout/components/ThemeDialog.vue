@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     v-model="visible"
-    :width="'420px'"
+    :width="'422px'"
     :title="'主题设置'"
     :draggable="true"
   >

@@ -308,6 +308,16 @@ export default class UserApi {
                     title: 'awesome-qr',
                     icon: 'SvgIconDemo'
                   }
+                },
+                {
+                  isLayout: false,
+                  path: '/CustomCompDemo',
+                  name: 'CustomCompDemo',
+                  component: 'custom-comp-demo/CustomCompDemo.vue',
+                  meta: {
+                    title: '自定义组件',
+                    icon: 'SvgIconDemo'
+                  }
                 }
               ]
             }
@@ -384,6 +394,12 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: 'awesome-qr',
               path: '/AwesomeQrDemo'
+            },
+            {
+              id: 'customCompDemo',
+              icon: 'SvgIconDemo',
+              label: '自定义组件',
+              path: '/CustomCompDemo'
             }
           ],
           menus: [

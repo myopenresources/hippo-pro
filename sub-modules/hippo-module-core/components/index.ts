@@ -4,6 +4,7 @@ import DynamicIcon from './dynamic-icon/DynamicIcon'
 import PopoverConfirm from './popover-confirm/PopoverConfirm.vue'
 import HorizontalScrollPane from './scroll-pane/HorizontalScrollPane.vue'
 import { getProgress, startProgress, doneProgress, progressConfigure } from './progress/progress'
+import SelectTag from './select-tag/SelectTag.vue'
 
 export {
   Flop,
@@ -11,6 +12,7 @@ export {
   DynamicIcon,
   PopoverConfirm,
   HorizontalScrollPane,
+  SelectTag,
   getProgress,
   startProgress,
   doneProgress,

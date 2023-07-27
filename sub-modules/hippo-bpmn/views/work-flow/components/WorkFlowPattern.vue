@@ -1,30 +1,46 @@
 <template>
   <div class="work-flow-pattern">
-    <div class="work-flow-pattern-item work-flow-pattern-item-default" :class="{
-      'work-flow-pattern-item-selected': isStopMoveGraph
-    }" @mousedown="openSelection">
-      <div class="work-flow-pattern-selection"></div>
-      <div class="work-flow-pattern-label">选区</div>
+    <div
+      class="work-flow-pattern-item work-flow-pattern-item-default"
+      :class="{
+        'work-flow-pattern-item-selected': isStopMoveGraph
+      }"
+      @mousedown="openSelection"
+    >
+      <div class="work-flow-pattern-item-icon">
+        <DynamicIcon icon="SvgIconSelection" />
+      </div>
+      <div class="work-flow-pattern-item-label">选区</div>
     </div>
-    <div class="work-flow-pattern-item" @mousedown="addStartNode">
-      <div class="work-flow-pattern-start"></div>
-      <div class="work-flow-pattern-label">开始</div>
+    <div class="work-flow-pattern-item" @mousedown="addStartEvent">
+      <div class="work-flow-pattern-item-icon">
+        <DynamicIcon icon="SvgIconStartEvent" />
+      </div>
+      <div class="work-flow-pattern-item-label">开始</div>
     </div>
     <div class="work-flow-pattern-item" @mousedown="addUserTask">
-      <div class="work-flow-pattern-user"></div>
-      <div class="work-flow-pattern-label">用户任务</div>
+      <div class="work-flow-pattern-item-icon">
+        <DynamicIcon icon="SvgIconUserTask" />
+      </div>
+      <div class="work-flow-pattern-item-label">用户任务</div>
     </div>
     <div class="work-flow-pattern-item" @mousedown="addServiceTask">
-      <div class="work-flow-pattern-sys"></div>
-      <div class="work-flow-pattern-label">系统任务</div>
+      <div class="work-flow-pattern-item-icon">
+        <DynamicIcon icon="SvgIconServiceTask" />
+      </div>
+      <div class="work-flow-pattern-item-label">系统任务</div>
     </div>
-    <div class="work-flow-pattern-item" @mousedown="addGateWay">
-      <div class="work-flow-pattern-condition"></div>
-      <div class="work-flow-pattern-label">条件判断</div>
+    <div class="work-flow-pattern-item" @mousedown="addExclusiveGateway">
+      <div class="work-flow-pattern-item-icon">
+        <DynamicIcon icon="SvgIconExclusiveGateway" />
+      </div>
+      <div class="work-flow-pattern-item-label">条件判断</div>
     </div>
-    <div class="work-flow-pattern-item" @mousedown="addEndNode">
-      <div class="work-flow-pattern-end"></div>
-      <div class="work-flow-pattern-label">结束</div>
+    <div class="work-flow-pattern-item" @mousedown="addEndEvent">
+      <div class="work-flow-pattern-item-icon">
+        <DynamicIcon icon="SvgIconEndEvent" />
+      </div>
+      <div class="work-flow-pattern-item-label">结束</div>
     </div>
   </div>
 </template>
@@ -44,7 +60,7 @@ const isStopMoveGraph = computed(() => {
     : false
 })
 
-const addStartNode = () => {
+const addStartEvent = () => {
   if (props.logicFlow) {
     props.logicFlow.dnd.startDrag({
       type: 'bpmn:startEvent',
@@ -69,7 +85,7 @@ const addServiceTask = () => {
   }
 }
 
-const addGateWay = () => {
+const addExclusiveGateway = () => {
   if (props.logicFlow) {
     props.logicFlow.dnd.startDrag({
       type: 'bpmn:exclusiveGateway'
@@ -77,7 +93,7 @@ const addGateWay = () => {
   }
 }
 
-const addEndNode = () => {
+const addEndEvent = () => {
   if (props.logicFlow) {
     props.logicFlow.dnd.startDrag({
       type: 'bpmn:endEvent',
@@ -115,7 +131,7 @@ watch(
   }
 )
 
-onMounted(() => { })
+onMounted(() => {})
 </script>
 
 <style scoped lang="scss" src="./WorkFlowPattern.scss" />

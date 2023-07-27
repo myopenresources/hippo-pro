@@ -1,0 +1,54 @@
+.select-tag {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+  &-option {
+    padding: 8px 15px;
+    outline: none;
+    transition: 0.1s;
+    cursor: pointer;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 4px;
+    font-size: var(--el-font-size-base);
+    border-radius: var(--el-border-radius-base);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-small {
+      padding: 5px 11px;
+      font-size: 12px;
+    }
+    &-large {
+      padding: 12px 19px;
+      font-size: var(--el-font-size-base);
+    }
+    &-round {
+      border-radius: var(--el-border-radius-round);
+    }
+    &-select {
+      background-color: var(--el-color-primary);
+      color: var(--el-color-white);
+    }
+    &-select-success {
+      background-color: var(--el-color-success);
+    }
+    &-select-warning {
+      background-color: var(--el-color-warning);
+    }
+    &-select-info {
+      background-color: var(--el-color-info);
+    }
+    &-select-danger {
+      background-color: var(--el-color-danger);
+    }
+    :deep(.el-icon,svg-icon) {
+      margin-right: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1px;
+    }
+  }
+}

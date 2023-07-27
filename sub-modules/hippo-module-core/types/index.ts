@@ -4,6 +4,7 @@ import type { RequestResult, RequestResultData,RequestParams,RequestPaginationDa
 import type { WindowResizeParams } from './window-resize-types';
 import type { LogParam,LogLevel } from './log-param-types';
 import type { BaseInfo } from './base-types';
+import type { SelectTagOption } from './select-tag-types';
 export type {
     Dimensions,
     SvgProp,
@@ -15,5 +16,6 @@ export type {
     WindowResizeParams,
     LogParam,
     LogLevel,
-    BaseInfo
+    BaseInfo,
+    SelectTagOption
 }

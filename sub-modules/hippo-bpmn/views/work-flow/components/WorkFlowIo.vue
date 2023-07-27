@@ -5,19 +5,19 @@
       <el-tooltip content="上传 XML">
         <div class="upload-xml">
           <input type="file" class="upload" @change="uploadXml" />
-          <img src="../../../assets/img/work-flow/upload.png" alt="上传XML" />
+          <DynamicIcon icon="SvgIconUpload" />
         </div>
       </el-tooltip>
 
       <el-tooltip content="下载 XML">
         <div @click="downloadXml">
-          <img src="../../../assets/img/work-flow/download.png" alt="下载XML" />
+          <DynamicIcon icon="SvgIconDownload" />
         </div>
       </el-tooltip>
 
       <el-tooltip content="下载图片">
         <div @click="downloadImage">
-          <img src="../../../assets/img/work-flow/download-img.png" alt="下载图片" />
+          <DynamicIcon icon="SvgIconDownloadImg" />
         </div>
       </el-tooltip>
     </div>
