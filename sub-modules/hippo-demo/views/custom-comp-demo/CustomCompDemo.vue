@@ -118,7 +118,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { SelectTag, SelectTagOption, Flop, PopoverConfirm } from 'hippo-module-core'
+import { SelectTag, type SelectTagOption, Flop, PopoverConfirm } from 'hippo-module-core'
 
 const showConfirm = ref(false)
 const num = ref('89894564')
