@@ -77,14 +77,23 @@
     <div class="demo">
       <div class="label">数值：</div>
       <div class="content">
-        <Flop number="189899" />
+        <Flop :number="num" />
+        <el-button @click="num='45465465465'"> 更新 </el-button>
       </div>
     </div>
 
     <div class="demo">
       <div class="label">数值：</div>
       <div class="content">
-        <Flop number="189899" unit="RMB" />
+        <Flop number="1898919" :speed="666" />
+       
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="label">数值：</div>
+      <div class="content">
+        <Flop number="189899" unit="RMB" :speed="666" />
       </div>
     </div>
 
@@ -112,6 +121,7 @@ import { ref } from 'vue'
 import { SelectTag, SelectTagOption, Flop, PopoverConfirm } from 'hippo-module-core'
 
 const showConfirm = ref(false)
+const num = ref('89894564')
 
 const type = ref('1')
 const typeList: SelectTagOption[] = [
@@ -178,6 +188,7 @@ const typeList2: SelectTagOption[] = [
   }
   .content {
     width: calc(100% - 80px);
+    display: flex;
   }
 }
 </style>
