@@ -18,9 +18,7 @@ import LogicFlow from '@logicflow/core'
 import {
     BpmnElement,
     BpmnXmlAdapter,
-    Snapshot,
-    Control,
-    SelectionSelect
+    Control
 } from '@logicflow/extension'
 import '@logicflow/core/dist/style/index.css'
 import '@logicflow/extension/es/style/index.css'
@@ -83,7 +81,7 @@ const initLogicFlow = (info: WorkFlowInfo) => {
         hideAnchors: true,
         hoverOutline: false,
         nodeSelectedOutline: false,
-        edgeSelectedOutline:false,
+        edgeSelectedOutline: false,
         grid: {
             size: 10,
             type: 'dot'
@@ -91,7 +89,8 @@ const initLogicFlow = (info: WorkFlowInfo) => {
         keyboard: {
             enabled: true
         },
-        snapline: true
+        snapline: true,
+        plugins: [BpmnElement, BpmnXmlAdapter, Control]
     })
 
     logicFlow.value.render(info.workFlowContent)
@@ -114,16 +113,6 @@ const cancel = () => {
 
     :deep(.lf-graph) {
         background-color: var(--el-bg-color);
-
-        .lf-control {
-            background-color: var(--el-bg-color);
-            border: var(--el-border);
-            border-radius: 0;
-            box-shadow: var(--el-box-shadow-lighter);
-        }
-        .lf-element-text{
-            color: var(--el-color-black);
-        }
     }
 }
 </style>

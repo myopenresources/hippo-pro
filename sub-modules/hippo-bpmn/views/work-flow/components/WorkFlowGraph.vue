@@ -14,9 +14,9 @@
           </el-form-item>
           <el-form-item label="模块" prop="moduleId" :rules="[{ required: true, message: '模块不能为空！' }]">
             <el-select v-model="ruleForm.moduleId" placeholder="请选择" style="width: 100%">
-              <el-option :key="'module1'" :label="'模块1'" :value="'module1'" />
-              <el-option :key="'module2'" :label="'模块2'" :value="'module2'" />
-              <el-option :key="'module3'" :label="'模块3'" :value="'module3'" />
+              <el-option :key="'module1'" :label="'系统模块'" :value="'module1'" />
+              <el-option :key="'module2'" :label="'用户模块'" :value="'module2'" />
+              <el-option :key="'module3'" :label="'业务模块'" :value="'module3'" />
             </el-select>
           </el-form-item>
           <el-form-item label="描述" prop="desc" :rules="[{ required: false, message: '描述不能为空！' }]">
@@ -54,13 +54,6 @@ import { useElSuccessMessage } from 'hippo-module-core/hooks'
 import type { FormInstance } from 'element-plus'
 import WorkFlowConfig from './WorkFlowConfig.vue'
 
-LogicFlow.use(BpmnElement)
-LogicFlow.use(BpmnXmlAdapter)
-LogicFlow.use(Snapshot)
-LogicFlow.use(Control)
-LogicFlow.use(Menu)
-LogicFlow.use(SelectionSelect)
-
 const logicFlow = ref<LogicFlow>()
 const graphRef = ref()
 const workFlowConfigRef = ref()
@@ -94,7 +87,8 @@ const init = (info: WorkFlowInfo) => {
     keyboard: {
       enabled: true
     },
-    snapline: true
+    snapline: true,
+    plugins: [BpmnElement, BpmnXmlAdapter, Snapshot, Control, Menu, SelectionSelect]
   })
 
   if (ruleForm.value) {

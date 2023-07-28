@@ -29,7 +29,7 @@ export default class WorkFlowApi {
             {
               id: 'dasfsdfasd232434',
               name: '流程1',
-              moduleId: 'fsdafasf',
+              moduleId: 'module1',
               moduleName: '系统模块',
               desc: '系统测试流程',
               workFlowContent: '',
@@ -63,7 +63,7 @@ export default class WorkFlowApi {
         data: {
           id: 'dasfsdfasd232434',
           name: '流程1',
-          moduleId: 'fsdafasf',
+          moduleId: 'module1',
           moduleName: '系统模块',
           desc: '系统测试流程',
           workFlowContent: `
@@ -93,7 +93,7 @@ export default class WorkFlowApi {
                       <bpmn:sequenceFlow id="Flow_23siu1e" sourceRef="Activity_0i6utjr" targetRef="Gateway_2g02cpf" />	
                       <bpmn:sequenceFlow id="Flow_0msqbem" sourceRef="Gateway_2g02cpf" targetRef="Activity_3peon5l" name="通过" />	
                       <bpmn:sequenceFlow id="Flow_1qnc496" sourceRef="Activity_3peon5l" targetRef="Event_05oi96k" />	
-                      <bpmn:sequenceFlow id="Flow_3fna2m3" sourceRef="Gateway_2g02cpf" targetRef="Event_05oi96k" name="通过" />	
+                      <bpmn:sequenceFlow id="Flow_3fna2m3" sourceRef="Gateway_2g02cpf" targetRef="Event_05oi96k" name="不通过" />	
                   </bpmn:process>	
                   <bpmndi:BPMNDiagram id="BPMNDiagram_1">	
                     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1qu1pni">	

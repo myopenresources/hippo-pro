@@ -17,17 +17,6 @@
 
     :deep(.lf-graph) {
       background-color: var(--el-bg-color);
-
-      .lf-control {
-        background-color: var(--el-bg-color);
-        border: var(--el-border);
-        border-radius: 0;
-        box-shadow: var(--el-box-shadow-lighter);
-      }
-
-      .lf-element-text {
-        color: var(--el-color-black);
-      }
     }
   }
 
