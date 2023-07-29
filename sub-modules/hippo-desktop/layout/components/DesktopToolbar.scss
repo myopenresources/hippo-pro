@@ -4,6 +4,7 @@
   position: relative;
   z-index: 9;
   box-shadow: var(--desktop-layout-toolbar-shadow);
+
   &-inner {
     height: 100%;
     width: calc(100% - 1rem);
@@ -14,7 +15,7 @@
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     box-shadow: var(--desktop-layout-toolbar-inner-shadow);
-  
+
     &-left {
       display: flex;
       align-items: center;
@@ -48,10 +49,17 @@
 
         :deep(.el-input__wrapper) {
           border-radius: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
-
+          background-color: var(--desktop-layout-toolbar-input-bg);
           height: calc(var(--desktop-layout-toolbar-height) - 1.75rem);
           border-color: var(--desktop-layout-toolbar-border-color);
+          .el-input__inner{
+           &::placeholder{
+            color: var(--desktop-layout-toolbar-input-placeholder);
+           }
+          }
         }
+
+       
 
         --el-border-color: var(--desktop-layout-toolbar-border-color);
         --el-input-hover-border-color: var(--el-color-primary);

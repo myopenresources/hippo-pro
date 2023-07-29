@@ -3,8 +3,10 @@ html {
     --desktop-layout-toolbar-height: 60px;
     --desktop-layout-toolbar-bg: #eef6fddb;
     --desktop-layout-toolbar-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
-    --desktop-layout-toolbar-inner-shadow:0px 0px 3px #fff inset;
+    --desktop-layout-toolbar-inner-shadow: 0px 0px 3px #fff inset;
     --desktop-layout-toolbar-border-color: rgba(199, 197, 197, 0.879);
+    --desktop-layout-toolbar-input-bg:rgb(255, 255, 255);
+    --desktop-layout-toolbar-input-placeholder:#888;
     --desktop-layout-toolbar-radius: 0rem;
     --desktop-layout-toolbar-start-menu-bg: rgba(255, 255, 255, 1);
     --desktop-layout-toolbar-icon-bg: rgba(255, 255, 255, 0);
@@ -36,38 +38,64 @@ html {
     --start-menu-category-color: #f5fbfdfa;
 
     --login-bg: linear-gradient(88deg, #18bbff 0, #06bfcc 50%);
-    --login-box-shadow:0px 0px 15px rgba(0, 0, 0, 0.2);
+    --login-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
     --login-border-bg: #86d0f325;
-    --login-inset-box-shadow:0px 0px 6px #cbfffe inset;
-    --login-inner-bg:linear-gradient(180deg, #c9f9fd, #f5eeee, #fadce4);
+    --login-inset-box-shadow: 0px 0px 6px #cbfffe inset;
+    --login-inner-bg: linear-gradient(180deg, #c9f9fd, #f5eeee, #fadce4);
     --login-rotate-border-bg: linear-gradient(88deg, #91e9f1, #367cff, #f9f9fdad);
-    --login-text-color:#606266;
-    --login-input-border-color:rgba(230, 233, 240, 0.78)
-    --login-input-hover-border-color:#c0c4cc;
-    --login-input-bg:#fff;
-    --login-input-icon-color:#a8abb2;
-    --login-input-placeholder:#a8abb2;
-    --login-input-clear-hover-color:#909399;
-    --login-copyright-color:#909399;
-    --login-desc-color:#ebeef5;
-    --login-title-color:#303133;
+    --login-text-color: #606266;
+    --login-input-border-color: rgba(230, 233, 240, 0.78) --login-input-hover-border-color:#c0c4cc;
+    --login-input-bg: #fff;
+    --login-input-icon-color: #a8abb2;
+    --login-input-placeholder: #a8abb2;
+    --login-input-clear-hover-color: #909399;
+    --login-copyright-color: #909399;
+    --login-desc-color: #ebeef5;
+    --login-title-color: #303133;
 
 
     --desktop-input-width: 230px;
     --desktop-toolbar-height: 50px;
     --desktop-data-pagination-height: 50px;
     --desktop-container-padding: 16px;
-    --desktop-row-height:32px;
+    --desktop-row-height: 32px;
 
-    --item-hover-bg:#ecf5ff;
+    --item-hover-bg: #ecf5ff;
+}
+
+html.deep-colour {
+    --desktop-layout-bg: linear-gradient(to right, #cde5ee, #a1d4e6);
+    --desktop-layout-toolbar-height: 60px;
+    --desktop-layout-toolbar-bg: #569cd9db;
+    --desktop-layout-toolbar-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    --desktop-layout-toolbar-inner-shadow: 0px 0px 3px #81b8e6db inset;
+    --desktop-layout-toolbar-border-color: #d2e2e8a6;
+    --desktop-layout-toolbar-input-bg:rgba(255, 255, 255, 0.162);
+    --desktop-layout-toolbar-input-placeholder:#ddd;
+    --desktop-layout-toolbar-radius: 0rem;
+    --desktop-layout-toolbar-start-menu-bg: #e8f6fc4f;
+    --desktop-layout-toolbar-icon-bg: rgba(255, 255, 255, 0);
+    --desktop-layout-toolbar-icon-hover-bg: #ffffff90;
+    --desktop-layout-toolbar-tab-bg: #e8f6fc4f;
+    --desktop-layout-toolbar-tab-hover-bg: #ffffff83;
+    --desktop-layout-toolbar-tab-icon-bg: #ffffff90;
+    --desktop-layout-toolbar-divider-color: #8cbbcfa2;
+    --desktop-layout-toolbar-popover-bg: rgba(90, 158, 217, 0.94);
+    --desktop-layout-toolbar-popover-border-color: #8cbbcfb2;
+    --desktop-layout-toolbar-popover-search-box-bor-color: #8cbbcfa2;
+    --desktop-layout-toolbar-popover-msg-bg: #a0defd8a;
+    --desktop-layout-toolbar-dropdown-item-hover-bg: #67b1f2;
+    --desktop-layout-main-padding: 0.8rem;
 }
 
 html.dark {
     --desktop-layout-bg: linear-gradient(to right, #233544ff, rgb(26, 51, 71));
     --desktop-layout-toolbar-bg: #010e1be8;
     --desktop-layout-toolbar-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-    --desktop-layout-toolbar-inner-shadow:0px 0px 3px #131616 inset;
+    --desktop-layout-toolbar-inner-shadow: 0px 0px 3px #131616 inset;
     --desktop-layout-toolbar-border-color: #334250;
+    --desktop-layout-toolbar-input-bg:rgba(0, 0, 0, 0.3);
+    --desktop-layout-toolbar-input-placeholder:#888;
     --desktop-layout-toolbar-start-menu-bg: #283846d7;
     --desktop-layout-toolbar-icon-bg: rgba(43, 42, 42, 0);
     --desktop-layout-toolbar-icon-hover-bg: rgba(134, 141, 143, 0.35);
@@ -93,22 +121,21 @@ html.dark {
     --start-menu-category-color: #f5fbfdfa;
 
     --login-bg: linear-gradient(88deg, #18bbff 0, #06bfcc 50%);
-    --login-box-shadow:0px 0px 15px rgba(0, 0, 0, 0.2);
+    --login-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
     --login-border-bg: #86d0f325;
-    --login-inset-box-shadow:0px 0px 6px #cbfffe inset;
-    --login-inner-bg:linear-gradient(180deg, #c9f9fd, #f5eeee, #fadce4);
+    --login-inset-box-shadow: 0px 0px 6px #cbfffe inset;
+    --login-inner-bg: linear-gradient(180deg, #c9f9fd, #f5eeee, #fadce4);
     --login-rotate-border-bg: linear-gradient(88deg, #91e9f1, #367cff, #f9f9fdad);
-    --login-text-color:#606266;
-    --login-input-border-color:rgba(230, 233, 240, 0.78)
-    --login-input-hover-border-color:#c0c4cc;
-    --login-input-bg:#fff;
-    --login-input-icon-color:#a8abb2;
-    --login-input-placeholder:#a8abb2;
-    --login-input-clear-hover-color:#909399;
-    --login-copyright-color:#909399;
-    --login-desc-color:#ebeef5;
-    --login-title-color:#303133;
+    --login-text-color: #606266;
+    --login-input-border-color: rgba(230, 233, 240, 0.78) --login-input-hover-border-color:#c0c4cc;
+    --login-input-bg: #fff;
+    --login-input-icon-color: #a8abb2;
+    --login-input-placeholder: #a8abb2;
+    --login-input-clear-hover-color: #909399;
+    --login-copyright-color: #909399;
+    --login-desc-color: #ebeef5;
+    --login-title-color: #303133;
 
 
-    --item-hover-bg:#18222c;
+    --item-hover-bg: #18222c;
 }

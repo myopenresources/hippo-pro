@@ -61,7 +61,7 @@
   </el-dialog>
 </template>
 <script setup lang="ts">
-import { themeSettingConst, styleNameConst } from '../../consts'
+import { themeSettingConst } from '../../consts'
 import {
   DynamicIcon,
   ElementUiThemeUtil,
@@ -72,15 +72,12 @@ import {
 } from 'hippo-module-core'
 import { ref } from 'vue'
 import { ThemeStoreUtil, ThemeUtil } from '../../utils'
-import { useDark, useToggle } from '@vueuse/core'
 import type { UploadRequestOptions } from 'element-plus'
 import bgPreviewImg from '../../assets/img/desktop-layout/bg-preview.jpg'
 import { type UserDesktopBg } from '../../types'
 import { UserApi } from '../../api'
 
 const currentStyleTheme = ref(ThemeStoreUtil.getStyleTheme())
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
 
 const currentTheme = ref(ThemeStoreUtil.getTheme())
 const themeBg = ref(bgPreviewImg)
@@ -98,12 +95,9 @@ const hideDialog = () => {
 }
 
 const setStyleTheme = (style: any) => {
-  if (style.styleThemeName === styleNameConst.dark) {
-    toggleDark(true)
-  } else {
-    toggleDark(false)
-  }
+  const oldStyleTheme =  currentStyleTheme.value;
   currentStyleTheme.value = style.styleThemeName
+  ThemeUtil.setHtmlTheme(oldStyleTheme,style.styleThemeName)
   ThemeStoreUtil.setStyleTheme(style.styleThemeName)
   useEventBusEmit('styleThemeChange', style)
 }

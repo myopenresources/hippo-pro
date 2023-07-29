@@ -41,14 +41,20 @@ export default class ThemeUtil {
     return ElementUiThemeUtil.generate(theme, 'primary')
   }
 
-  static initTheme(defaultTheme: string, defaultStyleTheme: string, toggleDark: Function) {
-    ThemeUtil.setCssVariable(ThemeUtil.getThemeConfig(defaultTheme))
+  static setHtmlTheme(oldTheme: string, theme: string) {
+    const html = document.querySelector('html')
+    if (html) {
+      if ('' != oldTheme && html.className.includes(oldTheme)) {
+        html.className = html.className.replace(oldTheme, '')
+      }
 
-    const styleTheme = ThemeUtil.getStyleThemeName(defaultStyleTheme)
-    if (styleTheme === styleNameConst.light) {
-      toggleDark(false)
-    } else {
-      toggleDark(true)
+      html.className = theme + ' ' + html.className.trim()
     }
+  }
+
+  static initTheme(defaultTheme: string, defaultStyleTheme: string) {
+    ThemeUtil.setCssVariable(ThemeUtil.getThemeConfig(defaultTheme))
+    const styleTheme = ThemeUtil.getStyleThemeName(defaultStyleTheme)
+    ThemeUtil.setHtmlTheme('',styleTheme)
   }
 }
