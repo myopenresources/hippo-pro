@@ -318,6 +318,16 @@ export default class UserApi {
                     title: '自定义组件',
                     icon: 'SvgIconDemo'
                   }
+                },
+                {
+                  isLayout: false,
+                  path: '/ClipPathDemo',
+                  name: 'ClipPathDemo',
+                  component: 'clip-path-demo/ClipPathDemo.vue',
+                  meta: {
+                    title: 'clip-path',
+                    icon: 'SvgIconDemo'
+                  }
                 }
               ]
             }
@@ -400,6 +410,12 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: '自定义组件',
               path: '/CustomCompDemo'
+            },
+            {
+              id: 'clipPathDemo',
+              icon: 'SvgIconDemo',
+              label: 'clip-path',
+              path: '/ClipPathDemo'
             }
           ],
           menus: [
@@ -492,6 +508,12 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: 'awesome-qr',
               path: '/AwesomeQrDemo'
+            },
+            {
+              id: 'clipPathDemo',
+              icon: 'SvgIconDemo',
+              label: 'clip-path',
+              path: '/ClipPathDemo'
             }
           ]
         }
