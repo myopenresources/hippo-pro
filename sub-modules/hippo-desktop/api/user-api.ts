@@ -328,6 +328,26 @@ export default class UserApi {
                     title: 'clip-path',
                     icon: 'SvgIconDemo'
                   }
+                },
+                {
+                  isLayout: false,
+                  path: '/GuideDemo',
+                  name: 'GuideDemo',
+                  component: 'guide-demo/GuideDemo.vue',
+                  meta: {
+                    title: '引导页',
+                    icon: 'SvgIconDemo'
+                  }
+                },
+                {
+                  isLayout: false,
+                  path: '/WaterfallDemo',
+                  name: 'WaterfallDemo',
+                  component: 'waterfall-demo/WaterfallDemo.vue',
+                  meta: {
+                    title: '瀑布流',
+                    icon: 'SvgIconDemo'
+                  }
                 }
               ]
             }
@@ -416,6 +436,18 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: 'clip-path',
               path: '/ClipPathDemo'
+            },
+            {
+              id: 'guideDemo',
+              icon: 'SvgIconDemo',
+              label: '引导页',
+              path: '/GuideDemo'
+            },
+            {
+              id: 'waterfallDemo',
+              icon: 'SvgIconDemo',
+              label: '瀑布流',
+              path: '/WaterfallDemo'
             }
           ],
           menus: [
@@ -514,8 +546,21 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: 'clip-path',
               path: '/ClipPathDemo'
+            },
+            {
+              id: 'guideDemo',
+              icon: 'SvgIconDemo',
+              label: '引导页',
+              path: '/GuideDemo'
+            },
+            {
+              id: 'waterfallDemo',
+              icon: 'SvgIconDemo',
+              label: '瀑布流',
+              path: '/WaterfallDemo'
             }
           ]
+          
         }
       }
       resolve(data)

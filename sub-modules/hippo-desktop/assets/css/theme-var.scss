@@ -66,11 +66,11 @@ html {
 html.deep-colour {
     --desktop-layout-bg: linear-gradient(to right, #cde5ee, #a1d4e6);
     --desktop-layout-toolbar-height: 60px;
-    --desktop-layout-toolbar-bg: #569cd9db;
+    --desktop-layout-toolbar-bg: #76b4ebcc;
     --desktop-layout-toolbar-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     --desktop-layout-toolbar-inner-shadow: 0px 0px 3px #81b8e6db inset;
-    --desktop-layout-toolbar-border-color: #d2e2e8a6;
-    --desktop-layout-toolbar-input-bg:rgba(255, 255, 255, 0.162);
+    --desktop-layout-toolbar-border-color: #bcdde9a6;
+    --desktop-layout-toolbar-input-bg:#81b7e7a8;
     --desktop-layout-toolbar-input-placeholder:#ddd;
     --desktop-layout-toolbar-radius: 0rem;
     --desktop-layout-toolbar-start-menu-bg: #e8f6fc4f;
@@ -80,10 +80,10 @@ html.deep-colour {
     --desktop-layout-toolbar-tab-hover-bg: #ffffff83;
     --desktop-layout-toolbar-tab-icon-bg: #ffffff90;
     --desktop-layout-toolbar-divider-color: #8cbbcfa2;
-    --desktop-layout-toolbar-popover-bg: rgba(90, 158, 217, 0.94);
-    --desktop-layout-toolbar-popover-border-color: #8cbbcfb2;
+    --desktop-layout-toolbar-popover-bg: #a1cdf4c5;
+    --desktop-layout-toolbar-popover-border-color: #beebfeb2;
     --desktop-layout-toolbar-popover-search-box-bor-color: #8cbbcfa2;
-    --desktop-layout-toolbar-popover-msg-bg: #a0defd8a;
+    --desktop-layout-toolbar-popover-msg-bg: #d0e4f6a1;
     --desktop-layout-toolbar-dropdown-item-hover-bg: #67b1f2;
     --desktop-layout-main-padding: 0.8rem;
 }

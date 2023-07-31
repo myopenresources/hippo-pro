@@ -109,6 +109,7 @@ importers:
       '@babylonjs/viewer': ^6.11.2
       d3: ^7.8.4
       dagre-d3: ^0.6.4
+      driver.js: ^1.1.0
       v-scale-screen: ^2.2.0
       vue-qr: ^4.0.9
     dependencies:
@@ -122,6 +123,7 @@ importers:
       '@babylonjs/viewer': 6.11.2
       d3: 7.8.5
       dagre-d3: 0.6.4
+      driver.js: 1.1.0
       v-scale-screen: 2.2.0
       vue-qr: 4.0.9
 
@@ -3733,6 +3735,10 @@ packages:
       domelementtype: 2.3.0
       domhandler: 4.3.1
     dev: true
+
+  /driver.js/1.1.0:
+    resolution: {integrity: sha512-jvor5wrzu0JmHwPAuCb7j8YzHcgitq5ibgCsgBO85fv0Zst/UPdO60/hKooCKMdQMYRPKABmSDhVSftS6NaJqA==}
+    dev: false
 
   /echarts/5.4.2:
     resolution: {integrity: sha512-2W3vw3oI2tWJdyAz+b8DuWS0nfXtSDqlDmqgin/lfzbkB01cuMEN66KWBlmur3YMp5nEDEEt5s23pllnAzB4EA==}

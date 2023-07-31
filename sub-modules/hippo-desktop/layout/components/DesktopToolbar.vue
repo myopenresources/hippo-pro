@@ -38,7 +38,7 @@
         <div class="desktop-toolbar-inner-right-item" @click="fullscreenToggle">
           <DynamicIcon :icon="fullscreenState ? 'SvgIconFullScreenExit' : 'FullScreen'" />
         </div>
-        <div class="desktop-toolbar-inner-right-item" @click="themeSetting">
+        <div class="desktop-toolbar-inner-right-item desktop-toolbar-inner-right-item-theme" @click="themeSetting">
           <DynamicIcon icon="SvgIconTheme" />
         </div>
         <el-popover
@@ -50,7 +50,7 @@
           :popper-style="'margin-left:-2px'"
         >
           <template #reference>
-            <div class="desktop-toolbar-inner-right-item">
+            <div class="desktop-toolbar-inner-right-item desktop-toolbar-inner-right-item-msg">
               <el-badge
                 :is-dot="messages.length > 0"
                 class="desktop-toolbar-inner-right-item-badge"
@@ -89,7 +89,7 @@
         </div>
 
         <el-dropdown :teleported="false" @command="userDropdownCommand">
-          <el-avatar shape="square" :src="userAvatar" />
+          <el-avatar shape="square" :src="userAvatar" class="desktop-toolbar-inner-right-item-avatar" />
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item command="userCenter">

@@ -19,6 +19,7 @@
     "@babylonjs/viewer": "^6.11.2",
     "d3": "^7.8.4",
     "dagre-d3": "^0.6.4",
+    "driver.js": "^1.1.0",
     "v-scale-screen": "^2.2.0",
     "vue-qr": "^4.0.9"
   }
