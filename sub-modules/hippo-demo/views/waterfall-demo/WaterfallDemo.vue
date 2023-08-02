@@ -6,10 +6,18 @@
                 <div class="label">{{ '图片' + item }}</div>
             </div>
         </div>
+        <div class="loading">
+            <el-icon class="is-loading">
+                <Loading ref="loadRef" />
+            </el-icon>
+        </div>
     </MainContent>
 </template>
 
 <script setup lang="ts">
+import { Loading } from '@element-plus/icons-vue'
+import { onMounted, ref } from 'vue'
+
 import img1 from '../../assets/img/demo/1.jpeg'
 import img2 from '../../assets/img/demo/2.jpeg'
 import img3 from '../../assets/img/demo/3.jpeg'
@@ -35,9 +43,35 @@ import img22 from '../../assets/img/demo/22.jpeg'
 import img23 from '../../assets/img/demo/23.jpeg'
 import img24 from '../../assets/img/demo/24.jpeg'
 import img25 from '../../assets/img/demo/25.jpeg'
-const imgList = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11,
-    img12, img13, img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img25]
 
+const imgList = ref([img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11,
+    img12, img13, img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img25])
+
+const loadRef = ref()
+
+onMounted(() => {
+    if (loadRef.value) {
+        const cb = new IntersectionObserver((entries) => {
+            console.info(entries)
+            const entrie = entries[0]
+            if (!entrie.isIntersecting) {
+                return
+            }
+
+            const ct = setTimeout(() => {
+                clearTimeout(ct)
+                imgList.value.push(img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11,
+                    img12, img13, img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img25)
+            }, 1000);
+
+        }, {
+            root: null,
+            threshold: 0
+        })
+
+        cb.observe(loadRef.value.$el)
+    }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -85,5 +119,12 @@ const imgList = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, im
             font-size: 13px;
         }
     }
+
+}
+
+.loading {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
 }
 </style>
