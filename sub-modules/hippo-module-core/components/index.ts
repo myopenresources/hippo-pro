@@ -5,6 +5,7 @@ import PopoverConfirm from './popover-confirm/PopoverConfirm.vue'
 import HorizontalScrollPane from './scroll-pane/HorizontalScrollPane.vue'
 import { getProgress, startProgress, doneProgress, progressConfigure } from './progress/progress'
 import SelectTag from './select-tag/SelectTag.vue'
+import LoadingBarBox from './loading-bar/LoadingBar'
 
 export {
   Flop,
@@ -16,5 +17,6 @@ export {
   getProgress,
   startProgress,
   doneProgress,
-  progressConfigure
+  progressConfigure,
+  LoadingBarBox
 }

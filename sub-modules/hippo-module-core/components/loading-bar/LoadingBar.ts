@@ -1,28 +1,44 @@
-import { createApp, type App, watch } from 'vue'
+import { createApp, type App, watch, type ComponentPublicInstance } from 'vue'
 import LoadingBarComp from './LoadingBar.vue'
+import { type LoadingBar } from '../../types'
 
-const showLoadingBar = (app: App, resolve, reject) => {
-  const dFrag = document.createDocumentFragment()
-  const vm: any = app.mount(dFrag)
-  vm.setVisible(true)
-  document.body.appendChild(dFrag)
+let loadingBarInstance: any = undefined;
 
-  watch(vm.visible, (val) => {
-    if (val) {
-      resolve()
-    } else {
-      reject()
-      hideMessage(app)
+const showLoadingBar = (app: App, config: LoadingBar) => {
+  if (loadingBarInstance) {
+    if(!config.destroyOnClose){
+      loadingBarInstance.open()
     }
+    return loadingBarInstance
+  }
+
+  const dFrag = document.createDocumentFragment()
+  loadingBarInstance = app.mount(dFrag)
+  const optionPromise = new Promise<void>((resolve, reject) => {
+    loadingBarInstance.setOptions(config, resolve)
   })
+
+  optionPromise.then(() => {
+    loadingBarInstance.open()
+    document.body.appendChild(dFrag)
+
+    watch(() => loadingBarInstance.visible, (val) => {
+      if (!val && config.destroyOnClose) {
+        app.unmount()
+        loadingBarInstance = undefined
+      }
+    })
+  })
+
+
+
+  return loadingBarInstance
 }
 
-const de
+const LoadingBarBox = (config: LoadingBar) => {
+  const messageApp = createApp(LoadingBarComp, {})
 
-const LoadingBarBox = (config: any) => {
-  const messageApp = createApp(LoadingBarComp, config)
-
-  return new Promise<void>((resolve, reject) => {
-    showLoadingBar(messageApp, resolve, reject)
-  })
+  return showLoadingBar(messageApp, config)
 }
+
+export default LoadingBarBox

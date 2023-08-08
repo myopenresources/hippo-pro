@@ -60,13 +60,7 @@
     <div class="demo">
       <div class="label">类型选择：</div>
       <div class="content">
-        <SelectTag
-          v-model:value="type"
-          :list="typeList"
-          :size="'small'"
-          :round="true"
-          type="warning"
-        >
+        <SelectTag v-model:value="type" :list="typeList" :size="'small'" :round="true" type="warning">
           <template v-slot:opt="scope">
             {{ scope.data.label }}
           </template>
@@ -78,7 +72,7 @@
       <div class="label">数值：</div>
       <div class="content">
         <Flop :number="num" />
-        <el-button @click="num='45465465465'"> 更新 </el-button>
+        <el-button @click="num = '45465465465'"> 更新 </el-button>
       </div>
     </div>
 
@@ -86,7 +80,7 @@
       <div class="label">数值：</div>
       <div class="content">
         <Flop number="1898919" :speed="666" />
-       
+
       </div>
     </div>
 
@@ -113,12 +107,18 @@
         </PopoverConfirm>
       </div>
     </div>
+    <div class="demo">
+      <div class="label">全局loading：</div>
+      <div class="content">
+        <el-button @click="openLoading">打开</el-button>
+      </div>
+    </div>
   </MainContent>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { SelectTag, type SelectTagOption, Flop, PopoverConfirm } from 'hippo-module-core'
+import { SelectTag, type SelectTagOption, Flop, PopoverConfirm, LoadingBarBox } from 'hippo-module-core'
 
 const showConfirm = ref(false)
 const num = ref('89894564')
@@ -175,6 +175,23 @@ const typeList2: SelectTagOption[] = [
     icon: 'SvgIconDemo'
   }
 ]
+
+
+const openLoading = () => {
+  const loadingObj = LoadingBarBox({
+    destroyOnClose: false,
+    label: '',
+    modal: true,
+    zIndex: 9999,
+    beforeClose: () => { },
+    beforeOpen: () => { }
+  })
+
+  const st = setTimeout(() => {
+    clearTimeout(st)
+    loadingObj.close()
+  }, 2000);
+}
 </script>
 
 <style lang="scss" scoped>
@@ -183,9 +200,11 @@ const typeList2: SelectTagOption[] = [
   display: flex;
   margin-bottom: 10px;
   align-items: center;
+
   .label {
     width: 80px;
   }
+
   .content {
     width: calc(100% - 80px);
     display: flex;

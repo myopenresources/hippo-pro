@@ -5,6 +5,7 @@ import type { WindowResizeParams } from './window-resize-types';
 import type { LogParam,LogLevel } from './log-param-types';
 import type { BaseInfo } from './base-types';
 import type { SelectTagOption } from './select-tag-types';
+import type { LoadingBar } from './loading-bar-types';
 export type {
     Dimensions,
     SvgProp,
@@ -17,5 +18,6 @@ export type {
     LogParam,
     LogLevel,
     BaseInfo,
-    SelectTagOption
+    SelectTagOption,
+    LoadingBar
 }
