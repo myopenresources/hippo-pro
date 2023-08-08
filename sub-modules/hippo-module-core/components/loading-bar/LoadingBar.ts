@@ -1,15 +1,28 @@
-import { createApp, type App } from 'vue'
+import { createApp, type App, watch } from 'vue'
 import LoadingBarComp from './LoadingBar.vue'
 
-const showLoadingBar = (app: App) => {
+const showLoadingBar = (app: App, resolve, reject) => {
   const dFrag = document.createDocumentFragment()
   const vm: any = app.mount(dFrag)
   vm.setVisible(true)
   document.body.appendChild(dFrag)
-  return vm
+
+  watch(vm.visible, (val) => {
+    if (val) {
+      resolve()
+    } else {
+      reject()
+      hideMessage(app)
+    }
+  })
 }
+
+const de
 
 const LoadingBarBox = (config: any) => {
   const messageApp = createApp(LoadingBarComp, config)
-  return showLoadingBar(messageApp)
+
+  return new Promise<void>((resolve, reject) => {
+    showLoadingBar(messageApp, resolve, reject)
+  })
 }
