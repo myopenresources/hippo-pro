@@ -63,7 +63,7 @@ import { onMounted, reactive, ref } from 'vue'
 
 const router = useRouter()
 
-const sysTitle = Environments.getEvnProp('VITE_SYS_TITLE') || '河马桌面'
+const sysTitle = Environments.getEvnProp('VITE_DESKTOP_TITLE') || '河马桌面'
 const homePath = Environments.getEvnProp('VITE_HOME_ROUTER')
 
 const copyrightDate = new Date().getFullYear()

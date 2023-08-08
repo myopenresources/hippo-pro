@@ -1,11 +1,11 @@
 import type { MenuInfo, RouterInfo, UserInfo } from "../types"
 
 export default class UserStoreUtil {
-    private static routes = '_sys_routes'
-    private static menus = '_sys_menus'
-    private static commonMenu = '_sys_common_menus'
-    private static token = '_sys_token'
-    private static userInfo = '_sys_user_info'
+    private static routes = '_desktop_routes'
+    private static menus = '_desktop_menus'
+    private static commonMenu = '_desktop_common_menus'
+    private static token = '_desktop_token'
+    private static userInfo = '_desktop_user_info'
 
     public static setRouters(routers: RouterInfo[]) {
         sessionStorage.setItem(UserStoreUtil.routes, JSON.stringify(routers))

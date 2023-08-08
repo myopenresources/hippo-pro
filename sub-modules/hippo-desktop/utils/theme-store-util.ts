@@ -1,7 +1,7 @@
 export default class ThemeStoreUtil {
-  private static theme = '_sys_theme'
-  private static styleTheme = '_sys_style_theme'
-  private static themeBgBlur = '_sys_theme_bg_blur'
+  private static theme = '_desktop_theme'
+  private static styleTheme = '_desktop_style_theme'
+  private static themeBgBlur = '_desktop_theme_bg_blur'
 
   public static setTheme(theme: string) {
     localStorage.setItem(ThemeStoreUtil.theme, theme)

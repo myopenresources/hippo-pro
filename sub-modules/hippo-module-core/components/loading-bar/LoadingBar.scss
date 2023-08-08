@@ -1,0 +1,38 @@
+.loading-bar-mask {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: rgba(255, 0, 0, 0.486);
+  .loading-bar {
+    width: 330px;
+    height: 10px;
+    background-color: var(--el-border-color-lighter);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    position: absolute;
+    z-index: 9999;
+    overflow: hidden;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #f5985b, #ec4ec5, #6084e9);
+      width: 50%;
+      height: 10px;
+      border-radius: 5px;
+      transform: translateZ(0);
+      animation: loading-bar-animation 1.5s infinite;
+    }
+  }
+}
+
+@keyframes loading-bar-animation {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(220%);
+    }
+}
