@@ -60,7 +60,13 @@
     <div class="demo">
       <div class="label">类型选择：</div>
       <div class="content">
-        <SelectTag v-model:value="type" :list="typeList" :size="'small'" :round="true" type="warning">
+        <SelectTag
+          v-model:value="type"
+          :list="typeList"
+          :size="'small'"
+          :round="true"
+          type="warning"
+        >
           <template v-slot:opt="scope">
             {{ scope.data.label }}
           </template>
@@ -80,7 +86,6 @@
       <div class="label">数值：</div>
       <div class="content">
         <Flop number="1898919" :speed="666" />
-
       </div>
     </div>
 
@@ -113,12 +118,26 @@
         <el-button @click="openLoading">打开</el-button>
       </div>
     </div>
+    <div class="demo">
+      <div class="label">全局loading：</div>
+      <div class="content">
+        <el-button @click="openLoading2">打开</el-button>
+      </div>
+    </div>
   </MainContent>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { SelectTag, type SelectTagOption, Flop, PopoverConfirm, LoadingBarBox } from 'hippo-module-core'
+import { defineComponent, h, onMounted, ref } from 'vue'
+
+import {
+  SelectTag,
+  type SelectTagOption,
+  Flop,
+  PopoverConfirm,
+  LoadingBarBox,
+  type LoadingBar
+} from 'hippo-module-core'
 
 const showConfirm = ref(false)
 const num = ref('89894564')
@@ -176,21 +195,42 @@ const typeList2: SelectTagOption[] = [
   }
 ]
 
-
 const openLoading = () => {
   const loadingObj = LoadingBarBox({
-    destroyOnClose: false,
-    label: '',
-    modal: true,
-    zIndex: 9999,
-    beforeClose: () => { },
-    beforeOpen: () => { }
+    label: '正在加载中...',
+    barLabelStyle:{
+      color:'var(--el-color-primary)'
+    }
   })
 
   const st = setTimeout(() => {
     clearTimeout(st)
     loadingObj.close()
-  }, 2000);
+  }, 1500)
+}
+
+const openLoading2 = () => {
+  const loadingObj2 = LoadingBarBox({
+    label: '正在加载中...',
+    content: (config: LoadingBar) => {
+      const label = config && config.label ? config.label + '' : ''
+      return h(
+        'div',
+        {
+          style: {
+            textAlign: 'center',
+            color: 'var(--el-color-primary)'
+          }
+        },
+        [label]
+      )
+    }
+  })
+
+  const st = setTimeout(() => {
+    clearTimeout(st)
+    loadingObj2.close()
+  }, 1200)
 }
 </script>
 
