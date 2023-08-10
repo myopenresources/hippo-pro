@@ -93,7 +93,7 @@ const login = (formEl: FormInstance | undefined) => {
           UserStoreUtil.setToken(res.data.token)
           UserStoreUtil.setRouters(res.data.routers)
           UserStoreUtil.setMenus(res.data.menus)
-          UserStoreUtil.setCommonMenu(res.data.commonMenus)
+          UserStoreUtil.setCommonMenus(res.data.commonMenus)
           UserStoreUtil.setUserInfo(res.data.userInfo)
           useElSuccessMessage('登录成功！')
           router.push(homePath)

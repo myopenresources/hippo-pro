@@ -49,7 +49,7 @@ const keywork = ref('')
 
 const startMenuConfigDialogRef = ref()
 
-const commonMenus = ref(UserStoreUtil.getCommonMenu())
+const commonMenus = ref(UserStoreUtil.getCommonMenus())
 
 const menus = ref(UserStoreUtil.getMenus())
 
@@ -62,22 +62,23 @@ const openStartMenuConfigDialog = () => {
 }
 
 const startMenuConfigDialogConfirm = () => {
-  commonMenus.value = UserStoreUtil.getCommonMenu()
+  commonMenus.value = UserStoreUtil.getCommonMenus()
 }
 
 const search = (val: string) => {
   const fn =  useDebounceFn(() => {
     if ('' !== val) {
-      const tempData: any = UserStoreUtil.getCommonMenu();
-      commonMenus.value = tempData.filter((item: MenuInfo) => {
+      const tempCommonData: any = UserStoreUtil.getCommonMenus();
+      const tempMenuData: any = UserStoreUtil.getMenus();
+      commonMenus.value = tempCommonData.filter((item: MenuInfo) => {
         return item.label.toLowerCase().includes(val.toLowerCase())
       })
-      menus.value = tempData.filter((item: MenuInfo) => {
+      menus.value = tempMenuData.filter((item: MenuInfo) => {
         return item.label.toLowerCase().includes(val.toLowerCase())
       })
     } else {
-      commonMenus.value = UserStoreUtil.getCommonMenu();
-      menus.value = UserStoreUtil.getCommonMenu();
+      commonMenus.value = UserStoreUtil.getCommonMenus();
+      menus.value = UserStoreUtil.getMenus();
     }
   }, 333)
   fn()

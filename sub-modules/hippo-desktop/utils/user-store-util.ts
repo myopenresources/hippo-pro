@@ -39,11 +39,11 @@ export default class UserStoreUtil {
         sessionStorage.removeItem(UserStoreUtil.menus)
     }
 
-    public static setCommonMenu(commonMenu: MenuInfo[]) {
+    public static setCommonMenus(commonMenu: MenuInfo[]) {
         sessionStorage.setItem(UserStoreUtil.commonMenu, JSON.stringify(commonMenu))
     }
 
-    public static getCommonMenu(): MenuInfo[] {
+    public static getCommonMenus(): MenuInfo[] {
         const commonMenuStr = sessionStorage.getItem(UserStoreUtil.commonMenu)
         if (commonMenuStr) {
             return JSON.parse(commonMenuStr)
@@ -51,7 +51,7 @@ export default class UserStoreUtil {
         return []
     }
 
-    public static removeCommonMenu() {
+    public static removeCommonMenus() {
         sessionStorage.removeItem(UserStoreUtil.commonMenu)
     }
 
@@ -97,7 +97,7 @@ export default class UserStoreUtil {
         UserStoreUtil.removeToken()
         UserStoreUtil.removeRouters()
         UserStoreUtil.removeMenus()
-        UserStoreUtil.removeCommonMenu()
+        UserStoreUtil.removeCommonMenus()
         UserStoreUtil.removeUserInfo()
     }
 }

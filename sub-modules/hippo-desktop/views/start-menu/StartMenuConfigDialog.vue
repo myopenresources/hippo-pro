@@ -69,7 +69,7 @@ const emit = defineEmits(['confirm'])
 
 const dialogVisible = ref(false)
 
-const commonMenus = ref(UserStoreUtil.getCommonMenu())
+const commonMenus = ref(UserStoreUtil.getCommonMenus())
 
 const menus = ref(UserStoreUtil.getMenus())
 
@@ -78,7 +78,7 @@ const loading = ref(false)
 
 const showDialog = () => {
   dialogVisible.value = true
-  commonMenus.value = UserStoreUtil.getCommonMenu()
+  commonMenus.value = UserStoreUtil.getCommonMenus()
 }
 
 const hideDialog = () => {
@@ -88,7 +88,7 @@ const hideDialog = () => {
 const confirm = () => {
   loading.value = true
   MenuApi.updateCommonMenus(commonMenus.value).then((res: RequestResultData<Object>) => {
-    UserStoreUtil.setCommonMenu(commonMenus.value)
+    UserStoreUtil.setCommonMenus(commonMenus.value)
     emit('confirm')
     loading.value = false
     hideDialog()
