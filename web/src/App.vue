@@ -18,6 +18,7 @@ import { LogUtil } from 'hippo-module-core'
 const locale = ref(zhCn)
 
 const sysConfig: SysConfig = {
+  defaultThemeScheme: 'light-theme-scheme',
   defaultStyleTheme: 'light',
   defaultTheme: '#409eff',
   logo: '',

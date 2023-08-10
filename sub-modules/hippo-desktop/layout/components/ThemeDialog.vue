@@ -1,12 +1,32 @@
 <template>
-  <el-dialog
-    v-model="visible"
-    :width="'422px'"
-    :title="'主题设置'"
-    :draggable="true"
-  >
+  <el-dialog v-model="visible" :width="'422px'" :title="'主题设置'" :draggable="true">
     <template #default>
       <div class="theme-dialog">
+        <div class="theme-dialog-theme-schemes">
+          <el-carousel
+            :autoplay="false"
+            :pause-on-hover="false"
+            :height="'125px'"
+            :indicator-position="'none'"
+            arrow="never"
+            type="card"
+            :initial-index="currentThemeSchemeIndex"
+            @change="themeSchemeChange"
+          >
+            <el-carousel-item
+              v-for="(item, index) in themeSettingConst.themeSchemes"
+              :key="item.value"
+            >
+              <div class="theme-dialog-theme-schemes-item">
+                <img :src="item.themeBg" />
+                <div class="is-check" v-show="index === currentThemeSchemeIndex">
+                  <DynamicIcon icon="CircleCheckFilled" />
+                </div>
+                <div class="theme-dialog-theme-schemes-item-label">{{ item.label }}</div>
+              </div>
+            </el-carousel-item>
+          </el-carousel>
+        </div>
         <div class="theme-dialog-styles">
           <div
             class="theme-dialog-styles-item"
@@ -70,15 +90,18 @@ import {
   useEventBusEmit,
   type RequestResultData
 } from 'hippo-module-core'
-import { ref } from 'vue'
+import { onMounted, ref, nextTick } from 'vue'
 import { ThemeStoreUtil, ThemeUtil } from '../../utils'
 import type { UploadRequestOptions } from 'element-plus'
-import bgPreviewImg from '../../assets/img/desktop-layout/bg-preview.jpg'
+import bgPreviewImg from '../../assets/img/desktop-layout/light-bg-preview.jpg'
 import { type UserDesktopBg } from '../../types'
 import { UserApi } from '../../api'
+import { themeSchemeConst } from '../../consts/desktop-layout-const'
 
+const themeScheme = ThemeStoreUtil.getThemeScheme()
+
+const currentThemeSchemeIndex = ref(0)
 const currentStyleTheme = ref(ThemeStoreUtil.getStyleTheme())
-
 const currentTheme = ref(ThemeStoreUtil.getTheme())
 const themeBg = ref(bgPreviewImg)
 const themeBgBlur = ref(ThemeStoreUtil.getThemeBgBlur())
@@ -95,9 +118,9 @@ const hideDialog = () => {
 }
 
 const setStyleTheme = (style: any) => {
-  const oldStyleTheme =  currentStyleTheme.value;
+  const oldStyleTheme = currentStyleTheme.value
   currentStyleTheme.value = style.styleThemeName
-  ThemeUtil.setHtmlTheme(oldStyleTheme,style.styleThemeName)
+  ThemeUtil.setHtmlTheme(oldStyleTheme, style.styleThemeName)
   ThemeStoreUtil.setStyleTheme(style.styleThemeName)
   useEventBusEmit('styleThemeChange', style)
 }
@@ -119,6 +142,8 @@ const bgUploadHttpRequest = (options: UploadRequestOptions) => {
 
   UserApi.userDesktopBgUpload(options).then((res: RequestResultData<UserDesktopBg>) => {
     if (res.success) {
+      ThemeStoreUtil.setThemeScheme(themeSchemeConst.customThemeScheme)
+      currentThemeSchemeIndex.value = -1
       useEventBusEmit('updateDesktopBg', res.data.bgUrl)
       getUserDesktopBgPreview()
       useElSuccessMessage(res.msg)
@@ -131,6 +156,24 @@ const themeBgBlurChange = (val: number) => {
   useEventBusEmit('updateDesktopBlur', themeBgBlur.value)
 }
 
+const themeSchemeChange = (val: number) => {
+  const find = themeSettingConst.themeSchemes[val]
+  currentThemeSchemeIndex.value = val
+  if (find) {
+    const findStyleTheme = themeSettingConst.styles.find((style) => {
+      return style.styleThemeName === find.styleTheme
+    })
+
+    if (findStyleTheme) {
+      setStyleTheme(findStyleTheme)
+    }
+
+    useEventBusEmit('updateDesktopBg', find.bg)
+    themeBg.value = find.themeBg
+    ThemeStoreUtil.setThemeScheme(find.value)
+  }
+}
+
 const getUserDesktopBgPreview = () => {
   UserApi.getUserDesktopBgPreview().then((res: RequestResultData<UserDesktopBg>) => {
     if (res.success) {
@@ -138,6 +181,22 @@ const getUserDesktopBgPreview = () => {
     }
   })
 }
+
+const initCurrentThemeSchemeIndex = () => {
+  if (themeScheme !== themeSchemeConst.customThemeScheme) {
+    const findIndex = themeSettingConst.themeSchemes.findIndex((item) => {
+      return item.value === themeScheme
+    })
+
+    if (findIndex > 0) {
+      currentThemeSchemeIndex.value = findIndex
+    }
+  }
+}
+
+onMounted(() => {
+  initCurrentThemeSchemeIndex()
+})
 
 defineExpose({
   showDialog,

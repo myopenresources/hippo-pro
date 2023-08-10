@@ -14,7 +14,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import { UserApi } from '../../api'
 import type { RequestResultData } from 'hippo-module-core/types'
 import type { UserDesktopBg } from '../../types'
-import bgImg from '../../assets/img/desktop-layout/bg.jpg'
+import bgImg from '../../assets/img/desktop-layout/light-bg.jpg'
 import { ThemeStoreUtil } from '../../utils'
 import { useEventBusOn, useEventBusRemove } from 'hippo-module-core/hooks'
 

@@ -1,6 +1,7 @@
 
 
 interface SysConfig {
+    defaultThemeScheme:string
     defaultTheme: string
     defaultStyleTheme: string
     logo?: string

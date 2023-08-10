@@ -6,6 +6,7 @@ const getConfigProvider = () => {
     const config: ConfigProviderProps | null = inject(CONFIG_PROVIDER_PROPS_KEY, {
         sysConfig: {
             defaultAvatar: '',
+            defaultThemeScheme:'',
             defaultTheme: '',
             defaultStyleTheme: '',
             loginPath: '',
@@ -30,6 +31,7 @@ export const useSysConfig = (): ComputedRef<SysConfig> => {
             ? config.sysConfig
             : {
                 defaultAvatar: '',
+                defaultThemeScheme:'',
                 defaultTheme: '',
                 defaultStyleTheme: '',
                 loginPath: '',

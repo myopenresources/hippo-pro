@@ -8,7 +8,7 @@ export default defineComponent({
   props: Props,
   setup(props, { slots }) {
     provide(CONFIG_PROVIDER_PROPS_KEY, props)
-    ThemeStoreUtil.initTheme(props.sysConfig.defaultTheme, props.sysConfig.defaultStyleTheme)
+    ThemeStoreUtil.initTheme(props.sysConfig)
     return () => renderSlot(slots, 'default')
   }
 })

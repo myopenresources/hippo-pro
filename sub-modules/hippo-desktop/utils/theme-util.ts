@@ -1,6 +1,7 @@
 import { ElementUiThemeUtil } from 'hippo-module-core'
-import { styleNameConst, themeSettingConst } from '../consts/desktop-layout-const'
+import { themeSettingConst } from '../consts/desktop-layout-const'
 import ThemeStoreUtil from './theme-store-util'
+import type { SysConfig } from '../types'
 
 export default class ThemeUtil {
   static getStyleThemeConfig(defaultStyleTheme: string) {
@@ -52,9 +53,28 @@ export default class ThemeUtil {
     }
   }
 
-  static initTheme(defaultTheme: string, defaultStyleTheme: string) {
-    ThemeUtil.setCssVariable(ThemeUtil.getThemeConfig(defaultTheme))
-    const styleTheme = ThemeUtil.getStyleThemeName(defaultStyleTheme)
-    ThemeUtil.setHtmlTheme('',styleTheme)
+  static setThemeScheme(defaultThemeScheme: string) {
+    let themeScheme = ThemeStoreUtil.getThemeScheme()
+    if ('' === themeScheme) {
+      themeScheme = defaultThemeScheme
+      ThemeStoreUtil.setThemeScheme(themeScheme)
+    }
+  }
+
+  static getThemeSchemeObj() {
+    const themeScheme = ThemeStoreUtil.getThemeScheme()
+    if ('' !== themeScheme) {
+      return themeSettingConst.themeSchemes.find((item) => {
+        return item.value === themeScheme
+      })
+    }
+    return null
+  }
+
+  static initTheme(sysConfig: SysConfig) {
+    ThemeUtil.setCssVariable(ThemeUtil.getThemeConfig(sysConfig.defaultTheme))
+    ThemeUtil.setThemeScheme(sysConfig.defaultThemeScheme)
+    const styleTheme = ThemeUtil.getStyleThemeName(sysConfig.defaultStyleTheme)
+    ThemeUtil.setHtmlTheme('', styleTheme)
   }
 }

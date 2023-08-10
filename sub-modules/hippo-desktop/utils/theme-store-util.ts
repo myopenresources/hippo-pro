@@ -2,6 +2,7 @@ export default class ThemeStoreUtil {
   private static theme = '_desktop_theme'
   private static styleTheme = '_desktop_style_theme'
   private static themeBgBlur = '_desktop_theme_bg_blur'
+  private static themeScheme = '_desktop_theme_scheme' 
 
   public static setTheme(theme: string) {
     localStorage.setItem(ThemeStoreUtil.theme, theme)
@@ -42,5 +43,17 @@ export default class ThemeStoreUtil {
 
   public static removeThemeBgBlur() {
     localStorage.removeItem(ThemeStoreUtil.themeBgBlur)
+  }
+
+  public static setThemeScheme(themeScheme: string) {
+    localStorage.setItem(ThemeStoreUtil.themeScheme, themeScheme)
+  }
+
+  public static getThemeScheme(): string {
+    return localStorage.getItem(ThemeStoreUtil.themeScheme) || ''
+  }
+
+  public static removeThemeScheme() {
+    localStorage.removeItem(ThemeStoreUtil.themeScheme)
   }
 }

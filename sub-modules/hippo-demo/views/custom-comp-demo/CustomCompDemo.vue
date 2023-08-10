@@ -119,7 +119,7 @@
       </div>
     </div>
     <div class="demo">
-      <div class="label">全局loading：</div>
+      <div class="label">自定义loading：</div>
       <div class="content">
         <el-button @click="openLoading2">打开</el-button>
       </div>
@@ -242,11 +242,11 @@ const openLoading2 = () => {
   align-items: center;
 
   .label {
-    width: 80px;
+    width: 120px;
   }
 
   .content {
-    width: calc(100% - 80px);
+    width: calc(100% - 120px);
     display: flex;
   }
 }
