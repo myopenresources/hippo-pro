@@ -4,28 +4,28 @@ import type { LoadingBar } from '../../types'
 export default defineComponent({
   setup(props, context) {
     const visible = ref(true)
-    const config = ref()
+    const options = ref()
 
     const barStyle = computed(() => {
       let customBarStyle = {}
-      if (config.value && config.value.barStyle) {
-        customBarStyle = config.value.barStyle
+      if (options.value && options.value.barStyle) {
+        customBarStyle = options.value.barStyle
       }
       return {
-        '--loading-bar-width': config.value && config.value.width ? config.value.width : '300px',
-        '--loading-bar-height': config.value && config.value.height ? config.value.height : '10px',
+        '--loading-bar-width': options.value && options.value.width ? options.value.width : '300px',
+        '--loading-bar-height': options.value && options.value.height ? options.value.height : '10px',
         '--loading-bar-display-width':
-          config.value && config.value.displayWidth ? config.value.displayWidth : '50%',
+          options.value && options.value.displayWidth ? options.value.displayWidth : '50%',
         '--loading-bar-display-speed':
-          config.value && config.value.displaySpeed ? config.value.displaySpeed : '1.5s',
+          options.value && options.value.displaySpeed ? options.value.displaySpeed : '1.5s',
         ...customBarStyle
       }
     })
 
     const barLabelStyle = computed(() => {
       let customBarLabelStyle = {}
-      if (config.value && config.value.barLabelStyle) {
-        customBarLabelStyle = config.value.barLabelStyle
+      if (options.value && options.value.barLabelStyle) {
+        customBarLabelStyle = options.value.barLabelStyle
       }
 
       return customBarLabelStyle
@@ -40,10 +40,10 @@ export default defineComponent({
     }
 
     const setOptions = (
-      loadingBarConfig: LoadingBar,
+      loadingBarOptions: LoadingBar,
       resolve: (value: void | PromiseLike<void>) => void
     ) => {
-      config.value = loadingBarConfig
+      options.value = loadingBarOptions
       resolve()
     }
 
@@ -60,12 +60,12 @@ export default defineComponent({
 
     return () => (
       <>
-        {config.value && config.value.modal && (
+        {options.value && options.value.modal && (
           <div
             class={'loading-bar-mask'}
             v-show={visible.value}
             style={{
-              zIndex: config.value && config.value.zIndex ? config.value.zIndex : 999
+              zIndex: options.value && options.value.zIndex ? options.value.zIndex : 999
             }}
           ></div>
         )}
@@ -73,20 +73,20 @@ export default defineComponent({
           class={'loading-bar-container'}
           v-show={visible.value}
           style={{
-            zIndex: config.value && config.value.zIndex ? config.value.zIndex + 1 : 1000
+            zIndex: options.value && options.value.zIndex ? options.value.zIndex + 1 : 1000
           }}
         >
-          {!(config.value && config.value.content) && (
+          {!(options.value && options.value.content) && (
             <div>
               <div class="loading-bar" style={barStyle.value}></div>
-              {config.value && config.value.label && (
+              {options.value && options.value.label && (
                 <div class="loading-bar-label" style={barLabelStyle.value}>
-                  {config.value.label}
+                  {options.value.label}
                 </div>
               )}
             </div>
           )}
-          {config.value && config.value.content && <div>{config.value.content(config.value)}</div>}
+          {options.value && options.value.content && <div>{options.value.content(options.value)}</div>}
         </div>
       </>
     )

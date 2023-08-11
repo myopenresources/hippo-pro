@@ -20,10 +20,10 @@ const defaultProps = {
   beforeOpen: () => {}
 }
 
-const showLoadingBar = (app: App, config: LoadingBar) => {
+const showLoadingBar = (app: App, options: LoadingBar) => {
   if (loadingBarInstance) {
-    if (!config.destroyOnClose) {
-      config && config.beforeOpen && config.beforeOpen()
+    if (!options.destroyOnClose) {
+      options && options.beforeOpen && options.beforeOpen()
       loadingBarInstance.open()
     }
     return loadingBarInstance
@@ -32,20 +32,20 @@ const showLoadingBar = (app: App, config: LoadingBar) => {
   const dFrag = document.createDocumentFragment()
   loadingBarInstance = app.mount(dFrag)
   const optionPromise = new Promise<void>((resolve, reject) => {
-    loadingBarInstance.setOptions(config, resolve)
+    loadingBarInstance.setOptions(options, resolve)
   })
 
   optionPromise.then(() => {
-    config && config.beforeOpen && config.beforeOpen()
+    options && options.beforeOpen && options.beforeOpen()
     document.body.appendChild(dFrag)
 
     watch(
       () => loadingBarInstance.visible,
       (val) => {
         if (!val) {
-          config && config.beforeClose && config.beforeClose()
+          options && options.beforeClose && options.beforeClose()
         }
-        if (!val && config.destroyOnClose) {
+        if (!val && options.destroyOnClose) {
           app.unmount()
           loadingBarInstance = undefined
         }
@@ -56,16 +56,16 @@ const showLoadingBar = (app: App, config: LoadingBar) => {
   return loadingBarInstance
 }
 
-const LoadingBarBox = (config: LoadingBar = {}) => {
-  const messageApp = createApp(LoadingBarComp)
+const LoadingBarBox = (options: LoadingBar = {}) => {
+  const loadingBarApp = createApp(LoadingBarComp)
 
-  const distConfig = Object.assign(
+  const distOptions = Object.assign(
     {
       ...defaultProps
     },
-    config
+    options
   )
-  return showLoadingBar(messageApp, distConfig)
+  return showLoadingBar(loadingBarApp, distOptions)
 }
 
 export default LoadingBarBox
