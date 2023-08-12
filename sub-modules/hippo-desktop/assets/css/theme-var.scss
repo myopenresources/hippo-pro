@@ -1,7 +1,7 @@
 html {
     --desktop-layout-bg: linear-gradient(to right, #d3f0fa, #a1d4e6);
     --desktop-layout-toolbar-height: 60px;
-    --desktop-layout-toolbar-bg: #d6e8fadb;
+    --desktop-layout-toolbar-bg: #d9e9fbc3;
     --desktop-layout-toolbar-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
     --desktop-layout-toolbar-inner-shadow: 0px 0px 3px #ffffff94 inset;
     --desktop-layout-toolbar-border-color: rgba(199, 197, 197, 0.879);
@@ -32,8 +32,8 @@ html {
     --main-content-header-btn-color: #fff;
 
     --start-menu-search-box-bor-color: rgb(255, 255, 255);
-    --start-menu-bg: #f0f6f8db;
-    --start-menu-hover-bg: rgba(196, 213, 221, 0.963);
+    --start-menu-bg: #f2f8fa9d;
+    --start-menu-hover-bg: #f0f6f8e0;
     --start-menu-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
     --start-menu-category-color: #f5fbfdfa;
 
@@ -66,7 +66,7 @@ html {
 html.deep-colour {
     --desktop-layout-bg: linear-gradient(to right, #cde5ee, #a1d4e6);
     --desktop-layout-toolbar-height: 60px;
-    --desktop-layout-toolbar-bg: #76b4ebcc;
+    --desktop-layout-toolbar-bg: #76b4ebc6;
     --desktop-layout-toolbar-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     --desktop-layout-toolbar-inner-shadow: 0px 0px 3px #81b8e6db inset;
     --desktop-layout-toolbar-border-color: #bcdde9a6;
@@ -90,7 +90,7 @@ html.deep-colour {
 
 html.dark {
     --desktop-layout-bg: linear-gradient(to right, #233544ff, rgb(26, 51, 71));
-    --desktop-layout-toolbar-bg: #010e1be8;
+    --desktop-layout-toolbar-bg: #000305dd;
     --desktop-layout-toolbar-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
     --desktop-layout-toolbar-inner-shadow: 0px 0px 3px #131616 inset;
     --desktop-layout-toolbar-border-color: #334250;

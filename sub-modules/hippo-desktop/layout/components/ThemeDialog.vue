@@ -6,7 +6,7 @@
           <el-carousel
             :autoplay="false"
             :pause-on-hover="false"
-            :height="'125px'"
+            :height="'120px'"
             :indicator-position="'none'"
             arrow="never"
             type="card"
@@ -62,19 +62,9 @@
         </div>
         <div class="theme-dialog-bg">
           <img :src="themeBg" />
-          <div
-            class="theme-dialog-bg-blur"
-            :style="{
-              backdropFilter: `blur(${themeBgBlur}px)`
-            }"
-          ></div>
           <el-upload action="" :http-request="bgUploadHttpRequest" :show-file-list="false">
             <div class="upload-btn">更换背景图片</div>
           </el-upload>
-        </div>
-        <div class="theme-dialog-blur">
-          <div>背景毛玻璃</div>
-          <el-slider v-model="themeBgBlur" @change="themeBgBlurChange" />
         </div>
       </div>
     </template>
@@ -104,7 +94,6 @@ const currentThemeSchemeIndex = ref(0)
 const currentStyleTheme = ref(ThemeStoreUtil.getStyleTheme())
 const currentTheme = ref(ThemeStoreUtil.getTheme())
 const themeBg = ref(bgPreviewImg)
-const themeBgBlur = ref(ThemeStoreUtil.getThemeBgBlur())
 
 const visible = ref(false)
 
@@ -149,11 +138,6 @@ const bgUploadHttpRequest = (options: UploadRequestOptions) => {
       useElSuccessMessage(res.msg)
     }
   })
-}
-
-const themeBgBlurChange = (val: number) => {
-  ThemeStoreUtil.setThemeBgBlur(themeBgBlur.value.toString())
-  useEventBusEmit('updateDesktopBlur', themeBgBlur.value)
 }
 
 const themeSchemeChange = (val: number) => {

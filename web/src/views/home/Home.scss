@@ -108,5 +108,6 @@
   .vue-grid-item {
     border-radius: 6px;
     background-color: var(--home-grid-item-bg);
+    backdrop-filter:blur(15px) saturate(2);
   }
 }

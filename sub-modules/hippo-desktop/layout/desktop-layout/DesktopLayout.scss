@@ -4,11 +4,11 @@
   background: var(--desktop-layout-bg);
   background-size: cover;
   background-repeat: no-repeat;
+
   &-inner {
     min-width: 960px;
     width: 100%;
     height: 100%;
-    //backdrop-filter: blur(10px);
     box-sizing: border-box;
     overflow: hidden;
   }

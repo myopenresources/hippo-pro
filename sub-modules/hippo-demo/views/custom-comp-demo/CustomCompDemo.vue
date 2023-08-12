@@ -122,6 +122,12 @@
       <div class="label">自定义loading：</div>
       <div class="content">
         <el-button @click="openLoading2">打开</el-button>
+        <el-button size="large">Large</el-button>
+    <el-button>查询</el-button>
+    <el-button size="small">查询</el-button>
+    <el-button size="large">查询</el-button>
+    <el-button >Search</el-button>
+    <el-button size="small" >查询</el-button>
       </div>
     </div>
   </MainContent>

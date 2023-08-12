@@ -1,7 +1,6 @@
 export default class ThemeStoreUtil {
   private static theme = '_desktop_theme'
   private static styleTheme = '_desktop_style_theme'
-  private static themeBgBlur = '_desktop_theme_bg_blur'
   private static themeScheme = '_desktop_theme_scheme' 
 
   public static setTheme(theme: string) {
@@ -28,22 +27,6 @@ export default class ThemeStoreUtil {
     localStorage.removeItem(ThemeStoreUtil.styleTheme)
   }
 
-  public static setThemeBgBlur(blur: string) {
-    localStorage.setItem(ThemeStoreUtil.themeBgBlur, blur)
-  }
-
-  public static getThemeBgBlur(): number {
-    const blur = localStorage.getItem(ThemeStoreUtil.themeBgBlur) || ''
-    if (blur === '') {
-      return 0
-    } else {
-      return Number.parseInt(blur, 10)
-    }
-  }
-
-  public static removeThemeBgBlur() {
-    localStorage.removeItem(ThemeStoreUtil.themeBgBlur)
-  }
 
   public static setThemeScheme(themeScheme: string) {
     localStorage.setItem(ThemeStoreUtil.themeScheme, themeScheme)

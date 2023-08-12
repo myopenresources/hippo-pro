@@ -18,6 +18,18 @@ html.dark {
   --el-border-color-extra-light: #2b2b2cce;
 }
 
+.el-button {
+  line-height: 32px;
+}
+
+.el-button--small {
+  line-height: 24px;
+}
+
+.el-button--large {
+  line-height: 40px;
+}
+
 .el-dialog {
   border: var(--el-border);
 }
