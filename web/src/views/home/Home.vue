@@ -53,6 +53,11 @@ import { GridLayout, GridItem } from 'vue3-drr-grid-layout'
 import 'vue3-drr-grid-layout/dist/style.css'
 import type { HomeModule, HomeLayout } from '../../types/home-types'
 import TextContent from './components/TextContent.vue'
+import TimeRecord from './components/TimeRecord.vue'
+import ImgContent from './components/ImgContent.vue'
+import CalendarContent from './components/CalendarContent.vue'
+import Timeline from './components/Timeline.vue'
+import DataTable from './components/DataTable.vue'
 
 const isEidt = ref(false)
 
@@ -61,7 +66,7 @@ const modules = shallowRef<HomeModule[]>([
     id: 'module1',
     icon: 'SvgIconHome',
     label: '模块1',
-    component: markRaw(TextContent),
+    component: markRaw(TimeRecord),
     data: {
       text: '模块1'
     }
@@ -70,9 +75,45 @@ const modules = shallowRef<HomeModule[]>([
     id: 'module2',
     icon: 'SvgIconHome',
     label: '模块2',
+    component: markRaw(ImgContent),
+    data: {
+      text: '模块2'
+    }
+  },
+  {
+    id: 'module3',
+    icon: 'SvgIconHome',
+    label: '模块3',
     component: markRaw(TextContent),
     data: {
-      text: '模块1'
+      text: '模块3'
+    }
+  },
+  {
+    id: 'module4',
+    icon: 'SvgIconHome',
+    label: '模块4',
+    component: markRaw(CalendarContent),
+    data: {
+      text: '模块4'
+    }
+  },
+  {
+    id: 'module5',
+    icon: 'SvgIconHome',
+    label: '模块5',
+    component: markRaw(Timeline),
+    data: {
+      text: '模块5'
+    }
+  },
+  {
+    id: 'module6',
+    icon: 'SvgIconHome',
+    label: '模块6',
+    component: markRaw(DataTable),
+    data: {
+      text: '模块6'
     }
   }
 ])
@@ -89,7 +130,7 @@ const layout = ref<HomeLayout[]>([
       id: '1',
       icon: 'SvgIconHome',
       label: '模块1',
-      component: markRaw(TextContent),
+      component: markRaw(TimeRecord),
       data: {
         text: '模块1'
       }
@@ -98,14 +139,14 @@ const layout = ref<HomeLayout[]>([
   {
     x: 2,
     y: 6,
-    w: 3,
+    w: 6,
     h: 12,
     i: 3,
     module: {
       id: '2',
       icon: 'SvgIconHome',
       label: '模块2',
-      component: markRaw(TextContent),
+      component: markRaw(DataTable),
       data: {
         text: '模块2'
       }
@@ -115,7 +156,7 @@ const layout = ref<HomeLayout[]>([
     x: 0,
     y: 12,
     w: 2,
-    h: 6,
+    h: 5,
     i: 4,
     module: {
       id: '3',
@@ -131,13 +172,13 @@ const layout = ref<HomeLayout[]>([
     x: 0,
     y: 6,
     w: 2,
-    h: 6,
+    h: 7,
     i: 5,
     module: {
       id: '4',
       icon: 'SvgIconHome',
       label: '模块4',
-      component: markRaw(TextContent),
+      component: markRaw(Timeline),
       data: {
         text: '模块4'
       }
@@ -153,25 +194,9 @@ const layout = ref<HomeLayout[]>([
       id: '5',
       icon: 'SvgIconHome',
       label: '模块5',
-      component: markRaw(TextContent),
+      component: markRaw(ImgContent),
       data: {
         text: '模块5'
-      }
-    }
-  },
-  {
-    x: 5,
-    y: 6,
-    w: 3,
-    h: 12,
-    i: 7,
-    module: {
-      id: '6',
-      icon: 'SvgIconHome',
-      label: '模块6',
-      component: markRaw(TextContent),
-      data: {
-        text: '模块6'
       }
     }
   },
@@ -179,13 +204,13 @@ const layout = ref<HomeLayout[]>([
     x: 8,
     y: 0,
     w: 4,
-    h: 9,
+    h: 15,
     i: 8,
     module: {
       id: '7',
       icon: 'SvgIconHome',
       label: '模块7',
-      component: markRaw(TextContent),
+      component: markRaw(CalendarContent),
       data: {
         text: '模块7'
       }
@@ -193,9 +218,9 @@ const layout = ref<HomeLayout[]>([
   },
   {
     x: 8,
-    y: 9,
+    y: 2,
     w: 4,
-    h: 9,
+    h: 3,
     i: 9,
     module: {
       id: '8',
@@ -214,7 +239,9 @@ const resize = (i: number, newH: number, newW: number, newHPx: number, newWPx: n
 //单元格移动中的事件
 const move = (i: number, newX: number, newY: number) => { }
 //单元格移动后的事件
-const moved = (i: number, newX: number, newY: number) => { }
+const moved = (i: number, newX: number, newY: number) => {
+  console.info(layout.value)
+}
 
 //添加组件
 const addItem = (module: HomeModule, index: number) => {

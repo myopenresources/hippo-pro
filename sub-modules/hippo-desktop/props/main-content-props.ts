@@ -20,6 +20,7 @@ export const MainContentProps = {
         backgroundColor: 'var(--main-content-bg)',
         boxShadow: 'var(--main-content-shadow)',
         borderRadius: 'var(--main-content-radius)',
+        backdropFilter: 'blur(15px) saturate(15)'
       }
     }
   },

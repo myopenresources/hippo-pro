@@ -60,13 +60,7 @@
     <div class="demo">
       <div class="label">类型选择：</div>
       <div class="content">
-        <SelectTag
-          v-model:value="type"
-          :list="typeList"
-          :size="'small'"
-          :round="true"
-          type="warning"
-        >
+        <SelectTag v-model:value="type" :list="typeList" :size="'small'" :round="true" type="warning">
           <template v-slot:opt="scope">
             {{ scope.data.label }}
           </template>
@@ -122,12 +116,6 @@
       <div class="label">自定义loading：</div>
       <div class="content">
         <el-button @click="openLoading2">打开</el-button>
-        <el-button size="large">Large</el-button>
-    <el-button>查询</el-button>
-    <el-button size="small">查询</el-button>
-    <el-button size="large">查询</el-button>
-    <el-button >Search</el-button>
-    <el-button size="small" >查询</el-button>
       </div>
     </div>
   </MainContent>
@@ -204,8 +192,8 @@ const typeList2: SelectTagOption[] = [
 const openLoading = () => {
   const loadingObj = LoadingBarBox({
     label: '正在加载中...',
-    barLabelStyle:{
-      color:'var(--el-color-primary)'
+    barLabelStyle: {
+      color: 'var(--el-color-primary)'
     }
   })
 

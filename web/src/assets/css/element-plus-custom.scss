@@ -42,3 +42,7 @@ html.dark {
 .el-overlay {
   backdrop-filter: blur(2px) saturate(1.5);
 }
+
+.el-table__cell{
+  background: var(--el-bg-color);
+}

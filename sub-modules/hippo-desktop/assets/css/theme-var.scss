@@ -23,7 +23,7 @@ html {
     --desktop-layout-main-padding: 0.8rem;
 
 
-    --main-content-bg: #fff;
+    --main-content-bg: hsla(0, 0%, 100%, 0.98);
     --main-content-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
     --main-content-padding: 1rem;
     --main-content-radius: 0.3rem;
@@ -109,8 +109,8 @@ html.dark {
     --desktop-layout-toolbar-popover-msg-bg: #3342503d;
     --desktop-layout-toolbar-dropdown-item-hover-bg: #283846d7;
 
-    --main-content-bg: #010a13;
-    --main-content-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+    --main-content-bg: hsla(210, 90%, 4%, 0.98);
+    --main-content-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     --main-content-header-border-color: rgba(88, 85, 85, 0.701);
     --main-content-header-btn-color: #fff;
 
