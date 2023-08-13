@@ -38,8 +38,9 @@
               <el-button  type="primary" plain size="small">下载</el-button>
             </div>
           </template>
-          <el-input class="log-list-main-card-body" type="textarea" v-model="log.logContent">
-          </el-input>
+          <pre class="log-list-main-card-body">
+            {{ log.logContent }}
+          </pre>
         </el-card>
       </div>
     </div>

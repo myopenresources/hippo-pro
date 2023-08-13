@@ -113,9 +113,15 @@
       </div>
     </div>
     <div class="demo">
-      <div class="label">自定义loading：</div>
-      <div class="content">
+      <div class="label" >自定义loading：</div>
+      <div class="content" v-img-lazy>
         <el-button @click="openLoading2">打开</el-button>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="label" >图片懒加载：</div>
+      <div class="content" >
+        <img style="height:50px" :src="img2" v-img-lazy="'https://img0.baidu.com/it/u=2159574576,3189551048&fm=253&fmt=auto&app=138&f=JPEG?w=640&h=361'"/>
       </div>
     </div>
   </MainContent>
@@ -123,6 +129,9 @@
 
 <script setup lang="ts">
 import { defineComponent, h, onMounted, ref } from 'vue'
+import {imgLazy} from 'hippo-module-core'
+import img1 from '../../assets/img/demo/1.jpeg'
+import img2 from '../../assets/img/demo/2.jpeg'
 
 import {
   SelectTag,
@@ -132,6 +141,8 @@ import {
   LoadingBarBox,
   type LoadingBar
 } from 'hippo-module-core'
+
+const vImgLazy = imgLazy
 
 const showConfirm = ref(false)
 const num = ref('89894564')

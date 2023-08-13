@@ -22,8 +22,9 @@ body{
   border-style: solid;
   border-color: transparent;
   border-radius: 6px;
-  background-color: #9b999c79;
-  display: none;
+  background-color: #9b999c55;
+  //display: none;
+  transition: .35s;
 }
 
 ::-webkit-scrollbar-corner {
@@ -31,10 +32,11 @@ body{
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9b999c79;
-  display: block;
+  background: #9b999caa;
+  transition: .35s;
+  //display: block;
 }
 
 ::-webkit-scrollbar-thumb:focus {
-  background: #9b999c79;
+  background: #9b999c55;
 }
