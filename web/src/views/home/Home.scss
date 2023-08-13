@@ -23,8 +23,8 @@
   &-config {
     position: fixed;
     z-index: 3;
-    right: 2px;
-    top:calc(var(--desktop-layout-toolbar-height) + 3px);
+    right: 8px;
+    top:calc(var(--desktop-layout-toolbar-height) + 10px);
     font-size: 0.85rem;
     color: var(--el-text-color-primary);
     cursor: pointer;
@@ -43,6 +43,7 @@
       opacity: 1;
       background-color: var(--home-config-hover-bg);
     }
+    
   }
 
   &-config-list {
@@ -109,5 +110,9 @@
     border-radius: 6px;
     background-color: var(--home-grid-item-bg);
     backdrop-filter:blur(15px) saturate(2);
+  }
+
+  :deep(.el-popper__arrow){
+    top: 2px !important;
   }
 }
