@@ -22,6 +22,7 @@
     text-decoration: none;
     font-size: 13px;
     transition: 0.35s;
+    backdrop-filter: blur(30px) saturate(1.5);
 
     &-inner {
       display: flex;

@@ -26,21 +26,21 @@ export const themeSchemeConst = {
 export const themeSettingConst = {
   themeSchemes: [
     {
-      label: '内置主题方案-蓝',
+      label: '内置主题方案-红',
       value: themeSchemeConst.lightThemeScheme,
       styleTheme: styleNameConst.light,
       bg: lightBg,
       themeBg: lightBgPreview
     },
     {
-      label: '内置主题方案-紫',
+      label: '内置主题方案-蓝',
       value: themeSchemeConst.deepColourThemeScheme,
       styleTheme: styleNameConst.deepColour,
       bg: deepColourBg,
       themeBg: deepColourBgPreview
     },
     {
-      label: '内置主题方案-红',
+      label: '内置主题方案-紫',
       value: themeSchemeConst.darkThemeScheme,
       styleTheme: styleNameConst.dark,
       bg: darkBg,

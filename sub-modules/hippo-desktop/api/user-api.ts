@@ -375,6 +375,16 @@ export default class UserApi {
                     title: '瀑布流',
                     icon: 'SvgIconDemo'
                   }
+                },
+                {
+                  isLayout: false,
+                  path: '/JiuGongDemo',
+                  name: 'JiuGongDemo',
+                  component: 'jiu-gong-demo/JiuGongDemo.vue',
+                  meta: {
+                    title: '九宫格图片',
+                    icon: 'SvgIconDemo'
+                  }
                 }
               ]
             }
@@ -475,6 +485,12 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: '瀑布流',
               path: '/WaterfallDemo'
+            },
+            {
+              id: 'jiuGongDemo',
+              icon: 'SvgIconDemo',
+              label: '九宫格图片',
+              path: '/JiuGongDemo'
             }
           ],
           menus: [
@@ -585,6 +601,12 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: '瀑布流',
               path: '/WaterfallDemo'
+            },
+            {
+              id: 'jiuGongDemo',
+              icon: 'SvgIconDemo',
+              label: '九宫格图片',
+              path: '/JiuGongDemo'
             }
           ]
         }

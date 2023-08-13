@@ -19,19 +19,22 @@
                 <div class="item">
                     <label>过期使用：</label>
                     <div class="bar">
-                        <el-progress :percentage="30" status="success" text-inside :stroke-width="15" striped striped-flow />
+                        <el-progress :percentage="30" status="success" text-inside :stroke-width="15" striped
+                            striped-flow />
                     </div>
                 </div>
                 <div class="item">
                     <label>告警使用：</label>
                     <div class="bar">
-                        <el-progress :percentage="60" status="warning" text-inside :stroke-width="15" striped striped-flow />
+                        <el-progress :percentage="60" status="warning" text-inside :stroke-width="15" striped
+                            striped-flow />
                     </div>
                 </div>
                 <div class="item">
                     <label>日常使用：</label>
                     <div class="bar">
-                        <el-progress :percentage="80" status="exception" text-inside :stroke-width="15" striped striped-flow />
+                        <el-progress :percentage="80" status="exception" text-inside :stroke-width="15" striped
+                            striped-flow />
                     </div>
                 </div>
             </div>
@@ -65,7 +68,7 @@ const props = defineProps({
     &-inner {
         width: 100%;
         height: 100%;
-        background-color: rgba(255, 255, 255, 0.6);
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
         border-radius: 10px;
         position: relative;
         padding-left: 15px;
@@ -84,6 +87,7 @@ const props = defineProps({
 
             .title {
                 font-size: 16px;
+                color: #111;
 
                 span {
                     font-size: 13px;
@@ -105,12 +109,20 @@ const props = defineProps({
                 color: var(--el-text-color-regular);
                 margin-top: 10px;
                 margin-bottom: 10px;
-                &:last-child{
+
+                &:last-child {
                     margin-bottom: 0;
                 }
 
+                label {
+                    color: #333;
+                }
+
                 .bar {
-                    width: calc(100% - 70px)
+                    width: calc(100% - 70px);
+                    :deep(.el-progress-bar__outer){
+                        background-color: rgba(255, 255, 255, 0.5);
+                    }
                 }
             }
         }
@@ -160,6 +172,5 @@ const props = defineProps({
 
         }
     }
-}
-</style>
+}</style>
   

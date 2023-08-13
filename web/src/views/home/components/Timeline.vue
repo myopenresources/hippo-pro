@@ -55,7 +55,7 @@ const activities = [
     &-inner {
         width: 100%;
         height: 100%;
-        background-color: rgba(255, 255, 255, 0.55);
+        background: linear-gradient(to bottom,  rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.5));
         border-radius: 10px;
         position: relative;
         padding-left: 15px;
@@ -70,6 +70,13 @@ const activities = [
             :deep(.el-timeline-item__timestamp) {
                 font-size: 12px;
                 font-weight: normal;
+                color: #666;
+            }
+            :deep(.el-timeline-item__content){
+                color: #333;
+            }
+            :deep(.el-timeline){
+                --el-timeline-node-color:rgba(255, 255, 255, 1);
             }
         }
 
