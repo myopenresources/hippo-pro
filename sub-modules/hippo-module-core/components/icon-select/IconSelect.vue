@@ -13,7 +13,7 @@
     </template>
     <template #default>
       <el-tabs v-model="activeName">
-        <el-tab-pane label="默认" name="default">
+        <el-tab-pane label="默认图标" name="default">
           <div class="icon-list" :style="{
             maxHeight: popoverMaxHeight
           }">
@@ -23,7 +23,7 @@
             </div>
           </div>
         </el-tab-pane>
-        <el-tab-pane label="扩展" name="extend">
+        <el-tab-pane label="扩展图标" name="extend">
           <div class="icon-list" :style="{
             maxHeight: popoverMaxHeight
           }">
