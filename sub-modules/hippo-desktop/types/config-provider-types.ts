@@ -1,3 +1,4 @@
+import type { IconSelectConfig } from "hippo-module-core/types"
 
 
 interface SysConfig {
@@ -14,7 +15,8 @@ interface SysConfig {
 
 
 interface GlobalConfig {
-    sysConfig?: SysConfig
+    sysConfig?: SysConfig,
+    iconSelectConfig?:IconSelectConfig
 }
 
 export type { SysConfig, GlobalConfig }

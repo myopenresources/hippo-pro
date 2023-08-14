@@ -60,7 +60,13 @@
     <div class="demo">
       <div class="label">类型选择：</div>
       <div class="content">
-        <SelectTag v-model:value="type" :list="typeList" :size="'small'" :round="true" type="warning">
+        <SelectTag
+          v-model:value="type"
+          :list="typeList"
+          :size="'small'"
+          :round="true"
+          type="warning"
+        >
           <template v-slot:opt="scope">
             {{ scope.data.label }}
           </template>
@@ -113,15 +119,27 @@
       </div>
     </div>
     <div class="demo">
-      <div class="label" >自定义loading：</div>
+      <div class="label">自定义loading：</div>
       <div class="content" v-img-lazy>
         <el-button @click="openLoading2">打开</el-button>
       </div>
     </div>
     <div class="demo">
-      <div class="label" >图片懒加载：</div>
-      <div class="content" >
-        <img style="height:50px" :src="img2" v-img-lazy="'https://img0.baidu.com/it/u=2159574576,3189551048&fm=253&fmt=auto&app=138&f=JPEG?w=640&h=361'"/>
+      <div class="label">图片懒加载：</div>
+      <div class="content">
+        <img
+          style="height: 50px"
+          :src="img2"
+          v-img-lazy="
+            'https://img0.baidu.com/it/u=2159574576,3189551048&fm=253&fmt=auto&app=138&f=JPEG?w=640&h=361'
+          "
+        />
+      </div>
+    </div>
+    <div class="demo">
+      <div class="label">图标选择：</div>
+      <div class="content">
+        <IconSelect />
       </div>
     </div>
   </MainContent>
@@ -129,7 +147,7 @@
 
 <script setup lang="ts">
 import { defineComponent, h, onMounted, ref } from 'vue'
-import {imgLazy} from 'hippo-module-core'
+import { imgLazy, IconSelect } from 'hippo-module-core'
 import img1 from '../../assets/img/demo/1.jpeg'
 import img2 from '../../assets/img/demo/2.jpeg'
 
@@ -237,6 +255,10 @@ const openLoading2 = () => {
     loadingObj2.close()
   }, 1200)
 }
+
+
+
+
 </script>
 
 <style lang="scss" scoped>

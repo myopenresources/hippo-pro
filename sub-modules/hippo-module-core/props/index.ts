@@ -5,6 +5,10 @@ import { SvgIconProps } from './svg-icon-props'
 import { TsxComponentProps } from './tsx-component-props'
 import { HorizontalScrollPaneProps } from './scroll-pane-props'
 import { SelectTagProps } from './select-tag-props'
+import {
+  CORE_CONFIG_PROVIDER_PROPS_KEY,
+  type CoreConfigProviderProps
+} from './core-config-provider-props'
 export {
   DynamicIconProps,
   FlopProps,
@@ -12,5 +16,7 @@ export {
   SvgIconProps,
   TsxComponentProps,
   HorizontalScrollPaneProps,
-  SelectTagProps
+  SelectTagProps,
+  type CoreConfigProviderProps,
+  CORE_CONFIG_PROVIDER_PROPS_KEY
 }

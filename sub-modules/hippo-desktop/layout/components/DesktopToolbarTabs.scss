@@ -45,19 +45,19 @@
         }
       }
 
-
-      :deep(.el-icon) {
+      .close-icon {
         margin-left: 8px;
-        font-weight: 600;
-        position: relative;
-        top: 2px;
+        :deep(.el-icon) {
+          font-weight: 600;
+          position: relative;
+          top: 2px;
 
-        &:hover {
-          color: var(--el-color-danger);
+          &:hover {
+            color: var(--el-color-danger);
+          }
         }
       }
     }
-
 
     &:first-of-type {
       margin-left: 0;
@@ -67,7 +67,6 @@
       background-color: var(--desktop-layout-toolbar-tab-hover-bg);
       color: var(--el-color-primary);
     }
-
   }
 
   &-wrapper {
@@ -98,7 +97,6 @@
       border-radius: 0.3rem;
       padding-left: 2px;
       padding-right: 2px;
-
 
       &:hover {
         color: var(--el-color-primary);

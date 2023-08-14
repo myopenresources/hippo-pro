@@ -36,6 +36,7 @@ import {
   useViewById
 } from './use-crud'
 import { useWindowResize } from './use-window-resize'
+import { useCoreConfig, useIconSelectConfig } from './use-core-config-provider'
 export {
   useTable,
   usePagination,
@@ -63,5 +64,7 @@ export {
   useElNotification,
   useElSuccessNotification,
   useElWarningNotification,
-  useWindowResize
+  useWindowResize,
+  useCoreConfig,
+  useIconSelectConfig
 }

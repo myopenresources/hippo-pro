@@ -1,17 +1,11 @@
 <template>
   <div class="desktop-toolbar-tabs">
     <div class="desktop-toolbar-tabs-btns">
-      <div
-        class="desktop-toolbar-tabs-move-to"
-        @click="moveToLeft"
-      >
+      <div class="desktop-toolbar-tabs-move-to" @click="moveToLeft">
         <DynamicIcon icon="ArrowLeft" />
       </div>
     </div>
-    <HorizontalScrollPane
-      class="desktop-toolbar-tabs-wrapper"
-      ref="scrollPaneRef"
-    >
+    <HorizontalScrollPane class="desktop-toolbar-tabs-wrapper" ref="scrollPaneRef">
       <template v-for="tab in visitedViews" :key="tab.path">
         <router-link
           :ref="setTabViewsRef"
@@ -24,8 +18,10 @@
               <DynamicIcon :icon="tab.icon" />
             </div>
             <div>{{ tab.title }}</div>
-            <div @click.prevent.stop="closeSelectedTab(tab)">
-              <DynamicIcon icon="CircleClose" />
+            <div class="close-icon">
+              <span @click.prevent.stop="closeSelectedTab(tab)">
+                <DynamicIcon icon="CircleClose" />
+              </span>
             </div>
           </div>
         </router-link>
@@ -33,10 +29,7 @@
     </HorizontalScrollPane>
 
     <div class="desktop-toolbar-tabs-btns">
-      <div
-        class="desktop-toolbar-tabs-move-to"
-        @click="moveToRight"
-      >
+      <div class="desktop-toolbar-tabs-move-to" @click="moveToRight">
         <DynamicIcon icon="ArrowRight" />
       </div>
 
@@ -191,8 +184,6 @@ const moveToLeft = () => {
 const moveToRight = () => {
   scrollPaneRef.value.moveToRight()
 }
-
-
 
 /**
  * 下拉
