@@ -3,74 +3,68 @@
     <div class="demo">
       <div class="label">类型选择：</div>
       <div class="content">
-        <SelectTag v-model:value="type" :list="typeList" :size="'large'" />
+        <TagSelect v-model:value="type" :list="typeList" :size="'large'" />
       </div>
     </div>
     <div class="demo">
       <div class="label">类型选择：</div>
       <div class="content">
-        <SelectTag v-model:value="type" :list="typeList2" />
+        <TagSelect v-model:value="type" :list="typeList2" />
       </div>
     </div>
     <div class="demo">
       <div class="label">类型选择：</div>
       <div class="content">
-        <SelectTag v-model:value="type" :list="typeList" :size="'small'" />
+        <TagSelect v-model:value="type" :list="typeList" :size="'small'" />
       </div>
     </div>
     <div class="demo">
       <div class="label">类型选择：</div>
       <div class="content">
-        <SelectTag v-model:value="type" :list="typeList" :size="'small'" round />
-      </div>
-    </div>
-
-    <div class="demo">
-      <div class="label">类型选择：</div>
-      <div class="content">
-        <SelectTag v-model:value="type" :list="typeList" :round="true" />
+        <TagSelect v-model:value="type" :list="typeList" :size="'small'" round />
       </div>
     </div>
 
     <div class="demo">
       <div class="label">类型选择：</div>
       <div class="content">
-        <SelectTag v-model:value="type" :list="typeList" :round="true" type="success" />
-      </div>
-    </div>
-    <div class="demo">
-      <div class="label">类型选择：</div>
-      <div class="content">
-        <SelectTag v-model:value="type" :list="typeList" :round="true" type="info" />
-      </div>
-    </div>
-    <div class="demo">
-      <div class="label">类型选择：</div>
-      <div class="content">
-        <SelectTag v-model:value="type" :list="typeList" :round="true" type="danger" />
-      </div>
-    </div>
-    <div class="demo">
-      <div class="label">类型选择：</div>
-      <div class="content">
-        <SelectTag v-model:value="type" :list="typeList" :round="true" type="warning" />
+        <TagSelect v-model:value="type" :list="typeList" :round="true" />
       </div>
     </div>
 
     <div class="demo">
       <div class="label">类型选择：</div>
       <div class="content">
-        <SelectTag
-          v-model:value="type"
-          :list="typeList"
-          :size="'small'"
-          :round="true"
-          type="warning"
-        >
+        <TagSelect v-model:value="type" :list="typeList" :round="true" type="success" />
+      </div>
+    </div>
+    <div class="demo">
+      <div class="label">类型选择：</div>
+      <div class="content">
+        <TagSelect v-model:value="type" :list="typeList" :round="true" type="info" />
+      </div>
+    </div>
+    <div class="demo">
+      <div class="label">类型选择：</div>
+      <div class="content">
+        <TagSelect v-model:value="type" :list="typeList" :round="true" type="danger" />
+      </div>
+    </div>
+    <div class="demo">
+      <div class="label">类型选择：</div>
+      <div class="content">
+        <TagSelect v-model:value="type" :list="typeList" :round="true" type="warning" />
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="label">类型选择：</div>
+      <div class="content">
+        <TagSelect v-model:value="type" :list="typeList" :size="'small'" :round="true" type="warning">
           <template v-slot:opt="scope">
             {{ scope.data.label }}
           </template>
-        </SelectTag>
+        </TagSelect>
       </div>
     </div>
 
@@ -127,19 +121,22 @@
     <div class="demo">
       <div class="label">图片懒加载：</div>
       <div class="content">
-        <img
-          style="height: 50px"
-          :src="img2"
-          v-img-lazy="
-            'https://img0.baidu.com/it/u=2159574576,3189551048&fm=253&fmt=auto&app=138&f=JPEG?w=640&h=361'
-          "
-        />
+        <img style="height: 50px" :src="img2" v-img-lazy="'https://img0.baidu.com/it/u=2159574576,3189551048&fm=253&fmt=auto&app=138&f=JPEG?w=640&h=361'
+          " />
       </div>
     </div>
     <div class="demo">
       <div class="label">图标选择：</div>
       <div class="content">
-        <IconSelect />
+        <IconSelect v-model:value="icon" :extendIcons="['SvgIconStartMenu']"/>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="label">图标选择：</div>
+      <div class="content">
+        <IconSelect v-model:value="icon" :extendIcons="['SvgIconStartMenu']">
+          {{ icon?icon:'选择' }}
+        </IconSelect>
       </div>
     </div>
   </MainContent>
@@ -152,8 +149,8 @@ import img1 from '../../assets/img/demo/1.jpeg'
 import img2 from '../../assets/img/demo/2.jpeg'
 
 import {
-  SelectTag,
-  type SelectTagOption,
+  TagSelect,
+  type TagSelectOption,
   Flop,
   PopoverConfirm,
   LoadingBarBox,
@@ -165,8 +162,10 @@ const vImgLazy = imgLazy
 const showConfirm = ref(false)
 const num = ref('89894564')
 
+const icon = ref('')
+
 const type = ref('1')
-const typeList: SelectTagOption[] = [
+const typeList: TagSelectOption[] = [
   {
     label: '不限',
     value: '0',
@@ -194,7 +193,7 @@ const typeList: SelectTagOption[] = [
   }
 ]
 
-const typeList2: SelectTagOption[] = [
+const typeList2: TagSelectOption[] = [
   {
     label: '不限',
     value: '0'

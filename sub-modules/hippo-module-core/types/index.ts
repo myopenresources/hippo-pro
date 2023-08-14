@@ -10,7 +10,7 @@ import type {
 import type { WindowResizeParams } from './window-resize-types'
 import type { LogParam, LogLevel } from './log-param-types'
 import type { BaseInfo } from './base-types'
-import type { SelectTagOption } from './select-tag-types'
+import type { TagSelectOption } from './tag-select-types'
 import type { LoadingBar } from './loading-bar-types'
 import type { CoreGlobalConfig, IconSelectConfig } from './core-config-provider-types'
 export type {
@@ -25,7 +25,7 @@ export type {
   LogParam,
   LogLevel,
   BaseInfo,
-  SelectTagOption,
+  TagSelectOption,
   LoadingBar,
   IconSelectConfig,
   CoreGlobalConfig

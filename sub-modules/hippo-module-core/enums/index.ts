@@ -1,4 +1,4 @@
 import { DynamicIconEnum } from './dynamic-icon-enum'
-import { SelectTagSizeEnum, SelectTagTypeEnum } from './select-tag-enum'
+import { TagSelectSizeEnum, TagSelectTypeEnum } from './tag-select-enum'
 
-export { DynamicIconEnum, SelectTagTypeEnum, SelectTagSizeEnum }
+export { DynamicIconEnum, TagSelectSizeEnum, TagSelectTypeEnum }

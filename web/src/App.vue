@@ -30,8 +30,8 @@ const sysConfig: SysConfig = {
 
 const iconSelectConfig: IconSelectConfig = {
   svgPath: [
-    import.meta.glob('../sub-modules/hippo-desktop/assets/icon/app'),
-    import.meta.glob('./sub-modules/hippo-bpmn/assets/icon/app')
+    import.meta.glob('../../sub-modules/hippo-desktop/assets/icon/app/**/*.svg'),
+    import.meta.glob('../../sub-modules/hippo-bpmn/assets/icon/app/**/*.svg')
   ]
 }
 

@@ -1,4 +1,4 @@
-interface SelectTagOption {
+interface TagSelectOption {
   label: string
   value: string
   icon?: string
@@ -6,4 +6,4 @@ interface SelectTagOption {
   [prop as string]: any
 }
 
-export type { SelectTagOption }
+export type { TagSelectOption }

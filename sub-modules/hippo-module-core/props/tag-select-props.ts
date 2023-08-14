@@ -1,7 +1,7 @@
 import type { PropType } from 'vue'
-import type { SelectTagOption } from '../types'
+import type { TagSelectOption } from '../types'
 
-export const SelectTagProps = {
+export const TagSelectProps = {
   value: {
     type: String,
     default: ''
@@ -19,7 +19,7 @@ export const SelectTagProps = {
     default: false
   },
   list: {
-    type: Array as PropType<SelectTagOption[]>,
+    type: Array as PropType<TagSelectOption[]>,
     default: () => {
       return []
     }
