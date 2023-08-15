@@ -9,6 +9,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import path from 'path'
+import electron from 'vite-plugin-electron'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -33,7 +34,15 @@ export default defineConfig({
         path.resolve(process.cwd(), '../sub-modules/hippo-desktop/assets/icon/app'),
         path.resolve(process.cwd(), '../sub-modules/hippo-bpmn/assets/icon/app')
       ]
-    })
+    }),
+    electron([
+      {
+        entry: './electron-main/index.ts'
+      },
+      {
+        entry: './electron-main/preload.ts'
+      }
+    ])
   ],
   resolve: {
     alias: {
@@ -48,6 +57,7 @@ export default defineConfig({
     }
   },
   build: {
+    emptyOutDir: false,
     chunkSizeWarningLimit: 2000,
     rollupOptions: {
       output: {

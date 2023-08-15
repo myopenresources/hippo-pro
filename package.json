@@ -6,7 +6,8 @@
   "scripts": {
     "start": "pnpm run -C web dev",
     "dev": "pnpm run -C web dev",
-    "build": "pnpm run -C web build"
+    "build": "pnpm run -C web build",
+    "build-electron": "pnpm run -C web build-electron"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",

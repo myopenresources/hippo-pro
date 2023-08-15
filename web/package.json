@@ -2,6 +2,7 @@
   "name": "web",
   "version": "0.0.0",
   "private": true,
+  "main": "./dist-electron/index.js",
   "scripts": {
     "dev": "vite --host",
     "build": "run-p  build-only",
@@ -9,7 +10,8 @@
     "build-only": "vite build  --mode production",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "build-electron": "rimraf ./web/dist && vite build && electron-builder"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
@@ -26,9 +28,57 @@
     "prettier": "^2.8.8",
     "typescript": "~5.0.4",
     "vite": "^4.3.5",
-    "vue-tsc": "^1.6.4"
+    "vue-tsc": "^1.6.4",
+    "electron": "^26.0.0",
+    "electron-builder": "^24.6.3",
+    "electron-devtools-installer": "^3.2.0",
+    "vite-plugin-electron": "0.13.0-beta.1",
+    "rimraf": "^5.0.1"
   },
   "dependencies": {
     "vue3-drr-grid-layout": "^1.9.7"
+  },
+  "build": {
+    "appId": "com.cjh.hippopro",
+    "productName": "HippoPro",
+    "asar": false,
+    "copyright": "",
+    "directories": {
+      "output": "release/${version}"
+    },
+    "files": [
+      "dist",
+      "dist-electron"
+    ],
+    "mac": {
+      "artifactName": "${productName}_${version}.${ext}",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "icon": "./dist/favicon2x.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}_${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false,
+      "installerIcon":"./dist/favicon2x.ico",
+      "uninstallerIcon":"./dist/favicon2x.ico",
+      "installerHeader":"./dist/favicon2x.ico",
+      "installerHeaderIcon":"./dist/favicon2x.ico",
+      "createDesktopShortcut":true,
+      "createStartMenuShortcut":true
+    }
   }
 }
