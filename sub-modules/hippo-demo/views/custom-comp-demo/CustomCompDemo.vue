@@ -139,6 +139,12 @@
         </IconSelect>
       </div>
     </div>
+    <div class="demo">
+      <div class="label">图标选择：</div>
+      <div class="content">
+        <IconSelect v-model:value="icon" :extendIconTabLabel="'菜单图标'" :defaultEnabled="true" :extendIcons="['SvgIconStartMenu']"/>
+      </div>
+    </div>
   </MainContent>
 </template>
 
