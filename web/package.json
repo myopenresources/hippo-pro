@@ -22,18 +22,18 @@
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.3",
     "@vue/tsconfig": "^0.4.0",
+    "electron": "^26.0.0",
+    "electron-builder": "^24.6.3",
+    "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.39.0",
     "eslint-plugin-vue": "^9.11.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.8",
+    "rimraf": "^5.0.1",
     "typescript": "~5.0.4",
     "vite": "^4.3.5",
-    "vue-tsc": "^1.6.4",
-    "electron": "^26.0.0",
-    "electron-builder": "^24.6.3",
-    "electron-devtools-installer": "^3.2.0",
     "vite-plugin-electron": "0.13.0-beta.1",
-    "rimraf": "^5.0.1"
+    "vue-tsc": "^1.6.4"
   },
   "dependencies": {
     "vue3-drr-grid-layout": "^1.9.7"
@@ -73,12 +73,12 @@
       "perMachine": true,
       "allowToChangeInstallationDirectory": true,
       "deleteAppDataOnUninstall": false,
-      "installerIcon":"./dist/favicon2x.ico",
-      "uninstallerIcon":"./dist/favicon2x.ico",
-      "installerHeader":"./dist/favicon2x.ico",
-      "installerHeaderIcon":"./dist/favicon2x.ico",
-      "createDesktopShortcut":true,
-      "createStartMenuShortcut":true
+      "installerIcon": "./dist/favicon2x.ico",
+      "uninstallerIcon": "./dist/favicon2x.ico",
+      "installerHeader": "./dist/favicon2x.ico",
+      "installerHeaderIcon": "./dist/favicon2x.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
     }
   }
 }

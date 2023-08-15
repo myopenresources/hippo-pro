@@ -1,9 +1,12 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Menu, Tray } from 'electron'
 import path from 'path'
+let win: BrowserWindow;
+const logo = path.join(__dirname, '../public/logo.png')
 const createWindow = () => {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 1300,
-    height: 880,
+    height: 800,
+    icon:logo,
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: true,
@@ -11,13 +14,53 @@ const createWindow = () => {
     }
   })
 
-  win.setAutoHideMenuBar(true)
+
   if (app.isPackaged) {
+    Menu.setApplicationMenu(null)
     win.loadFile(path.join(__dirname, '../dist/index.html'))
   } else {
+    win.setAutoHideMenuBar(true)
     const url = `http://localhost:5173/`
     win.loadURL(url)
   }
+
+  const tray = new Tray(logo)
+  tray.setToolTip('河码桌面');
+
+  const menu = Menu.buildFromTemplate([
+    {
+      label: '  显示程序  ',
+      click: () => {
+        win.show();
+      }
+    },
+    {
+      label: '  退出程序  ',
+      click: () => {
+        app.quit();
+      }
+    }
+  ])
+
+
+  tray.setContextMenu(menu);
+
+  tray.on("click", () => {
+    win.show();
+  })
+  tray.on('double-click', () => {
+    win.show();
+  })
+
+  win.on('close', (event: any) => {
+    if (!win.isFocused()) {
+      win.destroy()
+    } else {
+      event.preventDefault();
+      win.hide();
+
+    }
+  })
 }
 app.whenReady().then(() => {
   createWindow()
@@ -25,8 +68,4 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
-})
+
