@@ -1,38 +1,85 @@
 <template>
-  <el-popover :trigger="popoverTrigger" :disabled="disabled" :popper-clsss="popperClass" :popper-style="popperStyle"
-    :placement="popoverPlacement" :width="popoverWidth" ref="iconSelectPopoverRef" :teleported="false">
+  <el-popover
+    :trigger="popoverTrigger"
+    :disabled="disabled"
+    :popper-clsss="popperClass"
+    :popper-style="popperStyle"
+    :placement="popoverPlacement"
+    :width="popoverWidth"
+    ref="iconSelectPopoverRef"
+    :teleported="false"
+  >
     <template #reference>
       <slot>
         <div class="icon-select">
           <div class="icon-view" v-if="value && value.length">
             <DynamicIcon :icon="value" />
           </div>
-          <el-button type="primary" link>{{ value && value.length ? '更换' : '选择图标' }}</el-button>
+          <el-button type="primary" link>{{
+            value && value.length ? '更换' : '选择图标'
+          }}</el-button>
         </div>
       </slot>
     </template>
     <template #default>
-      <el-tabs v-model="activeName">
-        <el-tab-pane label="默认图标" name="default">
-          <div class="icon-list" :style="{
-            maxHeight: popoverMaxHeight
-          }">
-            <div class="icon-list-item" v-for="iconName in defaultIconList" :key="iconName"
-              @click="select(iconName, 'default')">
+      <el-tabs v-model="activeName" v-if="!defaultEnabled">
+        <el-tab-pane :label="defaultIconTabLabel" name="default">
+          <div
+            class="icon-list"
+            :style="{
+              maxHeight: popoverMaxHeight
+            }"
+          >
+            <div
+              class="icon-list-item"
+              v-for="iconName in defaultIconList"
+              :key="iconName"
+              @click="select(iconName, 'default')"
+            >
               <DynamicIcon :icon="iconName" />
             </div>
           </div>
         </el-tab-pane>
-        <el-tab-pane label="扩展图标" name="extend">
-          <div class="icon-list" :style="{
-            maxHeight: popoverMaxHeight
-          }">
-            <div class="icon-list-item" v-for="iconName in extendIconList" :key="iconName"
-              @click="select(iconName, 'extend')">
+        <el-tab-pane :label="extendIconTabLabel" name="extend">
+          <div
+            class="icon-list"
+            :style="{
+              maxHeight: popoverMaxHeight
+            }"
+          >
+            <div
+              class="icon-list-item"
+              v-for="iconName in extendIconList"
+              :key="iconName"
+              @click="select(iconName, 'extend')"
+            >
               <DynamicIcon :icon="iconName" />
             </div>
-            <div class="icon-list-item" v-for="(iconName, index) in (extendIcons as string[])"
-              :key="iconName + index + ''" @click="select(iconName, 'extend')">
+            <div
+              class="icon-list-item"
+              v-for="(iconName, index) in (extendIcons as string[])"
+              :key="iconName + index + ''"
+              @click="select(iconName, 'extend')"
+            >
+              <DynamicIcon :icon="iconName" />
+            </div>
+          </div>
+        </el-tab-pane>
+      </el-tabs>
+      <el-tabs v-model="activeName" v-if="defaultEnabled">
+        <el-tab-pane :label="extendIconTabLabel" name="default">
+          <div
+            class="icon-list"
+            :style="{
+              maxHeight: popoverMaxHeight
+            }"
+          >
+            <div
+              class="icon-list-item"
+              v-for="(iconName, index) in (extendIcons as string[])"
+              :key="iconName + index + ''"
+              @click="select(iconName, 'extend')"
+            >
               <DynamicIcon :icon="iconName" />
             </div>
           </div>
@@ -43,7 +90,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import CommonUtil from '../../utils/common-util'
 import { DynamicIconEnum } from '../../enums'
@@ -86,14 +133,19 @@ const initIcons = () => {
       }
     }
   })
-
 }
 
+watch(
+  () => props.defaultEnabled,
+  (newVal) => {
+    !newVal && initIcons()
+  },
+  {
+    immediate: true
+  }
+)
 
-
-onMounted(() => {
-  initIcons()
-})
+onMounted(() => {})
 </script>
 
 <style scoped lang="scss">
