@@ -10,6 +10,8 @@ const createWindow = () => {
       preload: path.join(__dirname, '../dist-electron/preload.js')
     }
   })
+
+  win.setAutoHideMenuBar(true)
   if (app.isPackaged) {
     win.loadFile(path.join(__dirname, '../dist/index.html'))
   } else {
