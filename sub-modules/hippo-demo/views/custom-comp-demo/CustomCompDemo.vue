@@ -128,21 +128,35 @@
     <div class="demo">
       <div class="label">图标选择：</div>
       <div class="content">
-        <IconSelect v-model:value="icon" :extendIcons="['SvgIconStartMenu']"/>
+        <IconSelect v-model:value="icon" :extendIcons="['SvgIconStartMenu']" />
       </div>
     </div>
     <div class="demo">
       <div class="label">图标选择：</div>
       <div class="content">
         <IconSelect v-model:value="icon" :extendIcons="['SvgIconStartMenu']">
-          {{ icon?icon:'选择' }}
+          {{ icon ? icon : '选择' }}
         </IconSelect>
       </div>
     </div>
     <div class="demo">
       <div class="label">图标选择：</div>
       <div class="content">
-        <IconSelect v-model:value="icon" :extendIconTabLabel="'菜单图标'" :defaultEnabled="true" :extendIcons="['SvgIconStartMenu']"/>
+        <IconSelect v-model:value="icon" :extendIconTabLabel="'菜单图标'" :defaultEnabled="true"
+          :extendIcons="['SvgIconStartMenu']" />
+      </div>
+    </div>
+    <div class="demo">
+      <div class="label">代码高亮：</div>
+      <div class="content">
+        <pre v-highlight><code class="javascript">{{ sourcecode }}</code></pre>
+      </div>
+    </div>
+    可通过在web/assets/index.scss中添加其它样式覆盖
+    <div class="demo">
+      <div class="label">代码高亮：</div>
+      <div class="content">
+        <pre v-highlight="sourcecode"><code class="javascript"></code></pre>
       </div>
     </div>
   </MainContent>
@@ -150,7 +164,7 @@
 
 <script setup lang="ts">
 import { defineComponent, h, onMounted, ref } from 'vue'
-import { imgLazy, IconSelect } from 'hippo-module-core'
+import { imgLazy, IconSelect, highlight } from 'hippo-module-core'
 import img1 from '../../assets/img/demo/1.jpeg'
 import img2 from '../../assets/img/demo/2.jpeg'
 
@@ -165,10 +179,44 @@ import {
 
 const vImgLazy = imgLazy
 
+const vHighlight = highlight
+
 const showConfirm = ref(false)
 const num = ref('89894564')
 
 const icon = ref('')
+
+const sourcecode = ref(`
+import {
+  Options,
+  Highlighter,
+
+  // import basic APIs
+  registerLanguages,
+  htmlRender,
+  init,
+  process,
+  
+  // import preferred languages
+  CPlusPlus,
+  TypeScript,
+  JavaScript,
+  Python,
+  Lua,
+  Markdown
+} from 'highlight-ts';
+
+// register languages
+registerLanguages(
+  CPlusPlus,
+  TypeScript,
+  JavaScript,
+  Python,
+  Lua,
+  Markdown
+);
+
+`)
 
 const type = ref('1')
 const typeList: TagSelectOption[] = [

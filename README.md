@@ -1,6 +1,8 @@
 # hippo-pro
 欢迎使用河码桌面，河码桌面是一个基于vue3+vite+element pro + pnpm 创建的monorepo项目，项目采用的是类操作系统的web界面，操作起来简单又方便，符合用户习惯，又没有操作系统的复杂！
 
+平台已支持electron，只需要将分支切换到electron即可，下面有electron的效果图。
+
 ## 页面
 <img src="./project-snapshot/0.png"/><br/>
 <img src="./project-snapshot/1.png"/><br/>
@@ -20,6 +22,10 @@
 <img src="./project-snapshot/15.png"/><br/>
 <img src="./project-snapshot/16.png"/><br/>
 
+## electron效果图
+<img src="./project-snapshot/17.png"/><br/>
+<img src="./project-snapshot/18.png"/><br/>
+
 ## 初始化
 
 ```sh
@@ -36,4 +42,9 @@ pnpm start
 
 ```sh
 pnpm run build
+```
+
+### electron打包
+```sh
+pnpm run build-electron
 ```
