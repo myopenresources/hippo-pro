@@ -1,7 +1,7 @@
 <template>
   <el-config-provider :locale="locale">
     <DesktopConfigProvider :sysConfig="sysConfig" :iconSelectConfig="iconSelectConfig">
-      <RouterView />
+      <DefaultLayout/>
     </DesktopConfigProvider>
   </el-config-provider>
 </template>
@@ -14,6 +14,7 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import { ref } from 'vue'
 import registerHttpInterceptor from './interceptors/http-interceptor'
 import router from './router'
+import DefaultLayout from './layouts/default-layout/DefaultLayout.vue'
 import { LogUtil, type IconSelectConfig } from 'hippo-module-core'
 const locale = ref(zhCn)
 
@@ -43,4 +44,5 @@ LogUtil.info({
 })
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+</style>
