@@ -9,6 +9,7 @@
 <script setup lang="ts">
 import { DesktopConfigProvider, type SysConfig } from 'hippo-desktop'
 import defaultAvatar from '@/assets/img/default-avatar.png'
+import logo from '@/assets/img/logo-small.png' 
 // @ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import { ref } from 'vue'
@@ -22,8 +23,8 @@ const sysConfig: SysConfig = {
   defaultThemeScheme: 'light-theme-scheme',
   defaultStyleTheme: 'light',
   defaultTheme: '#409eff',
-  logo: '',
-  title: '桌面',
+  logo: logo,
+  title: '河码桌面',
   loginPath: '/Login',
   homePath: '/Home',
   defaultAvatar: defaultAvatar
