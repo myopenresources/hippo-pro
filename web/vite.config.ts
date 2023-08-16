@@ -27,7 +27,7 @@ export default defineConfig({
     gzipCompressionPlugin(),
     svgIconsPlugin({
       iconDirs: [
-        //path.resolve(process.cwd(), 'src/assets/icon/app')
+        path.resolve(process.cwd(), './src/assets/icon/app'),
         path.resolve(process.cwd(), '../sub-modules/hippo-desktop/assets/icon/desktop-boolbar'),
         path.resolve(process.cwd(), '../sub-modules/hippo-desktop/assets/icon/menu'),
         path.resolve(process.cwd(), '../sub-modules/hippo-desktop/assets/icon/app'),
