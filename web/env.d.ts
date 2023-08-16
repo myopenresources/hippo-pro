@@ -3,7 +3,9 @@ declare module '*.vue'
 declare module 'pinia-plugin-persist'
 
 export interface IElectronAPI {
-  platform: string
+  platform: string,
+  minimize:Function,
+  maximize:Function,
 }
 
 declare global {

@@ -1,15 +1,49 @@
-.electron-title-bar{
-    width: 100%;
-    height: 30px;
-    -webkit-app-region: drag;
+.electron-title-bar {
+  width: 100%;
+  height: 26px;
+  -webkit-app-region: drag;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background: var(--electron-title-bar-bg);
+  position: relative;
+  border-bottom: 1px solid var(--electron-title-bar-border-color);
+  &-left {
+    padding-left: 8px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    box-sizing: border-box;
-    &-left{
-      padding-left: 15px;
+    font-size: 13px;
+    font-weight: bold;
+    .logo {
+      width: 16px;
+      height: 16px;
+      margin-right: 2px;
     }
-    &-right{
-
+  }
+  &-right {
+    display: flex;
+    align-items: center;
+    -webkit-app-region: none;
+    .btn {
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: 0.35s;
+      cursor: pointer;
+      &-maximize{
+        :deep(.el-icon){
+          font-size: 13px;
+          font-weight: bold;
+        }
+      }
+      &:hover {
+        background: var(--electron-title-bar-btn-hover-bg);
+        color: var(--electron-title-bar-btn-hover-color);
+      }
     }
+  }
 }

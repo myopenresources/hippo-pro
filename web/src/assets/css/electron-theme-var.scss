@@ -1,0 +1,20 @@
+html {
+    --electron-title-bar-bg:#e1eefda8;
+    --electron-title-bar-border-color:#ffffff66;
+    --electron-title-bar-btn-hover-bg:#ccccccb0;
+    --electron-title-bar-btn-hover-color:#020620;
+}
+
+html.deep-colour {
+    --electron-title-bar-bg:#76b4ebce;
+    --electron-title-bar-border-color:#ffffff25;
+    --electron-title-bar-btn-hover-bg:#e1eefdc3;
+    --electron-title-bar-btn-hover-color:#035297ce;
+}
+
+html.dark {
+    --electron-title-bar-bg:#01062773;
+    --electron-title-bar-border-color:#66666655;
+    --electron-title-bar-btn-hover-bg:#79797acc;
+    --electron-title-bar-btn-hover-color:#010627;
+}

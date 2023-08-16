@@ -1,6 +1,11 @@
 import os from 'os'
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 contextBridge.exposeInMainWorld('electronAPI', {
-  //这里可以添加配置
+  minimize: () => {
+    ipcRenderer.send("window-min");
+  },
+  maximize: () => {
+    ipcRenderer.send("window-max");
+  },
   platform: os.platform()
 })
