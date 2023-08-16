@@ -3,20 +3,9 @@
     <template #default>
       <div class="theme-dialog">
         <div class="theme-dialog-theme-schemes">
-          <el-carousel
-            :autoplay="false"
-            :pause-on-hover="false"
-            :height="'120px'"
-            :indicator-position="'none'"
-            arrow="never"
-            type="card"
-            :initial-index="currentThemeSchemeIndex"
-            @change="themeSchemeChange"
-          >
-            <el-carousel-item
-              v-for="(item, index) in themeSettingConst.themeSchemes"
-              :key="item.value"
-            >
+          <el-carousel :autoplay="false" :pause-on-hover="false" :height="'120px'" :indicator-position="'none'"
+            arrow="never" type="card" :initial-index="currentThemeSchemeIndex" @change="themeSchemeChange">
+            <el-carousel-item v-for="(item, index) in themeSettingConst.themeSchemes" :key="item.value">
               <div class="theme-dialog-theme-schemes-item">
                 <img :src="item.themeBg" />
                 <div class="is-check" v-show="index === currentThemeSchemeIndex">
@@ -28,12 +17,8 @@
           </el-carousel>
         </div>
         <div class="theme-dialog-styles">
-          <div
-            class="theme-dialog-styles-item"
-            v-for="(style, index) in themeSettingConst.styles"
-            :key="index"
-            @click="setStyleTheme(style)"
-          >
+          <div class="theme-dialog-styles-item" v-for="(style, index) in themeSettingConst.styles" :key="index"
+            @click="setStyleTheme(style)">
             <img :src="style.img" />
             <div class="theme-dialog-styles-item-label">{{ style.styleThemeLabel }}</div>
             <div class="is-check" v-show="style.styleThemeName === currentStyleTheme">
@@ -42,15 +27,9 @@
           </div>
         </div>
         <div class="theme-dialog-colors">
-          <div
-            class="theme-dialog-colors-item"
-            v-for="(color, index) in themeSettingConst.themes"
-            :key="index"
-            :style="{
-              backgroundColor: color
-            }"
-            @click="setTheme(color)"
-          >
+          <div class="theme-dialog-colors-item" v-for="(color, index) in themeSettingConst.themes" :key="index" :style="{
+            backgroundColor: color
+          }" @click="setTheme(color)">
             <div class="is-check" v-show="currentTheme == color">
               <DynamicIcon icon="Check" />
             </div>
@@ -159,6 +138,12 @@ const themeSchemeChange = (val: number) => {
 }
 
 const getUserDesktopBgPreview = () => {
+  const themeScheme = ThemeUtil.getThemeSchemeObj()
+  if (themeScheme) {
+    themeBg.value = themeScheme.themeBg
+    return
+  }
+  
   UserApi.getUserDesktopBgPreview().then((res: RequestResultData<UserDesktopBg>) => {
     if (res.success) {
       themeBg.value = res.data.bgUrl

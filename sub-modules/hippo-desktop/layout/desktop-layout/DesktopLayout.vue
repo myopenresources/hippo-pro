@@ -16,6 +16,7 @@ import type { RequestResultData } from 'hippo-module-core/types'
 import type { UserDesktopBg } from '../../types'
 import bgImg from '../../assets/img/desktop-layout/light-bg.jpg'
 import { useEventBusOn, useEventBusRemove } from 'hippo-module-core/hooks'
+import ThemeUtil from '../../utils/theme-util'
 
 const desktopLayoutStyle = ref({
   backgroundImage: `url(${bgImg})`
@@ -26,16 +27,26 @@ const updateDesktopBg = (bgUrl: string) => {
   desktopLayoutStyle.value.backgroundImage = `url(${bgUrl})`
 }
 
+const initDesktopBg = () => {
+  const themeScheme = ThemeUtil.getThemeSchemeObj()
+  if (themeScheme) {
+    desktopLayoutStyle.value.backgroundImage = `url(${themeScheme.bg})`
+    return
+  }
 
-
-useEventBusOn('updateDesktopBg', updateDesktopBg)
-
-onMounted(() => {
   UserApi.getUserDesktopBg().then((res: RequestResultData<UserDesktopBg>) => {
     if (res.success) {
       desktopLayoutStyle.value.backgroundImage = `url(${res.data.bgUrl})`
     }
   })
+}
+
+
+
+useEventBusOn('updateDesktopBg', updateDesktopBg)
+
+onMounted(() => {
+  initDesktopBg()
 })
 
 onUnmounted(() => {
