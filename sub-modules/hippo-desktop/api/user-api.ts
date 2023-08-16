@@ -16,29 +16,16 @@ export default class UserApi {
    */
   static getUserDesktopBgPreview() {
     return new Promise<RequestResultData<UserDesktopBg>>((resolve) => {
-      //如果是内置主题方案，从内置中取
-      const themeScheme = ThemeUtil.getThemeSchemeObj()
-      if (themeScheme) {
-        resolve({
-          status: 200,
-          success: true,
-          msg: '获取用户桌面背景预览图成功！',
-          data: {
-            bgUrl: themeScheme.themeBg
-          }
-        })
-      } else {
-        //本地获取，可修改成后端获取
-        const bg = window.localStorage.getItem('bg') || bgPreviewImg
-        resolve({
-          status: 200,
-          success: true,
-          msg: '获取用户桌面背景预览图成功！',
-          data: {
-            bgUrl: bg
-          }
-        })
-      }
+      //本地获取，可修改成后端获取
+      const bg = window.localStorage.getItem('bg') || bgPreviewImg
+      resolve({
+        status: 200,
+        success: true,
+        msg: '获取用户桌面背景预览图成功！',
+        data: {
+          bgUrl: bg
+        }
+      })
     })
   }
 
@@ -48,29 +35,16 @@ export default class UserApi {
    */
   static getUserDesktopBg() {
     return new Promise<RequestResultData<UserDesktopBg>>((resolve) => {
-      //如果是内置主题方案，从内置中取
-      const themeScheme = ThemeUtil.getThemeSchemeObj()
-      if (themeScheme) {
-        resolve({
-          status: 200,
-          success: true,
-          msg: '获取用户桌面背景成功！',
-          data: {
-            bgUrl: themeScheme.bg
-          }
-        })
-      } else {
-        //本地获取，可修改成后端获取
-        const bg = window.localStorage.getItem('bg') || bgImg
-        resolve({
-          status: 200,
-          success: true,
-          msg: '获取用户桌面背景成功！',
-          data: {
-            bgUrl: bg
-          }
-        })
-      }
+      //本地获取，可修改成后端获取
+      const bg = window.localStorage.getItem('bg') || bgImg
+      resolve({
+        status: 200,
+        success: true,
+        msg: '获取用户桌面背景成功！',
+        data: {
+          bgUrl: bg
+        }
+      })
     })
   }
 
