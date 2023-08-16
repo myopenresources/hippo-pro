@@ -7,6 +7,7 @@ const createWindow = () => {
     width: 1300,
     height: 800,
     icon:logo,
+    frame:false,
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: true,

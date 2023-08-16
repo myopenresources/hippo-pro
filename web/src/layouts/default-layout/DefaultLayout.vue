@@ -1,7 +1,7 @@
 <template>
   <div class="default-layout">
     <ElectronTitleBar/>
-    <RouterView />
+    <RouterView class="default-layout-router" style="height: calc(100% - 30px);"/>
   </div>
 </template>
 

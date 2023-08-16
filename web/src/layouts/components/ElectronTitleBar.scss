@@ -1,0 +1,15 @@
+.electron-title-bar{
+    width: 100%;
+    height: 30px;
+    -webkit-app-region: drag;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    &-left{
+      padding-left: 15px;
+    }
+    &-right{
+
+    }
+}
