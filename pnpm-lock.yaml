@@ -21,6 +21,7 @@ importers:
       element-plus: ^2.3.6
       eslint: ^8.39.0
       eslint-plugin-vue: ^9.11.0
+      highlight.js: ^11.8.0
       hippo-bpmn: workspace:*
       hippo-demo: workspace:*
       hippo-desktop: workspace:*
@@ -51,6 +52,7 @@ importers:
       axios: 1.4.0
       echarts: 5.4.2
       element-plus: 2.3.6_vue@3.3.4
+      highlight.js: 11.8.0
       hippo-bpmn: link:sub-modules/hippo-bpmn
       hippo-demo: link:sub-modules/hippo-demo
       hippo-desktop: link:sub-modules/hippo-desktop
@@ -5295,6 +5297,11 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
     dev: true
+
+  /highlight.js/11.8.0:
+    resolution: {integrity: sha512-MedQhoqVdr0U6SSnWPzfiadUcDHfN/Wzq25AkXiQv9oiOO/sG0S7XkvpFIqWBl9Yq1UYyYOOVORs5UW2XlPyzg==}
+    engines: {node: '>=12.0.0'}
+    dev: false
 
   /hosted-git-info/2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
