@@ -1,7 +1,9 @@
 <template>
   <el-config-provider :locale="locale">
     <DesktopConfigProvider :sysConfig="sysConfig" :iconSelectConfig="iconSelectConfig">
-      <RouterView />
+      <div class="app-container">
+        <RouterView />
+      </div>
     </DesktopConfigProvider>
   </el-config-provider>
 </template>
@@ -43,4 +45,10 @@ LogUtil.info({
 })
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.app-container{
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+}
+</style>
