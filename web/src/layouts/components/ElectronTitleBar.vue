@@ -8,9 +8,11 @@
       <div class="btn" @click="about">
         <DynamicIcon icon="SvgIconAbout" />
       </div>
-      <div class="btn btn-maximize" @click="maximize">
-        <DynamicIcon :icon="isMaximized ? 'SvgIconFullScreenExit' : 'FullScreen'" />
-      </div>
+      <!--      
+        <div class="btn btn-maximize" @click="maximize">
+          <DynamicIcon :icon="isMaximized ? 'SvgIconFullScreenExit' : 'FullScreen'" />
+        </div>
+      -->
       <div class="btn" @click="minimize">
         <DynamicIcon icon="Minus" />
       </div>
@@ -20,25 +22,28 @@
 
 <script setup lang="ts">
 import { useSysConfig } from 'hippo-desktop'
-import { useElAlertMessageBox } from 'hippo-module-core';
+import { useElAlertMessageBox } from 'hippo-module-core'
 import { DynamicIcon } from 'hippo-module-core'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const sysConfig = useSysConfig()
 
 const isMaximized = ref(false)
 
-const maximize = ()=>{
+const maximize = () => {
   window.electronAPI.maximize()
-  isMaximized.value=!isMaximized.value
+  isMaximized.value = !isMaximized.value
 }
 
-const minimize = ()=>{
+const minimize = () => {
   window.electronAPI.minimize()
 }
 
-const about = ()=>{
-  useElAlertMessageBox('河码桌面是一个基于vue3 + vite + element pro + electron + pnpm 创建的monorepo项目！','关于')
+const about = () => {
+  useElAlertMessageBox(
+    '河码桌面是一个基于vue3 + vite + element pro + electron + pnpm 创建的monorepo项目！',
+    '关于'
+  )
 }
 </script>
 

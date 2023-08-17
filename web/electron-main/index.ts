@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron'
 import path from 'path'
 let win: BrowserWindow
-const logo = path.join(__dirname, '../public/logo.png')
+const logo = path.join(__dirname, '../dist/logo.png')
 const createWindow = () => {
   win = new BrowserWindow({
     width: 1300,
@@ -10,6 +10,7 @@ const createWindow = () => {
     minHeight:600,
     icon: logo,
     frame: false,
+    maximizable:false,
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: true,
@@ -68,15 +69,15 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 
-  ipcMain.on('window-min', function (event) {
-    const win = BrowserWindow.fromId(event.sender.id)
+  ipcMain.on('window-min',  (event)=> {
+    //const win = BrowserWindow.fromId(event.sender.id)
     if (win) {
       win.minimize()
     }
   })
 
-  ipcMain.on('window-max', function (event) {
-    const win = BrowserWindow.fromId(event.sender.id)
+  ipcMain.on('window-max',  (event)=> {
+    //const win = BrowserWindow.fromId(event.sender.id)
     if (win) {
       const isMaximized = win.isMaximized()
       if (isMaximized) {
