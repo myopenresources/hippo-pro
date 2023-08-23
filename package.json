@@ -30,6 +30,7 @@
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
     "@tsconfig/node18": "^2.0.1",
+    "@types/highlight.js": "^10.1.0",
     "@types/node": "^18.16.8",
     "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^4.2.3",
