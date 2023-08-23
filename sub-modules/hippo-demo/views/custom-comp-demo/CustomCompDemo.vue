@@ -164,7 +164,7 @@
 
 <script setup lang="ts">
 import { defineComponent, h, onMounted, ref } from 'vue'
-import { imgLazy, IconSelect, highlight } from 'hippo-module-core'
+import { imgLazy, IconSelect,highlight } from 'hippo-module-core'
 import img1 from '../../assets/img/demo/1.jpeg'
 import img2 from '../../assets/img/demo/2.jpeg'
 
@@ -186,37 +186,7 @@ const num = ref('89894564')
 
 const icon = ref('')
 
-const sourcecode = ref(`
-import {
-  Options,
-  Highlighter,
-
-  // import basic APIs
-  registerLanguages,
-  htmlRender,
-  init,
-  process,
-  
-  // import preferred languages
-  CPlusPlus,
-  TypeScript,
-  JavaScript,
-  Python,
-  Lua,
-  Markdown
-} from 'highlight-ts';
-
-// register languages
-registerLanguages(
-  CPlusPlus,
-  TypeScript,
-  JavaScript,
-  Python,
-  Lua,
-  Markdown
-);
-
-`)
+const sourcecode = ref<string>("import { Options,Highlighter,registerLanguages,htmlRender,init} from 'highlightjs';")
 
 const type = ref('1')
 const typeList: TagSelectOption[] = [

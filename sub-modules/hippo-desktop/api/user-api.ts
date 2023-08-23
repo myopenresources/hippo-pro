@@ -359,6 +359,16 @@ export default class UserApi {
                     title: '九宫格图片',
                     icon: 'SvgIconDemo'
                   }
+                },
+                {
+                  isLayout: false,
+                  path: '/EditDemo',
+                  name: 'EditDemo',
+                  component: 'edit-demo/EditDemo.vue',
+                  meta: {
+                    title: '富文本编辑器',
+                    icon: 'SvgIconDemo'
+                  }
                 }
               ]
             }
@@ -465,6 +475,12 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: '九宫格图片',
               path: '/JiuGongDemo'
+            },
+            {
+              id: 'editDemo',
+              icon: 'SvgIconDemo',
+              label: '富文本编辑器',
+              path: '/EditDemo'
             }
           ],
           menus: [
@@ -581,6 +597,12 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: '九宫格图片',
               path: '/JiuGongDemo'
+            },
+            {
+              id: 'editDemo',
+              icon: 'SvgIconDemo',
+              label: '富文本编辑器',
+              path: '/EditDemo'
             }
           ]
         }

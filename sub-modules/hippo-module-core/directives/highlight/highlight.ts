@@ -4,7 +4,6 @@ import './highlight.scss'
 import type { Directive } from 'vue';
 
 const highlight: Directive = {
-    deep: true,
     mounted: (el, binding) => {
         const targets = el.querySelectorAll('code')
         targets.forEach((target: any) => {
