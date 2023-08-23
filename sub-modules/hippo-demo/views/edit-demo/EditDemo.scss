@@ -1,0 +1,13 @@
+.edit-demo{
+    width: 100%;
+    border: var(--el-border);
+    box-sizing: border-box;
+    &-toolbar{
+        width: 100%;
+        border-bottom:var(--el-border);
+    }
+    &-editor{
+        width: 100%;
+        overflow-y: hidden
+    }
+}
