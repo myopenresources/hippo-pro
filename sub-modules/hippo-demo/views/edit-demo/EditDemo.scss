@@ -8,6 +8,9 @@
     }
     &-editor{
         width: 100%;
-        overflow-y: hidden
+        overflow-y: hidden;
+        :deep(.w-e-text-container){
+            background-color: transparent;
+        }
     }
 }

@@ -110,7 +110,6 @@ importers:
       '@babylonjs/serializers': ^6.11.2
       '@babylonjs/viewer': ^6.11.2
       '@wangeditor/editor': ^5.1.23
-      '@wangeditor/editor-for-vue': ^5.1.12
       d3: ^7.8.4
       dagre-d3: ^0.6.4
       driver.js: ^1.1.0
@@ -127,7 +126,6 @@ importers:
       '@babylonjs/serializers': 6.11.2_@babylonjs+core@6.11.2
       '@babylonjs/viewer': 6.11.2
       '@wangeditor/editor': 5.1.23
-      '@wangeditor/editor-for-vue': 5.1.12_@wangeditor+editor@5.1.23
       d3: 7.8.5
       dagre-d3: 0.6.4
       driver.js: 1.1.0
@@ -2527,15 +2525,6 @@ packages:
       slate: 0.72.8
       slate-history: 0.66.0_slate@0.72.8
       snabbdom: 3.5.1
-    dev: false
-
-  /@wangeditor/editor-for-vue/5.1.12_@wangeditor+editor@5.1.23:
-    resolution: {integrity: sha512-0Ds3D8I+xnpNWezAeO7HmPRgTfUxHLMd9JKcIw+QzvSmhC5xUHbpCcLU+KLmeBKTR/zffnS5GQo6qi3GhTMJWQ==}
-    peerDependencies:
-      '@wangeditor/editor': '>=5.1.0'
-      vue: ^3.0.5
-    dependencies:
-      '@wangeditor/editor': 5.1.23
     dev: false
 
   /@wangeditor/editor/5.1.23:
