@@ -369,6 +369,16 @@ export default class UserApi {
                     title: '富文本编辑器',
                     icon: 'SvgIconDemo'
                   }
+                },
+                {
+                  isLayout: false,
+                  path: '/VideoPlayerDemo',
+                  name: 'VideoPlayerDemo',
+                  component: 'video-player-demo/VideoPlayerDemo.vue',
+                  meta: {
+                    title: '视频播放器',
+                    icon: 'SvgIconDemo'
+                  }
                 }
               ]
             }
@@ -481,6 +491,12 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: '富文本编辑器',
               path: '/EditDemo'
+            },
+            {
+              id: 'videoPlayerDemo',
+              icon: 'SvgIconDemo',
+              label: '视频播放器',
+              path: '/VideoPlayerDemo'
             }
           ],
           menus: [
@@ -603,6 +619,12 @@ export default class UserApi {
               icon: 'SvgIconDemo',
               label: '富文本编辑器',
               path: '/EditDemo'
+            },
+            {
+              id: 'videoPlayerDemo',
+              icon: 'SvgIconDemo',
+              label: '视频播放器',
+              path: '/VideoPlayerDemo'
             }
           ]
         }

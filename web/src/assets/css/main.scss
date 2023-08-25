@@ -4,11 +4,9 @@
   outline: none;
 }
 
-
-body{
+body {
   font-size: 14px;
 }
-
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -24,16 +22,16 @@ body{
   border-radius: 6px;
   background-color: #9b999c55;
   //display: none;
-  transition: .35s;
+  transition: 0.35s;
 }
 
 ::-webkit-scrollbar-corner {
-  background-color: transparent
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #9b999caa;
-  transition: .35s;
+  transition: 0.35s;
   //display: block;
 }
 

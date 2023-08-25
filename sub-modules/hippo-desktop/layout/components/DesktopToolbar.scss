@@ -4,9 +4,10 @@
   position: relative;
   z-index: 9;
   box-shadow: var(--desktop-layout-toolbar-shadow);
+  box-sizing: border-box;
   &-inner {
     height: 100%;
-    width: calc(100% - 1rem);
+    width: 100%;
     background-color: var(--desktop-layout-toolbar-bg);
     display: flex;
     align-items: center;
@@ -15,8 +16,7 @@
     padding-right: 0.5rem;
     box-shadow: var(--desktop-layout-toolbar-inner-shadow);
     backdrop-filter: blur(20px) saturate(1.5);
-    
-
+    box-sizing: border-box;
     &-left {
       display: flex;
       align-items: center;
@@ -59,12 +59,11 @@
               color: var(--desktop-layout-toolbar-input-placeholder);
             }
           }
-        }
-
-
+        }      
 
         --el-border-color: var(--desktop-layout-toolbar-border-color);
-        --el-input-hover-border-color: var(--el-color-primary);
+        --el-input-hover-border-color: var(--desktop-layout-toolbar-border-color);
+        --el-select-input-focus-border-color: var(--desktop-layout-toolbar-border-color);
       }
     }
 
